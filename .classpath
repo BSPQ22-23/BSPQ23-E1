@@ -23,5 +23,23 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Aritz Candina/.m2/repository/org/apache/logging/log4j/log4j-api/2.20.0/log4j-api-2.20.0.jar" sourcepath="C:/Users/Aritz Candina/.m2/repository/org/apache/logging/log4j/log4j-api/2.20.0/log4j-api-2.20.0-sources.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.groupId" value="org.apache.logging.log4j"/>
+			<attribute name="maven.artifactId" value="log4j-api"/>
+			<attribute name="maven.version" value="2.20.0"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Aritz Candina/.m2/repository/org/datanucleus/javax.jdo/3.2.1/javax.jdo-3.2.1.jar" sourcepath="C:/Users/Aritz Candina/.m2/repository/org/datanucleus/javax.jdo/3.2.1/javax.jdo-3.2.1-sources.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.groupId" value="org.datanucleus"/>
+			<attribute name="maven.artifactId" value="javax.jdo"/>
+			<attribute name="maven.version" value="3.2.1"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

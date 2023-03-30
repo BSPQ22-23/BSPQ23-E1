@@ -16,7 +16,7 @@ import com.example.pojo.User;
 
 public class ClientApp {
 
-    private static final String SERVER_ENDPOINT = "http://localhost:8080/webapi";
+    private static final String SERVER_ENDPOINT = "http://localhost:8080/webapi/";
     private static final String USERS_RESOURCE ="users";
 
     public static void main(String[] args) {
