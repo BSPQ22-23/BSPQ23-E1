@@ -1,56 +1,88 @@
 package com.example.pojo;
 
 public class User {
-
-    private int code;
+    
+    // Attributes of the User class
+	private int code;
+    private String username;
+    private typeUser type;
+    private String password;
+    private String email;
     private String name;
     private String surname;
-
-    // Default public constructor required for serialization
+   // private ArrayList<Rental>
+    
     public User() {
+    	
     }
-
     public User(int code) {
-        this.code = code;
+    	this.code = code;
     }
-
-    public User(String name, String surname) {
+    // Constructor of the User class
+    public User(int code, String username, String password, String email, String name, String surname, typeUser type) {
+    	this.code = code;
+        this.username = username;
+        this.password = password;
+        this.email = email;
         this.name = name;
         this.surname = surname;
+        this.type = type;
     }
-
-    public User(int code, String name, String surname) {
-        this.name = name;
-        this.surname = surname;
-        this.code = code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
-    }
-
+     
+    public typeUser getType() {
+		return type;
+	}
+	public void setType(typeUser type) {
+		this.type = type;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getSurname() {
+		return surname;
+	}
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+	// Getter and setter methods for the attributes of the User class
     public int getCode() {
-        return code;
-    }
+		return code;
+	}
 
-    public void setName(String name) {
-        this.name = name;
+	public void setCode(int code) {
+		this.code = code;
+	}
+    
+    public String getUsername() {
+        return username;
     }
-
-    public String getName() {
-        return name;
+    
+	public void setUsername(String username) {
+        this.username = username;
     }
-
-    public String getSurname() {
-        return surname;
+    
+    public String getPassword() {
+        return password;
     }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
+    
+    public void setPassword(String password) {
+        this.password = password;
     }
-
+    
+    public String getEmail() {
+        return email;
+    }
+    
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
     @Override
     public String toString() {
-        return String.format("%d - %s %s", code, name, surname);
+    	// TODO Auto-generated method stub
+    	return this.name + " " + this.surname;
     }
 }

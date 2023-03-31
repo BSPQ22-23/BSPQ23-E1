@@ -13,6 +13,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import com.example.pojo.User;
+import com.example.pojo.typeUser;
 
 public class ClientApp {
 
@@ -27,8 +28,8 @@ public class ClientApp {
         // issuing a GET request to the users endpoint with some query parameters
         try {
             Response response = appTarget.path(USERS_RESOURCE)
-                .queryParam("filter", "e")
-                .queryParam("order", "desc")
+                .queryParam("filter", "i")
+                .queryParam("order", "asc")
                 .request(MediaType.APPLICATION_JSON)
                 .get();
 
@@ -47,7 +48,7 @@ public class ClientApp {
 
         // sending a POST with a new user
         try {
-            User user = new User(31, "Steven", "Spielberg");
+            User user = new User(31, "Steven", "Spielberg", "a", "b", "c",typeUser.CLIENT);
             Response response = appTarget.path(USERS_RESOURCE)
                 .request(MediaType.APPLICATION_JSON)
                 .post(Entity.entity(user, MediaType.APPLICATION_JSON)

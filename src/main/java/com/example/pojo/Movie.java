@@ -13,6 +13,9 @@ public class Movie {
     private String director;
     private double rentalPrice;
     
+    public Movie() {
+    	
+    }
     // Constructor of the Movie class
     public Movie(String title, String genre, int year, String director, double rentalPrice) {
         this.title = title;

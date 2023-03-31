@@ -22,6 +22,10 @@ import javax.swing.JComboBox;
 
 public class ClientLoginWindow extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7388753432723633814L;
 	private JPanel contentPane;
 	private JPanel panelSouth;
 	private JPanel panelCentre;

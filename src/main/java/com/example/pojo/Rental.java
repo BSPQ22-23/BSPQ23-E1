@@ -14,7 +14,10 @@ public class Rental {
     private User customer;
     private Date rentalDate;
     private Date returnDate;
-
+    
+    public Rental() {
+    	
+    }
     public Rental(Movie movie, User customer, Date rentalDate) {
         this.movie = movie;
         this.customer = customer;

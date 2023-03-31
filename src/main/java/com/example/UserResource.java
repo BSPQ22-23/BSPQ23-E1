@@ -22,6 +22,7 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
 import com.example.pojo.User;
+import com.example.pojo.typeUser;
 
 @Path("users")
 public class UserResource {
@@ -45,9 +46,9 @@ public class UserResource {
         
             // This data could be retrieved from a database
         List<User> users = new ArrayList<>();
-        users.add(new User(0, "John", "Smith"));
-        users.add(new User(1, "Isaac", "Newton"));
-        users.add(new User(1, "Albert", "Einstein"));
+        users.add(new User(1, "John", "Smith", "a", "b", "c",typeUser.CLIENT));
+        users.add(new User(3, "Isaac", "Newton", "d", "e", "f",typeUser.CLIENT));
+        users.add(new User(2, "Albert", "Einstein", "g", "h", "i",typeUser.CLIENT));
 
         Stream<User> stream = users.stream();
         // check if the query parameter was passed in the URL
@@ -63,9 +64,10 @@ public class UserResource {
         } else {
             stream = stream.sorted(Comparator.comparing(User::getSurname));
         }
-
+        System.out.println(users);
         // return the resulting stream as a list
         return stream.collect(Collectors.toList());
+        
     }
 
     @POST
