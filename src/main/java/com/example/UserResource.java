@@ -47,7 +47,7 @@ public class UserResource {
         List<User> users = new ArrayList<>();
         users.add(new User(0, "John", "Smith"));
         users.add(new User(1, "Isaac", "Newton"));
-        users.add(new User(0, "Albert", "Einstein"));
+        users.add(new User(1, "Albert", "Einstein"));
 
         Stream<User> stream = users.stream();
         // check if the query parameter was passed in the URL
