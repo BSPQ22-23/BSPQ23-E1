@@ -1,0 +1,6 @@
+com\example\MyResource.class
+com\example\pojo\User.class
+com\example\UserResource.class
+com\example\client\ClientApp.class
+com\example\client\ClientApp$1.class
+com\example\UserResource$Order.class
