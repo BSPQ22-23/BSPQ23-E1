@@ -28,8 +28,6 @@ public class ClientApp {
         // issuing a GET request to the users endpoint with some query parameters
         try {
             Response response = appTarget.path(USERS_RESOURCE)
-                .queryParam("filter", "i")
-                .queryParam("order", "asc")
                 .request(MediaType.APPLICATION_JSON)
                 .get();
 

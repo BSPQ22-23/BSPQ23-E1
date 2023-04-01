@@ -7,6 +7,7 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -42,26 +43,26 @@ public class ClientSignUpWindow extends JFrame {
 	private static final long serialVersionUID = -8743514429828691121L;
 	private JPanel contentPane;
 	private JPanel panelSouth;
-	private static JPanel panelCentre;
-	private  JLabel lblNick;
-	private  JTextField textNIck;
-	private static JLabel lblPass;
-	private static JTextField textPass;
-	private static JLabel lblMail;
-	private static JTextField textMail;
+	private JPanel panelCentre;
+	private JLabel lblUsername;
+	private JTextField textUsername;
+	private JLabel lblPassword;
+	private JTextField textPassword;
+	private JLabel lblName;
+	private JTextField textName;
+	private JLabel lblSurname;
+	private JTextField textSurname;
+	private JLabel lblMail;
+	private JTextField textMail;
 	private JButton btnRegister;
 	private static JLabel lblLogin;
 	private JButton btnLogin;
 	private static final String SERVER_ENDPOINT = "http://localhost:8080/webapi";
     private static final String USERS_RESOURCE ="users";
-//	private LoginController LController;
-
-	/**
-	 * Launch the application.
-	 public User RegisterUser(String nickname,String password) {
-		 User u = LController.RegisterUser(nickname, password);
-		 return u;
-	 }*/
+    private int n = 1;
+    Client client = ClientBuilder.newClient();
+    final WebTarget appTarget = client.target(SERVER_ENDPOINT);
+    
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -79,7 +80,6 @@ public class ClientSignUpWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public ClientSignUpWindow() {
-		UserResource r = new UserResource();
 		setTitle("SIGN UP");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -92,7 +92,7 @@ public class ClientSignUpWindow extends JFrame {
 		panelSouth = new JPanel();
 		contentPane.add(panelSouth, BorderLayout.SOUTH);
 		
-		btnRegister = new JButton("SIIGN UP");
+		btnRegister = new JButton("SIGN UP");
 		panelSouth.add(btnRegister);
 		
 		lblLogin = new JLabel("Already signed up?");
@@ -105,38 +105,51 @@ public class ClientSignUpWindow extends JFrame {
 		contentPane.add(panelCentre, BorderLayout.CENTER);
 		panelCentre.setLayout(new GridLayout(0, 2, 0, 0));
 		
-		lblNick = new JLabel("Insert your name:");
-		panelCentre.add(lblNick);
+		lblName = new JLabel("Insert your Name:");
+		panelCentre.add(lblName);
 		
-		textNIck = new JTextField();
-		panelCentre.add(textNIck);
-		textNIck.setColumns(10);
+		textName = new JTextField();
+		panelCentre.add(textName);
+		textName.setColumns(10);
 		
-
+		lblSurname = new JLabel("Insert your Surname:");
+		panelCentre.add(lblSurname);
 		
-		lblMail = new JLabel("Insert your surname:");
+		textSurname = new JTextField();
+		panelCentre.add(textSurname);
+		textSurname.setColumns(10);
+		
+		lblUsername = new JLabel("Insert your username:");
+		panelCentre.add(lblUsername);
+		
+		textUsername = new JTextField();
+		panelCentre.add(textUsername);
+		textUsername.setColumns(10);
+		
+		lblPassword = new JLabel("Insert your password:");
+		panelCentre.add(lblPassword);
+		
+		textPassword = new JTextField();
+		panelCentre.add(textPassword);
+		textPassword.setColumns(10);
+		
+		lblMail = new JLabel("Insert your email:");
 		panelCentre.add(lblMail);
 		
 		textMail = new JTextField();
 		panelCentre.add(textMail);
-		textNIck.setColumns(10);
+		textMail.setColumns(10);
 
-		lblPass = new JLabel("Insert your email:");
-		panelCentre.add(lblPass);
 		
-		textPass = new JTextField();
-		panelCentre.add(textPass);
-		textPass.setColumns(10);
 		
 		
 		btnRegister.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Client client = ClientBuilder.newClient();
-		        final WebTarget appTarget = client.target(SERVER_ENDPOINT);
+				
 		        try {
-		        	User user = new User(4, "a","b", textPass.getText(), textNIck.getText(), textMail.getText(), typeUser.ADMIN );
+		        	User user = new User(n, textUsername.getText(),textPassword.getText(), textMail.getText(), textName.getText(), textSurname.getText(), typeUser.CLIENT );
 		            Response response = appTarget.path(USERS_RESOURCE)
 		                .request(MediaType.APPLICATION_JSON)
 		                .post(Entity.entity(user, MediaType.APPLICATION_JSON)
@@ -146,15 +159,19 @@ public class ClientSignUpWindow extends JFrame {
 		            if (response.getStatusInfo().toEnum() == Status.OK) {
 		                // obtain the response data (contains a user with the new code)
 		                User userCode = response.readEntity(User.class);
-		                System.out.format("User registered with code %d%n", userCode.getCode());
+		                System.out.format("User registered with code %d%n",userCode.getCode());
 		            } else {
 		                System.out.format("Error posting a user list. %s%n", response);
 		            }
 		        } catch (ProcessingException j) {
 		            System.out.format("Error posting a new user. %s%n", j.getMessage());
 		        }
+		        n++;
 		        
-		        r.getUsers("i", Order.ASC);
+		        Thread hilo = new LogInWindow();
+				hilo.start();
+				dispose();
+		        
 			//	RegisterUser(nick, pass);
 				//TODO add info to the client
 			
@@ -165,14 +182,19 @@ public class ClientSignUpWindow extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				
-				
-				
+					Thread hilo = new LogInWindow();
+					hilo.start();
+					dispose();
 			}
 		});
 		setVisible(true);
 	}
 
+	
+	class LogInWindow extends Thread{
+		public void run() {
+			ClientLoginWindow.main(null);
+		}
+	}
 }
 

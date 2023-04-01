@@ -34,6 +34,7 @@ public class ClientLoginWindow extends JFrame {
 	private JLabel lblPass;
 	private JPasswordField textPass;
 	private JButton btnLogin;
+	private JButton btnRegister;
 
 	/**
 	 * Launch the application.
@@ -67,16 +68,17 @@ public class ClientLoginWindow extends JFrame {
 		panelSouth = new JPanel();
 		contentPane.add(panelSouth, BorderLayout.SOUTH);
 		
-		
 		btnLogin = new JButton("LOG IN");
+		btnRegister = new JButton("REGISTER");
 		
 		panelSouth.add(btnLogin);
+		panelSouth.add(btnRegister);
 		
 		panelCentre = new JPanel();
 		contentPane.add(panelCentre, BorderLayout.CENTER);
 		panelCentre.setLayout(new GridLayout(0, 2, 0, 0));
 		
-		lblNick = new JLabel("Insert your Nickname:");
+		lblNick = new JLabel("Insert your username:");
 		panelCentre.add(lblNick);
 		
 		textNick = new JTextField();
@@ -94,12 +96,26 @@ public class ClientLoginWindow extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String nick = textNick.getText();
-				String pass = textPass.getText();
 				//TODO log in to menu windows
 			}
 		});
+		
+		btnRegister.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Thread registerWindow = new RegisterWindowThread();
+				registerWindow.start();
+				dispose();
+			}
+		});
 		setVisible(true);
+	}
+	
+	class RegisterWindowThread extends Thread{
+		public void run() {
+			ClientSignUpWindow.main(null);
+		}
 	}
 
 }
