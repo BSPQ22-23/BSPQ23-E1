@@ -118,7 +118,7 @@
                             </execution>
                         </executions>
                         <configuration>
-                            <mainClass>com.example.client.gui.ClientLoginWindow</mainClass>
+                            <mainClass>com.videoclub.client.gui.ClientLoginWindow</mainClass>
                         </configuration>
                     </plugin>
                 </plugins>
