@@ -1,4 +1,4 @@
-package com.example;
+package com.videoclub;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

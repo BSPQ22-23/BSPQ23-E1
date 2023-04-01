@@ -1,4 +1,4 @@
-package com.example.pojo;
+package com.videoclub.pojo;
 
 import javax.jdo.annotations.*;
 

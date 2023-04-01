@@ -1,4 +1,4 @@
-package com.example.pojo;
+package com.videoclub.pojo;
 
 public class User {
     
@@ -17,6 +17,11 @@ public class User {
     }
     public User(int code) {
     	this.code = code;
+    }
+    
+    public User(String username, String password) {
+    	this.username = username;
+    	this.password = password;
     }
     // Constructor of the User class
     public User(int code, String username, String password, String email, String name, String surname, typeUser type) {

@@ -2,7 +2,7 @@ package com.videoclub.dao;
 
 import java.util.List;
 
-import com.example.pojo.User;
+import com.videoclub.pojo.User;
 
 public class UserDAO extends DataAccessObjectBase implements IDataAccessObject<User>{
 

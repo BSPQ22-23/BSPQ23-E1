@@ -1,4 +1,4 @@
-package com.example.client.gui;
+package com.videoclub.client.gui;
 
 
 import java.awt.EventQueue;
@@ -27,10 +27,10 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import com.example.UserResource;
-import com.example.UserResource.Order;
-import com.example.pojo.User;
-import com.example.pojo.typeUser;
+import com.videoclub.UserResource;
+import com.videoclub.UserResource.Order;
+import com.videoclub.pojo.User;
+import com.videoclub.pojo.typeUser;
 
 //import client.controller.LoginController;
 //import server.data.domain.User;

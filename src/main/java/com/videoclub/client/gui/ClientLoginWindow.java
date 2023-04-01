@@ -1,4 +1,4 @@
-package com.example.client.gui;
+package com.videoclub.client.gui;
 
 import java.awt.EventQueue;
 
@@ -9,11 +9,21 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
+import javax.ws.rs.ProcessingException;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.GenericType;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
+import com.videoclub.pojo.User;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -32,14 +42,19 @@ public class ClientLoginWindow extends JFrame {
 	private  static JLabel lblNick;
 	private JTextField textNick;
 	private JLabel lblPass;
-	private JPasswordField textPass;
+	private JTextField textPass;
 	private JButton btnLogin;
 	private JButton btnRegister;
+	private int op;
+	
+    private static final String SERVER_ENDPOINT = "http://localhost:8080/webapi";
+    private static final String USERS_RESOURCE ="users";
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -96,15 +111,60 @@ public class ClientLoginWindow extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//TODO log in to menu windows
+				Client client = ClientBuilder.newClient();
+		        final WebTarget appTarget = client.target(SERVER_ENDPOINT);
+		        List<User> users = null;
+		        try {
+		            Response response = appTarget.path(USERS_RESOURCE)
+		                .request(MediaType.APPLICATION_JSON)
+		                .get();
+
+		            // check that the response was HTTP OK
+		            if (response.getStatusInfo().toEnum() == Status.OK) {
+		                // the response is a generic type (a List<User>)
+		                GenericType<List<User>> listType = new GenericType<List<User>>(){};
+		                users = response.readEntity(listType);
+		                System.out.println(users);
+		            } else {
+		                System.out.format("Error obtaining user list. %s%n", response);
+		            }
+		        } catch (ProcessingException o) {
+		            System.out.format("Error obtaining user list. %s%n", o.getMessage());
+		        }
+		        
+		        User user = new User(textNick.getText(),textPass.getText());
+		        for (User i : users) {
+		        	System.out.println(i.getUsername());
+		        	if(i.getUsername().equals(user.getUsername())  && i.getPassword().equals(user.getPassword()))
+		        	{
+		        		System.out.println("Bienvenido " + user.getUsername());
+		        		Thread registerWindow = new RegisterWindowThread();
+		        		op = 1;
+		        		registerWindow.start();
+		        		//TODO abrir siguiente ventana
+		        		dispose();
+		        		
+		        	}
+		        	else
+		        	{
+		        		System.out.println("El usuario o contraseña son incorrectos");
+		        	}
+		        	
+					
+				}
+		        
+		        
 			}
 		});
+		
+	
 		
 		btnRegister.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Thread registerWindow = new RegisterWindowThread();
+				op =2;
 				registerWindow.start();
 				dispose();
 			}
@@ -114,7 +174,15 @@ public class ClientLoginWindow extends JFrame {
 	
 	class RegisterWindowThread extends Thread{
 		public void run() {
-			ClientSignUpWindow.main(null);
+			if(op == 2)
+			{
+				ClientSignUpWindow.main(null);
+			}
+			else
+			{
+				//TODO la ventana nueva
+			}
+			
 		}
 	}
 

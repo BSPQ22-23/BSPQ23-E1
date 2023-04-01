@@ -1,4 +1,4 @@
-package com.example;
+package com.videoclub;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
-import com.example.pojo.User;
+import com.videoclub.pojo.User;
 
 @Path("users")
 public class UserResource {

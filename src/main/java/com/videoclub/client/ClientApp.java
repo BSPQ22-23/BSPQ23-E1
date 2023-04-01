@@ -1,4 +1,4 @@
-package com.example.client;
+package com.videoclub.client;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import com.example.pojo.User;
-import com.example.pojo.typeUser;
+import com.videoclub.pojo.User;
+import com.videoclub.pojo.typeUser;
 
 public class ClientApp {
 
