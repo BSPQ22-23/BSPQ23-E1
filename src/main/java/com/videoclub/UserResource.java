@@ -37,6 +37,7 @@ public class UserResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<User> getUsers() {
+    	logger.info(users);
 		return users;
     }
 
@@ -46,6 +47,7 @@ public class UserResource {
     public Response addUser(User user) {
         // here we will process the received user data
         users.add(user);
+        logger.info(user);
         // return a response containing a user with only the code for the new user
         return Response.ok(new User(user.getCode())).build();
     }
