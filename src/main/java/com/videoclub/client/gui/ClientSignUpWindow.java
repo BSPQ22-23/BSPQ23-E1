@@ -148,7 +148,7 @@ public class ClientSignUpWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				validador = true;
-				//Pruebas
+				//Igual esto no sirve para el sprint 2
 				Client client = ClientBuilder.newClient();
 		        final WebTarget appTarget = client.target(SERVER_ENDPOINT);
 		        List<User> users = null;
@@ -178,7 +178,7 @@ public class ClientSignUpWindow extends JFrame {
 		        	}
 		        		
 		        }
-				//Acaba Pruebas
+				//Acaba Igual esto no sirve para el sprint 2
 				if(validador == true)
 				{
 					
