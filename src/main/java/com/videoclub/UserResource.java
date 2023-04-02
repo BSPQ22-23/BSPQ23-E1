@@ -12,17 +12,20 @@ import javax.ws.rs.core.Response;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
 import com.videoclub.pojo.User;
+import com.videoclub.pojo.typeUser;
 
 @Path("users")
 public class UserResource {
 
     protected static final Logger logger = LogManager.getLogger();
-    private static List<User> users = new ArrayList<>();
+    private static User userprueba = new User(1,"","","","","",typeUser.CLIENT);
+    private static List<User> users = new ArrayList<>(Arrays.asList(userprueba));
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)

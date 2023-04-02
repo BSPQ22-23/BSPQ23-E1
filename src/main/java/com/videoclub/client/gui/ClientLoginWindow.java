@@ -46,6 +46,7 @@ public class ClientLoginWindow extends JFrame {
 	private JButton btnLogin;
 	private JButton btnRegister;
 	private int op;
+	private boolean validador = false;
 	
     private static final String SERVER_ENDPOINT = "http://localhost:8080/webapi";
     private static final String USERS_RESOURCE ="users";
@@ -137,21 +138,26 @@ public class ClientLoginWindow extends JFrame {
 		        	System.out.println(i.getUsername());
 		        	if(i.getUsername().equals(user.getUsername())  && i.getPassword().equals(user.getPassword()))
 		        	{
-		        		System.out.println("Bienvenido " + user.getUsername());
-		        		Thread registerWindow = new RegisterWindowThread();
-		        		op = 1;
-		        		registerWindow.start();
-		        		//TODO abrir siguiente ventana
-		        		dispose();
-		        		
-		        	}
-		        	else
-		        	{
-		        		System.out.println("El usuario o contraseña son incorrectos");
+		        		validador = true;
+  		
 		        	}
 		        	
 					
 				}
+		        if(validador == true)
+		        {
+		        	System.out.println("Bienvenido " + user.getUsername());
+	        		Thread registerWindow = new RegisterWindowThread();
+	        		op = 1;
+	        		registerWindow.start();
+	        		//TODO abrir siguiente ventana
+	        		dispose();
+		        }
+		        else
+		        {
+		        	System.out.println("El usuario o contraseña son incorrectos");
+		        }
+        		
 		        
 		        
 			}

@@ -61,6 +61,7 @@ public class ClientSignUpWindow extends JFrame {
     private int n = 1;
     Client client = ClientBuilder.newClient();
     final WebTarget appTarget = client.target(SERVER_ENDPOINT);
+    private boolean validador = true;
     
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -146,7 +147,41 @@ public class ClientSignUpWindow extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				validador = true;
+				//Pruebas
+				Client client = ClientBuilder.newClient();
+		        final WebTarget appTarget = client.target(SERVER_ENDPOINT);
+		        List<User> users = null;
+		        try {
+		            Response response = appTarget.path(USERS_RESOURCE)
+		                .request(MediaType.APPLICATION_JSON)
+		                .get();
+
+		            // check that the response was HTTP OK
+		            if (response.getStatusInfo().toEnum() == Status.OK) {
+		                // the response is a generic type (a List<User>)
+		                GenericType<List<User>> listType = new GenericType<List<User>>(){};
+		                users = response.readEntity(listType);
+		                System.out.println(users);
+		            } else {
+		                System.out.format("Error obtaining user list. %s%n", response);
+		            }
+		        } catch (ProcessingException o) {
+		            System.out.format("Error obtaining user list. %s%n", o.getMessage());
+		        }
+		        
+		        for (User i : users) {
+		        	if(i.getUsername().equals(textUsername.getText()) || i.getEmail().equals(textMail.getText()))
+		        	{
+		        		validador = false;
+		        		
+		        	}
+		        		
+		        }
+				//Acaba Pruebas
+				if(validador == true)
+				{
+					
 		        try {
 		        	User user = new User(n, textUsername.getText(),textPassword.getText(), textMail.getText(), textName.getText(), textSurname.getText(), typeUser.CLIENT );
 		            Response response = appTarget.path(USERS_RESOURCE)
@@ -174,9 +209,14 @@ public class ClientSignUpWindow extends JFrame {
 			//	RegisterUser(nick, pass);
 				//TODO add info to the client
 			
-				
+		        	}
+				else
+				{
+					System.out.println("ERROR");
+				}
+		        }	
 			}
-		});
+			);
 		btnLogin.addActionListener(new ActionListener() {
 			
 			@Override
