@@ -18,13 +18,23 @@ public class Rental {
     public Rental() {
     	
     }
-    public Rental(Movie movie, User customer, Date rentalDate) {
+    public Rental(int id) {
+    	this.id = id;
+    }
+    public Rental(int id, Movie movie, User customer, Date rentalDate) {
+    	this.id = id;
         this.movie = movie;
         this.customer = customer;
         this.rentalDate = rentalDate;
     }
 
-    public Movie getMovie() {
+    public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public Movie getMovie() {
         return movie;
     }
 

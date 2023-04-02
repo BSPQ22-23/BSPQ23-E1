@@ -24,16 +24,6 @@ public class UserResource {
     protected static final Logger logger = LogManager.getLogger();
     private static List<User> users = new ArrayList<>();
     
-    public enum Order {
-        ASC,
-        DESC;        
-
-        // case insensitive values for order parameter
-        public static Order fromString(String value) {
-            return Order.valueOf(value.toUpperCase());
-        }
-    }
-
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<User> getUsers() {

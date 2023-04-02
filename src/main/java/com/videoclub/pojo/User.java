@@ -1,5 +1,8 @@
 package com.videoclub.pojo;
 
+import javax.jdo.annotations.PersistenceCapable;
+
+@PersistenceCapable
 public class User {
     
     // Attributes of the User class

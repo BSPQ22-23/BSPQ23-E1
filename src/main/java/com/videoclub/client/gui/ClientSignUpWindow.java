@@ -28,7 +28,6 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import com.videoclub.UserResource;
-import com.videoclub.UserResource.Order;
 import com.videoclub.pojo.User;
 import com.videoclub.pojo.typeUser;
 
