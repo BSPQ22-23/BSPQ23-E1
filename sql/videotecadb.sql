@@ -1,7 +1,7 @@
-DROP SCHEMA IF EXISTS productsDB;
+DROP SCHEMA IF EXISTS videotecadb;
 DROP USER IF EXISTS 'spq'@'localhost';
 
-CREATE SCHEMA productsDB;
+CREATE SCHEMA videotecadb;
 CREATE USER IF NOT EXISTS 'spq'@'localhost' IDENTIFIED BY 'spq';
 
-GRANT ALL ON productsDB.* TO 'spq'@'localhost';
+GRANT ALL ON videotecadb.* TO 'spq'@'localhost';
