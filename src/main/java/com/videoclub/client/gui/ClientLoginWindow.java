@@ -19,6 +19,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import com.videoclub.pojo.User;
+import com.videoclub.pojo.typeUser;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -47,6 +48,7 @@ public class ClientLoginWindow extends JFrame {
 	private JButton btnRegister;
 	private int op;
 	private boolean validador = false;
+	private boolean isAdmin = false;
 	
     private static final String SERVER_ENDPOINT = "http://localhost:8080/webapi";
     private static final String USERS_RESOURCE ="users";
@@ -139,6 +141,10 @@ public class ClientLoginWindow extends JFrame {
 		        	if(i.getUsername().equals(user.getUsername())  && i.getPassword().equals(user.getPassword()))
 		        	{
 		        		validador = true;
+		        		if(i.getType()==typeUser.ADMIN) {
+		        			System.out.println("Trueee");
+		        			isAdmin = true;
+		        		}
   		
 		        	}
 		        	
@@ -148,7 +154,11 @@ public class ClientLoginWindow extends JFrame {
 		        {
 		        	System.out.println("Bienvenido " + user.getUsername());
 	        		Thread registerWindow = new RegisterWindowThread();
-	        		op = 1;
+	        		if(isAdmin) {
+	        			op = 0;
+	        		}else {
+	        			op = 1;
+	        		}
 	        		registerWindow.start();
 	        		//TODO abrir siguiente ventana
 	        		dispose();
@@ -180,13 +190,12 @@ public class ClientLoginWindow extends JFrame {
 	
 	class RegisterWindowThread extends Thread{
 		public void run() {
-			if(op == 2)
-			{
+			if(op == 2){
 				ClientSignUpWindow.main(null);
-			}
-			else
-			{
-				//TODO la ventana nueva
+			}else if(op == 1){
+				ClientMenuWindow.main(null);
+			}else {
+				ClientMenuWindowAdmin.main(null);
 			}
 			
 		}

@@ -24,8 +24,9 @@ import com.videoclub.pojo.typeUser;
 public class UserResource {
 
     protected static final Logger logger = LogManager.getLogger();
-    private static User userprueba = new User(1,"","","","","",typeUser.CLIENT);
-    private static List<User> users = new ArrayList<>(Arrays.asList(userprueba));
+    private static User userpruebaAdmin = new User(1,"admin","1234","admin@gmail.com","adminName","adminSurname",typeUser.ADMIN);
+    private static User userpruebaClient = new User(2,"client","1234","client@gmail.com","clientName","clientSurname",typeUser.CLIENT);
+    private static List<User> users = new ArrayList<>(Arrays.asList(userpruebaAdmin,userpruebaClient));
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
