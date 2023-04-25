@@ -1,5 +1,7 @@
 package com.videoclub.pojo;
 
+import java.util.ArrayList;
+
 import javax.jdo.annotations.*;
 
 @PersistenceCapable
@@ -14,7 +16,8 @@ public class User {
     private String email;
     private String name;
     private String surname;
-   // private ArrayList<Rental>
+    @Join
+    private ArrayList<Rental> rentalList;
     
 	public User() {
     	

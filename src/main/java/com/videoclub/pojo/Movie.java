@@ -1,5 +1,7 @@
 package com.videoclub.pojo;
 
+import java.util.ArrayList;
+
 import javax.jdo.annotations.*;
 
 @PersistenceCapable
@@ -12,6 +14,8 @@ public class Movie {
     private int year;
     private String director;
     private double rentalPrice;
+    @Join
+    private ArrayList<Rental> movieRentalHistory;
     
     public Movie() {
     	

@@ -21,11 +21,12 @@ public class Rental {
     public Rental(int id) {
     	this.id = id;
     }
-    public Rental(int id, Movie movie, User customer, Date rentalDate) {
+    public Rental(int id, Movie movie, User customer, Date rentalDate, Date returnDate) {
     	this.id = id;
         this.movie = movie;
         this.customer = customer;
         this.rentalDate = rentalDate;
+        this.returnDate = returnDate;
     }
 
     public int getId() {

@@ -1,18 +1,18 @@
-C:\Users\Aritz Candina\OneDrive\Documentos\GitHub\BSPQ23-E1\src\main\java\com\videoclub\pojo\Rental.java
-C:\Users\Aritz Candina\OneDrive\Documentos\GitHub\BSPQ23-E1\src\main\java\com\videoclub\client\gui\ClientMenuWindowAdmin.java
-C:\Users\Aritz Candina\OneDrive\Documentos\GitHub\BSPQ23-E1\src\main\java\com\videoclub\dao\IDataAccessObject.java
-C:\Users\Aritz Candina\OneDrive\Documentos\GitHub\BSPQ23-E1\src\main\java\com\videoclub\dao\UserDAO.java
-C:\Users\Aritz Candina\OneDrive\Documentos\GitHub\BSPQ23-E1\src\main\java\com\videoclub\dao\RentalDAO.java
-C:\Users\Aritz Candina\OneDrive\Documentos\GitHub\BSPQ23-E1\src\main\java\com\videoclub\dao\MovieDAO.java
-C:\Users\Aritz Candina\OneDrive\Documentos\GitHub\BSPQ23-E1\src\main\java\com\videoclub\pojo\typeUser.java
-C:\Users\Aritz Candina\OneDrive\Documentos\GitHub\BSPQ23-E1\src\main\java\com\videoclub\MyResource.java
-C:\Users\Aritz Candina\OneDrive\Documentos\GitHub\BSPQ23-E1\src\main\java\com\videoclub\RentalResource.java
-C:\Users\Aritz Candina\OneDrive\Documentos\GitHub\BSPQ23-E1\src\main\java\com\videoclub\dao\DataAccessObjectBase.java
-C:\Users\Aritz Candina\OneDrive\Documentos\GitHub\BSPQ23-E1\src\main\java\com\videoclub\client\gui\ClientSignUpWindow.java
-C:\Users\Aritz Candina\OneDrive\Documentos\GitHub\BSPQ23-E1\src\main\java\com\videoclub\pojo\Movie.java
-C:\Users\Aritz Candina\OneDrive\Documentos\GitHub\BSPQ23-E1\src\main\java\com\videoclub\pojo\User.java
-C:\Users\Aritz Candina\OneDrive\Documentos\GitHub\BSPQ23-E1\src\main\java\com\videoclub\client\gui\ClientLoginWindow.java
-C:\Users\Aritz Candina\OneDrive\Documentos\GitHub\BSPQ23-E1\src\main\java\com\videoclub\client\gui\ClientMenuWindow.java
-C:\Users\Aritz Candina\OneDrive\Documentos\GitHub\BSPQ23-E1\src\main\java\com\videoclub\client\ClientApp.java
-C:\Users\Aritz Candina\OneDrive\Documentos\GitHub\BSPQ23-E1\src\main\java\com\videoclub\UserResource.java
-C:\Users\Aritz Candina\OneDrive\Documentos\GitHub\BSPQ23-E1\src\main\java\com\videoclub\MovieResource.java
+C:\Users\usuario\Documents\GitHub\BSPQ23-E1\src\main\java\com\videoclub\client\gui\ClientSignUpWindow.java
+C:\Users\usuario\Documents\GitHub\BSPQ23-E1\src\main\java\com\videoclub\dao\MovieDAO.java
+C:\Users\usuario\Documents\GitHub\BSPQ23-E1\src\main\java\com\videoclub\dao\DataAccessObjectBase.java
+C:\Users\usuario\Documents\GitHub\BSPQ23-E1\src\main\java\com\videoclub\client\gui\ClientLoginWindow.java
+C:\Users\usuario\Documents\GitHub\BSPQ23-E1\src\main\java\com\videoclub\pojo\User.java
+C:\Users\usuario\Documents\GitHub\BSPQ23-E1\src\main\java\com\videoclub\dao\IDataAccessObject.java
+C:\Users\usuario\Documents\GitHub\BSPQ23-E1\src\main\java\com\videoclub\dao\RentalDAO.java
+C:\Users\usuario\Documents\GitHub\BSPQ23-E1\src\main\java\com\videoclub\pojo\Movie.java
+C:\Users\usuario\Documents\GitHub\BSPQ23-E1\src\main\java\com\videoclub\client\gui\ClientMenuWindowAdmin.java
+C:\Users\usuario\Documents\GitHub\BSPQ23-E1\src\main\java\com\videoclub\pojo\typeUser.java
+C:\Users\usuario\Documents\GitHub\BSPQ23-E1\src\main\java\com\videoclub\UserResource.java
+C:\Users\usuario\Documents\GitHub\BSPQ23-E1\src\main\java\com\videoclub\client\gui\ClientMenuWindow.java
+C:\Users\usuario\Documents\GitHub\BSPQ23-E1\src\main\java\com\videoclub\client\ClientApp.java
+C:\Users\usuario\Documents\GitHub\BSPQ23-E1\src\main\java\com\videoclub\MovieResource.java
+C:\Users\usuario\Documents\GitHub\BSPQ23-E1\src\main\java\com\videoclub\dao\UserDAO.java
+C:\Users\usuario\Documents\GitHub\BSPQ23-E1\src\main\java\com\videoclub\pojo\Rental.java
+C:\Users\usuario\Documents\GitHub\BSPQ23-E1\src\main\java\com\videoclub\RentalResource.java
+C:\Users\usuario\Documents\GitHub\BSPQ23-E1\src\main\java\com\videoclub\MyResource.java
