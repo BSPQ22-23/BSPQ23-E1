@@ -1,6 +1,12 @@
 package com.videoclub.dao;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.jdo.Extent;
+import javax.jdo.PersistenceManager;
+import javax.jdo.Query;
+import javax.jdo.Transaction;
 
 import com.videoclub.pojo.User;
 
@@ -27,14 +33,84 @@ public class UserDAO extends DataAccessObjectBase implements IDataAccessObject<U
 
 	@Override
 	public List<User> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+
+		List<User> users = new ArrayList<>();
+		
+		try {
+			tx.begin();
+			
+			Extent<User> extent = pm.getExtent(User.class, true);
+
+			for (User category : extent) {
+				users.add(category);
+			}
+
+			tx.commit();
+		} catch (Exception ex) {
+			System.out.println("  $ Error retrieving all the Users: " + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			pm.close();
+		}
+
+		return users;
 	}
 
 	@Override
 	public User find(String param) {
-		// TODO Auto-generated method stub
-		return null;
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+		
+		User result = null; 
+
+		try {
+			tx.begin();
+			Query<?> query = pm.newQuery("SELECT FROM " + User.class.getName() + " WHERE username == '"+param+"'");
+			query.setUnique(true);
+			result = (User) query.execute();
+			tx.commit();
+		} catch (Exception ex) {
+			System.out.println("  $ Error querying an User: " + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			pm.close();
+		}
+
+		return result;
+	}
+	
+	@Override
+	public User find(int param) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+		
+		User result = null; 
+
+		try {
+			tx.begin();
+			Query<?> query = pm.newQuery("SELECT FROM " + User.class.getName() + " WHERE code == '"+param+"'");
+			query.setUnique(true);
+			result = (User) query.execute();
+			tx.commit();
+		} catch (Exception ex) {
+			System.out.println("  $ Error querying an User: " + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			pm.close();
+		}
+
+		return result;
 	}
 
 }

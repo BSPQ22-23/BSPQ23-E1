@@ -1,7 +1,5 @@
 package com.videoclub.pojo;
 
-import java.util.ArrayList;
-
 import javax.jdo.annotations.*;
 
 @PersistenceCapable
@@ -11,11 +9,10 @@ public class Movie {
 	@PrimaryKey
     private String title;
     private String genre;
+    private int duration;
     private int year;
     private String director;
     private double rentalPrice;
-    @Join
-    private ArrayList<Rental> movieRentalHistory;
     
     public Movie() {
     	
@@ -24,9 +21,10 @@ public class Movie {
     	this.title = title;
     }
     // Constructor of the Movie class
-    public Movie(String title, String genre, int year, String director, double rentalPrice) {
+    public Movie(String title, String genre, int duration, int year, String director, double rentalPrice) {
         this.title = title;
         this.genre = genre;
+        this.duration = duration;
         this.year = year;
         this.director = director;
         this.rentalPrice = rentalPrice;
@@ -34,11 +32,19 @@ public class Movie {
     
     // Getter and setter methods for the attributes of the Movie class
     
+    public int getDuration() {
+		return duration;
+	}
+    
+	public void setDuration(int duration) {
+		this.duration = duration;
+	}
+    
     public String getTitle() {
         return title;
     }
     
-    public void setTitle(String title) {
+	public void setTitle(String title) {
         this.title = title;
     }
     

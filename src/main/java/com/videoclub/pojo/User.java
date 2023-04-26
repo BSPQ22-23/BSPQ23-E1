@@ -17,7 +17,7 @@ public class User {
     private String name;
     private String surname;
     @Join
-    private ArrayList<Rental> rentalList;
+    private ArrayList<Movie> favouriteMovieList;
     
 	public User() {
     	
@@ -30,6 +30,7 @@ public class User {
     	this.username = username;
     	this.password = password;
     }
+    
     // Constructor of the User class
     public User(int code, String username, String password, String email, String name, String surname, typeUser type) {
     	this.code = code;
@@ -39,6 +40,7 @@ public class User {
         this.name = name;
         this.surname = surname;
         this.type = type;
+        this.favouriteMovieList = new ArrayList<>();
     }
      
     public typeUser getType() {
@@ -92,7 +94,13 @@ public class User {
         this.email = email;
     }
     
-    @Override
+    public ArrayList<Movie> getFavouriteMovieList() {
+		return favouriteMovieList;
+	}
+	public void setFavouriteMovieList(ArrayList<Movie> favouriteMovieList) {
+		this.favouriteMovieList = favouriteMovieList;
+	}
+	@Override
     public String toString() {
     	// TODO Auto-generated method stub
     	return this.name + " " + this.surname;

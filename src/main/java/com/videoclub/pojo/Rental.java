@@ -4,13 +4,22 @@ import java.util.Date;
 
 import javax.jdo.annotations.*;
 
+import com.videoclub.dao.MovieDAO;
+import com.videoclub.dao.UserDAO;
+
 
 @PersistenceCapable
 public class Rental {
 	
 	@PrimaryKey
 	private int id;
+	@Unique
+	private String title;
+	@Transactional
     private Movie movie;
+	@Unique
+	private int code;
+	@Transactional
     private User customer;
     private Date rentalDate;
     private Date returnDate;
@@ -23,7 +32,9 @@ public class Rental {
     }
     public Rental(int id, Movie movie, User customer, Date rentalDate, Date returnDate) {
     	this.id = id;
+    	this.title = movie.getTitle();
         this.movie = movie;
+        this.code = customer.getCode();
         this.customer = customer;
         this.rentalDate = rentalDate;
         this.returnDate = returnDate;
@@ -36,19 +47,25 @@ public class Rental {
 		this.id = id;
 	}
 	public Movie getMovie() {
+		if(movie == null && title != null)
+			return (movie = MovieDAO.getInstance().find(title));
         return movie;
     }
 
     public void setMovie(Movie movie) {
         this.movie = movie;
+        this.title = movie.getTitle();
     }
 
     public User getCustomer() {
+    	if(customer == null && code != 0)
+			return (customer = UserDAO.getInstance().find(code));
         return customer;
     }
 
     public void setCustomer(User customer) {
         this.customer = customer;
+        this.code = customer.getCode();
     }
 
     public Date getRentalDate() {

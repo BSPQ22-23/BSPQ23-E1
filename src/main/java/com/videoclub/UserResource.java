@@ -11,26 +11,23 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import java.util.List;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
+import com.videoclub.dao.UserDAO;
 import com.videoclub.pojo.User;
-import com.videoclub.pojo.typeUser;
 
 @Path("users")
 public class UserResource {
 
     protected static final Logger logger = LogManager.getLogger();
-    private static User userpruebaAdmin = new User(1,"admin","1234","admin@gmail.com","adminName","adminSurname",typeUser.ADMIN);
-    private static User userpruebaClient = new User(2,"client","1234","client@gmail.com","clientName","clientSurname",typeUser.CLIENT);
-    private static List<User> users = new ArrayList<>(Arrays.asList(userpruebaAdmin,userpruebaClient));
+    private static List<User> users;
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<User> getUsers() {
+    	users = UserDAO.getInstance().getAll();
     	logger.info(users);
 		return users;
     }
@@ -39,23 +36,23 @@ public class UserResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response addUser(User user) {
-        // here we will process the received user data
-        users.add(user);
-        logger.info(user);
+    	UserDAO.getInstance().save(user);
+        logger.info(user+" added.");
         // return a response containing a user with only the code for the new user
         return Response.ok(new User(user.getCode())).build();
     }
 
     @DELETE
     @Path("/{code}")
-    public Response deleteUser(@PathParam("code") int code) {
+    public Response deleteUser(@PathParam("code") String code) {
     	boolean hasTheUser = false;
-    	for(int i = 0; i<users.size(); i++) {
-    		if(code == users.get(i).getCode()) {
-    			users.remove(i);
-    			hasTheUser = true;
-    		}
+    	User userToDelete = UserDAO.getInstance().find(code);
+    	if(userToDelete!=null) {
+    		hasTheUser=true;
     	}
+    	
+    	UserDAO.getInstance().delete(userToDelete);
+    	
         if (hasTheUser) {
             logger.info("Deleting user {} ...", code);
             return Response.status(Response.Status.OK).build();
