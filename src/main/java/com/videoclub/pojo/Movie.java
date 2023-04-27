@@ -2,7 +2,7 @@ package com.videoclub.pojo;
 
 import javax.jdo.annotations.*;
 
-@PersistenceCapable
+@PersistenceCapable(detachable="true")
 public class Movie {
     
     // Attributes of the Movie class

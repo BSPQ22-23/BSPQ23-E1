@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import javax.jdo.annotations.*;
 
-@PersistenceCapable
+@PersistenceCapable(detachable="true")
 public class User {
     
     // Attributes of the User class

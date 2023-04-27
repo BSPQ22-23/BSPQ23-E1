@@ -8,16 +8,14 @@ import com.videoclub.dao.MovieDAO;
 import com.videoclub.dao.UserDAO;
 
 
-@PersistenceCapable
+@PersistenceCapable(detachable="true")
 public class Rental {
 	
 	@PrimaryKey
 	private int id;
-	@Unique
 	private String title;
 	@Transactional
     private Movie movie;
-	@Unique
 	private int code;
 	@Transactional
     private User customer;

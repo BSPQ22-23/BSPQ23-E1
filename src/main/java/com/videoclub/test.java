@@ -15,7 +15,7 @@ import com.videoclub.pojo.typeUser;
 public class test {
 	
 	@Test
-	public void aloja() {
+	public void databaseChecking() {
 		User u1 = new User(1, "admin", "admin", "admin@email.com", "AdminName", "AdminSurname", typeUser.ADMIN);
 		User u2 = new User(2, "assaz", "p4321", "asier.account@email.com", "Asier", "Belloso", typeUser.CLIENT);
 		User u3 = new User(3, "client", "1234", "client@email.com", "ClientName", "ClientSurname", typeUser.CLIENT);
@@ -24,8 +24,11 @@ public class test {
 		UserDAO.getInstance().save(u2);
 		UserDAO.getInstance().save(u3);
 		
-		Movie m1 = MovieDAO.getInstance().find("Movie1");
-		Movie m2 = MovieDAO.getInstance().find("Movie2");
+		Movie m1 = new Movie("Movie1", "comedy", 90, 2023, "paco", 19.9);
+		Movie m2 = new Movie("Movie2", "drama", 180, 1989, "luis", 5.74);
+		
+		MovieDAO.getInstance().save(m1);
+		MovieDAO.getInstance().save(m2);
 		
 		Rental r1 = new Rental(103, m2, u3, new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()));
 		Rental r2 = new Rental(104, m1, u2, new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()));
@@ -38,6 +41,8 @@ public class test {
 		RentalDAO.getInstance().save(r3);
 		RentalDAO.getInstance().save(r4);
 		RentalDAO.getInstance().save(r5);
+		
+		
 		
 	}
 
