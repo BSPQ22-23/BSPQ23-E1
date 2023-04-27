@@ -46,7 +46,7 @@ public class ClientApp {
 
         // sending a POST with a new user
         try {
-            User user = new User(31, "Steven", "Spielberg", "a", "b", "c",typeUser.CLIENT);
+            User user = new User("Steven", "Spielberg", "a", "b", "c",typeUser.CLIENT);
             Response response = appTarget.path(USERS_RESOURCE)
                 .request(MediaType.APPLICATION_JSON)
                 .post(Entity.entity(user, MediaType.APPLICATION_JSON)

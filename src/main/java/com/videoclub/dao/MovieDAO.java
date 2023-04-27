@@ -31,34 +31,13 @@ public class MovieDAO extends DataAccessObjectBase<Movie> {
 		
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Movie> getAll() {
 		PersistenceManager pm = pmf.getPersistenceManager();
-		Transaction tx = pm.currentTransaction();
+        Query<Movie> q = pm.newQuery(Movie.class);
 
-		List<Movie> movies = new ArrayList<>();
-		
-		try {
-			tx.begin();
-			
-			Extent<Movie> extent = pm.getExtent(Movie.class, true);
-
-			for (Movie category : extent) {
-				movies.add(category);
-			}
-
-			tx.commit();
-		} catch (Exception ex) {
-			System.out.println("  $ Error retrieving all the Movies: " + ex.getMessage());
-		} finally {
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-
-			pm.close();
-		}
-
-		return movies;
+        return (List<Movie>)q.execute(20);
 	}
 
 	@Override

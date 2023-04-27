@@ -31,34 +31,13 @@ public class UserDAO extends DataAccessObjectBase<User>{
 		
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> getAll() {
 		PersistenceManager pm = pmf.getPersistenceManager();
-		Transaction tx = pm.currentTransaction();
+        Query<User> q = pm.newQuery(User.class);
 
-		List<User> users = new ArrayList<>();
-		
-		try {
-			tx.begin();
-			
-			Extent<User> extent = pm.getExtent(User.class, true);
-
-			for (User category : extent) {
-				users.add(category);
-			}
-
-			tx.commit();
-		} catch (Exception ex) {
-			System.out.println("  $ Error retrieving all the Users: " + ex.getMessage());
-		} finally {
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-
-			pm.close();
-		}
-
-		return users;
+        return (List<User>)q.execute(20);
 	}
 
 	@Override

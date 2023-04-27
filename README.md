@@ -11,6 +11,10 @@ Make sure that the database was correctly configured. Use the contents of the fi
 
       mysql –uroot -p < sql/create-messages.sql
 
+Run the following command to update the database metadata.
+
+      mvn datanucleus:enhance
+
 Run the following command to create database schema for this sample.
 
       mvn datanucleus:schema-create

@@ -33,34 +33,13 @@ public class RentalDAO extends DataAccessObjectBase<Rental>{
 		
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Rental> getAll() {
 		PersistenceManager pm = pmf.getPersistenceManager();
-		Transaction tx = pm.currentTransaction();
+        Query<Rental> q = pm.newQuery(Rental.class);
 
-		List<Rental> rentals = new ArrayList<>();
-		
-		try {
-			tx.begin();
-			
-			Extent<Rental> extent = pm.getExtent(Rental.class, true);
-
-			for (Rental category : extent) {
-				rentals.add(category);
-			}
-
-			tx.commit();
-		} catch (Exception ex) {
-			System.out.println("  $ Error retrieving all the Rentals: " + ex.getMessage());
-		} finally {
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-
-			pm.close();
-		}
-
-		return rentals;
+        return (List<Rental>)q.execute(20);
 
 	}
 

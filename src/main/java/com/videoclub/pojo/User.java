@@ -9,6 +9,7 @@ public class User {
     
     // Attributes of the User class
 	@PrimaryKey
+	@Persistent(valueStrategy=IdGeneratorStrategy.INCREMENT)
 	private int code;
     private String username;
     private typeUser type;
@@ -29,11 +30,11 @@ public class User {
     public User(String username, String password) {
     	this.username = username;
     	this.password = password;
+    	
     }
     
     // Constructor of the User class
-    public User(int code, String username, String password, String email, String name, String surname, typeUser type) {
-    	this.code = code;
+    public User(String username, String password, String email, String name, String surname, typeUser type) {
         this.username = username;
         this.password = password;
         this.email = email;

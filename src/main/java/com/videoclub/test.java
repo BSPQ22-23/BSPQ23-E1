@@ -16,9 +16,9 @@ public class test {
 	
 	@Test
 	public void databaseChecking() {
-		User u1 = new User(1, "admin", "admin", "admin@email.com", "AdminName", "AdminSurname", typeUser.ADMIN);
-		User u2 = new User(2, "assaz", "p4321", "asier.account@email.com", "Asier", "Belloso", typeUser.CLIENT);
-		User u3 = new User(3, "client", "1234", "client@email.com", "ClientName", "ClientSurname", typeUser.CLIENT);
+		User u1 = new User("admin", "admin", "admin@email.com", "AdminName", "AdminSurname", typeUser.ADMIN);
+		User u2 = new User("assaz", "p4321", "asier.account@email.com", "Asier", "Belloso", typeUser.CLIENT);
+		User u3 = new User("client", "1234", "client@email.com", "ClientName", "ClientSurname", typeUser.CLIENT);
 		
 		UserDAO.getInstance().save(u1);
 		UserDAO.getInstance().save(u2);
@@ -41,6 +41,8 @@ public class test {
 		RentalDAO.getInstance().save(r3);
 		RentalDAO.getInstance().save(r4);
 		RentalDAO.getInstance().save(r5);
+		
+		System.out.println(UserDAO.getInstance().getAll());
 		
 		
 		
