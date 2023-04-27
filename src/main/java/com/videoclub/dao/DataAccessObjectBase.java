@@ -5,10 +5,10 @@ import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Transaction;
 
 //This class defines the basic methods of the DAO pattern.
-public class DataAccessObjectBase {	
+public abstract class DataAccessObjectBase<DomainObject> implements IDataAccessObject<DomainObject>{	
 	protected static PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 	
-	public void deleteObject(Object object) {
+	public void delete(DomainObject object) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
 
@@ -27,7 +27,7 @@ public class DataAccessObjectBase {
 		}
 	}
 	
-	public void saveObject(Object object) {
+	public void save(DomainObject object) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
 		try {

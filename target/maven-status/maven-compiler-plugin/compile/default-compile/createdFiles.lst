@@ -1,4 +1,5 @@
 com\videoclub\client\gui\ClientMenuWindow.class
+com\videoclub\test.class
 com\videoclub\client\gui\ClientMenuWindow$4.class
 com\videoclub\pojo\typeUser.class
 com\videoclub\client\gui\ClientMenuWindowAdmin$7.class

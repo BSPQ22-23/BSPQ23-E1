@@ -10,7 +10,7 @@ import javax.jdo.Transaction;
 
 import com.videoclub.pojo.Rental;
 
-public class RentalDAO extends DataAccessObjectBase implements IDataAccessObject<Rental>{
+public class RentalDAO extends DataAccessObjectBase<Rental>{
 	
 	private static RentalDAO instance;
 	private RentalDAO() {}
@@ -23,13 +23,13 @@ public class RentalDAO extends DataAccessObjectBase implements IDataAccessObject
 
 	@Override
 	public void save(Rental object) {
-		super.saveObject(object);
+		super.save(object);
 		
 	}
 
 	@Override
 	public void delete(Rental object) {
-		super.deleteObject(object);
+		super.delete(object);
 		
 	}
 

@@ -10,7 +10,7 @@ import javax.jdo.Transaction;
 
 import com.videoclub.pojo.Movie;
 
-public class MovieDAO extends DataAccessObjectBase implements IDataAccessObject<Movie>{
+public class MovieDAO extends DataAccessObjectBase<Movie> {
 	
 	private static MovieDAO instance;
 	private MovieDAO() {}
@@ -22,13 +22,12 @@ public class MovieDAO extends DataAccessObjectBase implements IDataAccessObject<
 	}
 	@Override
 	public void save(Movie object) {
-		super.saveObject(object);
+		super.save(object);
 		
 	}
-
 	@Override
 	public void delete(Movie object) {
-		super.deleteObject(object);
+		super.delete(object);
 		
 	}
 

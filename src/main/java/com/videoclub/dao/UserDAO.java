@@ -10,7 +10,7 @@ import javax.jdo.Transaction;
 
 import com.videoclub.pojo.User;
 
-public class UserDAO extends DataAccessObjectBase implements IDataAccessObject<User>{
+public class UserDAO extends DataAccessObjectBase<User>{
 
 	private static UserDAO instance;
 	private UserDAO() {}
@@ -22,12 +22,12 @@ public class UserDAO extends DataAccessObjectBase implements IDataAccessObject<U
 	}
 	@Override
 	public void save(User object) {
-		super.saveObject(object);
+		super.save(object);
 	}
 
 	@Override
 	public void delete(User object) {
-		super.deleteObject(object);
+		super.delete(object);
 		
 	}
 
