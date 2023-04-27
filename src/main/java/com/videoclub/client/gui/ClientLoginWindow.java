@@ -159,8 +159,10 @@ public class ClientLoginWindow extends JFrame {
 	        			op = 1;
 	        		}
 	        		registerWindow.start();
-	        		//TODO abrir siguiente ventana
+	        		
 	        		dispose();
+	        		System.out.println("tenemos que pasar a la siguiente ventana con el usuario "+user.getUsername()+" y la contrasenia:"+user.getPassword());
+	        		//TODO abrir siguiente ventana
 		        }
 		        else
 		        {
