@@ -85,13 +85,15 @@ public class ClientInfoWindow extends JFrame {
 		contentPane.add(panelCentre, BorderLayout.CENTER);
 		panelCentre.setLayout(new GridLayout(0, 2, 0, 0));
 		
-		lblOldPass = new JLabel("Actual Password");
-		panelCentre.add(lblOldPass);
+		//lblOldPass = new JLabel("Actual Password");
+		//panelCentre.add(lblOldPass);
 		
-		txtOldPass = new JTextField();
-		panelCentre.add(txtOldPass);
-		txtOldPass.setColumns(10);
-		txtOldPass.setEditable(false);
+		//txtOldPass = new JTextField();
+		//panelCentre.add(txtOldPass);
+		//txtOldPass.setColumns(10);
+		//txtOldPass.setEditable(false);
+		
+		//TODO get user and show act pass??
 		
 		lblNewPass = new JLabel("New password:");
 		panelCentre.add(lblNewPass);
@@ -110,7 +112,7 @@ public class ClientInfoWindow extends JFrame {
 		        
 				int choice = JOptionPane.showConfirmDialog(null, "Are you sure you want change your password?", "Confirmation", JOptionPane.YES_NO_OPTION);
 
-
+//TODO save the modified user to the bd.
 				}
 			
 		});
