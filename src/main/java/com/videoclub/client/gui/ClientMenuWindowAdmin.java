@@ -13,6 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.videoclub.client.gui.ClientMenuWindow.LogInWindow;
+
 
 
 
@@ -115,7 +117,9 @@ public class ClientMenuWindowAdmin extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				 Thread hilo = new LogInWindow();
+					hilo.start();
+					dispose();
 				
 			}
 		});
@@ -180,6 +184,12 @@ public class ClientMenuWindowAdmin extends JFrame{
 		});
 		
 	}
+	class LogInWindow extends Thread{
+		public void run() {
+			ClientLoginWindow.main(null);
+		}
+	}
+	
 	public static void main(String[] args) {
 		ClientMenuWindowAdmin ventana4 = new ClientMenuWindowAdmin();
 		ventana4.setTitle("DeustoVideoClub - Admin - Menu");

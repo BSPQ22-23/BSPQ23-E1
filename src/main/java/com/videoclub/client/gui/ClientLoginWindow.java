@@ -157,6 +157,7 @@ public class ClientLoginWindow extends JFrame {
 	        			op = 0;
 	        		}else {
 	        			op = 1;
+	        			
 	        		}
 	        		registerWindow.start();
 	        		
@@ -166,7 +167,7 @@ public class ClientLoginWindow extends JFrame {
 		        }
 		        else
 		        {
-		        	System.out.println("El usuario o contraseña son incorrectos");
+		        	System.out.println("User or password are incorrect. Please Try Again.");
 		        }
         		
 		        
@@ -194,9 +195,9 @@ public class ClientLoginWindow extends JFrame {
 			if(op == 2){
 				ClientSignUpWindow.main(null);
 			}else if(op == 1){
-				//ClientMenuWindow.main(null); 
-			}else {
-				//ClientMenuWindowAdmin.main(null);
+				ClientMenuWindow.main(null); 
+			}else if(op==0){
+				ClientMenuWindowAdmin.main(null);
 			}
 			
 		}
