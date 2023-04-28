@@ -25,6 +25,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import com.videoclub.client.gui.ClientMenuWindow.LogInWindow;
 import com.videoclub.pojo.User;
 
 
@@ -42,6 +43,7 @@ public class ClientInfoWindow extends JFrame {
 	private JLabel lblNewPass;
 	private JTextField textPass;
 	private JButton btnSave;
+	private JButton btnBack;
 	private static final String SERVER_ENDPOINT = "http://localhost:8080/webapi";
     private static final String USERS_RESOURCE ="users";
 
@@ -61,6 +63,9 @@ public class ClientInfoWindow extends JFrame {
 			}
 		});
 	}
+	
+	
+	
 
 	/**
 	 * Create the frame.
@@ -80,6 +85,8 @@ public class ClientInfoWindow extends JFrame {
 		
 		btnSave = new JButton("SAVE");
 		panelSouth.add(btnSave);
+		btnBack = new JButton("BACK");
+		panelSouth.add(btnBack);
 		
 		panelCentre = new JPanel();
 		contentPane.add(panelCentre, BorderLayout.CENTER);
@@ -113,12 +120,44 @@ public class ClientInfoWindow extends JFrame {
 				int choice = JOptionPane.showConfirmDialog(null, "Are you sure you want change your password?", "Confirmation", JOptionPane.YES_NO_OPTION);
 
 //TODO save the modified user to the bd.
+				
+				
+				
+				Thread hilo = new MenuWindow();
+				hilo.start();
+				dispose();
+				
 				}
 			
 		});
 
-	}
+		btnBack.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						Thread hilo = new MenuWindow();
+						hilo.start();
+						dispose();
+						}
+					
+				});
 
+	}
+	class MenuWindow extends Thread{
+		public void run() {
+			ClientMenuWindow.main(null);
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }

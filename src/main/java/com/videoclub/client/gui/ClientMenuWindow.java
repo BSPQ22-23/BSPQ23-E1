@@ -223,6 +223,12 @@ public class ClientMenuWindow extends JFrame{
 		}
 	}
 	
+	class InfoWindow extends Thread{
+		public void run() {
+			ClientInfoWindow.main(null);
+		}
+	}
+	
 	public static void main(String[] args) {
 		ClientMenuWindow ventana4 = new ClientMenuWindow();
 		ventana4.setTitle("DeustoVideoClub - Menu");
