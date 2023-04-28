@@ -1,8 +1,13 @@
 package com.videoclub.dao;
+import java.util.List;
+
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
+import javax.jdo.Query;
 import javax.jdo.Transaction;
+
+import com.videoclub.pojo.Rental;
 
 //This class defines the basic methods of the DAO pattern.
 public abstract class DataAccessObjectBase<DomainObject> implements IDataAccessObject<DomainObject>{	
@@ -45,4 +50,5 @@ public abstract class DataAccessObjectBase<DomainObject> implements IDataAccessO
 			pm.close();
 		}
 	}
+	
 }

@@ -39,6 +39,8 @@ public class ClientMenuWindow extends JFrame{
 	
 	private JLabel menuDeustoFlix;
 	
+	private static int CodUser;
+	
 	public ClientMenuWindow() {
 		//Creamos el contenedor donde vamos a colocar todo
 		Container cp = this.getContentPane();
@@ -207,6 +209,14 @@ public class ClientMenuWindow extends JFrame{
 		
 	}
 	
+	public static int getCodUser() {
+		return CodUser;
+	}
+
+	public static void setCodUser(int codUser) {
+		CodUser = codUser;
+	}
+
 	class LogInWindow extends Thread{
 		public void run() {
 			ClientLoginWindow.main(null);
