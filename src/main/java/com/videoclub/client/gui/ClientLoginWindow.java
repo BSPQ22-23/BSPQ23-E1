@@ -39,7 +39,7 @@ public class ClientLoginWindow extends JFrame {
 	private JPanel contentPane;
 	private JPanel panelSouth;
 	private JPanel panelCentre;
-	private  static JLabel lblNick;
+	private JLabel lblNick;
 	private JTextField textNick;
 	private JLabel lblPass;
 	private JTextField textPass;
