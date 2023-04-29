@@ -20,6 +20,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import com.videoclub.dao.UserDAO;
+import com.videoclub.encrypt.PasswordEncrypt;
 import com.videoclub.pojo.User;
 import com.videoclub.pojo.typeUser;
 
@@ -130,7 +131,7 @@ public class ClientLoginWindow extends JFrame {
 		                // the response is a generic type (a List<User>)
 		                GenericType<List<User>> listType = new GenericType<List<User>>(){};
 		                users = response.readEntity(listType);
-		                System.out.println(users);
+		                
 		            } else {
 		                System.out.format("Error obtaining user list. %s%n", response);
 		            }
@@ -138,11 +139,12 @@ public class ClientLoginWindow extends JFrame {
 		            System.out.format("Error obtaining user list. %s%n", o.getMessage());
 		        }
 		        
-		        User user = new User(textNick.getText(),textPass.getText());
+		        User user = new User(textNick.getText(),PasswordEncrypt.encryptPassword(textPass));
+		        
 		        if(users != null) {
 		        for (User i : users) {
-		        	System.out.println(i);
-		        	//System.out.println(i.getUsername());
+		        	
+		        	
 		        	if(i.getUsername().equals(user.getUsername())  && i.getPassword().equals(user.getPassword()))
 		        	{
 		        		validador = true;
