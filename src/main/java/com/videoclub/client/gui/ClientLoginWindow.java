@@ -36,10 +36,8 @@ import javax.swing.JButton;
 
 public class ClientLoginWindow extends JFrame {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 7388753432723633814L;
+	private static final long serialVersionUID = -9041853324743460311L;
+	
 	private JPanel contentPane;
 	private JPanel panelSouth;
 	private JPanel panelCentre;

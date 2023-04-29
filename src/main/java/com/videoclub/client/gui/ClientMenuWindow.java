@@ -13,14 +13,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.videoclub.client.gui.ClientSignUpWindow.LogInWindow;
-
 
 
 
 public class ClientMenuWindow extends JFrame{
 
-	private static final long serialVersionUID = -1757340437087937985L;
+	
+	private static final long serialVersionUID = 2702524318727010309L;
 	
 	private JLabel menuAreaPersonal;
 	private JLabel menuAreaDeustoFlix;
@@ -28,7 +27,7 @@ public class ClientMenuWindow extends JFrame{
 	private JLabel menuAreaDeustoFlix2;
 	
 	private JButton menuMiLista;
-	private JButton menuSeriesV;
+	private JButton menuMyRentals;
 	private JButton menuFiltro;
 	private JButton menuCambiarUsuario;
 	private JButton menuCatalogoSeries;
@@ -54,9 +53,9 @@ public class ClientMenuWindow extends JFrame{
 		menuMiLista.setFont(new Font("Arial", Font.ITALIC, 25));
 		menuMiLista.setForeground(Color.darkGray);
 		
-		menuSeriesV = new JButton("My history of rentals");
-		menuSeriesV.setFont(new Font("Arial", Font.ITALIC, 25));
-		menuSeriesV.setForeground(Color.darkGray);
+		menuMyRentals = new JButton("My history of rentals");
+		menuMyRentals.setFont(new Font("Arial", Font.ITALIC, 25));
+		menuMyRentals.setForeground(Color.darkGray);
 		
 		menuFiltro = new JButton("Search...");
 		menuFiltro.setFont(new Font("Arial", Font.ITALIC, 25));
@@ -66,11 +65,11 @@ public class ClientMenuWindow extends JFrame{
 		menuCambiarUsuario.setFont(new Font("Arial", Font.ITALIC, 25));
 		menuCambiarUsuario.setForeground(Color.darkGray);
 		
-		menuCatalogoSeries = new JButton("Movies' catalog");
+		menuCatalogoSeries = new JButton("Series' catalog");
 		menuCatalogoSeries.setFont(new Font("Arial", Font.ITALIC, 25));
 		menuCatalogoSeries.setForeground(Color.darkGray);
 		
-		menuCatalogoPelicula = new JButton("Series' catalog");
+		menuCatalogoPelicula = new JButton("Movies' catalog");
 		menuCatalogoPelicula.setFont(new Font("Arial", Font.ITALIC, 25));
 		menuCatalogoPelicula.setForeground(Color.darkGray);
 		
@@ -116,7 +115,7 @@ public class ClientMenuWindow extends JFrame{
 		panelCentro.setBackground(new Color(214, 234, 248));
 		panelCentro.add(menuAreaPersonal);
 		panelCentro.add(menuAreaPersonal2);
-		panelCentro.add(menuSeriesV);
+		panelCentro.add(menuMyRentals);
 		panelCentro.add(menuMiLista);
 		panelCentro.add(menuHistorial);
 		panelCentro.add(new JLabel());
@@ -161,7 +160,9 @@ public class ClientMenuWindow extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				Thread hilo = new moviesCatalogWindow();
+				hilo.start();
+				dispose();
 				
 			}
 		});
@@ -173,12 +174,14 @@ public class ClientMenuWindow extends JFrame{
 				
 			}
 		});
-		//5º) Este boton llama a la VentanaMisSeries y desaparece la ventana VentanaMenu existente
-		menuSeriesV.addActionListener(new ActionListener() {
+		//5º) Este boton llama a la VentanaMisRentals y desaparece la ventana VentanaMenu existente
+		menuMyRentals.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				 Thread hilo = new RentalsWindow();
+					hilo.start();
+					dispose();
 			}
 		});
 		//7º) Este boton llama a la VentanaMiLista y desaparece la ventana VentanaMenu existente
@@ -186,7 +189,9 @@ public class ClientMenuWindow extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				 Thread hilo = new MiListaWindow();
+					hilo.start();
+					dispose();
 				
 			}
 		});
@@ -223,9 +228,27 @@ public class ClientMenuWindow extends JFrame{
 		}
 	}
 	
+	class RentalsWindow extends Thread{ 
+		public void run() {
+			MyRentalsWindow.main(null);
+		}
+	}
+	
 	class InfoWindow extends Thread{
 		public void run() {
 			ClientInfoWindow.main(null);
+		}
+	}
+	
+	class MiListaWindow extends Thread{
+		public void run() {
+			MyListWindow.main(null);
+		}
+	}
+	
+	class moviesCatalogWindow extends Thread{
+		public void run() {
+			MoviesWindow.main(null);
 		}
 	}
 	
