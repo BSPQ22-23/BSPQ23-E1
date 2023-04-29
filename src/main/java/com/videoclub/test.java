@@ -7,6 +7,7 @@ import org.junit.Test;
 import com.videoclub.dao.MovieDAO;
 import com.videoclub.dao.RentalDAO;
 import com.videoclub.dao.UserDAO;
+import com.videoclub.encrypt.PasswordEncrypt;
 import com.videoclub.pojo.Movie;
 import com.videoclub.pojo.Rental;
 import com.videoclub.pojo.User;
@@ -16,9 +17,9 @@ public class test {
 	
 	@Test
 	public void databaseChecking() {
-		User u1 = new User("admin", "admin", "admin@email.com", "AdminName", "AdminSurname", typeUser.ADMIN);
-		User u2 = new User("assaz", "p4321", "asier.account@email.com", "Asier", "Belloso", typeUser.CLIENT);
-		User u3 = new User("client", "1234", "client@email.com", "ClientName", "ClientSurname", typeUser.CLIENT);
+		User u1 = new User("admin", PasswordEncrypt.encryptPassword("admin"), "admin@email.com", "AdminName", "AdminSurname", typeUser.ADMIN);
+		User u2 = new User("assaz", PasswordEncrypt.encryptPassword("assaz"), "asier.account@email.com", "Asier", "Belloso", typeUser.CLIENT);
+		User u3 = new User("client", PasswordEncrypt.encryptPassword("client"), "client@email.com", "ClientName", "ClientSurname", typeUser.CLIENT);
 		
 		UserDAO.getInstance().save(u1);
 		UserDAO.getInstance().save(u2);

@@ -139,7 +139,7 @@ public class ClientLoginWindow extends JFrame {
 		            System.out.format("Error obtaining user list. %s%n", o.getMessage());
 		        }
 		        
-		        User user = new User(textNick.getText(),PasswordEncrypt.encryptPassword(textPass));
+		        User user = new User(textNick.getText(),PasswordEncrypt.encryptPassword(textPass.getText()));
 		        
 		        if(users != null) {
 		        for (User i : users) {

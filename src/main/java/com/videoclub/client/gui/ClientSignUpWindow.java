@@ -184,7 +184,7 @@ public class ClientSignUpWindow extends JFrame {
 				{
 					
 		        try {
-		        	User user = new User(textUsername.getText(),PasswordEncrypt.encryptPassword(textPassword), textMail.getText(), textName.getText(), textSurname.getText(), typeUser.CLIENT );
+		        	User user = new User(textUsername.getText(),PasswordEncrypt.encryptPassword(textPassword.getText()), textMail.getText(), textName.getText(), textSurname.getText(), typeUser.CLIENT );
 		            Response response = appTarget.path(USERS_RESOURCE)
 		                .request(MediaType.APPLICATION_JSON)
 		                .post(Entity.entity(user, MediaType.APPLICATION_JSON)
