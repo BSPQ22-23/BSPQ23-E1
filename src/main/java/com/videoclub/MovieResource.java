@@ -16,46 +16,46 @@ import javax.ws.rs.core.Response;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.videoclub.dao.MovieDAO;
 import com.videoclub.pojo.Movie;
 
 @Path("movies")
 public class MovieResource {
 	protected static final Logger logger = LogManager.getLogger();
-	private static List<Movie> movies = new ArrayList<>();
+	//private static List<Movie> movies;
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Movie> getMovies(){
+		List<Movie> movies = MovieDAO.getInstance().getAll(Movie.class);
 		logger.info(movies);
 		return movies;
-		
 	}
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
 	public Response addMovie(Movie movie) {
-		
-		movies.add(movie);
-		logger.info(movie);
+		MovieDAO.getInstance().save(movie);
+		logger.info("Movie:"+movie.getTitle()+" added.");
 		return Response.ok(new Movie(movie.getTitle())).build();
 		
 	}
 	
 	@DELETE
     @Path("/{title}")
-    public Response deleteUser(@PathParam("title") String title) {
+    public Response deleteMovie(@PathParam("title") String title) {
     	boolean hasTheMovie = false;
-    	for(int i = 0; i<movies.size(); i++) {
-    		if(title == movies.get(i).getTitle()) {
-    			movies.remove(i);
-    			hasTheMovie = true;
-    		}
-    	}
+    	Movie movieToDelete = MovieDAO.getInstance().find(title, Movie.ColumnsName.title);
+    	
+    	if(movieToDelete!=null) hasTheMovie=true;
+    	
         if (hasTheMovie) {
-            logger.info("Deleting movie {} ...", title);
+        	MovieDAO.getInstance().delete(movieToDelete);
+            logger.info("Deleting Movie: {} ...", title);
             return Response.status(Response.Status.OK).build();
         } else {
+        	logger.info("No movies found with -"+title+"- title");
             return Response.status(Response.Status.NOT_FOUND).build();
         }
     }

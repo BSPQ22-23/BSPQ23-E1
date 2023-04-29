@@ -7,11 +7,11 @@ import javax.jdo.annotations.*;
 import com.videoclub.dao.MovieDAO;
 import com.videoclub.dao.UserDAO;
 
-
 @PersistenceCapable(detachable="true")
 public class Rental {
 	
 	@PrimaryKey
+	@Persistent(valueStrategy=IdGeneratorStrategy.INCREMENT)
 	private int id;
 	private String title;
 	@Transactional
@@ -25,11 +25,7 @@ public class Rental {
     public Rental() {
     	
     }
-    public Rental(int id) {
-    	this.id = id;
-    }
-    public Rental(int id, Movie movie, User customer, Date rentalDate, Date returnDate) {
-    	this.id = id;
+    public Rental(Movie movie, User customer, Date rentalDate, Date returnDate) {
     	this.title = movie.getTitle();
         this.movie = movie;
         this.code = customer.getCode();
@@ -46,7 +42,7 @@ public class Rental {
 	}
 	public Movie getMovie() {
 		if(movie == null && title != null)
-			return (movie = MovieDAO.getInstance().find(title));
+			return (movie = MovieDAO.getInstance().find(title,Movie.ColumnsName.title));
         return movie;
     }
 
@@ -57,8 +53,9 @@ public class Rental {
 
     //TODO check this
     public User getCustomer() {
-    	if(customer == null && code != 0)
-			return (customer = UserDAO.getInstance().find(code,User.class.getName()));
+    	String code1 = Integer.toString(code);
+    	if(customer == null && code1 != null)
+			return (customer = UserDAO.getInstance().find(code1,User.ColumnsName.code));
         return customer;
     }
 
@@ -82,5 +79,21 @@ public class Rental {
     public void setReturnDate(Date returnDate) {
         this.returnDate = returnDate;
     }
+    
+    public enum columnsName{
+    	id,title,code,rentalDate,returnDate
+    }
+    public static class ColumnsName extends ClassColumnNames<Rental>{
+
+		protected ColumnsName(String columnName) {
+			super(Rental.class, columnName);
+			// TODO Auto-generated constructor stub
+		}
+		public final static ColumnsName id = new ColumnsName("id");
+		public final static ColumnsName title = new ColumnsName("title");
+		public final static ColumnsName code = new ColumnsName("code");
+		public final static ColumnsName rentalDate = new ColumnsName("rentalDate");
+		public final static ColumnsName returnDate = new ColumnsName("returnDate");
+	}
 }
 

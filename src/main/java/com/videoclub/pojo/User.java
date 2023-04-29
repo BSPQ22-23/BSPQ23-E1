@@ -101,6 +101,22 @@ public class User {
 	public void setFavouriteMovieList(ArrayList<Movie> favouriteMovieList) {
 		this.favouriteMovieList = favouriteMovieList;
 	}
+	
+	public static class ColumnsName extends ClassColumnNames<User>{
+
+		protected ColumnsName(String columnName) {
+			super(User.class, columnName);
+			// TODO Auto-generated constructor stub
+		}
+		public final static ColumnsName code = new ColumnsName("code");
+		public final static ColumnsName username = new ColumnsName("username");
+		public final static ColumnsName type = new ColumnsName("type");
+		public final static ColumnsName password = new ColumnsName("password");
+		public final static ColumnsName email = new ColumnsName("email");
+		public final static ColumnsName name = new ColumnsName("name");
+		public final static ColumnsName surname = new ColumnsName("surname");
+		public final static ColumnsName favouriteMovieList = new ColumnsName("favouriteMovieList");
+	}
 	@Override
 	public String toString() {
 		return "User [code=" + code + ", username=" + username + ", password=" + password + ", email=" + email

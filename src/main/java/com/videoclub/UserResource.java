@@ -24,25 +24,16 @@ import com.videoclub.pojo.User;
 public class UserResource {
 
     protected static final Logger logger = LogManager.getLogger();
-   // private static List<User> users;
+    //private static List<User> users;
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<User> getUsers() {
-    	JOptionPane.showMessageDialog(null, "Getting all users");
     	List<User> users = UserDAO.getInstance().getAll(User.class);
-    	
-    	logger.info(users);
+    	logger.info("List of users: "+users);
 		return users;
     }
-    /*
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public ResponseBuilder find(int param,String Name) {
-    	return Response.ok(UserDAO.getInstance().find(param,Name));
-    }
-    */
+    
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -57,14 +48,11 @@ public class UserResource {
     @Path("/{code}")
     public Response deleteUser(@PathParam("code") String code) {
     	boolean hasTheUser = false;
-    	User userToDelete = UserDAO.getInstance().find(code);
-    	if(userToDelete!=null) {
-    		hasTheUser=true;
-    	}
-    	
-    	UserDAO.getInstance().delete(userToDelete);
+    	User userToDelete = UserDAO.getInstance().find(code,User.ColumnsName.code);
+    	if(userToDelete!=null) hasTheUser=true;
     	
         if (hasTheUser) {
+        	UserDAO.getInstance().delete(userToDelete);
             logger.info("Deleting user {} ...", code);
             return Response.status(Response.Status.OK).build();
         } else {

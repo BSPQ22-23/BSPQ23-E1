@@ -16,41 +16,41 @@ import javax.ws.rs.core.Response;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.videoclub.dao.RentalDAO;
 import com.videoclub.pojo.Rental;
-import com.videoclub.pojo.User;
 
 @Path("rentals")
 public class RentalResource {
 	protected static final Logger logger = LogManager.getLogger();
-    private static List<Rental> rentals = new ArrayList<>();
+    //private static List<Rental> rentals = new ArrayList<>();
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Rental> getRentals() {
-    	logger.info("List of Rentals --> {}", rentals);
+    	List<Rental> rentals = RentalDAO.getInstance().getAll();
+    	logger.info("List of Rentals: {}", rentals);
 		return rentals;
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response addrental(Rental rental) {
-        rentals.add(rental);
+    public Response addRental(Rental rental) {
+        RentalDAO.getInstance().save(rental);
         logger.info("Add a new rental succesfully {} ...", rental.getId());
-        return Response.ok(new User(rental.getId())).build();
+        return Response.ok(rental).build();
     }
 
     @DELETE
     @Path("/{code}")
-    public Response deleteUser(@PathParam("code") int code) {
+    public Response deleteRental(@PathParam("code") int code) {
     	boolean hasTheRental = false;
-    	for(int i = 0; i<rentals.size(); i++) {
-    		if(code == rentals.get(i).getId()) {
-    			rentals.remove(i);
-    			hasTheRental = true;
-    		}
-    	}
+    	String newCode = Integer.toString(code);
+    	Rental rentalToDelete = RentalDAO.getInstance().find(newCode, Rental.ColumnsName.code);
+    	if(rentalToDelete!=null) hasTheRental=true;
+    	
         if (hasTheRental) {
+        	RentalDAO.getInstance().delete(rentalToDelete);
             logger.info("Deleting rental {} ...", code);
             return Response.status(Response.Status.OK).build();
         } else {

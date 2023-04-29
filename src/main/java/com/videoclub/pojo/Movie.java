@@ -2,6 +2,7 @@ package com.videoclub.pojo;
 
 import javax.jdo.annotations.*;
 
+
 @PersistenceCapable(detachable="true")
 public class Movie {
     
@@ -79,5 +80,20 @@ public class Movie {
     public void setRentalPrice(double rentalPrice) {
         this.rentalPrice = rentalPrice;
     }
+    public enum columnsName{
+    	title, genre, 
+    }
+    public static class ColumnsName extends ClassColumnNames<Movie>{
+
+		protected ColumnsName(String columnName) {
+			super(Movie.class, columnName);
+			// TODO Auto-generated constructor stub
+		}
+		public final static ColumnsName title = new ColumnsName("title");
+		public final static ColumnsName genre = new ColumnsName("genre");
+		public final static ColumnsName duration = new ColumnsName("duration");
+		public final static ColumnsName year = new ColumnsName("year");
+		public final static ColumnsName director = new ColumnsName("director");
+		public final static ColumnsName rentalPrice = new ColumnsName("rentalPrice");	}
 }
 

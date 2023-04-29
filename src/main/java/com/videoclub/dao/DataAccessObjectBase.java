@@ -7,14 +7,13 @@ import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
 
-import com.videoclub.pojo.Movie;
-import com.videoclub.pojo.Rental;
-import com.videoclub.pojo.User;
+import com.videoclub.pojo.ClassColumnNames;
+
 
 //This class defines the basic methods of the DAO pattern.
 public abstract class DataAccessObjectBase<DomainObject> implements IDataAccessObject<DomainObject>{	
 	protected static PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-	
+
 	public void delete(DomainObject object) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
@@ -53,16 +52,24 @@ public abstract class DataAccessObjectBase<DomainObject> implements IDataAccessO
 		}
 	}
 	
-	
-	public DomainObject find(int param,String Name) {
+	@Override
+	@SuppressWarnings("unchecked")
+	public DomainObject find(String param, ClassColumnNames<DomainObject> filter) {
 	    PersistenceManager pm = pmf.getPersistenceManager();
 	    Transaction tx = pm.currentTransaction();
 
-	    DomainObject result = null; 
+	    DomainObject result = null;
+	    
+	    //Tries to convert the param into a number
+	    try{
+    	  Double.parseDouble(param);
+    	} catch(NumberFormatException e){
+    	  param = "'" + param.replace("'", "''") + "'";
+    	}
 
 	    try {
 	        tx.begin();
-	        Query<?> query = pm.newQuery("SELECT FROM " + Name + " WHERE code == '"+param+"'");
+	        Query<?> query = pm.newQuery("SELECT FROM " + filter.getClazz() + " WHERE "+ filter.getColumnName() +" == "+param);
 	        query.setUnique(true);
 	        result = (DomainObject) query.execute();
 	        tx.commit();
@@ -77,22 +84,10 @@ public abstract class DataAccessObjectBase<DomainObject> implements IDataAccessO
 	}
 
 	@Override
-	public List<DomainObject> getAll(Class domainClass) {
+	public List<DomainObject> getAll(Class<DomainObject> domainClass) {
 	    PersistenceManager pm = pmf.getPersistenceManager();
 	    Query<DomainObject> q = pm.newQuery(domainClass);
 	    List<DomainObject> result = q.executeList();
-
-	    // add null check for relevant properties
-	    /*for (DomainObject obj : result) {
-	        if (obj instanceof User) {
-	            User user = (User) obj;
-	        } else if (obj instanceof Rental) {
-	            Rental rental = (Rental) obj;
-	        } else if (obj instanceof Movie) {
-	            Movie movie = (Movie) obj;
-	        }
-	    }
-	    */
 
 	    return (List<DomainObject>) result;
 	}
