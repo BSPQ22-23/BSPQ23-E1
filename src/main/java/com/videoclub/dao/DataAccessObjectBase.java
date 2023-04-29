@@ -69,7 +69,7 @@ public abstract class DataAccessObjectBase<DomainObject> implements IDataAccessO
 
 	    try {
 	        tx.begin();
-	        Query<?> query = pm.newQuery("SELECT FROM " + filter.getClazz() + " WHERE "+ filter.getColumnName() +" == "+param);
+	        Query<?> query = pm.newQuery("SELECT FROM " + filter.getClazz().getName() + " WHERE "+ filter.getColumnName() +" == "+param);
 	        query.setUnique(true);
 	        result = (DomainObject) query.execute();
 	        tx.commit();

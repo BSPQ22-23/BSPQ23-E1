@@ -4,7 +4,8 @@ public class ClassColumnNames<T> {
 	private Class<T> clazz;
 	private String columnName;
 	protected ClassColumnNames(Class<T> clazz, String columnName) {
-		
+		this.clazz = clazz;
+		this.columnName = columnName;
 	}
 	public Class<T> getClazz() {
 		return clazz;
