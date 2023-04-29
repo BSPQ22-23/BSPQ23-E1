@@ -83,17 +83,17 @@ public class Movie {
     public enum columnsName{
     	title, genre, 
     }
-    public static class ColumnsName extends ClassColumnNames<Movie>{
+    public static class ColumnsNameMovie extends ClassColumnNames<Movie>{
 
-		protected ColumnsName(String columnName) {
+		protected ColumnsNameMovie(String columnName) {
 			super(Movie.class, columnName);
 			// TODO Auto-generated constructor stub
 		}
-		public final static ColumnsName title = new ColumnsName("title");
-		public final static ColumnsName genre = new ColumnsName("genre");
-		public final static ColumnsName duration = new ColumnsName("duration");
-		public final static ColumnsName year = new ColumnsName("year");
-		public final static ColumnsName director = new ColumnsName("director");
-		public final static ColumnsName rentalPrice = new ColumnsName("rentalPrice");	}
+		public final static ColumnsNameMovie title = new ColumnsNameMovie("title");
+		public final static ColumnsNameMovie genre = new ColumnsNameMovie("genre");
+		public final static ColumnsNameMovie duration = new ColumnsNameMovie("duration");
+		public final static ColumnsNameMovie year = new ColumnsNameMovie("year");
+		public final static ColumnsNameMovie director = new ColumnsNameMovie("director");
+		public final static ColumnsNameMovie rentalPrice = new ColumnsNameMovie("rentalPrice");	}
 }
 

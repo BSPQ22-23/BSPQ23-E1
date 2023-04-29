@@ -31,11 +31,11 @@ public class test {
 		MovieDAO.getInstance().save(m1);
 		MovieDAO.getInstance().save(m2);
 		
-		Rental r1 = new Rental(103, m2, u3, new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()));
-		Rental r2 = new Rental(104, m1, u2, new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()));
-		Rental r3 = new Rental(105, m1, u3, new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()));
-		Rental r4 = new Rental(106, m2, u1, new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()));
-		Rental r5 = new Rental(107, m1, u2, new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()));
+		Rental r1 = new Rental(m2, u3, new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()));
+		Rental r2 = new Rental(m1, u2, new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()));
+		Rental r3 = new Rental(m1, u3, new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()));
+		Rental r4 = new Rental(m2, u1, new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()));
+		Rental r5 = new Rental(m1, u2, new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()));
 		
 		RentalDAO.getInstance().save(r1);
 		RentalDAO.getInstance().save(r2);

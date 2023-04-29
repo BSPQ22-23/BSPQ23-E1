@@ -46,7 +46,7 @@ public class RentalResource {
     public Response deleteRental(@PathParam("code") int code) {
     	boolean hasTheRental = false;
     	String newCode = Integer.toString(code);
-    	Rental rentalToDelete = RentalDAO.getInstance().find(newCode, Rental.ColumnsName.code);
+    	Rental rentalToDelete = RentalDAO.getInstance().find(newCode, Rental.ColumnsNameRental.code);
     	if(rentalToDelete!=null) hasTheRental=true;
     	
         if (hasTheRental) {

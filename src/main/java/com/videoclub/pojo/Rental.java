@@ -42,7 +42,7 @@ public class Rental {
 	}
 	public Movie getMovie() {
 		if(movie == null && title != null)
-			return (movie = MovieDAO.getInstance().find(title,Movie.ColumnsName.title));
+			return (movie = MovieDAO.getInstance().find(title,Movie.ColumnsNameMovie.title));
         return movie;
     }
 
@@ -55,7 +55,7 @@ public class Rental {
     public User getCustomer() {
     	String code1 = Integer.toString(code);
     	if(customer == null && code1 != null)
-			return (customer = UserDAO.getInstance().find(code1,User.ColumnsName.code));
+			return (customer = UserDAO.getInstance().find(code1,User.ColumnsNameUser.code));
         return customer;
     }
 
@@ -83,17 +83,17 @@ public class Rental {
     public enum columnsName{
     	id,title,code,rentalDate,returnDate
     }
-    public static class ColumnsName extends ClassColumnNames<Rental>{
+    public static class ColumnsNameRental extends ClassColumnNames<Rental>{
 
-		protected ColumnsName(String columnName) {
+		protected ColumnsNameRental(String columnName) {
 			super(Rental.class, columnName);
 			// TODO Auto-generated constructor stub
 		}
-		public final static ColumnsName id = new ColumnsName("id");
-		public final static ColumnsName title = new ColumnsName("title");
-		public final static ColumnsName code = new ColumnsName("code");
-		public final static ColumnsName rentalDate = new ColumnsName("rentalDate");
-		public final static ColumnsName returnDate = new ColumnsName("returnDate");
+		public final static ColumnsNameRental id = new ColumnsNameRental("id");
+		public final static ColumnsNameRental title = new ColumnsNameRental("title");
+		public final static ColumnsNameRental code = new ColumnsNameRental("code");
+		public final static ColumnsNameRental rentalDate = new ColumnsNameRental("rentalDate");
+		public final static ColumnsNameRental returnDate = new ColumnsNameRental("returnDate");
 	}
 }
 

@@ -102,20 +102,20 @@ public class User {
 		this.favouriteMovieList = favouriteMovieList;
 	}
 	
-	public static class ColumnsName extends ClassColumnNames<User>{
+	public static class ColumnsNameUser extends ClassColumnNames<User>{
 
-		protected ColumnsName(String columnName) {
+		protected ColumnsNameUser(String columnName) {
 			super(User.class, columnName);
 			// TODO Auto-generated constructor stub
 		}
-		public final static ColumnsName code = new ColumnsName("code");
-		public final static ColumnsName username = new ColumnsName("username");
-		public final static ColumnsName type = new ColumnsName("type");
-		public final static ColumnsName password = new ColumnsName("password");
-		public final static ColumnsName email = new ColumnsName("email");
-		public final static ColumnsName name = new ColumnsName("name");
-		public final static ColumnsName surname = new ColumnsName("surname");
-		public final static ColumnsName favouriteMovieList = new ColumnsName("favouriteMovieList");
+		public final static ColumnsNameUser code = new ColumnsNameUser("code");
+		public final static ColumnsNameUser username = new ColumnsNameUser("username");
+		public final static ColumnsNameUser type = new ColumnsNameUser("type");
+		public final static ColumnsNameUser password = new ColumnsNameUser("password");
+		public final static ColumnsNameUser email = new ColumnsNameUser("email");
+		public final static ColumnsNameUser name = new ColumnsNameUser("name");
+		public final static ColumnsNameUser surname = new ColumnsNameUser("surname");
+		public final static ColumnsNameUser favouriteMovieList = new ColumnsNameUser("favouriteMovieList");
 	}
 	@Override
 	public String toString() {

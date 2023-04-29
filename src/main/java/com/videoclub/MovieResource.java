@@ -46,7 +46,7 @@ public class MovieResource {
     @Path("/{title}")
     public Response deleteMovie(@PathParam("title") String title) {
     	boolean hasTheMovie = false;
-    	Movie movieToDelete = MovieDAO.getInstance().find(title, Movie.ColumnsName.title);
+    	Movie movieToDelete = MovieDAO.getInstance().find(title, Movie.ColumnsNameMovie.title);
     	
     	if(movieToDelete!=null) hasTheMovie=true;
     	
