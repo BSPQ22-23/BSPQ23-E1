@@ -102,8 +102,9 @@ public class User {
 		this.favouriteMovieList = favouriteMovieList;
 	}
 	@Override
-    public String toString() {
-    	// TODO Auto-generated method stub
-    	return this.name + " " + this.surname;
-    }
+	public String toString() {
+		return "User [code=" + code + ", username=" + username + ", password=" + password + ", email=" + email
+				+ ", name=" + name + ", surname=" + surname + "]";
+	}
+
 }

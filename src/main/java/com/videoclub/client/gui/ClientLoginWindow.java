@@ -12,12 +12,14 @@ import javax.swing.border.EmptyBorder;
 import javax.ws.rs.ProcessingException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import com.videoclub.dao.UserDAO;
 import com.videoclub.pojo.User;
 import com.videoclub.pojo.typeUser;
 
@@ -27,6 +29,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
@@ -61,6 +64,7 @@ public class ClientLoginWindow extends JFrame {
 			public void run() {
 				try {
 					ClientLoginWindow frame = new ClientLoginWindow();
+					
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -135,8 +139,10 @@ public class ClientLoginWindow extends JFrame {
 		        }
 		        
 		        User user = new User(textNick.getText(),textPass.getText());
+		        if(users != null) {
 		        for (User i : users) {
-		        	System.out.println(i.getUsername());
+		        	System.out.println(i);
+		        	//System.out.println(i.getUsername());
 		        	if(i.getUsername().equals(user.getUsername())  && i.getPassword().equals(user.getPassword()))
 		        	{
 		        		validador = true;
@@ -149,6 +155,8 @@ public class ClientLoginWindow extends JFrame {
 		        	
 					
 				}
+		        }
+		        
 		        if(validador == true)
 		        {
 		        	System.out.println("Bienvenido " + user.getUsername());
@@ -159,12 +167,14 @@ public class ClientLoginWindow extends JFrame {
 	        			op = 1;
 	        			
 	        		}
+	        
+	        		 
 	        		ClientMenuWindow.setCodUser(user.getCode());
+	        		dispose();
 	        		registerWindow.start();
 	        		
-	        		dispose();
-	        		System.out.println("tenemos que pasar a la siguiente ventana con el usuario "+user.getUsername()+" y la contrasenia:"+user.getPassword());
-	        		//TODO abrir siguiente ventana
+	        		
+	        		
 	        		
 		        }
 		        else

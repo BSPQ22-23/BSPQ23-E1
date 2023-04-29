@@ -33,11 +33,8 @@ public class UserDAO extends DataAccessObjectBase<User>{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<User> getAll() {
-		PersistenceManager pm = pmf.getPersistenceManager();
-        Query<User> q = pm.newQuery(User.class);
-
-        return (List<User>)q.execute(20);
+	public List<User> getAll(String nameclass) {
+		return super.getAll(nameclass);
 	}
 
 	@Override
@@ -65,7 +62,7 @@ public class UserDAO extends DataAccessObjectBase<User>{
 
 		return result;
 	}
-	
+	/*
 	@Override
 	public User find(int param) {
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -90,6 +87,12 @@ public class UserDAO extends DataAccessObjectBase<User>{
 		}
 
 		return result;
+	}
+	*/
+	
+	 @Override
+	public User find(int param, String Name) {
+		return super.find(param, Name);
 	}
 
 }

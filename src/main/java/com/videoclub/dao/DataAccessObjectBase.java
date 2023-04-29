@@ -7,7 +7,9 @@ import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
 
+import com.videoclub.pojo.Movie;
 import com.videoclub.pojo.Rental;
+import com.videoclub.pojo.User;
 
 //This class defines the basic methods of the DAO pattern.
 public abstract class DataAccessObjectBase<DomainObject> implements IDataAccessObject<DomainObject>{	
@@ -50,5 +52,50 @@ public abstract class DataAccessObjectBase<DomainObject> implements IDataAccessO
 			pm.close();
 		}
 	}
+	
+	
+	public DomainObject find(int param,String Name) {
+	    PersistenceManager pm = pmf.getPersistenceManager();
+	    Transaction tx = pm.currentTransaction();
+
+	    DomainObject result = null; 
+
+	    try {
+	        tx.begin();
+	        Query<?> query = pm.newQuery("SELECT FROM " + Name + " WHERE code == '"+param+"'");
+	        query.setUnique(true);
+	        result = (DomainObject) query.execute();
+	        tx.commit();
+	    } finally {
+	        if (tx.isActive()) {
+	            tx.rollback();
+	        }
+	        pm.close();
+	    }
+
+	    return result;
+	}
+
+	@Override
+	public List<DomainObject> getAll(String nameclass) {
+	    PersistenceManager pm = pmf.getPersistenceManager();
+	    Transaction tx = pm.currentTransaction();
+	    List<DomainObject> result = null;
+	    try {
+	        tx.begin();
+	        Query<DomainObject> query = pm.newQuery("SELECT  FROM " + nameclass);
+	        result = (List<DomainObject>) query.execute();
+	        tx.commit();
+	    } catch (Exception e) {
+	        if (tx.isActive()) {
+	            tx.rollback();
+	        }
+	        e.printStackTrace();
+	    } finally {
+	        pm.close();
+	    }
+	    return result;
+	}
+
 	
 }

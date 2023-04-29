@@ -30,14 +30,17 @@ public class MovieDAO extends DataAccessObjectBase<Movie> {
 		super.delete(object);
 		
 	}
+	
+	@Override
+	public Movie find(int param,String Name) {
+		return super.find(param, Name);
+		
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Movie> getAll() {
-		PersistenceManager pm = pmf.getPersistenceManager();
-        Query<Movie> q = pm.newQuery(Movie.class);
-
-        return (List<Movie>)q.execute(20);
+	public List<Movie> getAll(String nameclass) {
+        return super.getAll(nameclass);
 	}
 
 	@Override
@@ -65,10 +68,29 @@ public class MovieDAO extends DataAccessObjectBase<Movie> {
 
 		return result;
 	}
+	/*
 	@Override
 	public Movie find(int param) {
-		// TODO Auto-generated method stub
-		return null;
+	    PersistenceManager pm = pmf.getPersistenceManager();
+	    Transaction tx = pm.currentTransaction();
+
+	    Movie result = null; 
+
+	    try {
+	        tx.begin();
+	        Query<?> query = pm.newQuery("SELECT FROM " + Movie.class.getName() + " WHERE code == '"+param+"'");
+	        query.setUnique(true);
+	        result = (Movie) query.execute();
+	        tx.commit();
+	    } finally {
+	        if (tx.isActive()) {
+	            tx.rollback();
+	        }
+	        pm.close();
+	    }
+
+	    return result;
 	}
+*/
 
 }

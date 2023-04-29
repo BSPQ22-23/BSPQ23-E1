@@ -42,7 +42,7 @@ public class test {
 		RentalDAO.getInstance().save(r4);
 		RentalDAO.getInstance().save(r5);
 		
-		System.out.println(UserDAO.getInstance().getAll());
+		System.out.println(UserDAO.getInstance().getAll(User.class.getName()));
 		
 		
 		

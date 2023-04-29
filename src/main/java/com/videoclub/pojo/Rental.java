@@ -55,9 +55,10 @@ public class Rental {
         this.title = movie.getTitle();
     }
 
+    //TODO check this
     public User getCustomer() {
     	if(customer == null && code != 0)
-			return (customer = UserDAO.getInstance().find(code));
+			return (customer = UserDAO.getInstance().find(code,User.class.getName()));
         return customer;
     }
 

@@ -35,11 +35,9 @@ public class RentalDAO extends DataAccessObjectBase<Rental>{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Rental> getAll() {
-		PersistenceManager pm = pmf.getPersistenceManager();
-        Query<Rental> q = pm.newQuery(Rental.class);
+	public List<Rental> getAll(String nameclass) {
 
-        return (List<Rental>)q.execute(20);
+        return super.getAll(nameclass);
 
 	}
 
@@ -68,10 +66,10 @@ public class RentalDAO extends DataAccessObjectBase<Rental>{
 
 		return result;
 	}
+	
 	@Override
-	public Rental find(int param) {
-		// TODO Auto-generated method stub
-		return null;
+	public Rental find(int param,String Name) {
+		return super.find(param, Name);
 	}
 
 }
