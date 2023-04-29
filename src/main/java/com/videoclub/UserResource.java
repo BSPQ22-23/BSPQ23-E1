@@ -30,7 +30,7 @@ public class UserResource {
     @Produces(MediaType.APPLICATION_JSON)
     public List<User> getUsers() {
     	JOptionPane.showMessageDialog(null, "Getting all users");
-    	List<User> users = UserDAO.getInstance().getAll(User.class.getName());
+    	List<User> users = UserDAO.getInstance().getAll(User.class);
     	
     	logger.info(users);
 		return users;

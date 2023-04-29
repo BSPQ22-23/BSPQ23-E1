@@ -33,7 +33,7 @@ public class UserDAO extends DataAccessObjectBase<User>{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<User> getAll(String nameclass) {
+	public List<User> getAll(Class nameclass) {
 		return super.getAll(nameclass);
 	}
 

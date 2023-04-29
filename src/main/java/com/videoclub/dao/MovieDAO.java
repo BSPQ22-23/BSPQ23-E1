@@ -39,7 +39,7 @@ public class MovieDAO extends DataAccessObjectBase<Movie> {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Movie> getAll(String nameclass) {
+	public List<Movie> getAll(Class nameclass) {
         return super.getAll(nameclass);
 	}
 

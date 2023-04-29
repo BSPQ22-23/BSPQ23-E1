@@ -35,7 +35,7 @@ public class RentalDAO extends DataAccessObjectBase<Rental>{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Rental> getAll(String nameclass) {
+	public List<Rental> getAll(Class nameclass) {
 
         return super.getAll(nameclass);
 
