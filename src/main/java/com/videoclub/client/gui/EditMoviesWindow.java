@@ -69,6 +69,8 @@ public class EditMoviesWindow extends JFrame {
 	{
 		
 		this.user = user;
+		this.setSize(900, 600);
+		this.setLocation( 420, 100 );
 		
 		Container cp = this.getContentPane();
 		
