@@ -75,7 +75,7 @@ public class EditMoviesWindow extends JFrame {
 		exit = new JButton("Back");
 		save = new JButton("Save");
 		delete = new JButton("Delete");
-		
+		delete.setEnabled(false);
 		
 		title = new JTextField(20);
 		title.setEnabled(false);
@@ -190,13 +190,23 @@ public class EditMoviesWindow extends JFrame {
 
 		            // check if the response was ok
 		            if (response.getStatusInfo().toEnum() == Status.OK) {
-		                System.out.println("User correctly deleted from server");
+		            	grupoMovies.remove(movies.getSelectedValue());
+                        ((DefaultListModel<String>)movies.getModel()).removeElement(m.getTitle());
+		                System.out.println("Movie correctly deleted from server");
 		            } else {
-		                System.out.format("Error deleting a user list. %s%n", response);
+		                System.out.format("Error deleting a movie list. %s%n", response);
 		            }
 		        } catch (ProcessingException o) {
-		            System.out.format("Error posting a new user. %s%n", o.getMessage());
+		            System.out.format("Error posting a new movie. %s%n", o.getMessage());
 		        }
+				
+				delete.setEnabled(false);
+				title.setText("");
+				genre.setText("");
+				duration.setText("");
+				year.setText("");
+				director.setText("");
+				rentalPrice.setText("");
 				
 			}
 		});
@@ -218,6 +228,7 @@ public class EditMoviesWindow extends JFrame {
 				if (movies.getSelectedValue()!=null)
 				{
 					cargaDatosPeli(grupoMovies.get(movies.getSelectedValue()));
+					delete.setEnabled(true);
 					title.setEnabled(true);
 					genre.setEnabled(true);
 					duration.setEnabled(true);
