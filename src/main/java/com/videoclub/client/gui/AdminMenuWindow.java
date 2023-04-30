@@ -144,7 +144,9 @@ public class AdminMenuWindow extends JFrame{
 					
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						//TODO
+						Thread hilo = new editWindow();
+						hilo.start();
+						dispose();
 						
 					}
 				});
@@ -198,6 +200,12 @@ public class AdminMenuWindow extends JFrame{
 	class movieWindow extends Thread{
 		public void run() {
 			NewMovieWindow.main(null);
+		}
+	}
+	
+	class editWindow extends Thread{
+		public void run() {
+			EditMoviesWindow.main(null);
 		}
 	}
 	
