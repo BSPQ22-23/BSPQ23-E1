@@ -34,10 +34,21 @@ import java.util.Arrays;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.ws.rs.ProcessingException;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import com.videoclub.client.gui.AdminMenuWindow.LogInWindow;
 import com.videoclub.dao.MovieDAO;
+import com.videoclub.encrypt.PasswordEncrypt;
 import com.videoclub.pojo.Movie;
+import com.videoclub.pojo.User;
+import com.videoclub.pojo.typeUser;
 
 public class NewMovieWindow extends JFrame {
 	
@@ -54,6 +65,9 @@ public class NewMovieWindow extends JFrame {
 	private JTextField empty;
 	
 	private JLabel text;
+	
+	private static final String SERVER_ENDPOINT = "http://localhost:8080/webapi";
+    private static final String MOVIES_RESOURCE ="movies";
 	
 	public NewMovieWindow()
 	{
@@ -116,17 +130,37 @@ public class NewMovieWindow extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				Client client = ClientBuilder.newClient();
+				final WebTarget appTarget = client.target(SERVER_ENDPOINT);
 				if(!title.getText().equals("") && !genre.getText().equals("") && !duration.getText().equals("") && !year.getText().equals("") && !director.getText().equals("") && !rentalPrice.getText().equals(""))
 				{
-					Movie m = new Movie(title.getText(),genre.getText(), Integer.parseInt(duration.getText()), Integer.parseInt(year.getText()),director.getText(), Double.parseDouble(rentalPrice.getText()));
-					MovieDAO.getInstance().save(m);
-					System.out.println("CORRECT");
+					try {
+						System.out.println("entro1");
+						Movie m = new Movie(title.getText(),genre.getText(), Integer.parseInt(duration.getText()), Integer.parseInt(year.getText()),director.getText(), Double.parseDouble(rentalPrice.getText()));
+			            Response response = appTarget.path(MOVIES_RESOURCE)
+			                .request(MediaType.APPLICATION_JSON)
+			                .post(Entity.entity(m, MediaType.APPLICATION_JSON)
+			                		
+			            );
+
+			            // check if the response was ok
+			            if (response.getStatusInfo().toEnum() == Status.OK) {
+			                // obtain the response data (contains a user with the new code)
+			                Movie userCode = response.readEntity(Movie.class);
+			                System.out.format("Movie registered with title %s%n",userCode.getTitle());
+			            } else {
+			                System.out.format("Error posting a movie list. %s%n", response);
+			            }
+			        } catch (ProcessingException j) {
+			            System.out.format("Error posting a new movie. %s%n", j.getMessage());
+			        }
+
+
 				}
 				else
 				{
 					System.out.println("You have to complete all the fields");
-				}
-				
+				}			
 			}
 		});
 		
