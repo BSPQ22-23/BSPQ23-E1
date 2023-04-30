@@ -209,7 +209,7 @@ public class ClientLoginWindow extends JFrame {
 			}else if(op == 1){
 				ClientMenuWindow.main(null); 
 			}else if(op==0){
-				ClientMenuWindowAdmin.main(null);
+				AdminMenuWindow.main(null);
 			}
 			
 		}
