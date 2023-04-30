@@ -3,7 +3,7 @@ package com.videoclub.pojo;
 public class ClassColumnNames<T> {
 	private Class<T> clazz;
 	private String columnName;
-	protected ClassColumnNames(Class<T> clazz, String columnName) {
+	public ClassColumnNames(Class<T> clazz, String columnName) {
 		this.clazz = clazz;
 		this.columnName = columnName;
 	}

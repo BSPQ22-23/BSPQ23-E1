@@ -1,5 +1,7 @@
 package com.videoclub;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.Date;
 
 import org.junit.Test;
@@ -8,6 +10,7 @@ import com.videoclub.dao.MovieDAO;
 import com.videoclub.dao.RentalDAO;
 import com.videoclub.dao.UserDAO;
 import com.videoclub.encrypt.PasswordEncrypt;
+import com.videoclub.pojo.ClassColumnNames;
 import com.videoclub.pojo.Movie;
 import com.videoclub.pojo.Rental;
 import com.videoclub.pojo.User;
@@ -17,6 +20,8 @@ public class test {
 	
 	@Test
 	public void databaseChecking() {
+		
+		//Creating the users to insert them into the database
 		User u1 = new User("admin", PasswordEncrypt.encryptPassword("admin"), "admin@email.com", "AdminName", "AdminSurname", typeUser.ADMIN);
 		User u2 = new User("assaz", PasswordEncrypt.encryptPassword("assaz"), "asier.account@email.com", "Asier", "Belloso", typeUser.CLIENT);
 		User u3 = new User("client", PasswordEncrypt.encryptPassword("client"), "client@email.com", "ClientName", "ClientSurname", typeUser.CLIENT);
@@ -45,7 +50,58 @@ public class test {
 		
 		System.out.println(UserDAO.getInstance().getAll(User.class));
 		
+		ClassColumnNames<User> Cuser = new ClassColumnNames(User.class, "EMAIL");
 		
+		ClassColumnNames<Movie> Cmovie = new ClassColumnNames(Movie.class, "TITLE");
+		
+		ClassColumnNames<Rental> Crental = new ClassColumnNames(Rental.class, "ID");
+		
+		
+		
+		
+		User u1check= UserDAO.getInstance().find(u1.getEmail(),Cuser);
+		
+		User u2check= UserDAO.getInstance().find(u2.getEmail(),Cuser);
+		
+		User u3check= UserDAO.getInstance().find(u3.getEmail(),Cuser);
+		
+		
+		
+		Movie m1check=MovieDAO.getInstance().find(m1.getTitle(), Cmovie);
+		
+		Movie m2check=MovieDAO.getInstance().find(m2.getTitle(), Cmovie);
+		
+		
+		Rental r1check = RentalDAO.getInstance().find(String.valueOf(r1.getId()), Crental);
+		
+		Rental r2check = RentalDAO.getInstance().find(String.valueOf(r1.getId()), Crental);
+		
+		Rental r3check = RentalDAO.getInstance().find(String.valueOf(r1.getId()), Crental);
+		
+		Rental r4check = RentalDAO.getInstance().find(String.valueOf(r1.getId()), Crental);
+		
+		Rental r5check = RentalDAO.getInstance().find(String.valueOf(r1.getId()), Crental);
+		
+		
+		assertEquals(u1, u1check);
+		
+		assertEquals(u2, u2check);
+		
+		assertEquals(u3, u3check);
+		
+		assertEquals(m1, m1check);
+		
+		assertEquals(m2, m2check);
+		
+		assertEquals(r1, r1check);
+		
+		assertEquals(r2, r2check);
+		
+		assertEquals(r3, r3check);
+		
+		assertEquals(r4, r4check);
+		
+		assertEquals(r5, r5check);
 		
 	}
 
