@@ -23,8 +23,10 @@ import javax.swing.table.DefaultTableModel;
 import com.videoclub.client.gui.MoviesWindow.menuWindow;
 import com.videoclub.dao.MovieDAO;
 import com.videoclub.dao.RentalDAO;
+import com.videoclub.dao.UserDAO;
 import com.videoclub.pojo.Movie;
 import com.videoclub.pojo.Rental;
+import com.videoclub.pojo.User;
 
 public class MyRentalsWindow extends JFrame {
 
@@ -37,7 +39,10 @@ public class MyRentalsWindow extends JFrame {
 	private DefaultTableModel modelRentals;
 	private JButton btnBack;
 	
-	public static void main(String[] args) {
+	private ClientMenuWindow clientMenuWindow;
+	private User user;
+	
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			
 			@Override
@@ -55,9 +60,18 @@ public class MyRentalsWindow extends JFrame {
 				}
 			}
 		});
-	}
+	}*/
 	
-	public MyRentalsWindow() {
+	public MyRentalsWindow(User user) {
+		
+		this.user = user;
+		
+		this.setTitle("DeustoVideoClub - My history of rentals");
+		this.setSize(900, 600);
+		this.setLocation( 420, 100 );
+		this.setVisible( true );
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setResizable(false);
 		
 		Container cont = this.getContentPane();
 		
@@ -88,9 +102,6 @@ public class MyRentalsWindow extends JFrame {
 		panelSouth.add(btnBack);
 		panelSouth.setBackground(new Color(214, 234, 248));
 		cont.add(panelSouth, BorderLayout.SOUTH);
-		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
 		
 		btnBack.addActionListener(new ActionListener() {
 			
@@ -127,18 +138,31 @@ public class MyRentalsWindow extends JFrame {
 	public void loadModel() {
 		
 		List<Rental> listRentals = RentalDAO.getInstance().getAll();
+		
 		while (modelRentals.getRowCount() > 0) {
 			modelRentals.removeRow(0);
 		}
 		for(Rental r: listRentals) {
-			Object [] row = {r.getId(), r.getMovie().getTitle(), r.getCustomer().getCode(), r.getRentalDate(), r.getReturnDate()};
-			modelRentals.addRow(row);
+			if (r.getCustomer().getCode() == user.getCode()) {
+				Object [] row = {r.getId(), r.getMovie().getTitle(), r.getCustomer().getCode(), r.getRentalDate(), r.getReturnDate()};
+				modelRentals.addRow(row);
+			}
 		}
 	}
 	
 	class menuWindow extends Thread {
 		public void run() {
-			ClientMenuWindow.main(null);
+			if (clientMenuWindow != null) {
+				clientMenuWindow.setVisible(true);
+			} else {
+				clientMenuWindow = new ClientMenuWindow(user);
+				clientMenuWindow.setVisible(true);
+			}
+		}
+	}
+	
+	class addRentalWindow extends Thread {
+		public void run() {
 		}
 	}
 	

@@ -11,7 +11,13 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import com.videoclub.dao.MovieDAO;
+import com.videoclub.pojo.Movie;
+import com.videoclub.pojo.User;
 
 
 
@@ -39,8 +45,22 @@ public class ClientMenuWindow extends JFrame{
 	private JLabel menuDeustoFlix;
 	
 	private static int CodUser;
+	private MyRentalsWindow myRentalsWindow;
+	private MoviesWindow moviesWindow;
+	private ViewMovieWindow viewMovieWindow;
+	private Movie movie;
+	private User user;
 	
-	public ClientMenuWindow() {
+	public ClientMenuWindow(User user) {
+		
+		this.user = user;
+		
+		this.setTitle("DeustoVideoClub - Menu");
+		this.setSize(900, 600);
+		this.setLocation( 420, 100 );
+		this.setVisible( true );
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setResizable(false);
 		//Creamos el contenedor donde vamos a colocar todo
 		Container cp = this.getContentPane();
 		
@@ -132,6 +152,9 @@ public class ClientMenuWindow extends JFrame{
 		
 		cp.add(panelCentro, BorderLayout.CENTER);
 		
+		//TEST
+		System.out.println(user);
+		
 		//Creamos todos los ActionListeners de esta ventana
 		
 		//1º) Este boton llama a la VentanaUsuario y desaparece la ventana VentanaMenu existente
@@ -171,7 +194,13 @@ public class ClientMenuWindow extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				String title = JOptionPane.showInputDialog("Type in movie title");
+				movie = MovieDAO.getInstance().find(title, Movie.ColumnsNameMovie.title);
+				if (movie != null) {
+					Thread hilo = new viewMovieWindow();
+					hilo.start();
+					dispose();
+				}
 			}
 		});
 		//5º) Este boton llama a la VentanaMisRentals y desaparece la ventana VentanaMenu existente
@@ -180,8 +209,8 @@ public class ClientMenuWindow extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				 Thread hilo = new RentalsWindow();
-					hilo.start();
-					dispose();
+				 hilo.start();
+				 dispose();
 			}
 		});
 		//7º) Este boton llama a la VentanaMiLista y desaparece la ventana VentanaMenu existente
@@ -189,9 +218,7 @@ public class ClientMenuWindow extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				 Thread hilo = new MiListaWindow();
-					hilo.start();
-					dispose();
+				
 				
 			}
 		});
@@ -230,7 +257,13 @@ public class ClientMenuWindow extends JFrame{
 	
 	class RentalsWindow extends Thread{ 
 		public void run() {
-			MyRentalsWindow.main(null);
+			//MyRentalsWindow.main(null);
+			if (myRentalsWindow != null) {
+				myRentalsWindow.setVisible(true);
+			} else {
+				myRentalsWindow = new MyRentalsWindow(user);
+				myRentalsWindow.setVisible(true);
+			}
 		}
 	}
 	
@@ -248,11 +281,27 @@ public class ClientMenuWindow extends JFrame{
 	
 	class moviesCatalogWindow extends Thread{
 		public void run() {
-			MoviesWindow.main(null);
+			if (moviesWindow != null) {
+				moviesWindow.setVisible(true);
+			} else {
+				moviesWindow = new MoviesWindow(user);
+				moviesWindow.setVisible(true);
+			}
 		}
 	}
 	
-	public static void main(String[] args) {
+	class viewMovieWindow extends Thread{
+		public void run() {
+			if (viewMovieWindow != null) {
+				viewMovieWindow.setVisible(true);
+			} else {
+				viewMovieWindow = new ViewMovieWindow(user, movie);
+				viewMovieWindow.setVisible(true);
+			}
+		}
+	}
+	
+	/*public static void main(String[] args) {
 		ClientMenuWindow ventana4 = new ClientMenuWindow();
 		ventana4.setTitle("DeustoVideoClub - Menu");
 		ventana4.setSize(900, 600);
@@ -261,6 +310,6 @@ public class ClientMenuWindow extends JFrame{
 		ventana4.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana4.setResizable(false);
 	}
-	
+	*/
 	
 }

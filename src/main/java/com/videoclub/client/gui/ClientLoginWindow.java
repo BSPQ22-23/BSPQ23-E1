@@ -21,6 +21,7 @@ import javax.ws.rs.core.Response.Status;
 
 import com.videoclub.dao.UserDAO;
 import com.videoclub.encrypt.PasswordEncrypt;
+import com.videoclub.pojo.ClassColumnNames;
 import com.videoclub.pojo.User;
 import com.videoclub.pojo.typeUser;
 
@@ -53,6 +54,10 @@ public class ClientLoginWindow extends JFrame {
 	
     private static final String SERVER_ENDPOINT = "http://localhost:8080/webapi";
     private static final String USERS_RESOURCE ="users";
+    
+    private ClientMenuWindow clientMenuWindow;
+    private AdminMenuWindow adminMenuWindow;
+    private User user;
 
 	/**
 	 * Launch the application.
@@ -137,7 +142,7 @@ public class ClientLoginWindow extends JFrame {
 		            System.out.format("Error obtaining user list. %s%n", o.getMessage());
 		        }
 		        
-		        User user = new User(textNick.getText(),PasswordEncrypt.encryptPassword(textPass.getText()));
+		        user = UserDAO.getInstance().find(textNick.getText(), User.ColumnsNameUser.username);
 		        
 		        if(users != null) {
 		        for (User i : users) {
@@ -205,9 +210,20 @@ public class ClientLoginWindow extends JFrame {
 			if(op == 2){
 				ClientSignUpWindow.main(null);
 			}else if(op == 1){
-				ClientMenuWindow.main(null); 
+				//ClientMenuWindow.main(null); 
+				if (clientMenuWindow != null) {
+					clientMenuWindow.setVisible(true);
+				} else {
+					clientMenuWindow = new ClientMenuWindow(user);
+					clientMenuWindow.setVisible(true);
+				}
 			}else if(op==0){
-				AdminMenuWindow.main(null);
+				if (adminMenuWindow != null) {
+					adminMenuWindow.setVisible(true);
+				} else {
+					adminMenuWindow = new AdminMenuWindow(user);
+					adminMenuWindow.setVisible(true);
+				}
 			}
 			
 		}

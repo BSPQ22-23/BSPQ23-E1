@@ -80,7 +80,7 @@ public class MyListWindow extends JFrame {
 	}
 	class menuWindow extends Thread{
 		public void run() {
-			ClientMenuWindow.main(null);
+			//ClientMenuWindow.main(null);
 		}
 	}
 	

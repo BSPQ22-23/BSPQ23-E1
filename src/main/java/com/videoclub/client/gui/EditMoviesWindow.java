@@ -57,13 +57,18 @@ public class EditMoviesWindow extends JFrame {
 	
 	
 	private HashMap<String,Movie> grupoMovies; 
+	private AdminMenuWindow adminMenuWindow;
+	private User user;
 	
+
 	private static final String SERVER_ENDPOINT = "http://localhost:8080/webapi";
     private static final String MOVIES_RESOURCE ="movies";
 	
     
-	public EditMoviesWindow()
+	public EditMoviesWindow(User user)
 	{
+		
+		this.user = user;
 		
 		Container cp = this.getContentPane();
 		
@@ -286,11 +291,16 @@ public class EditMoviesWindow extends JFrame {
 	}
 	class AdminWindow extends Thread{
 		public void run() {
-			AdminMenuWindow.main(null);
+			if (adminMenuWindow != null) {
+				adminMenuWindow.setVisible(true);
+			} else {
+				adminMenuWindow = new AdminMenuWindow(user);
+				adminMenuWindow.setVisible(true);
+			}
 		}
 	}
 	
-	public static void main(String[] args)
+	/*public static void main(String[] args)
 	{
 		EditMoviesWindow ventana = new EditMoviesWindow();
 		ventana.setSize(900, 600);
@@ -298,7 +308,7 @@ public class EditMoviesWindow extends JFrame {
 		ventana.setVisible( true );
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana.setResizable(false);
-	}
+	}*/
 
 }
 

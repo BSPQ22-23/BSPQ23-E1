@@ -50,6 +50,7 @@ import com.videoclub.pojo.Movie;
 import com.videoclub.pojo.User;
 import com.videoclub.pojo.typeUser;
 
+
 public class NewMovieWindow extends JFrame {
 	
 	private JButton exit;
@@ -69,8 +70,20 @@ public class NewMovieWindow extends JFrame {
 	private static final String SERVER_ENDPOINT = "http://localhost:8080/webapi";
     private static final String MOVIES_RESOURCE ="movies";
 	
-	public NewMovieWindow()
+
+	private AdminMenuWindow adminMenuWindow;
+	private User user;
+	
+	public NewMovieWindow(User user)
+
 	{
+		
+		this.setTitle("DeustoVideoclubClub - New movie");
+		this.setSize(900, 600);
+		this.setLocation( 420, 100 );
+		this.setVisible( true );
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setResizable(false);
 		
 		Container cp = this.getContentPane();
 		
@@ -188,11 +201,16 @@ public class NewMovieWindow extends JFrame {
 	
 	class AdminWindow extends Thread{
 		public void run() {
-			AdminMenuWindow.main(null);
+			if (adminMenuWindow != null) {
+				adminMenuWindow.setVisible(true);
+			} else {
+				adminMenuWindow = new AdminMenuWindow(user);
+				adminMenuWindow.setVisible(true);
+			}
 		}
 	}
 	
-	public static void main(String[] args)
+	/*public static void main(String[] args)
 	{
 		NewMovieWindow ventana = new NewMovieWindow();
 		ventana.setSize(900, 600);
@@ -200,6 +218,6 @@ public class NewMovieWindow extends JFrame {
 		ventana.setVisible( true );
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana.setResizable(false);
-	}
+	}*/
 
 }

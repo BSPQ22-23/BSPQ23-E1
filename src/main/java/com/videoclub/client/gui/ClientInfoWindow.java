@@ -145,7 +145,7 @@ public class ClientInfoWindow extends JFrame {
 	}
 	class MenuWindow extends Thread{
 		public void run() {
-			ClientMenuWindow.main(null);
+			//ClientMenuWindow.main(null);
 		}
 	}
 	

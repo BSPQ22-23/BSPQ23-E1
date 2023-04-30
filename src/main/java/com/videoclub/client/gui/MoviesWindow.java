@@ -8,10 +8,12 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -21,11 +23,15 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import com.videoclub.dao.MovieDAO;
+import com.videoclub.dao.RentalDAO;
 import com.videoclub.dao.UserDAO;
 import com.videoclub.pojo.User;
+import com.videoclub.pojo.typeUser;
 import com.videoclub.pojo.Movie;
+import com.videoclub.pojo.Rental;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class MoviesWindow extends JFrame {
 
@@ -42,8 +48,17 @@ public class MoviesWindow extends JFrame {
 	private DefaultTableModel modelMovies;
 	
 	private JButton btnBack;
+	private JButton btnRent;
+
+	private AdminMenuWindow adminMenuWindow;
+	private ClientMenuWindow clientMenuWindow;
+	private User user;
 	
-	public static void main(String[] args) {
+	private List<Movie> listMovies;
+	
+	
+	
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -59,9 +74,18 @@ public class MoviesWindow extends JFrame {
 				}
 			}
 		});
-	}
+	}*/
 
-	public MoviesWindow() {
+	public MoviesWindow(User user) {
+		
+		this.user = user;
+		
+		this.setTitle("DeustoVideoClub - Movies Catalog");
+		this.setSize(900, 600);
+		this.setLocation( 420, 100 );
+		this.setVisible( true );
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setResizable(false);
 		
 		Container cont = this.getContentPane();
 		
@@ -90,13 +114,12 @@ public class MoviesWindow extends JFrame {
 		panelCenter.add(scrollMovies);
 		cont.add(panelCenter, BorderLayout.CENTER);
 		
+		btnRent = new JButton("Rent");
+		panelSouth.add(btnRent);
 		btnBack = new JButton("BACK");
 		panelSouth.add(btnBack);
 		panelSouth.setBackground(new Color(214, 234, 248));
 		cont.add(panelSouth, BorderLayout.SOUTH);
-		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
 		
 		btnBack.addActionListener(new ActionListener() {
 			
@@ -107,6 +130,16 @@ public class MoviesWindow extends JFrame {
 				dispose();
 				}
 			});
+		btnRent.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int row = tableMovies.getSelectedRow();
+				Movie selectedMovie = listMovies.get(row);
+				Rental r = new Rental(selectedMovie,user,new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()));
+				RentalDAO.getInstance().save(r);
+			}
+		});
 		}
 	
 	public void initializeTable() {
@@ -134,7 +167,7 @@ public class MoviesWindow extends JFrame {
 	
 	public void loadModel() {
 		
-		List<Movie> listMovies = MovieDAO.getInstance().getAll(Movie.class);
+		listMovies = MovieDAO.getInstance().getAll(Movie.class);
 		while (modelMovies.getRowCount() > 0) {
 			modelMovies.removeRow(0);
 		}
@@ -147,7 +180,21 @@ public class MoviesWindow extends JFrame {
 	
 	class menuWindow extends Thread {
 		public void run() {
-			ClientMenuWindow.main(null);
+			if (user.getType() == typeUser.ADMIN) {
+				if (adminMenuWindow != null) {
+					adminMenuWindow.setVisible(true);
+				} else {
+					adminMenuWindow = new AdminMenuWindow(user);
+					adminMenuWindow.setVisible(true);
+				}
+			} else {
+				if (clientMenuWindow != null) {
+					clientMenuWindow.setVisible(true);
+				} else {
+					clientMenuWindow = new ClientMenuWindow(user);
+					clientMenuWindow.setVisible(true);
+				}
+			}
 		}
 	}
 }

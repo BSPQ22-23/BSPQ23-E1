@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 
 import com.videoclub.client.gui.ClientMenuWindow.LogInWindow;
 import com.videoclub.client.gui.ClientMenuWindow.moviesCatalogWindow;
+import com.videoclub.pojo.User;
 
 
 
@@ -34,7 +35,22 @@ public class AdminMenuWindow extends JFrame{
 	
 	private JLabel menuDeustoFlix;
 	
-	public AdminMenuWindow() {
+	private MoviesWindow moviesWindow;
+	private EditMoviesWindow editMoviesWindow;
+	private NewMovieWindow newMovieWindow;
+	private User user;
+	
+	public AdminMenuWindow(User user) {
+		
+		this.user = user;
+		
+		this.setTitle("DeustoVideoClub - Admin - Menu");
+		this.setSize(900, 600);
+		this.setLocation( 420, 100 );
+		this.setVisible( true );
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setResizable(false);
+		
 		//Creamos el contenedor donde vamos a colocar todo
 		Container cp = this.getContentPane();
 		
@@ -178,25 +194,39 @@ public class AdminMenuWindow extends JFrame{
 	
 	class moviesCatalogWindow extends Thread{
 		public void run() {
-			MoviesWindow.main(null);
+			if (moviesWindow != null) {
+				moviesWindow.setVisible(true);
+			} else {
+				moviesWindow = new MoviesWindow(user);
+				moviesWindow.setVisible(true);
+			}
 		}
 	}
 	
 	class movieWindow extends Thread{
 		public void run() {
-			NewMovieWindow.main(null);
+			if (newMovieWindow != null) {
+				newMovieWindow.setVisible(true);
+			} else {
+				newMovieWindow = new NewMovieWindow(user);
+				newMovieWindow.setVisible(true);
+			}
 		}
 	}
 	
 	class editWindow extends Thread{
 		public void run() {
-			EditMoviesWindow.main(null);
-		}
+			if (editMoviesWindow != null) {
+				editMoviesWindow.setVisible(true);
+			} else {
+				editMoviesWindow = new EditMoviesWindow(user);
+				editMoviesWindow.setVisible(true);
+			}		}
 	}
 	
 
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		AdminMenuWindow ventana4 = new AdminMenuWindow();
 		ventana4.setTitle("DeustoVideoClub - Admin - Menu");
 		ventana4.setSize(900, 600);
@@ -204,7 +234,7 @@ public class AdminMenuWindow extends JFrame{
 		ventana4.setVisible( true );
 		ventana4.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana4.setResizable(false);
-	}
+	}*/
 	
 	
 }
