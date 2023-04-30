@@ -11,6 +11,7 @@ public class User {
 	@PrimaryKey
 	@Persistent(valueStrategy=IdGeneratorStrategy.INCREMENT)
 	private int code;
+	@Unique
     private String username;
     private typeUser type;
     private String password;
