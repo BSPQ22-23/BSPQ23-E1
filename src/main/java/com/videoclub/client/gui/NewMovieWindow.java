@@ -173,14 +173,7 @@ public class NewMovieWindow extends JFrame {
 					dispose();
 				
 			}
-		});
-		
-		
-		
-		
-		
-		
-		
+		});	
 		
 	}
 	

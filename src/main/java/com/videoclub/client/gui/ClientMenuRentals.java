@@ -47,8 +47,6 @@ public class ClientMenuRentals extends JFrame {
 		});
 	}
 	
-	
-	
 
 	/**
 	 * Create the frame.
@@ -73,11 +71,6 @@ public class ClientMenuRentals extends JFrame {
 		contentPane.add(panelCentre, BorderLayout.CENTER);
 		panelCentre.setLayout(new GridLayout(0, 2, 0, 0));
 		
-		
-		
-		
-		
-
 
 		btnBack.addActionListener(new ActionListener() {
 					

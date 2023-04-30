@@ -5,6 +5,11 @@ import javax.swing.JTextField;
 
 public class PasswordEncrypt {
 
+	/**
+	 * This method is used to encrypt the password of the user with the SHA-256 hash function
+	 * @param passwordField the initial password
+	 * @return the encrypted password
+	 */
     public static String encryptPassword(String passwordField) {
         String encryptedPassword = null;
         try {

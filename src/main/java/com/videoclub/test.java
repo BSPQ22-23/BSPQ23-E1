@@ -18,13 +18,17 @@ import com.videoclub.pojo.typeUser;
 
 public class test {
 	
+	/**
+	 * This test creates different movies,users and  Rentals and inserts them into the database
+	 * Then it obtains them back and compares them if they are the same
+	 */
 	@Test
 	public void databaseChecking() {
 		
-		//Creating the users to insert them into the database
 		User u1 = new User("admin", PasswordEncrypt.encryptPassword("admin"), "admin@email.com", "AdminName", "AdminSurname", typeUser.ADMIN);
 		User u2 = new User("assaz", PasswordEncrypt.encryptPassword("assaz"), "asier.account@email.com", "Asier", "Belloso", typeUser.CLIENT);
 		User u3 = new User("client", PasswordEncrypt.encryptPassword("client"), "client@email.com", "ClientName", "ClientSurname", typeUser.CLIENT);
+		
 		
 		UserDAO.getInstance().save(u1);
 		UserDAO.getInstance().save(u2);

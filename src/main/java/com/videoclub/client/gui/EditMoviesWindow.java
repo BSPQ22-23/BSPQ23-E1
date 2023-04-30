@@ -224,14 +224,7 @@ public class EditMoviesWindow extends JFrame {
 				
 			}
 		});
-		
-		
-		
-		
-		
-		
-		
-		
+
 	}
 	
 	public static void posicionaLinea( Container cont, String etiqueta, Component campo) {

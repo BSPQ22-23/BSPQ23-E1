@@ -174,8 +174,6 @@ public class ClientLoginWindow extends JFrame {
 	        		registerWindow.start();
 	        		
 	        		
-	        		
-	        		
 		        }
 		        else
 		        {

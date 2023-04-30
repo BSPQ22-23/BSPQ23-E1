@@ -168,21 +168,6 @@ public class AdminMenuWindow extends JFrame{
 				
 			}
 		});
-	
-		
-		
-		
-
-		
-	
-		
-		
-		
-	
-		
-
-		
-		
 		
 	}
 	class LogInWindow extends Thread{

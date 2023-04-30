@@ -11,9 +11,10 @@ import com.videoclub.pojo.ClassColumnNames;
 
 
 //This class defines the basic methods of the DAO pattern.
+
 public abstract class DataAccessObjectBase<DomainObject> implements IDataAccessObject<DomainObject>{	
 	protected static PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-
+	
 	public void delete(DomainObject object) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
