@@ -51,6 +51,10 @@ public class ClientMenuWindow extends JFrame{
 	private Movie movie;
 	private User user;
 	
+	public static void main(String[] args) {
+		
+	}
+	
 	public ClientMenuWindow(User user) {
 		
 		this.user = user;
@@ -227,7 +231,9 @@ public class ClientMenuWindow extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				
+				Thread hilo = new InfoWindow();
+				 hilo.start();
+				 dispose();
 			}
 		});
 		menuHistorial.addActionListener(new ActionListener() {
@@ -269,7 +275,8 @@ public class ClientMenuWindow extends JFrame{
 	
 	class InfoWindow extends Thread{
 		public void run() {
-			ClientInfoWindow.main(null);
+			ClientInfoWindow cIW = new ClientInfoWindow(user);
+			
 		}
 	}
 	

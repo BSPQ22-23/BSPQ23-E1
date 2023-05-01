@@ -1,6 +1,7 @@
 package com.videoclub.client.gui;
 
 import javax.swing.JButton;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -24,8 +25,10 @@ import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+import javax.ws.rs.client.*;
 
 import com.videoclub.client.gui.ClientMenuWindow.LogInWindow;
+import com.videoclub.encrypt.PasswordEncrypt;
 import com.videoclub.pojo.User;
 
 
@@ -44,33 +47,15 @@ public class ClientInfoWindow extends JFrame {
 	private JTextField textPass;
 	private JButton btnSave;
 	private JButton btnBack;
+	//private User userWindow;
 	private static final String SERVER_ENDPOINT = "http://localhost:8080/webapi";
     private static final String USERS_RESOURCE ="users";
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ClientInfoWindow frame = new ClientInfoWindow();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-	
-	
-	
 
 	/**
 	 * Create the frame.
 	 */
-	public ClientInfoWindow() {
+	public ClientInfoWindow(User user) {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -92,6 +77,10 @@ public class ClientInfoWindow extends JFrame {
 		contentPane.add(panelCentre, BorderLayout.CENTER);
 		panelCentre.setLayout(new GridLayout(0, 2, 0, 0));
 		
+		//TODO add more personal info
+		
+		
+		
 		//lblOldPass = new JLabel("Actual Password");
 		//panelCentre.add(lblOldPass);
 		
@@ -109,18 +98,42 @@ public class ClientInfoWindow extends JFrame {
 		panelCentre.add(textPass);
 		textPass.setColumns(10);
 		
-		
+		setVisible(true);
 		
 		
 		btnSave.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-		        
-				int choice = JOptionPane.showConfirmDialog(null, "Are you sure you want change your password?", "Confirmation", JOptionPane.YES_NO_OPTION);
-
-//TODO save the modified user to the bd.
 				
+				
+		        //TODO check if it works
+				int choice = JOptionPane.showConfirmDialog(null, "Are you sure you want change your password?", "Confirmation", JOptionPane.YES_NO_OPTION);
+				
+				if(choice==JOptionPane.YES_OPTION){
+					
+				user.setPassword(PasswordEncrypt.encryptPassword(textPass.getText()));
+				
+				  Client client = ClientBuilder.newClient();
+				 
+				WebTarget target = client.target(SERVER_ENDPOINT);
+
+
+				 Response response = target.path(USERS_RESOURCE)
+			                .request(MediaType.APPLICATION_JSON)
+			                .post(javax.ws.rs.client.Entity.entity(user, MediaType.APPLICATION_JSON)
+			            );
+
+				if (response.getStatus() == Response.Status.OK.getStatusCode()) {
+				    System.out.println("User updated successfully.");
+				} else {
+				    System.out.println("Failed to update user.");
+				}
+
+				response.close();
+				client.close();
+				
+				}
 				
 				
 				Thread hilo = new MenuWindow();
@@ -145,7 +158,7 @@ public class ClientInfoWindow extends JFrame {
 	}
 	class MenuWindow extends Thread{
 		public void run() {
-			//ClientMenuWindow.main(null);
+			ClientMenuWindow.main(null);
 		}
 	}
 	

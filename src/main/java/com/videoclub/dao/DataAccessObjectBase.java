@@ -96,4 +96,5 @@ public abstract class DataAccessObjectBase<DomainObject> implements IDataAccessO
 	}
 
 	
+	
 }

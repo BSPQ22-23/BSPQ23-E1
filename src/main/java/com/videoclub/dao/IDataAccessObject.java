@@ -9,4 +9,5 @@ public interface IDataAccessObject<DomainObject>{
 	public void delete(DomainObject object);
 	public List<DomainObject> getAll(Class<DomainObject> domainClass);
 	public DomainObject find(String param, ClassColumnNames<DomainObject> filter);
+	
 }
