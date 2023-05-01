@@ -94,6 +94,14 @@ public class Movie {
 		public final static ColumnsNameMovie duration = new ColumnsNameMovie("duration");
 		public final static ColumnsNameMovie year = new ColumnsNameMovie("year");
 		public final static ColumnsNameMovie director = new ColumnsNameMovie("director");
-		public final static ColumnsNameMovie rentalPrice = new ColumnsNameMovie("rentalPrice");	}
+		public final static ColumnsNameMovie rentalPrice = new ColumnsNameMovie("rentalPrice");	
+		
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+    	// TODO Auto-generated method stub
+    	return this.title.equals(((Movie) obj).getTitle());
+    }
 }
 

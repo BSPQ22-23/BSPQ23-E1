@@ -123,5 +123,11 @@ public class User {
 		return "User [code=" + code + ", username=" + username + ", password=" + password + ", email=" + email
 				+ ", name=" + name + ", surname=" + surname + "]";
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		return this.username.equals(((User)obj).getUsername());
+	}
 
 }

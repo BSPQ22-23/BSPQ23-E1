@@ -95,5 +95,11 @@ public class Rental {
 		public final static ColumnsNameRental rentalDate = new ColumnsNameRental("rentalDate");
 		public final static ColumnsNameRental returnDate = new ColumnsNameRental("returnDate");
 	}
+    
+    @Override
+    public boolean equals(Object obj) {
+    	// TODO Auto-generated method stub
+    	return this.id == (((Rental) obj).getId());
+    }
 }
 
