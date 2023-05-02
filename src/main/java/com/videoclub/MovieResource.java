@@ -38,7 +38,6 @@ public class MovieResource {
 	public Response addMovie(Movie movie) {
 		MovieDAO.getInstance().save(movie);
 		logger.info("Movie:"+movie.getTitle()+" added.");
-		System.out.println(Response.ok(new Movie(movie.getTitle())).build());
 		return Response.ok(new Movie(movie.getTitle())).build();
 		
 	}
