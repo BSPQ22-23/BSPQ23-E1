@@ -135,7 +135,7 @@ public class Receipt {
 	  public static void sendmail(String comp,String nom) throws AddressException, MessagingException {
 	 
 		String mail="videoclub.deusto@gmail.com";//EL CORREO ESTÁ  QUITADO PARA QUE NO SE VEA EN EL GITHUB
-		String pass="duwmun-xavno0-tukMyj";//LA CONTRASEÑA DEL CORREO ESTÁ QUITADA PARA QUE NO SE VEA EN EL GITHUB
+		String pass="";//LA CONTRASEÑA DEL CORREO ESTÁ QUITADA PARA QUE NO SE VEA EN EL GITHUB
 		
 		
 		String mailreceiver=JOptionPane.showInputDialog(null,"Introduce your email please:");
