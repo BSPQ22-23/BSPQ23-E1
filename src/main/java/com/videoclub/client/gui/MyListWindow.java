@@ -11,6 +11,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.videoclub.Internationalization.InternationalizationText;
+
 //import com.videoclub.client.gui.ClientMenuRentals.MenuWindow;
 
 public class MyListWindow extends JFrame {
@@ -60,7 +62,7 @@ public class MyListWindow extends JFrame {
 		panelS = new JPanel();
 		contentPane.add(panelS, BorderLayout.SOUTH);
 		
-		btnBack = new JButton("BACK");
+		btnBack = new JButton(InternationalizationText.getString("back"));
 		panelS.add(btnBack);
 		
 		panelC = new JPanel();

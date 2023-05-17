@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import com.videoclub.Internationalization.InternationalizationText;
 import com.videoclub.dao.MovieDAO;
 import com.videoclub.pojo.Movie;
 import com.videoclub.pojo.User;
@@ -69,23 +70,23 @@ public class ClientMenuWindow extends JFrame{
 		Container cp = this.getContentPane();
 		
 		//Creamos los componentes con sus especificaciones
-		menuDatosUsuario = new JButton("Change password");
+		menuDatosUsuario = new JButton(InternationalizationText.getString("change_password"));
 		menuDatosUsuario.setFont(new Font("Arial", Font.ITALIC, 25));
 		menuDatosUsuario.setForeground(Color.darkGray);
 		
-		menuMiLista = new JButton("My personal list of movies");
+		menuMiLista = new JButton(InternationalizationText.getString("movie_list_personal"));
 		menuMiLista.setFont(new Font("Arial", Font.ITALIC, 25));
 		menuMiLista.setForeground(Color.darkGray);
 		
-		menuMyRentals = new JButton("My history of rentals");
+		menuMyRentals = new JButton(InternationalizationText.getString("rental_history"));
 		menuMyRentals.setFont(new Font("Arial", Font.ITALIC, 25));
 		menuMyRentals.setForeground(Color.darkGray);
 		
-		menuFiltro = new JButton("Search...");
+		menuFiltro = new JButton(InternationalizationText.getString("search"));
 		menuFiltro.setFont(new Font("Arial", Font.ITALIC, 25));
 		menuFiltro.setForeground(Color.darkGray);
 		
-		menuCambiarUsuario = new JButton("Log out");
+		menuCambiarUsuario = new JButton(InternationalizationText.getString("log_out"));
 		menuCambiarUsuario.setFont(new Font("Arial", Font.ITALIC, 25));
 		menuCambiarUsuario.setForeground(Color.darkGray);
 		
@@ -93,7 +94,7 @@ public class ClientMenuWindow extends JFrame{
 		menuCatalogoSeries.setFont(new Font("Arial", Font.ITALIC, 25));
 		menuCatalogoSeries.setForeground(Color.darkGray);
 		
-		menuCatalogoPelicula = new JButton("Movies' catalog");
+		menuCatalogoPelicula = new JButton(InternationalizationText.getString("movie_catalog"));
 		menuCatalogoPelicula.setFont(new Font("Arial", Font.ITALIC, 25));
 		menuCatalogoPelicula.setForeground(Color.darkGray);
 		
@@ -113,14 +114,14 @@ public class ClientMenuWindow extends JFrame{
 		menuAreaDeustoFlix2.setFont(new Font("Arial", Font.ITALIC, 25));
 		menuAreaDeustoFlix2.setForeground(Color.blue);
 		
-		menuHistorial = new JButton("My rating history");
+		menuHistorial = new JButton(InternationalizationText.getString("rating_history"));
 		menuHistorial.setFont(new Font("Arial", Font.ITALIC, 25));
 		menuHistorial.setForeground(Color.darkGray);
 		
 		menuDeustoFlix = new JLabel("DEUSTO VIDEOCLUB");
 		menuDeustoFlix.setForeground(Color.white);
 		
-		menuRecentMovies = new JButton("Recent Movies");
+		menuRecentMovies = new JButton(InternationalizationText.getString("recent_movies"));
 		menuRecentMovies.setFont(new Font("Arial", Font.ITALIC, 25));
 		menuRecentMovies.setForeground(Color.darkGray);
 		
@@ -198,7 +199,7 @@ public class ClientMenuWindow extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String title = JOptionPane.showInputDialog("Type in movie title");
+				String title = JOptionPane.showInputDialog(InternationalizationText.getString("typeinmovie"));
 				movie = MovieDAO.getInstance().find(title, Movie.ColumnsNameMovie.title);
 				if (movie != null) {
 					Thread hilo = new viewMovieWindow();

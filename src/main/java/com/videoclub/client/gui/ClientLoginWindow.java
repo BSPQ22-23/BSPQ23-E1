@@ -19,6 +19,10 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.videoclub.Internationalization.InternationalizationText;
 import com.videoclub.dao.UserDAO;
 import com.videoclub.encrypt.PasswordEncrypt;
 import com.videoclub.pojo.ClassColumnNames;
@@ -48,9 +52,11 @@ public class ClientLoginWindow extends JFrame {
 	private JTextField textPass;
 	private JButton btnLogin;
 	private JButton btnRegister;
+	private JButton changeLang;
 	private int op;
 	private boolean validador = false;
 	private boolean isAdmin = false;
+	protected static final Logger logger = LogManager.getLogger();
 	
     private static final String SERVER_ENDPOINT = "http://localhost:8080/webapi";
     private static final String USERS_RESOURCE ="users";
@@ -93,24 +99,26 @@ public class ClientLoginWindow extends JFrame {
 		panelSouth = new JPanel();
 		contentPane.add(panelSouth, BorderLayout.SOUTH);
 		
-		btnLogin = new JButton("LOG IN");
-		btnRegister = new JButton("REGISTER");
+		btnLogin = new JButton(InternationalizationText.getString("login"));
+		btnRegister = new JButton(InternationalizationText.getString("register"));
+		changeLang = new JButton(InternationalizationText.getString("changelang"));
 		
 		panelSouth.add(btnLogin);
 		panelSouth.add(btnRegister);
+		panelSouth.add(changeLang);
 		
 		panelCentre = new JPanel();
 		contentPane.add(panelCentre, BorderLayout.CENTER);
 		panelCentre.setLayout(new GridLayout(0, 2, 0, 0));
 		
-		lblNick = new JLabel("Insert your username:");
+		lblNick = new JLabel(InternationalizationText.getString("login_user"));
 		panelCentre.add(lblNick);
 		
 		textNick = new JTextField();
 		panelCentre.add(textNick);
 		textNick.setColumns(10);
 		
-		lblPass = new JLabel("Insert your password:");
+		lblPass = new JLabel(InternationalizationText.getString("login_pass"));
 		panelCentre.add(lblPass);
 		
 		textPass = new JPasswordField();
@@ -136,10 +144,10 @@ public class ClientLoginWindow extends JFrame {
 		                users = response.readEntity(listType);
 		                
 		            } else {
-		                System.out.format("Error obtaining user list. %s%n", response);
+		                logger.info("Error obtaining user list. %s%n", response);
 		            }
 		        } catch (ProcessingException o) {
-		            System.out.format("Error obtaining user list. %s%n", o.getMessage());
+		           	logger.info("Error obtaining user list. %s%n", o.getMessage());
 		        }
 		        
 		        user = UserDAO.getInstance().find(textNick.getText(), User.ColumnsNameUser.username);
@@ -152,7 +160,6 @@ public class ClientLoginWindow extends JFrame {
 		        	{
 		        		validador = true;
 		        		if(i.getType()==typeUser.ADMIN) {
-		        			System.out.println("Trueee");
 		        			isAdmin = true;
 		        		}
   		
@@ -164,7 +171,7 @@ public class ClientLoginWindow extends JFrame {
 		        
 		        if(validador == true)
 		        {
-		        	System.out.println("Bienvenido " + user.getUsername());
+		        	logger.info("Welcome " + user.getUsername());
 	        		Thread registerWindow = new RegisterWindowThread();
 	        		if(isAdmin) {
 	        			op = 0;
@@ -182,7 +189,7 @@ public class ClientLoginWindow extends JFrame {
 		        }
 		        else
 		        {
-		        	System.out.println("User or password are incorrect. Please Try Again.");
+		        	logger.info("User or password are incorrect. Please Try Again.");
 		        }
         		
 		        
@@ -203,6 +210,20 @@ public class ClientLoginWindow extends JFrame {
 			}
 		});
 		setVisible(true);
+		
+		changeLang.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(InternationalizationText.language == "en") {
+					InternationalizationText.setLanguage("es");
+				}else {
+					InternationalizationText.setLanguage("en");
+				}
+				new ClientLoginWindow();
+				dispose();
+			}
+		});
 	}
 	
 	class RegisterWindowThread extends Thread{

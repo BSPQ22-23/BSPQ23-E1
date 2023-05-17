@@ -25,8 +25,13 @@ import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import javax.ws.rs.client.*;
 
+import com.videoclub.Internationalization.InternationalizationText;
 import com.videoclub.client.gui.ClientMenuWindow.LogInWindow;
 import com.videoclub.encrypt.PasswordEncrypt;
 import com.videoclub.pojo.User;
@@ -47,6 +52,7 @@ public class ClientInfoWindow extends JFrame {
 	private JTextField textPass;
 	private JButton btnSave;
 	private JButton btnBack;
+	protected static final Logger logger = LogManager.getLogger();
 	//private User userWindow;
 	private static final String SERVER_ENDPOINT = "http://localhost:8080/webapi";
     private static final String USERS_RESOURCE ="users";
@@ -68,9 +74,9 @@ public class ClientInfoWindow extends JFrame {
 		panelSouth = new JPanel();
 		contentPane.add(panelSouth, BorderLayout.SOUTH);
 		
-		btnSave = new JButton("SAVE");
+		btnSave = new JButton(InternationalizationText.getString("save"));
 		panelSouth.add(btnSave);
-		btnBack = new JButton("BACK");
+		btnBack = new JButton(InternationalizationText.getString("back"));
 		panelSouth.add(btnBack);
 		
 		panelCentre = new JPanel();
@@ -91,7 +97,7 @@ public class ClientInfoWindow extends JFrame {
 		
 		//TODO get user and show act pass??
 		
-		lblNewPass = new JLabel("New password:");
+		lblNewPass = new JLabel(InternationalizationText.getString("new_pass"));
 		panelCentre.add(lblNewPass);
 		
 		textPass = new JPasswordField();
@@ -108,7 +114,7 @@ public class ClientInfoWindow extends JFrame {
 				
 				
 		        //TODO check if it works
-				int choice = JOptionPane.showConfirmDialog(null, "Are you sure you want change your password?", "Confirmation", JOptionPane.YES_NO_OPTION);
+				int choice = JOptionPane.showConfirmDialog(null, InternationalizationText.getString("sure_comprob"), "Confirmation", JOptionPane.YES_NO_OPTION);
 				
 				if(choice==JOptionPane.YES_OPTION){
 					
@@ -125,9 +131,9 @@ public class ClientInfoWindow extends JFrame {
 			            );
 
 				if (response.getStatus() == Response.Status.OK.getStatusCode()) {
-				    System.out.println("User updated successfully.");
+				    logger.info(InternationalizationText.getString("user_upd_correct"));
 				} else {
-				    System.out.println("Failed to update user.");
+					logger.info(InternationalizationText.getString("user_upd_fail"));
 				}
 
 				response.close();

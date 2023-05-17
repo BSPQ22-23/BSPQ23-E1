@@ -20,6 +20,7 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
+import com.videoclub.Internationalization.InternationalizationText;
 import com.videoclub.client.gui.MoviesWindow.menuWindow;
 import com.videoclub.dao.MovieDAO;
 import com.videoclub.dao.RentalDAO;
@@ -66,7 +67,7 @@ public class MyRentalsWindow extends JFrame {
 		
 		this.user = user;
 		
-		this.setTitle("DeustoVideoClub - My history of rentals");
+		this.setTitle(InternationalizationText.getString("deusto_rental_hist"));
 		this.setSize(900, 600);
 		this.setLocation( 420, 100 );
 		this.setVisible( true );
@@ -98,7 +99,7 @@ public class MyRentalsWindow extends JFrame {
 		panelCenter.add(scrollRentals);
 		cont.add(panelCenter, BorderLayout.CENTER);
 		
-		btnBack = new JButton("BACK");
+		btnBack = new JButton(InternationalizationText.getString("back"));
 		panelSouth.add(btnBack);
 		panelSouth.setBackground(new Color(214, 234, 248));
 		cont.add(panelSouth, BorderLayout.SOUTH);

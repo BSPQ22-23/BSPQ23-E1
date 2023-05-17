@@ -16,6 +16,7 @@ import javax.ws.rs.core.Response;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.videoclub.Internationalization.InternationalizationText;
 import com.videoclub.dao.MovieDAO;
 import com.videoclub.pojo.Movie;
 
@@ -28,7 +29,7 @@ public class MovieResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Movie> getMovies(){
 		List<Movie> movies = MovieDAO.getInstance().getAll(Movie.class);
-		logger.info(movies);
+		logger.info(InternationalizationText.getString("retrieve_movies_db")+movies);
 		return movies;
 	}
 	
@@ -37,7 +38,7 @@ public class MovieResource {
     @Produces(MediaType.APPLICATION_JSON)
 	public Response addMovie(Movie movie) {
 		MovieDAO.getInstance().save(movie);
-		logger.info("Movie:"+movie.getTitle()+" added.");
+		logger.info(movie.getTitle()+" "+InternationalizationText.getString("add_db_movie"));
 		return Response.ok(new Movie(movie.getTitle())).build();
 		
 	}
@@ -52,7 +53,7 @@ public class MovieResource {
     	
         if (hasTheMovie) {
         	MovieDAO.getInstance().delete(movieToDelete);
-            logger.info("Deleting Movie: {} ...", title);
+            logger.info(InternationalizationText.getString("remove_db_movie")+title);
             return Response.status(Response.Status.OK).build();
         } else {
         	logger.info("No movies found with -"+title+"- title");

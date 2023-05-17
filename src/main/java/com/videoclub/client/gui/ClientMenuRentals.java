@@ -15,6 +15,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import com.videoclub.Internationalization.InternationalizationText;
+
 
 
 public class ClientMenuRentals extends JFrame {
@@ -64,7 +66,7 @@ public class ClientMenuRentals extends JFrame {
 		panelSouth = new JPanel();
 		contentPane.add(panelSouth, BorderLayout.SOUTH);
 		
-		btnBack = new JButton("BACK");
+		btnBack = new JButton(InternationalizationText.getString("back"));
 		panelSouth.add(btnBack);
 		
 		panelCentre = new JPanel();

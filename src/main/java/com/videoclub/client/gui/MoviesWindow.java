@@ -3,7 +3,6 @@ package com.videoclub.client.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,27 +14,23 @@ import java.util.Vector;
 
 import javax.mail.MessagingException;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import com.itextpdf.text.DocumentException;
+import com.videoclub.Internationalization.InternationalizationText;
 import com.videoclub.dao.MovieDAO;
 import com.videoclub.dao.RentalDAO;
-import com.videoclub.dao.UserDAO;
+import com.videoclub.pojo.Movie;
+import com.videoclub.pojo.Rental;
 import com.videoclub.pojo.User;
 import com.videoclub.pojo.typeUser;
 import com.videoclub.receipt.Receipt;
-import com.videoclub.pojo.Movie;
-import com.videoclub.pojo.Rental;
-
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
 public class MoviesWindow extends JFrame {
 
@@ -84,7 +79,7 @@ public class MoviesWindow extends JFrame {
 		
 		this.user = user;
 		
-		this.setTitle("DeustoVideoClub - Movies Catalog");
+		this.setTitle(InternationalizationText.getString("deusto_movie_cat"));
 		this.setSize(900, 600);
 		this.setLocation( 420, 100 );
 		this.setVisible( true );
@@ -118,9 +113,9 @@ public class MoviesWindow extends JFrame {
 		panelCenter.add(scrollMovies);
 		cont.add(panelCenter, BorderLayout.CENTER);
 		
-		btnRent = new JButton("Rent");
+		btnRent = new JButton(InternationalizationText.getString("rent"));
 		panelSouth.add(btnRent);
-		btnBack = new JButton("BACK");
+		btnBack = new JButton(InternationalizationText.getString("back"));
 		panelSouth.add(btnBack);
 		panelSouth.setBackground(new Color(214, 234, 248));
 		cont.add(panelSouth, BorderLayout.SOUTH);

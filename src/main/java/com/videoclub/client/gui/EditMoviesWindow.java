@@ -165,7 +165,6 @@ public class EditMoviesWindow extends JFrame {
 					m.setDirector(director.getText());
 					m.setRentalPrice(Double.parseDouble(rentalPrice.getText()));
 					MovieDAO.getInstance().save(m);
-					System.out.println("CORRECT");
 				}
 				else
 				{

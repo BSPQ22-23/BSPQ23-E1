@@ -27,7 +27,11 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.videoclub.UserResource;
+import com.videoclub.Internationalization.InternationalizationText;
 import com.videoclub.encrypt.PasswordEncrypt;
 import com.videoclub.pojo.User;
 import com.videoclub.pojo.typeUser;
@@ -59,6 +63,7 @@ public class ClientSignUpWindow extends JFrame {
 	private JButton btnLogin;
 	private static final String SERVER_ENDPOINT = "http://localhost:8080/webapi";
     private static final String USERS_RESOURCE ="users";
+    protected static final Logger logger = LogManager.getLogger();
     private int n = 1;
     Client client = ClientBuilder.newClient();
     final WebTarget appTarget = client.target(SERVER_ENDPOINT);
@@ -93,48 +98,48 @@ public class ClientSignUpWindow extends JFrame {
 		panelSouth = new JPanel();
 		contentPane.add(panelSouth, BorderLayout.SOUTH);
 		
-		btnRegister = new JButton("SIGN UP");
+		btnRegister = new JButton(InternationalizationText.getString("signup"));
 		panelSouth.add(btnRegister);
 		
-		lblLogin = new JLabel("Already signed up?");
+		lblLogin = new JLabel(InternationalizationText.getString("are_you_logged"));
 		panelSouth.add(lblLogin);
 		
-		btnLogin = new JButton("LOG IN");
+		btnLogin = new JButton(InternationalizationText.getString("login"));
 		panelSouth.add(btnLogin);
 		
 		panelCentre = new JPanel();
 		contentPane.add(panelCentre, BorderLayout.CENTER);
 		panelCentre.setLayout(new GridLayout(0, 2, 0, 0));
 		
-		lblName = new JLabel("Insert your Name:");
+		lblName = new JLabel(InternationalizationText.getString("register_name"));
 		panelCentre.add(lblName);
 		
 		textName = new JTextField();
 		panelCentre.add(textName);
 		textName.setColumns(10);
 		
-		lblSurname = new JLabel("Insert your Surname:");
+		lblSurname = new JLabel(InternationalizationText.getString("register_surname"));
 		panelCentre.add(lblSurname);
 		
 		textSurname = new JTextField();
 		panelCentre.add(textSurname);
 		textSurname.setColumns(10);
 		
-		lblUsername = new JLabel("Insert your username:");
+		lblUsername = new JLabel(InternationalizationText.getString("register_user"));
 		panelCentre.add(lblUsername);
 		
 		textUsername = new JTextField();
 		panelCentre.add(textUsername);
 		textUsername.setColumns(10);
 		
-		lblPassword = new JLabel("Insert your password:");
+		lblPassword = new JLabel(InternationalizationText.getString("register_pass"));
 		panelCentre.add(lblPassword);
 		
 		textPassword = new JTextField();
 		panelCentre.add(textPassword);
 		textPassword.setColumns(10);
 		
-		lblMail = new JLabel("Insert your email:");
+		lblMail = new JLabel(InternationalizationText.getString("register_email"));
 		panelCentre.add(lblMail);
 		
 		textMail = new JTextField();
@@ -163,12 +168,12 @@ public class ClientSignUpWindow extends JFrame {
 		                // the response is a generic type (a List<User>)
 		                GenericType<List<User>> listType = new GenericType<List<User>>(){};
 		                users = response.readEntity(listType);
-		                System.out.println(users);
+		                logger.info(users);
 		            } else {
-		                System.out.format("Error obtaining user list. %s%n", response);
+		                logger.info("Error obtaining user list. %s%n", response);
 		            }
 		        } catch (ProcessingException o) {
-		            System.out.format("Error obtaining user list. %s%n", o.getMessage());
+		            logger.info("Error obtaining user list. %s%n", o.getMessage());
 		        }
 		        
 		        for (User i : users) {
@@ -194,12 +199,12 @@ public class ClientSignUpWindow extends JFrame {
 		            if (response.getStatusInfo().toEnum() == Status.OK) {
 		                // obtain the response data (contains a user with the new code)
 		                User userCode = response.readEntity(User.class);
-		                System.out.format("User registered with code %d%n",userCode.getCode());
+		                logger.info("User registered with code %d%n",userCode.getCode());
 		            } else {
-		                System.out.format("Error posting a user list. %s%n", response);
+		                logger.error("Error posting a user list. %s%n", response);
 		            }
 		        } catch (ProcessingException j) {
-		            System.out.format("Error posting a new user. %s%n", j.getMessage());
+		            logger.error("Error posting a new user. %s%n", j.getMessage());
 		        }
 		        n++;
 		        
@@ -213,7 +218,7 @@ public class ClientSignUpWindow extends JFrame {
 		        	}
 				else
 				{
-					System.out.println("ERROR");
+					logger.error("ERROR");
 				}
 		        }	
 			}

@@ -16,6 +16,7 @@ import javax.ws.rs.core.Response;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.videoclub.Internationalization.InternationalizationText;
 import com.videoclub.dao.RentalDAO;
 import com.videoclub.pojo.Rental;
 
@@ -28,7 +29,7 @@ public class RentalResource {
     @Produces(MediaType.APPLICATION_JSON)
     public List<Rental> getRentals() {
     	List<Rental> rentals = RentalDAO.getInstance().getAll();
-    	logger.info("List of Rentals: {}", rentals);
+    	logger.info(InternationalizationText.getString("retrieve_rentals_db")+ rentals);
 		return rentals;
     }
 
@@ -37,7 +38,7 @@ public class RentalResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response addRental(Rental rental) {
         RentalDAO.getInstance().save(rental);
-        logger.info("Add a new rental succesfully {} ...", rental.getId());
+        logger.info(rental+InternationalizationText.getString("add_db_rental"));
         return Response.ok(rental).build();
     }
 
@@ -51,7 +52,7 @@ public class RentalResource {
     	
         if (hasTheRental) {
         	RentalDAO.getInstance().delete(rentalToDelete);
-            logger.info("Deleting rental {} ...", code);
+            logger.info(InternationalizationText.getString("remove_db_rental")+ code);
             return Response.status(Response.Status.OK).build();
         } else {
             return Response.status(Response.Status.NOT_FOUND).build();

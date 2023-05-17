@@ -43,6 +43,10 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.videoclub.Internationalization.InternationalizationText;
 import com.videoclub.client.gui.AdminMenuWindow.LogInWindow;
 import com.videoclub.dao.MovieDAO;
 import com.videoclub.encrypt.PasswordEncrypt;
@@ -66,6 +70,8 @@ public class NewMovieWindow extends JFrame {
 	private JTextField empty;
 	
 	private JLabel text;
+
+	protected static final Logger logger = LogManager.getLogger();
 	
 	private static final String SERVER_ENDPOINT = "http://localhost:8080/webapi";
     private static final String MOVIES_RESOURCE ="movies";
@@ -78,7 +84,7 @@ public class NewMovieWindow extends JFrame {
 
 	{
 		
-		this.setTitle("DeustoVideoclubClub - New movie");
+		this.setTitle(InternationalizationText.getString("deusto_ne_movie"));
 		this.setSize(900, 600);
 		this.setLocation( 420, 100 );
 		this.setVisible( true );
@@ -102,7 +108,7 @@ public class NewMovieWindow extends JFrame {
 		empty = new JTextField();
 		empty.setVisible(false);
 		
-		text = new JLabel("Complete the following fields to introduce a new Movie");
+		text = new JLabel(InternationalizationText.getString("complete_field"));
 		text.setForeground(Color.white);
 		
 		JPanel panelArriba = new JPanel();
@@ -118,12 +124,12 @@ public class NewMovieWindow extends JFrame {
 		panelCentro.setLayout(new GridLayout(8,2));
 		posicionaLinea(panelCentro,"",empty);
 		posicionaLinea(panelCentro,"",empty);
-		posicionaLinea(panelCentro,"Title: ",title);
-		posicionaLinea(panelCentro,"Genre: ",genre);
-		posicionaLinea(panelCentro,"Duration: ",duration);
-		posicionaLinea(panelCentro,"Year: ",year);
-		posicionaLinea(panelCentro,"Director: ",director);
-		posicionaLinea(panelCentro,"RentalPrice: ",rentalPrice);
+		posicionaLinea(panelCentro,InternationalizationText.getString("title"),title);
+		posicionaLinea(panelCentro,InternationalizationText.getString("genre"),genre);
+		posicionaLinea(panelCentro,InternationalizationText.getString("duration"),duration);
+		posicionaLinea(panelCentro,InternationalizationText.getString("year"),year);
+		posicionaLinea(panelCentro,InternationalizationText.getString("director"),director);
+		posicionaLinea(panelCentro,InternationalizationText.getString("price"),rentalPrice);
 		posicionaLinea(panelCentro,"",empty);
 		posicionaLinea(panelCentro,"",empty);
 		posicionaLinea(panelCentro,"",empty);
@@ -148,31 +154,27 @@ public class NewMovieWindow extends JFrame {
 				if(!title.getText().equals("") && !genre.getText().equals("") && !duration.getText().equals("") && !year.getText().equals("") && !director.getText().equals("") && !rentalPrice.getText().equals(""))
 				{
 					try {
-						System.out.println("entro1");
 						Movie m = new Movie(title.getText(),genre.getText(), Integer.parseInt(duration.getText()), Integer.parseInt(year.getText()),director.getText(), Double.parseDouble(rentalPrice.getText()));
 			            Response response = appTarget.path(MOVIES_RESOURCE)
 			                .request(MediaType.APPLICATION_JSON)
 			                .post(Entity.entity(m, MediaType.APPLICATION_JSON)
-			                		
 			            );
 
 			            // check if the response was ok
 			            if (response.getStatusInfo().toEnum() == Status.OK) {
 			                // obtain the response data (contains a user with the new code)
 			                Movie userCode = response.readEntity(Movie.class);
-			                System.out.format("Movie registered with title %s%n",userCode.getTitle());
+			                logger.info("Movie registered with title %s%n",userCode.getTitle());
 			            } else {
-			                System.out.format("Error posting a movie list. %s%n", response);
+			                logger.error("Error posting a movie list. %s%n", response);
 			            }
 			        } catch (ProcessingException j) {
-			            System.out.format("Error posting a new movie. %s%n", j.getMessage());
+			            logger.error("Error posting a new movie. %s%n", j.getMessage());
 			        }
-
-
 				}
 				else
 				{
-					System.out.println("You have to complete all the fields");
+					logger.info("You have to complete all the fields");
 				}			
 			}
 		});

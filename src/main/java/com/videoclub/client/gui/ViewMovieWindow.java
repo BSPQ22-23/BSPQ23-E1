@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.videoclub.Internationalization.InternationalizationText;
 import com.videoclub.client.gui.MoviesWindow.menuWindow;
 import com.videoclub.dao.RentalDAO;
 import com.videoclub.pojo.Movie;
@@ -40,7 +41,7 @@ public class ViewMovieWindow extends JFrame{
 		
 		this.user = user;
 		
-		this.setTitle("DeustoVideoClub - My history of rentals");
+		this.setTitle(InternationalizationText.getString("deusto_rental_hist"));
 		this.setSize(900, 300);
 		this.setLocation( 420, 100 );
 		this.setVisible( true );
@@ -68,27 +69,27 @@ public class ViewMovieWindow extends JFrame{
 		
 		
 		panelCenter.setLayout(new GridLayout(5,1));
-		movieTitle = new JLabel("Title: " + m.getTitle());
+		movieTitle = new JLabel(InternationalizationText.getString("title")+": " + m.getTitle());
 		movieTitle.setHorizontalAlignment(JLabel.CENTER);
 		panelCenter.add(movieTitle);
-		genre = new JLabel("Genre: " + m.getGenre());
+		genre = new JLabel(InternationalizationText.getString("genre")+": " + m.getGenre());
 		genre.setHorizontalAlignment(JLabel.CENTER);
 		panelCenter.add(genre);
-		duration = new JLabel("Duration: " + m.getDuration());
+		duration = new JLabel(InternationalizationText.getString("duration")+": " + m.getDuration());
 		duration.setHorizontalAlignment(JLabel.CENTER);
 		panelCenter.add(duration);
-		director = new JLabel("Director: " + m.getDirector());
+		director = new JLabel(InternationalizationText.getString("director")+": " + m.getDirector());
 		director.setHorizontalAlignment(JLabel.CENTER);
 		panelCenter.add(director);
-		rentalPrice = new JLabel("Rental price: " + m.getRentalPrice());
+		rentalPrice = new JLabel(InternationalizationText.getString("price")+": " + m.getRentalPrice());
 		rentalPrice.setHorizontalAlignment(JLabel.CENTER);
 		panelCenter.add(rentalPrice);
 		panelCenter.setBackground(new Color(214, 234, 248));
 		cont.add(panelCenter,BorderLayout.CENTER);
 		
-		btnRent = new JButton("Rent");
+		btnRent = new JButton(InternationalizationText.getString("rent"));
 		panelSouth.add(btnRent);
-		btnBack = new JButton("BACK");
+		btnBack = new JButton(InternationalizationText.getString("back"));
 		panelSouth.add(btnBack);
 		cont.add(panelSouth, BorderLayout.SOUTH);
 		

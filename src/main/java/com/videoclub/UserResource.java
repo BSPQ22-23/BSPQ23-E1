@@ -14,15 +14,21 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
 
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
+import com.videoclub.Internationalization.InternationalizationText;
 import com.videoclub.dao.UserDAO;
 import com.videoclub.pojo.User;
 
+
 @Path("users")
 public class UserResource {
+	private static final String SYSTEM_MESSAGES = "SystemMessages";
+	ResourceBundle resourceBundle = ResourceBundle.getBundle(SYSTEM_MESSAGES, Locale.getDefault());
 
     protected static final Logger logger = LogManager.getLogger();
     //private static List<User> users;
@@ -31,7 +37,7 @@ public class UserResource {
     @Produces(MediaType.APPLICATION_JSON)
     public List<User> getUsers() {
     	List<User> users = UserDAO.getInstance().getAll(User.class);
-    	logger.info("List of users: "+users);
+    	logger.info(InternationalizationText.getString("retrieve_users_db")+users);
 		return users;
     }
     
@@ -40,7 +46,7 @@ public class UserResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response addUser(User user) {
     	UserDAO.getInstance().save(user);
-        logger.info(user+" added.");
+        logger.info(user+" "+InternationalizationText.getString("add_db_user"));
         // return a response containing a user with only the code for the new user
         return Response.ok(new User(user.getCode())).build();
     }
@@ -54,7 +60,7 @@ public class UserResource {
     	
         if (hasTheUser) {
         	UserDAO.getInstance().delete(userToDelete);
-            logger.info("Deleting user {} ...", code);
+            logger.info(InternationalizationText.getString("remove_db_user")+code);
             return Response.status(Response.Status.OK).build();
         } else {
             return Response.status(Response.Status.NOT_FOUND).build();

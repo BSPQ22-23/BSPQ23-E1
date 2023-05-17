@@ -13,6 +13,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.videoclub.Internationalization.InternationalizationText;
 import com.videoclub.client.gui.ClientMenuWindow.LogInWindow;
 import com.videoclub.client.gui.ClientMenuWindow.moviesCatalogWindow;
 import com.videoclub.pojo.User;
@@ -39,6 +43,7 @@ public class AdminMenuWindow extends JFrame{
 	private EditMoviesWindow editMoviesWindow;
 	private NewMovieWindow newMovieWindow;
 	private User user;
+	protected static final Logger logger = LogManager.getLogger();
 	
 	public AdminMenuWindow(User user) {
 		
@@ -57,34 +62,34 @@ public class AdminMenuWindow extends JFrame{
 		//Creamos los componentes con sus especificaciones
 
 		
-		menuUsuarios = new JButton("Manage videoclub users");
+		menuUsuarios = new JButton(InternationalizationText.getString("manage_users"));
 		menuUsuarios.setFont(new Font("Arial", Font.ITALIC, 25));
 		menuUsuarios.setForeground(Color.darkGray);
 		
-		menuBuscar = new JButton("Search...");
+		menuBuscar = new JButton(InternationalizationText.getString("search"));
 		menuBuscar.setFont(new Font("Arial", Font.ITALIC, 25));
 		menuBuscar.setForeground(Color.darkGray);
 		
-		menuCambiarUsuario = new JButton("Log out");
+		menuCambiarUsuario = new JButton(InternationalizationText.getString("log_out"));
 		menuCambiarUsuario.setFont(new Font("Arial", Font.ITALIC, 25));
 		menuCambiarUsuario.setForeground(Color.darkGray);
 		
-		menuEditarPeli = new JButton("Update catalog");
+		menuEditarPeli = new JButton(InternationalizationText.getString("update_catalog"));
 		menuEditarPeli.setFont(new Font("Arial", Font.ITALIC, 25));
 		menuEditarPeli.setForeground(Color.darkGray);
 		
-		menuCatalogoPelicula = new JButton("All movies");
+		menuCatalogoPelicula = new JButton(InternationalizationText.getString("movies_total"));
 		menuCatalogoPelicula.setFont(new Font("Arial", Font.ITALIC, 25));
 		menuCatalogoPelicula.setForeground(Color.darkGray);
 		
-		menuAnyadirPeli = new JButton("Add new movie");
+		menuAnyadirPeli = new JButton(InternationalizationText.getString("new_movie"));
 		menuAnyadirPeli.setFont(new Font("Arial", Font.ITALIC, 25));
 		menuAnyadirPeli.setForeground(Color.darkGray);
 		
-		menuDeustoFlix = new JLabel("DEUSTO VIDEOCLUB - Admin Window");
+		menuDeustoFlix = new JLabel(InternationalizationText.getString("deusto_admin_win"));
 		menuDeustoFlix.setForeground(Color.white);
 		
-		menuRecentMovies = new JButton("Show users rental history");
+		menuRecentMovies = new JButton(InternationalizationText.getString("show_rental_history"));
 		menuRecentMovies.setFont(new Font("Arial", Font.ITALIC, 25));
 		menuRecentMovies.setForeground(Color.darkGray);
 		
