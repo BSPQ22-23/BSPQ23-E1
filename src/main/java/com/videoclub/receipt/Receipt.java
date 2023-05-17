@@ -131,10 +131,10 @@ public class Receipt {
 	}
 	
 	
-	/*
+	
 	  public static void sendmail(String comp,String nom) throws AddressException, MessagingException {
 	 
-		String mail="videoclub.deusto@gmail.com";//EL CORREO ESTÁ  QUITADO PARA QUE NO SE VEA EN EL GITHUB
+		String mail=""; //mail and password are empty
 		String pass="";//LA CONTRASEÑA DEL CORREO ESTÁ QUITADA PARA QUE NO SE VEA EN EL GITHUB
 		
 		
@@ -176,15 +176,12 @@ public class Receipt {
 		Transport t = s.getTransport("smtp");
 		t.connect(mail, pass);
 		t.sendMessage(message, message.getAllRecipients());
-		
-		
-		
 		t.close();
 		
 		JOptionPane.showMessageDialog(null, "message succesfully sent","MESSAGE SENT",JOptionPane.INFORMATION_MESSAGE);
 		
 		
 	}
-	*/
+	
 	
 }
