@@ -7,11 +7,13 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 
+import javax.mail.MessagingException;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -22,11 +24,13 @@ import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import com.itextpdf.text.DocumentException;
 import com.videoclub.dao.MovieDAO;
 import com.videoclub.dao.RentalDAO;
 import com.videoclub.dao.UserDAO;
 import com.videoclub.pojo.User;
 import com.videoclub.pojo.typeUser;
+import com.videoclub.receipt.Receipt;
 import com.videoclub.pojo.Movie;
 import com.videoclub.pojo.Rental;
 
@@ -138,6 +142,12 @@ public class MoviesWindow extends JFrame {
 				Movie selectedMovie = listMovies.get(row);
 				Rental r = new Rental(selectedMovie,user,new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()));
 				RentalDAO.getInstance().save(r);
+				try {
+					Receipt.generatepdf(user, r);
+				} catch (DocumentException | IOException | MessagingException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		}
