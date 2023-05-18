@@ -96,8 +96,9 @@ public class Receipt {
 	    
 	    table.addCell("Rental Nº");
 	    table.addCell(String.valueOf(r.getId()));
+	   
 	    
-	    // Adding Movie details
+	    //TODO check why GetMovie() returns null 
 	  /*  table.addCell("Movie Title");
 	    table.addCell(r.getMovie().getTitle());
 
@@ -126,6 +127,7 @@ public class Receipt {
 	    table.addCell("Customer Email");
 	    table.addCell(u.getEmail());
 
+	    //TODO chech why rental date is null
 	    /*table.addCell("Rental Date");
 	    table.addCell(r.getRentalDate().toString());
 

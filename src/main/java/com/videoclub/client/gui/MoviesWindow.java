@@ -141,10 +141,8 @@ public class MoviesWindow extends JFrame {
 				try {
 					Receipt.generatepdf(user, r);
 				} catch (DocumentException | IOException | MessagingException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} catch (WriterException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
