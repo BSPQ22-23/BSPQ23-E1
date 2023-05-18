@@ -1,5 +1,6 @@
 package com.videoclub.receipt;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 
 import java.io.IOException;
@@ -21,6 +22,12 @@ import javax.mail.internet.MimeMultipart;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
+import com.google.inject.spi.Element;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Image;
@@ -36,7 +43,7 @@ public class Receipt {
 	}
 	
 	
-	public static void generatepdf(User u,Rental r) throws DocumentException, MalformedURLException, IOException, AddressException, MessagingException {
+	public static void generatepdf(User u,Rental r) throws DocumentException, MalformedURLException, IOException, AddressException, MessagingException, WriterException {
 		
 		 String[] opciones = new String[] {"Download", "By mail"};
 		 int resp = JOptionPane.showOptionDialog(null, "Select how you want to get the Receipt", "Options", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opciones, opciones[0]);
@@ -73,7 +80,7 @@ public class Receipt {
 	
 	}
 	
-	public static void createDocument( User u, Rental r,Document doc) throws DocumentException, MalformedURLException, IOException {
+	public static void createDocument( User u, Rental r,Document doc) throws DocumentException, MalformedURLException, IOException, WriterException {
 	
 
 	    doc.open();
@@ -126,7 +133,26 @@ public class Receipt {
 	    table.addCell(r.getReturnDate().toString());*/
 
 	    doc.add(table);
+	    // Add thank you note
+	    Paragraph thanks = new Paragraph("Thank you for renting our product. We appreciate your business.");
+	    doc.add(thanks);
 
+	    // Generate QR Code
+	    QRCodeWriter qrCodeWriter = new QRCodeWriter();
+	    String qrCodeText="https://www.deusto.es/es/inicio/estudia/estudios/grado/ingenieria-informatica1";
+	    BitMatrix bitMatrix = qrCodeWriter.encode(qrCodeText, BarcodeFormat.QR_CODE, 100, 100);
+	    ByteArrayOutputStream pngOutputStream = new ByteArrayOutputStream();
+	    MatrixToImageWriter.writeToStream(bitMatrix, "PNG", pngOutputStream);
+	    byte[] pngData = pngOutputStream.toByteArray();
+
+	    // Add QR code to PDF
+	    Image qrCode = Image.getInstance(pngData);
+	    qrCode.setAlignment(com.itextpdf.text.Element.ALIGN_CENTER);
+	    doc.add(qrCode);
+
+	    // Add redeem instruction
+	    Paragraph redeemInstruction = new Paragraph("Scan the above QR code to redeem your promotional offer in our physical location.");
+	    doc.add(redeemInstruction);
 	    doc.close();
 	}
 	
