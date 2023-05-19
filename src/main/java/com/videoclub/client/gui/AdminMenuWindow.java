@@ -21,13 +21,12 @@ import com.videoclub.client.gui.ClientMenuWindow.LogInWindow;
 import com.videoclub.client.gui.ClientMenuWindow.moviesCatalogWindow;
 import com.videoclub.pojo.User;
 
-
-
-
-public class AdminMenuWindow extends JFrame{
+/**
+ * GUI window for the admin menu.
+ */
+public class AdminMenuWindow extends JFrame {
 
 	private static final long serialVersionUID = -1757340437087937985L;
-	
 
 	private JButton menuUsuarios;
 	private JButton menuBuscar;
@@ -36,74 +35,77 @@ public class AdminMenuWindow extends JFrame{
 	private JButton menuCatalogoPelicula;
 	private JButton menuAnyadirPeli;
 	private JButton menuRecentMovies;
-	
+
 	private JLabel menuDeustoFlix;
-	
+
 	private MoviesWindow moviesWindow;
 	private EditMoviesWindow editMoviesWindow;
 	private NewMovieWindow newMovieWindow;
 	private User user;
 	protected static final Logger logger = LogManager.getLogger();
-	
+
+	/**
+	 * Creates an instance of AdminMenuWindow.
+	 *
+	 * @param user The logged-in user.
+	 */
 	public AdminMenuWindow(User user) {
-		
+
 		this.user = user;
-		
+
 		this.setTitle("DeustoVideoClub - Admin - Menu");
 		this.setSize(900, 600);
-		this.setLocation( 420, 100 );
-		this.setVisible( true );
+		this.setLocation(420, 100);
+		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
-		
-		//Creamos el contenedor donde vamos a colocar todo
-		Container cp = this.getContentPane();
-		
-		//Creamos los componentes con sus especificaciones
 
-		
+		// Create the container to hold everything
+		Container cp = this.getContentPane();
+
+		// Create components with their specifications
 		menuUsuarios = new JButton(InternationalizationText.getString("manage_users"));
 		menuUsuarios.setFont(new Font("Arial", Font.ITALIC, 25));
 		menuUsuarios.setForeground(Color.darkGray);
-		
+
 		menuBuscar = new JButton(InternationalizationText.getString("search"));
 		menuBuscar.setFont(new Font("Arial", Font.ITALIC, 25));
 		menuBuscar.setForeground(Color.darkGray);
-		
+
 		menuCambiarUsuario = new JButton(InternationalizationText.getString("log_out"));
 		menuCambiarUsuario.setFont(new Font("Arial", Font.ITALIC, 25));
 		menuCambiarUsuario.setForeground(Color.darkGray);
-		
+
 		menuEditarPeli = new JButton(InternationalizationText.getString("update_catalog"));
 		menuEditarPeli.setFont(new Font("Arial", Font.ITALIC, 25));
 		menuEditarPeli.setForeground(Color.darkGray);
-		
+
 		menuCatalogoPelicula = new JButton(InternationalizationText.getString("movies_total"));
 		menuCatalogoPelicula.setFont(new Font("Arial", Font.ITALIC, 25));
 		menuCatalogoPelicula.setForeground(Color.darkGray);
-		
+
 		menuAnyadirPeli = new JButton(InternationalizationText.getString("new_movie"));
 		menuAnyadirPeli.setFont(new Font("Arial", Font.ITALIC, 25));
 		menuAnyadirPeli.setForeground(Color.darkGray);
-		
+
 		menuDeustoFlix = new JLabel(InternationalizationText.getString("deusto_admin_win"));
 		menuDeustoFlix.setForeground(Color.white);
-		
+
 		menuRecentMovies = new JButton(InternationalizationText.getString("show_rental_history"));
 		menuRecentMovies.setFont(new Font("Arial", Font.ITALIC, 25));
 		menuRecentMovies.setForeground(Color.darkGray);
-		
-		//Creamos los paneles
+
+		// Create panels
 		JPanel panelArriba = new JPanel();
 		JPanel panelCentro = new JPanel();
-		
-		//Panel de Arriba
+
+		// Top Panel
 		panelArriba.setBackground(Color.red);
 		menuDeustoFlix.setFont(new Font("Arial", Font.BOLD, 16));
 		panelArriba.add(menuDeustoFlix);
 		cp.add(panelArriba, BorderLayout.NORTH);
-		
-		//Panel Central
+
+		// Center Panel
 		panelCentro.setLayout(new GridLayout(8, 2));
 		panelCentro.setBackground(new Color(214, 234, 248));
 		panelCentro.add(new JLabel());
@@ -120,84 +122,91 @@ public class AdminMenuWindow extends JFrame{
 		panelCentro.add(new JLabel());
 		panelCentro.add(new JLabel());
 		panelCentro.add(new JLabel());
-		panelCentro.add(new JLabel());	
+		panelCentro.add(new JLabel());
 		panelCentro.add(menuCambiarUsuario);
-		
+
 		cp.add(panelCentro, BorderLayout.CENTER);
-		
-		//Creamos todos los ActionListeners de esta ventana
+
+		// Create ActionListeners for the window buttons
 		menuUsuarios.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						//TODO
-					}
-				});
-		
-		menuRecentMovies.addActionListener(new ActionListener() {
-			
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						//TODO
-					}
-				});
-		menuAnyadirPeli.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						Thread hilo = new movieWindow();
-						hilo.start();
-						dispose();
-						
-					}
-				});
-		menuCatalogoPelicula.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Thread hilo = new moviesCatalogWindow();
+				// TODO
+			}
+		});
+
+		menuRecentMovies.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO
+			}
+		});
+		menuAnyadirPeli.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Thread hilo = new movieWindow();
 				hilo.start();
 				dispose();
-				
+
 			}
 		});
-		menuEditarPeli.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						Thread hilo = new editWindow();
-						hilo.start();
-						dispose();
-						
-					}
-				});
-		menuBuscar.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						//TODO
-					}
-				});
-	
-		menuCambiarUsuario.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				 Thread hilo = new LogInWindow();
+		menuCatalogoPelicula.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Thread hilo = new moviesCatalogWindow();
 					hilo.start();
 					dispose();
-				
+
+				}
+			});
+		menuEditarPeli.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Thread hilo = new editWindow();
+				hilo.start();
+				dispose();
+
 			}
 		});
-		
+		menuBuscar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO
+			}
+		});
+
+		menuCambiarUsuario.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Thread hilo = new LogInWindow();
+				hilo.start();
+				dispose();
+
+			}
+		});
+
 	}
-	class LogInWindow extends Thread{
+
+	/**
+	 * Thread class for the login window.
+	 */
+	class LogInWindow extends Thread {
 		public void run() {
 			ClientLoginWindow.main(null);
 		}
 	}
-	
-	class moviesCatalogWindow extends Thread{
+
+	/**
+	 * Thread class for the movies catalog window.
+	 */
+	class moviesCatalogWindow extends Thread {
 		public void run() {
 			if (moviesWindow != null) {
 				moviesWindow.setVisible(true);
@@ -207,8 +216,11 @@ public class AdminMenuWindow extends JFrame{
 			}
 		}
 	}
-	
-	class movieWindow extends Thread{
+
+	/**
+	 * Thread class for the movie window.
+	 */
+	class movieWindow extends Thread {
 		public void run() {
 			if (newMovieWindow != null) {
 				newMovieWindow.setVisible(true);
@@ -218,28 +230,18 @@ public class AdminMenuWindow extends JFrame{
 			}
 		}
 	}
-	
-	class editWindow extends Thread{
+
+	/**
+	 * Thread class for the edit window.
+	 */
+	class editWindow extends Thread {
 		public void run() {
 			if (editMoviesWindow != null) {
 				editMoviesWindow.setVisible(true);
 			} else {
 				editMoviesWindow = new EditMoviesWindow(user);
 				editMoviesWindow.setVisible(true);
-			}		}
+			}
+		}
 	}
-	
-
-	
-	/*public static void main(String[] args) {
-		AdminMenuWindow ventana4 = new AdminMenuWindow();
-		ventana4.setTitle("DeustoVideoClub - Admin - Menu");
-		ventana4.setSize(900, 600);
-		ventana4.setLocation( 420, 100 );
-		ventana4.setVisible( true );
-		ventana4.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		ventana4.setResizable(false);
-	}*/
-	
-	
 }

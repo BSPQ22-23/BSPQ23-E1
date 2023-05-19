@@ -25,23 +25,31 @@ import com.videoclub.dao.UserDAO;
 import com.videoclub.pojo.User;
 
 
+/**
+ * Resource class for users.
+ * Handles CRUD operations for users.
+ */
 @Path("users")
 public class UserResource {
     protected static final Logger logger = LogManager.getLogger();
     //private static List<User> users;
-    
-    /** Function to retrieve users from the database. 
+
+    /**
+     * Retrieves users from the database.
+     * 
      * @return List of users.
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<User> getUsers() {
     	List<User> users = UserDAO.getInstance().getAll(User.class);
-    	logger.info(InternationalizationText.getString("retrieve_users_db")+users);
+    	logger.info(InternationalizationText.getString("retrieve_users_db") + users);
 		return users;
     }
-    
-    /**Function to add new user to the database.
+
+    /**
+     * Adds a new user to the database.
+     * 
      * @param user User to add.
      * @return OK response.
      */
@@ -50,32 +58,36 @@ public class UserResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response addUser(User user) {
     	UserDAO.getInstance().save(user);
-        logger.info(user+" "+InternationalizationText.getString("add_db_user"));
+        logger.info(user + " " + InternationalizationText.getString("add_db_user"));
         // return a response containing a user with only the code for the new user
         return Response.ok(new User(user.getCode())).build();
     }
 
-    /** Function to delete a movie of the database.
-     * @param code Code of the rental.
+    /**
+     * Deletes a user from the database.
+     * 
+     * @param code Code of the user.
      * @return Status response.
      */
     @DELETE
     @Path("/{code}")
     public Response deleteUser(@PathParam("code") String code) {
     	boolean hasTheUser = false;
-    	User userToDelete = UserDAO.getInstance().find(code,User.ColumnsNameUser.code);
-    	if(userToDelete!=null) hasTheUser=true;
+    	User userToDelete = UserDAO.getInstance().find(code, User.ColumnsNameUser.code);
+    	if(userToDelete != null)
+            hasTheUser = true;
     	
         if (hasTheUser) {
         	UserDAO.getInstance().delete(userToDelete);
-            logger.info(InternationalizationText.getString("remove_db_user")+code);
+            logger.info(InternationalizationText.getString("remove_db_user") + code);
             return Response.status(Response.Status.OK).build();
         } else {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
     }
     
-    /**@PUT
+    /*
+    @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response updateUser(User user) {
@@ -85,5 +97,5 @@ public class UserResource {
         
         return Response.status(Response.Status.OK).build();
     }
-*/
+    */
 }
