@@ -25,6 +25,9 @@ public class RentalResource {
 	protected static final Logger logger = LogManager.getLogger();
     //private static List<Rental> rentals = new ArrayList<>();
     
+    /** Function to retrieve rentals from the database.
+     * @return List of rentals.
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Rental> getRentals() {
@@ -33,6 +36,10 @@ public class RentalResource {
 		return rentals;
     }
 
+    /**Function to add new rental to the database.
+     * @param rental Rental to add.
+     * @return OK response.
+     */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -42,6 +49,10 @@ public class RentalResource {
         return Response.ok(rental).build();
     }
 
+    /**Function to delete a movie of the database.
+     * @param code Code of the rental.
+     * @return Status response.
+     */
     @DELETE
     @Path("/{code}")
     public Response deleteRental(@PathParam("code") int code) {

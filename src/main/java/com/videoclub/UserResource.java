@@ -27,12 +27,12 @@ import com.videoclub.pojo.User;
 
 @Path("users")
 public class UserResource {
-	private static final String SYSTEM_MESSAGES = "SystemMessages";
-	ResourceBundle resourceBundle = ResourceBundle.getBundle(SYSTEM_MESSAGES, Locale.getDefault());
-
     protected static final Logger logger = LogManager.getLogger();
     //private static List<User> users;
     
+    /** Function to retrieve users from the database. 
+     * @return List of users.
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<User> getUsers() {
@@ -41,6 +41,10 @@ public class UserResource {
 		return users;
     }
     
+    /**Function to add new user to the database.
+     * @param user User to add.
+     * @return OK response.
+     */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -51,6 +55,10 @@ public class UserResource {
         return Response.ok(new User(user.getCode())).build();
     }
 
+    /** Function to delete a movie of the database.
+     * @param code Code of the rental.
+     * @return Status response.
+     */
     @DELETE
     @Path("/{code}")
     public Response deleteUser(@PathParam("code") String code) {
