@@ -25,6 +25,9 @@ public class MovieResource {
 	protected static final Logger logger = LogManager.getLogger();
 	//private static List<Movie> movies;
 	
+	/** Function to retrieve movies from the database.
+	 * @return List of movies.
+	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Movie> getMovies(){
@@ -33,6 +36,10 @@ public class MovieResource {
 		return movies;
 	}
 	
+	/**Function to add new movie to the database.
+	 * @param movie Movie to add.
+	 * @return OK response. 
+	 */
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -43,6 +50,10 @@ public class MovieResource {
 		
 	}
 	
+	/**Function to delete a movie of the database.
+	 * @param title Title of the movie.
+	 * @return Status Response.
+	 */
 	@DELETE
     @Path("/{title}")
     public Response deleteMovie(@PathParam("title") String title) {
