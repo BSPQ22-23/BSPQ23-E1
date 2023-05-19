@@ -157,8 +157,6 @@ public class ClientMenuWindow extends JFrame{
 		
 		cp.add(panelCentro, BorderLayout.CENTER);
 		
-		//TEST
-		System.out.println(user);
 		
 		//Creamos todos los ActionListeners de esta ventana
 		
@@ -251,7 +249,7 @@ public class ClientMenuWindow extends JFrame{
 	public static int getCodUser() {
 		return CodUser;
 	}
-
+	
 	public static void setCodUser(int codUser) {
 		CodUser = codUser;
 	}

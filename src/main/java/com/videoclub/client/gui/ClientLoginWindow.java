@@ -23,15 +23,20 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.videoclub.Internationalization.InternationalizationText;
+import com.videoclub.dao.MovieDAO;
+import com.videoclub.dao.RentalDAO;
 import com.videoclub.dao.UserDAO;
 import com.videoclub.encrypt.PasswordEncrypt;
 import com.videoclub.pojo.ClassColumnNames;
+import com.videoclub.pojo.Movie;
+import com.videoclub.pojo.Rental;
 import com.videoclub.pojo.User;
 import com.videoclub.pojo.typeUser;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import java.util.List;
 
 import javax.swing.JLabel;
@@ -149,9 +154,10 @@ public class ClientLoginWindow extends JFrame {
 		        } catch (ProcessingException o) {
 		           	logger.info("Error obtaining user list. %s%n", o.getMessage());
 		        }
-		        
-		        user = UserDAO.getInstance().find(textNick.getText(), User.ColumnsNameUser.username);
-		        
+		       
+		        //user = UserDAO.getInstance().find(textNick.getText(), User.ColumnsNameUser.username);
+		        User user = new User(textNick.getText(),PasswordEncrypt.encryptPassword(textPass.getText()));
+		      
 		        if(users != null) {
 		        for (User i : users) {
 		        	
@@ -162,7 +168,7 @@ public class ClientLoginWindow extends JFrame {
 		        		if(i.getType()==typeUser.ADMIN) {
 		        			isAdmin = true;
 		        		}
-  		
+		        		user = i;
 		        	}
 		        	
 					
@@ -174,10 +180,13 @@ public class ClientLoginWindow extends JFrame {
 		        	logger.info("Welcome " + user.getUsername());
 	        		Thread registerWindow = new RegisterWindowThread();
 	        		if(isAdmin) {
-	        			op = 0;
+	        			Thread hilo = new adminMenuWindow();
+	        			hilo.start();
+	        			dispose();
 	        		}else {
-	        			op = 1;
-	        			
+	        			Thread hilo = new clientMenuWindow();
+	        			hilo.start();
+	        			dispose();
 	        		}
 	        
 	        		 
@@ -191,8 +200,6 @@ public class ClientLoginWindow extends JFrame {
 		        {
 		        	logger.info("User or password are incorrect. Please Try Again.");
 		        }
-        		
-		        
 		        
 			}
 		});
@@ -230,24 +237,108 @@ public class ClientLoginWindow extends JFrame {
 		public void run() {
 			if(op == 2){
 				ClientSignUpWindow.main(null);
-			}else if(op == 1){
-				//ClientMenuWindow.main(null); 
-				if (clientMenuWindow != null) {
-					clientMenuWindow.setVisible(true);
-				} else {
-					clientMenuWindow = new ClientMenuWindow(user);
-					clientMenuWindow.setVisible(true);
-				}
-			}else if(op==0){
-				if (adminMenuWindow != null) {
-					adminMenuWindow.setVisible(true);
-				} else {
-					adminMenuWindow = new AdminMenuWindow(user);
-					adminMenuWindow.setVisible(true);
-				}
 			}
 			
 		}
 	}
 
+	class adminMenuWindow extends Thread {
+		public void run() {
+			Client client = ClientBuilder.newClient();
+	        final WebTarget appTarget = client.target(SERVER_ENDPOINT);
+	        List<User> users = null;
+	        try {
+	            Response response = appTarget.path(USERS_RESOURCE)
+	                .request(MediaType.APPLICATION_JSON)
+	                .get();
+
+	            // check that the response was HTTP OK
+	            if (response.getStatusInfo().toEnum() == Status.OK) {
+	                // the response is a generic type (a List<User>)
+	                GenericType<List<User>> listType = new GenericType<List<User>>(){};
+	                users = response.readEntity(listType);
+	                
+	            } else {
+	                logger.info("Error obtaining user list. %s%n", response);
+	            }
+	        } catch (ProcessingException o) {
+	           	logger.info("Error obtaining user list. %s%n", o.getMessage());
+	        }
+	       
+	        //user = UserDAO.getInstance().find(textNick.getText(), User.ColumnsNameUser.username);
+	        User user = new User(textNick.getText(),PasswordEncrypt.encryptPassword(textPass.getText()));
+	      
+	        if(users != null) {
+	        for (User i : users) {
+	        	
+	        	
+	        	if(i.getUsername().equals(user.getUsername())  && i.getPassword().equals(user.getPassword()))
+	        	{
+	        		validador = true;
+	        		if(i.getType()==typeUser.ADMIN) {
+	        			isAdmin = true;
+	        		}
+	        		user = i;
+	        	}
+	        }	
+			}
+			if (adminMenuWindow != null) {
+				adminMenuWindow.setVisible(true);
+			} else {
+				adminMenuWindow = new AdminMenuWindow(user);
+				adminMenuWindow.setVisible(true);
+			}
+		}
+	}
+	
+	class clientMenuWindow extends Thread {
+		public void run() {
+			Client client = ClientBuilder.newClient();
+	        final WebTarget appTarget = client.target(SERVER_ENDPOINT);
+	        List<User> users = null;
+	        try {
+	            Response response = appTarget.path(USERS_RESOURCE)
+	                .request(MediaType.APPLICATION_JSON)
+	                .get();
+
+	            // check that the response was HTTP OK
+	            if (response.getStatusInfo().toEnum() == Status.OK) {
+	                // the response is a generic type (a List<User>)
+	                GenericType<List<User>> listType = new GenericType<List<User>>(){};
+	                users = response.readEntity(listType);
+	                
+	            } else {
+	                logger.info("Error obtaining user list. %s%n", response);
+	            }
+	        } catch (ProcessingException o) {
+	           	logger.info("Error obtaining user list. %s%n", o.getMessage());
+	        }
+	       
+	        //user = UserDAO.getInstance().find(textNick.getText(), User.ColumnsNameUser.username);
+	        User user = new User(textNick.getText(),PasswordEncrypt.encryptPassword(textPass.getText()));
+	      
+	        if(users != null) {
+	        for (User i : users) {
+	        	
+	        	
+	        	if(i.getUsername().equals(user.getUsername())  && i.getPassword().equals(user.getPassword()))
+	        	{
+	        		validador = true;
+	        		if(i.getType()==typeUser.ADMIN) {
+	        			isAdmin = true;
+	        		}
+	        		user = i;
+	        	}
+	        	
+				
+			}
+			if (clientMenuWindow != null) {
+				clientMenuWindow.setVisible(true);
+			} else {
+				clientMenuWindow = new ClientMenuWindow(user);
+				clientMenuWindow.setVisible(true);
+			}
+		}
+		}
+	}
 }

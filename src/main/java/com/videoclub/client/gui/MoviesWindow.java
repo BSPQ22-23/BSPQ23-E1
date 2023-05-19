@@ -56,25 +56,6 @@ public class MoviesWindow extends JFrame {
 	
 	private List<Movie> listMovies;
 	
-	
-	
-	/*public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MoviesWindow frame = new MoviesWindow();
-					frame.setTitle("DeustoVideoClub - Movies' Cartalog");
-					frame.setVisible(true);
-					frame.setSize(900, 600);
-					frame.setLocation( 420, 100 );
-					frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-					frame.setResizable(false);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
 
 	public MoviesWindow(User user) {
 		
@@ -121,10 +102,13 @@ public class MoviesWindow extends JFrame {
 		panelSouth.setBackground(new Color(214, 234, 248));
 		cont.add(panelSouth, BorderLayout.SOUTH);
 		
+		System.out.println(user.getType());
+		
 		btnBack.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
 				Thread hilo = new menuWindow();
 				hilo.start();
 				dispose();
@@ -187,6 +171,7 @@ public class MoviesWindow extends JFrame {
 	
 	class menuWindow extends Thread {
 		public void run() {
+			System.out.println(user.getType());
 			if (user.getType() == typeUser.ADMIN) {
 				if (adminMenuWindow != null) {
 					adminMenuWindow.setVisible(true);
