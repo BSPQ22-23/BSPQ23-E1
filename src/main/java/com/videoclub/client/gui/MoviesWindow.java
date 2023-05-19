@@ -22,6 +22,7 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
+import com.google.zxing.WriterException;
 import com.itextpdf.text.DocumentException;
 import com.videoclub.Internationalization.InternationalizationText;
 import com.videoclub.dao.MovieDAO;
@@ -140,7 +141,8 @@ public class MoviesWindow extends JFrame {
 				try {
 					Receipt.generatepdf(user, r);
 				} catch (DocumentException | IOException | MessagingException e1) {
-					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (WriterException e1) {
 					e1.printStackTrace();
 				}
 			}
