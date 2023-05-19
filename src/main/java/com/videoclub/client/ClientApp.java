@@ -15,11 +15,19 @@ import javax.ws.rs.core.Response.Status;
 import com.videoclub.pojo.User;
 import com.videoclub.pojo.typeUser;
 
+/**
+ * Client application for accessing the user resource.
+ */
 public class ClientApp {
 
     private static final String SERVER_ENDPOINT = "http://localhost:8080/webapi";
-    private static final String USERS_RESOURCE ="users";
+    private static final String USERS_RESOURCE = "users";
 
+    /**
+     * Main method to run the client application.
+     *
+     * @param args Command-line arguments.
+     */
     public static void main(String[] args) {
         // create the jersey client and configure the application endpoint
         Client client = ClientBuilder.newClient();
@@ -34,7 +42,7 @@ public class ClientApp {
             // check that the response was HTTP OK
             if (response.getStatusInfo().toEnum() == Status.OK) {
                 // the response is a generic type (a List<User>)
-                GenericType<List<User>> listType = new GenericType<List<User>>(){};
+                GenericType<List<User>> listType = new GenericType<List<User>>() {};
                 List<User> users = response.readEntity(listType);
                 System.out.println(users);
             } else {
@@ -46,11 +54,10 @@ public class ClientApp {
 
         // sending a POST with a new user
         try {
-            User user = new User("Steven", "Spielberg", "a", "b", "c",typeUser.CLIENT);
+            User user = new User("Steven", "Spielberg", "a", "b", "c", typeUser.CLIENT);
             Response response = appTarget.path(USERS_RESOURCE)
                 .request(MediaType.APPLICATION_JSON)
-                .post(Entity.entity(user, MediaType.APPLICATION_JSON)
-            );
+                .post(Entity.entity(user, MediaType.APPLICATION_JSON));
 
             // check if the response was ok
             if (response.getStatusInfo().toEnum() == Status.OK) {
