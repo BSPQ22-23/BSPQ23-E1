@@ -102,7 +102,6 @@ public class MoviesWindow extends JFrame {
 		panelSouth.setBackground(new Color(214, 234, 248));
 		cont.add(panelSouth, BorderLayout.SOUTH);
 		
-		System.out.println(user.getType());
 		
 		btnBack.addActionListener(new ActionListener() {
 			
@@ -171,7 +170,6 @@ public class MoviesWindow extends JFrame {
 	
 	class menuWindow extends Thread {
 		public void run() {
-			System.out.println(user.getType());
 			if (user.getType() == typeUser.ADMIN) {
 				if (adminMenuWindow != null) {
 					adminMenuWindow.setVisible(true);
