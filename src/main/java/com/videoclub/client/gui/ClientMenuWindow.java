@@ -13,7 +13,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 import com.videoclub.Internationalization.InternationalizationText;
 import com.videoclub.dao.MovieDAO;
@@ -37,7 +36,6 @@ public class ClientMenuWindow extends JFrame{
 	private JButton menuMyRentals;
 	private JButton menuFiltro;
 	private JButton menuCambiarUsuario;
-	private JButton menuCatalogoSeries;
 	private JButton menuCatalogoPelicula;
 	private JButton menuDatosUsuario;
 	private JButton menuHistorial;
@@ -89,10 +87,6 @@ public class ClientMenuWindow extends JFrame{
 		menuCambiarUsuario = new JButton(InternationalizationText.getString("log_out"));
 		menuCambiarUsuario.setFont(new Font("Arial", Font.ITALIC, 25));
 		menuCambiarUsuario.setForeground(Color.darkGray);
-		
-		menuCatalogoSeries = new JButton("Series' catalog");
-		menuCatalogoSeries.setFont(new Font("Arial", Font.ITALIC, 25));
-		menuCatalogoSeries.setForeground(Color.darkGray);
 		
 		menuCatalogoPelicula = new JButton(InternationalizationText.getString("movie_catalog"));
 		menuCatalogoPelicula.setFont(new Font("Arial", Font.ITALIC, 25));
@@ -146,10 +140,10 @@ public class ClientMenuWindow extends JFrame{
 		panelCentro.add(new JLabel());
 		panelCentro.add(menuAreaDeustoFlix);
 		panelCentro.add(menuAreaDeustoFlix2);
-		panelCentro.add(menuCatalogoSeries);
 		panelCentro.add(menuCatalogoPelicula);
 		panelCentro.add(menuFiltro);
 		panelCentro.add(menuRecentMovies);
+		panelCentro.add(new JLabel());
 		panelCentro.add(new JLabel());
 		panelCentro.add(new JLabel());
 		panelCentro.add(menuDatosUsuario);
@@ -172,15 +166,7 @@ public class ClientMenuWindow extends JFrame{
 				
 			}
 		});
-		//2º) Este boton llama a la VentanaSeries y desaparece la ventana VentanaMenu existente
-		menuCatalogoSeries.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				
-			}
-		});
+		
 		//3º) Este boton llama a la VentanaPeliculas y desaparece la ventana VentanaMenu existente
 		menuCatalogoPelicula.addActionListener(new ActionListener() {
 			

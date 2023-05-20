@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.Date;
 
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.videoclub.dao.MovieDAO;
@@ -18,12 +19,12 @@ import com.videoclub.pojo.User;
 import com.videoclub.pojo.typeUser;
 
 public class TestVideoclub {
-	private User u1,u2,u3;
-	private Movie m1,m2;
-	private Rental r1,r2,r3,r4,r5;
+	private static User u1,u2,u3;
+	private static Movie m1,m2;
+	private static Rental r1,r2,r3,r4,r5;
 	
-	@Before
-	public void setUp() {
+	@BeforeClass
+	public static void setUp() {
 		u1 = new User("admin", PasswordEncrypt.encryptPassword("admin"), "admin@email.com", "AdminName", "AdminSurname", typeUser.ADMIN);
 		u2 = new User("assaz", PasswordEncrypt.encryptPassword("assaz"), "asier.account@email.com", "Asier", "Belloso", typeUser.CLIENT);
 		u3 = new User("client", PasswordEncrypt.encryptPassword("client"), "client@email.com", "ClientName", "ClientSurname", typeUser.CLIENT);

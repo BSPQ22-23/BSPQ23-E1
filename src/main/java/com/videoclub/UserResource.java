@@ -1,27 +1,24 @@
 package com.videoclub;
 
-import javax.swing.JOptionPane;
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.ResponseBuilder;
+import javax.ws.rs.core.Response.Status;
 
-import java.util.List;
-import java.util.Locale;
-import java.util.ResourceBundle;
-
-import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.videoclub.Internationalization.InternationalizationText;
 import com.videoclub.dao.UserDAO;
+import com.videoclub.encrypt.PasswordEncrypt;
 import com.videoclub.pojo.User;
 
 
@@ -42,7 +39,7 @@ public class UserResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<User> getUsers() {
-    	List<User> users = UserDAO.getInstance().getAll(User.class);
+    	List<User> users = UserDAO.getInstance().getAll();
     	logger.info(InternationalizationText.getString("retrieve_users_db") + users);
 		return users;
     }
@@ -85,7 +82,27 @@ public class UserResource {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
     }
-    
+    /**
+     * Log in of the user.
+     * @param usernameTC Username of the user.
+     * @param passTC	Password of the user.
+     * @return Response with the corresponding Status depending of the result obtained. Also, sends the user.
+     */
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{username}/{pass}")
+    public Response logInUser(@PathParam("username") String usernameTC, @PathParam("pass")String passTC){
+    	User userToCheck = UserDAO.getInstance().find(usernameTC,User.ColumnsNameUser.username);
+    	if(userToCheck==null) {
+    		return Response.status(Status.NOT_FOUND).build();
+    	}else {
+    		if(userToCheck.getPassword().equals(PasswordEncrypt.encryptPassword(passTC))) {
+    			return Response.status(Status.ACCEPTED).entity(userToCheck).build();
+    		}else {
+    			return Response.status(Status.NOT_ACCEPTABLE).build();
+    		}
+    	}
+    }
     /*
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)

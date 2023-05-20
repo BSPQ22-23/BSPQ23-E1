@@ -1,6 +1,5 @@
 package com.videoclub;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -16,6 +15,8 @@ import javax.ws.rs.core.Response;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.videoclub.Internationalization.InternationalizationText;
 import com.videoclub.dao.RentalDAO;
 import com.videoclub.pojo.Rental;
@@ -36,10 +37,10 @@ public class RentalResource {
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Rental> getRentals() {
+    public Response getRentals() {
     	List<Rental> rentals = RentalDAO.getInstance().getAll();
     	logger.info(InternationalizationText.getString("retrieve_rentals_db") + rentals);
-		return rentals;
+		return Response.ok(rentals).build();
     }
 
     /**

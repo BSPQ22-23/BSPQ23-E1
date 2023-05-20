@@ -1,18 +1,21 @@
 package com.videoclub.client.gui;
 
-import java.awt.EventQueue;
-
-
 import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.ws.rs.ProcessingException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
@@ -23,26 +26,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.videoclub.Internationalization.InternationalizationText;
-import com.videoclub.dao.MovieDAO;
-import com.videoclub.dao.RentalDAO;
-import com.videoclub.dao.UserDAO;
-import com.videoclub.encrypt.PasswordEncrypt;
-import com.videoclub.pojo.ClassColumnNames;
-import com.videoclub.pojo.Movie;
-import com.videoclub.pojo.Rental;
 import com.videoclub.pojo.User;
 import com.videoclub.pojo.typeUser;
-
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Date;
-import java.util.List;
-
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.JButton;
 
 public class ClientLoginWindow extends JFrame {
 
@@ -59,8 +44,6 @@ public class ClientLoginWindow extends JFrame {
 	private JButton btnRegister;
 	private JButton changeLang;
 	private int op;
-	private boolean validador = false;
-	private boolean isAdmin = false;
 	protected static final Logger logger = LogManager.getLogger();
 	
     private static final String SERVER_ENDPOINT = "http://localhost:8080/webapi";
@@ -136,71 +119,40 @@ public class ClientLoginWindow extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Client client = ClientBuilder.newClient();
 		        final WebTarget appTarget = client.target(SERVER_ENDPOINT);
-		        List<User> users = null;
 		        try {
 		            Response response = appTarget.path(USERS_RESOURCE)
+		            	.path(textNick.getText()+"/"+textPass.getText())
 		                .request(MediaType.APPLICATION_JSON)
 		                .get();
 
 		            // check that the response was HTTP OK
-		            if (response.getStatusInfo().toEnum() == Status.OK) {
+		            if (response.getStatusInfo().toEnum() == Status.ACCEPTED) {
 		                // the response is a generic type (a List<User>)
-		                GenericType<List<User>> listType = new GenericType<List<User>>(){};
-		                users = response.readEntity(listType);
-		                
-		            } else {
-		                logger.info("Error obtaining user list. %s%n", response);
+		                GenericType<User> listType = new GenericType<User>(){};
+		                user = response.readEntity(listType);
+		            } else if (response.getStatusInfo().toEnum() == Status.NOT_ACCEPTABLE){
+		            	logger.info("Error - Password does not match.");
+		            	return;
+		            } else if (response.getStatusInfo().toEnum() == Status.NOT_FOUND){
+		            	logger.info("Error - User not found.");
+		            	return;
+		            }else {
+		            	logger.info("Unknown Error - " + response.getStatusInfo().toEnum());
 		            }
 		        } catch (ProcessingException o) {
-		           	logger.info("Error obtaining user list. %s%n", o.getMessage());
-		        }
-		       
-		        //user = UserDAO.getInstance().find(textNick.getText(), User.ColumnsNameUser.username);
-		        User user = new User(textNick.getText(),PasswordEncrypt.encryptPassword(textPass.getText()));
-		      
-		        if(users != null) {
-		        for (User i : users) {
-		        	
-		        	
-		        	if(i.getUsername().equals(user.getUsername())  && i.getPassword().equals(user.getPassword()))
-		        	{
-		        		validador = true;
-		        		if(i.getType()==typeUser.ADMIN) {
-		        			isAdmin = true;
-		        		}
-		        		user = i;
-		        	}
-		        	
-					
-				}
+		           	logger.info("Error in LogIn. " + o.getMessage());
+		           	return;
 		        }
 		        
-		        if(validador == true)
-		        {
-		        	logger.info("Welcome " + user.getUsername());
-	        		Thread registerWindow = new RegisterWindowThread();
-	        		if(isAdmin) {
-	        			Thread hilo = new adminMenuWindow();
-	        			hilo.start();
-	        			dispose();
-	        		}else {
-	        			Thread hilo = new clientMenuWindow();
-	        			hilo.start();
-	        			dispose();
-	        		}
-	        
-	        		 
-	        		ClientMenuWindow.setCodUser(user.getCode());
-	        		dispose();
-	        		registerWindow.start();
-	        		
-	        		
+		        if(user.getType() == typeUser.ADMIN) {
+		        	op = 0;
+		        }else if(user.getType() == typeUser.CLIENT) {
+		        	op = 1;
 		        }
-		        else
-		        {
-		        	logger.info("User or password are incorrect. Please Try Again.");
-		        }
-		        
+	        	Thread registerWindow = new RegisterWindowThread();
+	        	ClientMenuWindow.setCodUser(user.getCode());
+        		dispose();
+        		registerWindow.start();
 			}
 		});
 		
@@ -237,108 +189,24 @@ public class ClientLoginWindow extends JFrame {
 		public void run() {
 			if(op == 2){
 				ClientSignUpWindow.main(null);
+			}else if(op == 1){
+				//ClientMenuWindow.main(null); 
+				if (clientMenuWindow != null) {
+					clientMenuWindow.setVisible(true);
+				} else {
+					clientMenuWindow = new ClientMenuWindow(user);
+					clientMenuWindow.setVisible(true);
+				}
+			}else if(op==0){
+				if (adminMenuWindow != null) {
+					adminMenuWindow.setVisible(true);
+				} else {
+					adminMenuWindow = new AdminMenuWindow(user);
+					adminMenuWindow.setVisible(true);
+				}
 			}
 			
 		}
 	}
 
-	class adminMenuWindow extends Thread {
-		public void run() {
-			Client client = ClientBuilder.newClient();
-	        final WebTarget appTarget = client.target(SERVER_ENDPOINT);
-	        List<User> users = null;
-	        try {
-	            Response response = appTarget.path(USERS_RESOURCE)
-	                .request(MediaType.APPLICATION_JSON)
-	                .get();
-
-	            // check that the response was HTTP OK
-	            if (response.getStatusInfo().toEnum() == Status.OK) {
-	                // the response is a generic type (a List<User>)
-	                GenericType<List<User>> listType = new GenericType<List<User>>(){};
-	                users = response.readEntity(listType);
-	                
-	            } else {
-	                logger.info("Error obtaining user list. %s%n", response);
-	            }
-	        } catch (ProcessingException o) {
-	           	logger.info("Error obtaining user list. %s%n", o.getMessage());
-	        }
-	       
-	        //user = UserDAO.getInstance().find(textNick.getText(), User.ColumnsNameUser.username);
-	        User user = new User(textNick.getText(),PasswordEncrypt.encryptPassword(textPass.getText()));
-	      
-	        if(users != null) {
-	        for (User i : users) {
-	        	
-	        	
-	        	if(i.getUsername().equals(user.getUsername())  && i.getPassword().equals(user.getPassword()))
-	        	{
-	        		validador = true;
-	        		if(i.getType()==typeUser.ADMIN) {
-	        			isAdmin = true;
-	        		}
-	        		user = i;
-	        	}
-	        }	
-			}
-			if (adminMenuWindow != null) {
-				adminMenuWindow.setVisible(true);
-			} else {
-				adminMenuWindow = new AdminMenuWindow(user);
-				adminMenuWindow.setVisible(true);
-			}
-		}
-	}
-	
-	class clientMenuWindow extends Thread {
-		public void run() {
-			Client client = ClientBuilder.newClient();
-	        final WebTarget appTarget = client.target(SERVER_ENDPOINT);
-	        List<User> users = null;
-	        try {
-	            Response response = appTarget.path(USERS_RESOURCE)
-	                .request(MediaType.APPLICATION_JSON)
-	                .get();
-
-	            // check that the response was HTTP OK
-	            if (response.getStatusInfo().toEnum() == Status.OK) {
-	                // the response is a generic type (a List<User>)
-	                GenericType<List<User>> listType = new GenericType<List<User>>(){};
-	                users = response.readEntity(listType);
-	                
-	            } else {
-	                logger.info("Error obtaining user list. %s%n", response);
-	            }
-	        } catch (ProcessingException o) {
-	           	logger.info("Error obtaining user list. %s%n", o.getMessage());
-	        }
-	       
-	        //user = UserDAO.getInstance().find(textNick.getText(), User.ColumnsNameUser.username);
-	        User user = new User(textNick.getText(),PasswordEncrypt.encryptPassword(textPass.getText()));
-	      
-	        if(users != null) {
-	        for (User i : users) {
-	        	
-	        	
-	        	if(i.getUsername().equals(user.getUsername())  && i.getPassword().equals(user.getPassword()))
-	        	{
-	        		validador = true;
-	        		if(i.getType()==typeUser.ADMIN) {
-	        			isAdmin = true;
-	        		}
-	        		user = i;
-	        	}
-	        	
-				
-			}
-			if (clientMenuWindow != null) {
-				clientMenuWindow.setVisible(true);
-			} else {
-				clientMenuWindow = new ClientMenuWindow(user);
-				clientMenuWindow.setVisible(true);
-			}
-		}
-		}
-	}
 }

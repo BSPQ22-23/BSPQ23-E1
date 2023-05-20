@@ -155,7 +155,6 @@ public class EditMoviesWindow extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(!title.getText().equals("") && !genre.getText().equals("") && !duration.getText().equals("") && !year.getText().equals("") && !director.getText().equals("") && !rentalPrice.getText().equals(""))
 				{
-					//PREGUNTAR A ASIER COMO PODRÍA ENVIAR A LA DATABASE LA MISMA MOVIE QUE ESTOY EDITANDO.
 					//TODO
 					Movie m = grupoMovies.get(movies.getSelectedValue());
 					m.setTitle(title.getText());

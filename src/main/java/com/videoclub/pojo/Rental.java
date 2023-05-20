@@ -14,10 +14,10 @@ public class Rental {
 	@Persistent(valueStrategy=IdGeneratorStrategy.INCREMENT)
 	private int id;
 	private String title;
-	@Transactional
+	@NotPersistent
     private Movie movie;
 	private int code;
-	@Transactional
+	@NotPersistent
     private User customer;
     private Date rentalDate;
     private Date returnDate;

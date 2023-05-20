@@ -20,6 +20,9 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.videoclub.Internationalization.InternationalizationText;
 import com.videoclub.client.gui.MoviesWindow.menuWindow;
 import com.videoclub.dao.MovieDAO;
@@ -42,6 +45,7 @@ public class MyRentalsWindow extends JFrame {
 	
 	private ClientMenuWindow clientMenuWindow;
 	private User user;
+	protected static final Logger logger = LogManager.getLogger();
 	
 	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -144,6 +148,7 @@ public class MyRentalsWindow extends JFrame {
 			modelRentals.removeRow(0);
 		}
 		for(Rental r: listRentals) {
+			logger.info(r.getCustomer().getCode() == user.getCode());
 			if (r.getCustomer().getCode() == user.getCode()) {
 				Object [] row = {r.getId(), r.getMovie().getTitle(), r.getCustomer().getCode(), r.getRentalDate(), r.getReturnDate()};
 				modelRentals.addRow(row);
