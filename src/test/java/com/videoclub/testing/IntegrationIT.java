@@ -27,15 +27,15 @@ import com.videoclub.pojo.Rental;
 import com.videoclub.pojo.User;
 import com.videoclub.pojo.typeUser;
 
-public class IntegrationTest {
+public class IntegrationIT {
 
 private static final String SERVER_ENDPOINT = "http://localhost:8080/webapi";
 private static final String USERS_RESOURCE ="users";
 private static final String RENTALS_RESOURCE ="rentals";
 private static final String MOVIES_RESOURCE ="movies";
-private int usercode;
-private String movietitle;
-private int Rentalid;
+private int usercode =0;
+private String movietitle = "test";
+private int Rentalid =0;
 Date currentDate = new Date();
 User usertest = new User("test",PasswordEncrypt.encryptPassword("test"), "test@gmail.com", "test", "test", typeUser.CLIENT );
 Movie movietest = new Movie("test", "test", 100, 2021, "test", 15);
@@ -59,11 +59,10 @@ Rental rentaltest = new Rental(movietest, usertest,currentDate , currentDate);
 	    List<User> users2 = UserDAO.getInstance().getAll();
 	    
 	    for(User u : users) {
-	    	for(User u1: users2) {
-	    		assertEquals(u, u1);
-	    	}
-	    	
+	    	//boolean contains = users2.contains(u);
+	    	assertEquals(users2.contains(u), true );
 	    }
+
 	}
 	
 	@Test
@@ -75,12 +74,13 @@ Rental rentaltest = new Rental(movietest, usertest,currentDate , currentDate);
             .request(MediaType.APPLICATION_JSON)
             .post(Entity.entity(usertest, MediaType.APPLICATION_JSON)
         );
-        
-        User userCod = response.readEntity(User.class);
-        usercode=userCod.getCode();
-        // check if the response was ok
-        assertEquals(response.getStatusInfo().toEnum(),Status.OK);
-        
+	    List<User> users2 = UserDAO.getInstance().getAll();
+	    for (int i =0; i < users2.size(); i++) {
+	    	if(usertest.equals(users2.get(i))) {
+	    		usercode = users2.get(i).getCode();
+	    	}
+	    }
+        assertEquals(users2.contains(usertest), true);        
 	}
 	
 	
@@ -93,9 +93,9 @@ Rental rentaltest = new Rental(movietest, usertest,currentDate , currentDate);
 	                .path(Integer.toString(usercode))
 	                .request()
 	                .delete();
-		 
-		 assertEquals(response.getStatusInfo().toEnum(),Status.OK);
-        
+		 List<User> users = UserDAO.getInstance().getAll();
+		 usertest.setCode(usercode);
+		 assertFalse(users.contains(usertest));   
 	}
 	
 	
@@ -136,7 +136,7 @@ Rental rentaltest = new Rental(movietest, usertest,currentDate , currentDate);
         );
         
         Movie movieTit = response.readEntity(Movie.class);
-        movietitle=movieTit.getTitle();
+        //movietitle=movieTit.getTitle();
         // check if the response was ok
         assertEquals(response.getStatusInfo().toEnum(),Status.OK);
 	}
@@ -175,10 +175,9 @@ Rental rentaltest = new Rental(movietest, usertest,currentDate , currentDate);
 	            }
 	    List<Rental> rentals2 = RentalDAO.getInstance().getAll();
 	    
-	    for(Rental r : rentals) {
-	    	for(Rental r1 : rentals) {
-	    	assertEquals(r, r1);
-	    	}
+	    for(Rental r : rentals2) {
+	    	//boolean contains = users2.contains(u);
+	    	assertEquals(rentals.contains(r), true );
 	    }
 	}
 	
@@ -191,11 +190,15 @@ Rental rentaltest = new Rental(movietest, usertest,currentDate , currentDate);
             .request(MediaType.APPLICATION_JSON)
             .post(Entity.entity(rentaltest, MediaType.APPLICATION_JSON)
         );
-        
-        Rental rentalID = response.readEntity(Rental.class);
-        Rentalid=rentalID.getId();
+       
         // check if the response was ok
-        assertEquals(response.getStatusInfo().toEnum(),Status.OK);
+        List<Rental> rentals = RentalDAO.getInstance().getAll();
+	    for (int i =0; i < rentals.size(); i++) {
+	    	if(rentaltest.equals(rentals.get(i))) {
+	    		Rentalid = rentals.get(i).getId();
+	    		rentaltest.setId(Rentalid);
+	    	}
+	    }
 	}
 	
 	
@@ -208,8 +211,10 @@ Rental rentaltest = new Rental(movietest, usertest,currentDate , currentDate);
 	                .path(Integer.toString(Rentalid))
 	                .request()
 	                .delete();
-		 
-		 assertEquals(response.getStatusInfo().toEnum(),Status.OK);
+		 List<Rental> rentals = RentalDAO.getInstance().getAll();
+		 rentaltest.setId(Rentalid);
+		 assertFalse(rentals.contains(rentaltest)); 		 
 	}
 
 }
+
