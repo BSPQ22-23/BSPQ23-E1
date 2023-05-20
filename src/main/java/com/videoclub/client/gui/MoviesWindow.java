@@ -120,7 +120,10 @@ public class MoviesWindow extends JFrame {
 				int row = tableMovies.getSelectedRow();
 				Movie selectedMovie = listMovies.get(row);
 				Rental r = new Rental(selectedMovie,user,new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()));
+				//TODO Tiene que llamar al Server, esto esta mal.
+				//--------------------------------------------------
 				RentalDAO.getInstance().save(r);
+				//--------------------------------------------------
 				try {
 					Receipt.generatepdf(user, r);
 				} catch (DocumentException | IOException | MessagingException e1) {
@@ -156,8 +159,10 @@ public class MoviesWindow extends JFrame {
 	}
 	
 	public void loadModel() {
-		
-		listMovies = MovieDAO.getInstance().getAll(Movie.class);
+		//TODO Tiene que llamar al Server, esto esta mal.
+		//--------------------------------------------------
+		listMovies = MovieDAO.getInstance().getAll();
+		//--------------------------------------------------
 		while (modelMovies.getRowCount() > 0) {
 			modelMovies.removeRow(0);
 		}

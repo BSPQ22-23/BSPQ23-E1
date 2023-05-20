@@ -1,24 +1,25 @@
 package com.videoclub.client.gui;
 
-import javax.swing.JButton;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -32,7 +33,9 @@ import com.videoclub.pojo.User;
  */
 public class ClientInfoWindow extends JFrame {
 
-    private JPanel contentPane;
+    
+	private static final long serialVersionUID = 2475862372385609472L;
+	private JPanel contentPane;
     private JPanel panelSouth;
     private JPanel panelCentre;
     private JLabel lblOldPass;
@@ -98,12 +101,13 @@ public class ClientInfoWindow extends JFrame {
                     // Update the user's password
                     user.setPassword(PasswordEncrypt.encryptPassword(textPass.getText()));
 
+                    //TODO
                     Client client = ClientBuilder.newClient();
                     WebTarget target = client.target(SERVER_ENDPOINT);
 
                     Response response = target.path(USERS_RESOURCE)
                             .request(MediaType.APPLICATION_JSON)
-                            .post(javax.ws.rs.client.Entity.entity(user, MediaType.APPLICATION_JSON));
+                            .post(Entity.entity(user, MediaType.APPLICATION_JSON));
 
                     if (response.getStatus() == Response.Status.OK.getStatusCode()) {
                         logger.info(InternationalizationText.getString("user_upd_correct"));

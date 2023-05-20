@@ -54,10 +54,18 @@ public class UserResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response addUser(User user) {
-    	UserDAO.getInstance().save(user);
-        logger.info(user + " " + InternationalizationText.getString("add_db_user"));
-        // return a response containing a user with only the code for the new user
-        return Response.ok(new User(user.getCode())).build();
+    	if(!user.getEmail().strip().equals("") && !user.getName().strip().equals("") && !user.getPassword().strip().equals("") && !user.getUsername().strip().equals("") && !user.getSurname().strip().equals("")) {
+	    	user.setPassword(PasswordEncrypt.encryptPassword(user.getPassword()));
+    		if(UserDAO.getInstance().find(user.getEmail(),User.ColumnsNameUser.email) != null || UserDAO.getInstance().find(user.getUsername(),User.ColumnsNameUser.username) != null) {
+	    		return Response.status(Status.NOT_ACCEPTABLE).build();
+	    	}else {
+	        	UserDAO.getInstance().save(user);
+		        logger.info(user + " " + InternationalizationText.getString("add_db_user"));
+		        return Response.status(Status.ACCEPTED).build();
+	    	}
+    	}else {
+    		return Response.status(Status.BAD_REQUEST).build();
+    	}
     }
 
     /**
@@ -103,6 +111,7 @@ public class UserResource {
     		}
     	}
     }
+    
     /*
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)

@@ -13,19 +13,12 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-import javax.ws.rs.ProcessingException;
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.GenericType;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.videoclub.Internationalization.InternationalizationText;
+import com.videoclub.client.ConnectionToServer;
 import com.videoclub.pojo.User;
 import com.videoclub.pojo.typeUser;
 
@@ -45,9 +38,6 @@ public class ClientLoginWindow extends JFrame {
 	private JButton changeLang;
 	private int op;
 	protected static final Logger logger = LogManager.getLogger();
-	
-    private static final String SERVER_ENDPOINT = "http://localhost:8080/webapi";
-    private static final String USERS_RESOURCE ="users";
     
     private ClientMenuWindow clientMenuWindow;
     private AdminMenuWindow adminMenuWindow;
@@ -75,7 +65,9 @@ public class ClientLoginWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public ClientLoginWindow() {
+		ConnectionToServer cts = new ConnectionToServer();
 
+		setTitle("LogIn Window");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		setLocationRelativeTo(null);
@@ -117,42 +109,20 @@ public class ClientLoginWindow extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Client client = ClientBuilder.newClient();
-		        final WebTarget appTarget = client.target(SERVER_ENDPOINT);
-		        try {
-		            Response response = appTarget.path(USERS_RESOURCE)
-		            	.path(textNick.getText()+"/"+textPass.getText())
-		                .request(MediaType.APPLICATION_JSON)
-		                .get();
-
-		            // check that the response was HTTP OK
-		            if (response.getStatusInfo().toEnum() == Status.ACCEPTED) {
-		                // the response is a generic type (a List<User>)
-		                GenericType<User> listType = new GenericType<User>(){};
-		                user = response.readEntity(listType);
-		            } else if (response.getStatusInfo().toEnum() == Status.NOT_ACCEPTABLE){
-		            	logger.info("Error - Password does not match.");
-		            	return;
-		            } else if (response.getStatusInfo().toEnum() == Status.NOT_FOUND){
-		            	logger.info("Error - User not found.");
-		            	return;
-		            }else {
-		            	logger.info("Unknown Error - " + response.getStatusInfo().toEnum());
-		            }
-		        } catch (ProcessingException o) {
-		           	logger.info("Error in LogIn. " + o.getMessage());
-		           	return;
+				User user = cts.logInClient(textNick.getText(), textPass.getText());
+		        if(user != null) {
+			        if(user.getType() == typeUser.ADMIN) {
+			        	op = 0;
+			        }else if(user.getType() == typeUser.CLIENT) {
+			        	op = 1;
+			        }
+		        	Thread registerWindow = new RegisterWindowThread();
+		        	ClientMenuWindow.setCodUser(user.getCode());
+	        		dispose();
+	        		registerWindow.start();
+		        }else {
+		        	
 		        }
-		        
-		        if(user.getType() == typeUser.ADMIN) {
-		        	op = 0;
-		        }else if(user.getType() == typeUser.CLIENT) {
-		        	op = 1;
-		        }
-	        	Thread registerWindow = new RegisterWindowThread();
-	        	ClientMenuWindow.setCodUser(user.getCode());
-        		dispose();
-        		registerWindow.start();
 			}
 		});
 		
@@ -176,8 +146,10 @@ public class ClientLoginWindow extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(InternationalizationText.language == "en") {
 					InternationalizationText.setLanguage("es");
+					logger.info("Language changed to Spanish");
 				}else {
 					InternationalizationText.setLanguage("en");
+					logger.info("Language changed to English");
 				}
 				new ClientLoginWindow();
 				dispose();

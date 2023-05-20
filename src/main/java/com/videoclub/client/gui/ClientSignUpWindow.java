@@ -1,38 +1,24 @@
 package com.videoclub.client.gui;
 
 
-import java.awt.EventQueue;
-
 import java.awt.BorderLayout;
+import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-import javax.ws.rs.ProcessingException;
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.GenericType;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.videoclub.UserResource;
 import com.videoclub.Internationalization.InternationalizationText;
-import com.videoclub.encrypt.PasswordEncrypt;
+import com.videoclub.client.ConnectionToServer;
 import com.videoclub.pojo.User;
 import com.videoclub.pojo.typeUser;
 
@@ -61,13 +47,7 @@ public class ClientSignUpWindow extends JFrame {
 	private JButton btnRegister;
 	private static JLabel lblLogin;
 	private JButton btnLogin;
-	private static final String SERVER_ENDPOINT = "http://localhost:8080/webapi";
-    private static final String USERS_RESOURCE ="users";
     protected static final Logger logger = LogManager.getLogger();
-    private int n = 1;
-    Client client = ClientBuilder.newClient();
-    final WebTarget appTarget = client.target(SERVER_ENDPOINT);
-    private boolean validador = true;
     
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -94,6 +74,8 @@ public class ClientSignUpWindow extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		
+		ConnectionToServer cts = new ConnectionToServer();
 		
 		panelSouth = new JPanel();
 		contentPane.add(panelSouth, BorderLayout.SOUTH);
@@ -145,84 +127,23 @@ public class ClientSignUpWindow extends JFrame {
 		textMail = new JTextField();
 		panelCentre.add(textMail);
 		textMail.setColumns(10);
-
-		
-		
 		
 		btnRegister.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				validador = true;
-				//Igual esto no sirve para el sprint 2
-				Client client = ClientBuilder.newClient();
-		        final WebTarget appTarget = client.target(SERVER_ENDPOINT);
-		        List<User> users = null;
-		        try {
-		            Response response = appTarget.path(USERS_RESOURCE)
-		                .request(MediaType.APPLICATION_JSON)
-		                .get();
-
-		            // check that the response was HTTP OK
-		            if (response.getStatusInfo().toEnum() == Status.OK) {
-		                // the response is a generic type (a List<User>)
-		                GenericType<List<User>> listType = new GenericType<List<User>>(){};
-		                users = response.readEntity(listType);
-		                logger.info(users);
-		            } else {
-		                logger.info("Error obtaining user list. %s%n", response);
-		            }
-		        } catch (ProcessingException o) {
-		            logger.info("Error obtaining user list. %s%n", o.getMessage());
-		        }
-		        
-		        for (User i : users) {
-		        	if(i.getUsername().equals(textUsername.getText()) || i.getEmail().equals(textMail.getText()))
-		        	{
-		        		validador = false;
-		        		
-		        	}
-		        		
-		        }
-				//Acaba Igual esto no sirve para el sprint 2
-				if(validador == true)
-				{
-					
-		        try {
-		        	User user = new User(textUsername.getText(),PasswordEncrypt.encryptPassword(textPassword.getText()), textMail.getText(), textName.getText(), textSurname.getText(), typeUser.CLIENT );
-		            Response response = appTarget.path(USERS_RESOURCE)
-		                .request(MediaType.APPLICATION_JSON)
-		                .post(Entity.entity(user, MediaType.APPLICATION_JSON)
-		            );
-
-		            // check if the response was ok
-		            if (response.getStatusInfo().toEnum() == Status.OK) {
-		                // obtain the response data (contains a user with the new code)
-		                User userCode = response.readEntity(User.class);
-		                logger.info("User registered with code %d%n",userCode.getCode());
-		            } else {
-		                logger.error("Error posting a user list. %s%n", response);
-		            }
-		        } catch (ProcessingException j) {
-		            logger.error("Error posting a new user. %s%n", j.getMessage());
-		        }
-		        n++;
-		        
-		        Thread hilo = new LogInWindow();
-				hilo.start();
-				dispose();
-		        
-			//	RegisterUser(nick, pass);
-				//TODO add info to the client
-			
-		        	}
-				else
-				{
-					logger.error("ERROR");
-				}
-		        }	
-			}
-			);
+				User user = new User(textUsername.getText(),textPassword.getText(), textMail.getText(), textName.getText(), textSurname.getText(), typeUser.CLIENT );
+	            boolean isCorrect = cts.registerClient(user);
+	            if(isCorrect) {
+	            	Thread hilo = new LogInWindow();
+					hilo.start();
+					dispose();
+	            }else {
+	            	textUsername.setText("");
+	            	textMail.setText("");
+	            }
+		    }
+		});
 		btnLogin.addActionListener(new ActionListener() {
 			
 			@Override
