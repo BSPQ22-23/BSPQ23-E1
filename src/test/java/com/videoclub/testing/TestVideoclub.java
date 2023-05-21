@@ -78,6 +78,24 @@ public class TestVideoclub {
 		RentalDAO.getInstance().save(r3);
 		RentalDAO.getInstance().save(r4);
 		RentalDAO.getInstance().save(r5);
+		
+		RentalDAO.getInstance().save(r6);
+		RentalDAO.getInstance().save(r7);
+		RentalDAO.getInstance().save(r8);
+		RentalDAO.getInstance().save(r9);
+		RentalDAO.getInstance().save(r10);
+		
+		RentalDAO.getInstance().save(r11);
+		RentalDAO.getInstance().save(r12);
+		RentalDAO.getInstance().save(r13);
+		RentalDAO.getInstance().save(r14);
+		RentalDAO.getInstance().save(r15);
+		
+		RentalDAO.getInstance().save(r16);
+		RentalDAO.getInstance().save(r17);
+		RentalDAO.getInstance().save(r18);
+		RentalDAO.getInstance().save(r19);
+		RentalDAO.getInstance().save(r20);
 	}
 	/**
 	 * This test creates different movies,users and  Rentals and inserts them into the database
