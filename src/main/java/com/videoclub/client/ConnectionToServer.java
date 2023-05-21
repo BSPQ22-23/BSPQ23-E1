@@ -139,10 +139,10 @@ public class ConnectionToServer {
                 logger.info("List of users retrieved correctly from database.");
                 
             } else {
-                logger.error("Error - ", response);
+                logger.error("Error - "+ response);
             }
         } catch (ProcessingException o) {
-            logger.error("Error - ", o.getMessage());
+            logger.error("Error - "+ o.getMessage());
         }
 		return listUser;
 		

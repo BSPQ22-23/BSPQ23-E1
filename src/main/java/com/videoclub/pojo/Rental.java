@@ -100,8 +100,8 @@ public class Rental {
     }
 	@Override
 	public String toString() {
-		return "Rental [id=" + id + ", title=" + title + ", movie=" + movie + ", code=" + code + ", customer="
-				+ customer + ", rentalDate=" + rentalDate + ", returnDate=" + returnDate + "]";
+		return "Rental [id=" + id + ", title=" + title + ", movie=" + getMovie() + ", code=" + code + ", customer="
+				+ getCustomer() + ", rentalDate=" + rentalDate + ", returnDate=" + returnDate + "]";
 	}
 }
 

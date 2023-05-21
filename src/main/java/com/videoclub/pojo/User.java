@@ -18,8 +18,7 @@ public class User {
     private String email;
     private String name;
     private String surname;
-    @Join
-    private ArrayList<Movie> favouriteMovieList;
+    
     
 	public User() {
     	
@@ -42,7 +41,7 @@ public class User {
         this.name = name;
         this.surname = surname;
         this.type = type;
-        this.favouriteMovieList = new ArrayList<>();
+        
     }
      
     public typeUser getType() {
@@ -96,12 +95,7 @@ public class User {
         this.email = email;
     }
     
-    public ArrayList<Movie> getFavouriteMovieList() {
-		return favouriteMovieList;
-	}
-	public void setFavouriteMovieList(ArrayList<Movie> favouriteMovieList) {
-		this.favouriteMovieList = favouriteMovieList;
-	}
+   
 	
 	public static class ColumnsNameUser extends ClassColumnNames<User>{
 

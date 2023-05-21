@@ -16,11 +16,14 @@ import javax.ws.rs.core.Response.Status;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.videoclub.Internationalization.InternationalizationText;
 import com.videoclub.dao.MovieDAO;
+import com.videoclub.dao.RentalDAO;
 import com.videoclub.dao.UserDAO;
 import com.videoclub.encrypt.PasswordEncrypt;
 import com.videoclub.pojo.Movie;
+import com.videoclub.pojo.Rental;
 import com.videoclub.pojo.User;
 
 
@@ -41,9 +44,19 @@ public class UserResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<User> getUsers() {
-    	List<User> users = UserDAO.getInstance().getAll();
-    	logger.info(InternationalizationText.getString("retrieve_users_db") + users);
-		return users;
+    	try {
+    		ObjectMapper om = new ObjectMapper();
+    		List<User> users = UserDAO.getInstance().getAll();
+    		System.out.println(om.writeValueAsString(users));
+        	logger.info(InternationalizationText.getString("retrieve_users_db") + users);
+    		return users;
+    	}
+    	catch(Exception e)
+    	{
+    		e.printStackTrace();
+    		return null;
+    	}
+    	
     }
 
     /**
@@ -79,16 +92,37 @@ public class UserResource {
     @DELETE
     @Path("/{code}")
     public Response deleteUser(@PathParam("code") String code) {
+    	List<Rental> rentals = RentalDAO.getInstance().getAll();
+    	
     	boolean hasTheUser = false;
     	User userToDelete = UserDAO.getInstance().find(code, User.ColumnsNameUser.username);
     	if(userToDelete != null)
             hasTheUser = true;
     	
-        if (hasTheUser) {
-        	UserDAO.getInstance().delete(userToDelete);
-            logger.info(InternationalizationText.getString("remove_db_user") + code);
-            return Response.status(Response.Status.OK).build();
-        } else {
+    	if (hasTheUser) {
+    		try {
+    			for(Rental r: rentals)
+    	    	{
+    	    		System.out.println(userToDelete.getCode()==(r.getCustomer().getCode()));
+    	    		
+    	    		if(userToDelete.getCode()==(r.getCustomer().getCode()))
+    	    		{
+    	    			
+    	    			RentalDAO.getInstance().delete(r);
+    	    		}
+    	    	}
+    			
+    		} 
+    		catch(Exception e)
+    		{
+    			e.printStackTrace();
+    			
+    		}
+	    	
+	    	//UserDAO.getInstance().delete(userToDelete);
+	        logger.info(InternationalizationText.getString("remove_db_user") + code);
+	        return Response.status(Response.Status.OK).build();
+    	} else {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
     }
@@ -127,7 +161,6 @@ public class UserResource {
     	logger.info(user.getCode());
     	if(userFromDB != null) {
     		userFromDB.setEmail(user.getEmail());
-    		userFromDB.setFavouriteMovieList(user.getFavouriteMovieList());
     		userFromDB.setName(user.getName());
     		userFromDB.setPassword(user.getPassword());
     		userFromDB.setSurname(user.getSurname());

@@ -162,13 +162,12 @@ public class EditUsersWindow extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				User u = grupoUsers.get(users.getSelectedValue());
 				
 				boolean hasDeleted = cts.deleteUserClient(u);
 				if(hasDeleted) {
 					grupoUsers.remove(users.getSelectedValue());
-	                ((DefaultListModel<String>)users.getModel()).removeElement(u.getUsername());
+					((DefaultListModel<String>)users.getModel()).removeElement(u.getUsername());
 				}
             	
 				delete.setEnabled(false);

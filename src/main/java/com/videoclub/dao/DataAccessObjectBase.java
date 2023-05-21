@@ -88,10 +88,28 @@ public abstract class DataAccessObjectBase<DomainObject> implements IDataAccessO
 	@Override
 	public List<DomainObject> getAll(Class<DomainObject> domainClass) {
 	    PersistenceManager pm = pmf.getPersistenceManager();
-	    Query<DomainObject> q = pm.newQuery(domainClass);
-	    List<DomainObject> result = q.executeList();
+        Transaction tx = pm.currentTransaction();
 
-	    return (List<DomainObject>) result;
+        List<DomainObject> result = null;
+
+        try {
+            tx.begin();
+
+            Query<DomainObject> q = pm.newQuery(domainClass);
+            result = (List<DomainObject>) q.executeList();
+
+            tx.commit();
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex.getMessage());
+            ex.printStackTrace();
+        } finally {
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+
+            pm.close();
+        }
+        return result;
 	}
 
 	
