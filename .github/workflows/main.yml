@@ -15,17 +15,31 @@ jobs:
       uses: actions/setup-java@v2
       with:
         java-version: 11
+        distribution: 'adopt'
+        architecture: x64
+        check-latest: false
+        server-id: github
+        server-username: ${{ github.actor }}
+        server-password: ${{ secrets.GITHUB_TOKEN }}
+        overwrite-settings: true
+        job-status: success
 
     - name: Build with Maven
-      run: mvnw.cmd clean compile
+      run: mvn clean compile
     
+    - name: Start MySQL 
+      run: |
+        $sqlFilePath = "sql/videoclubdb.sql"
+        Get-Content $sqlFilePath | mysql -uroot -p
+
+
+      
+    - name: Enhance database
+      run: mvn datanucleus:enhance 
+    - name: Create schema
+      run: mvn datanucleus:schema-create
     - name: Run server
       run: mvn jetty:run
-
-    - name: Prepare database for integration tests
-      run:  sudo /etc/init.d/mysql start
- 
-      mvn datanucleus:enhance datanucleus:schema-create
 
     - name: Execute tests
       run: mvn test
