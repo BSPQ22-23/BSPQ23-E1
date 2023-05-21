@@ -33,7 +33,7 @@ import com.videoclub.pojo.User;
 import com.videoclub.pojo.typeUser;
 import com.videoclub.receipt.Receipt;
 
-public class MoviesWindow extends JFrame {
+public class MoviesWindowAdmin extends JFrame {
 
 	/**
 	 * 
@@ -48,18 +48,18 @@ public class MoviesWindow extends JFrame {
 	private DefaultTableModel modelMovies;
 	
 	private JButton btnBack;
-	private JButton btnRent;
+
 
 	private AdminMenuWindow adminMenuWindow;
-	private ClientMenuWindow clientMenuWindow;
-	private User user;
+
+
 	
 	private List<Movie> listMovies;
 	
 
-	public MoviesWindow(User user) {
+	public MoviesWindowAdmin() {
 		
-		this.user = user;
+		
 		
 		this.setTitle(InternationalizationText.getString("deusto_movie_cat"));
 		this.setSize(900, 600);
@@ -95,8 +95,7 @@ public class MoviesWindow extends JFrame {
 		panelCenter.add(scrollMovies);
 		cont.add(panelCenter, BorderLayout.CENTER);
 		
-		btnRent = new JButton(InternationalizationText.getString("rent"));
-		panelSouth.add(btnRent);
+	
 		btnBack = new JButton(InternationalizationText.getString("back"));
 		panelSouth.add(btnBack);
 		panelSouth.setBackground(new Color(214, 234, 248));
@@ -113,26 +112,7 @@ public class MoviesWindow extends JFrame {
 				dispose();
 				}
 			});
-		btnRent.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				int row = tableMovies.getSelectedRow();
-				Movie selectedMovie = listMovies.get(row);
-				Rental r = new Rental(selectedMovie,user,new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()));
-				//TODO Tiene que llamar al Server, esto esta mal.
-				//--------------------------------------------------
-				RentalDAO.getInstance().save(r);
-				//--------------------------------------------------
-				try {
-					Receipt.generatepdf(user, r);
-				} catch (DocumentException | IOException | MessagingException e1) {
-					e1.printStackTrace();
-				} catch (WriterException e1) {
-					e1.printStackTrace();
-				}
-			}
-		});
+
 		}
 	
 	public void initializeTable() {
@@ -175,21 +155,15 @@ public class MoviesWindow extends JFrame {
 	
 	class menuWindow extends Thread {
 		public void run() {
-			if (user.getType() == typeUser.ADMIN) {
 				if (adminMenuWindow != null) {
 					adminMenuWindow.setVisible(true);
 				} else {
 					adminMenuWindow = new AdminMenuWindow();
 					adminMenuWindow.setVisible(true);
 				}
-			} else {
-				if (clientMenuWindow != null) {
-					clientMenuWindow.setVisible(true);
-				} else {
-					clientMenuWindow = new ClientMenuWindow(user);
-					clientMenuWindow.setVisible(true);
+			
 				}
 			}
-		}
-	}
+		
+	
 }

@@ -58,17 +58,17 @@ public class EditMoviesWindow extends JFrame {
 	
 	private HashMap<String,Movie> grupoMovies; 
 	private AdminMenuWindow adminMenuWindow;
-	private User user;
+	
 	
 
 	private static final String SERVER_ENDPOINT = "http://localhost:8080/webapi";
     private static final String MOVIES_RESOURCE ="movies";
 	
     
-	public EditMoviesWindow(User user)
+	public EditMoviesWindow()
 	{
 		
-		this.user = user;
+		
 		this.setSize(900, 600);
 		this.setLocation( 420, 100 );
 		
@@ -305,7 +305,7 @@ public class EditMoviesWindow extends JFrame {
 			if (adminMenuWindow != null) {
 				adminMenuWindow.setVisible(true);
 			} else {
-				adminMenuWindow = new AdminMenuWindow(user);
+				adminMenuWindow = new AdminMenuWindow();
 				adminMenuWindow.setVisible(true);
 			}
 		}

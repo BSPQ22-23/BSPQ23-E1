@@ -78,9 +78,9 @@ public class NewMovieWindow extends JFrame {
 	
 
 	private AdminMenuWindow adminMenuWindow;
-	private User user;
 	
-	public NewMovieWindow(User user)
+	
+	public NewMovieWindow()
 
 	{
 		
@@ -206,7 +206,7 @@ public class NewMovieWindow extends JFrame {
 			if (adminMenuWindow != null) {
 				adminMenuWindow.setVisible(true);
 			} else {
-				adminMenuWindow = new AdminMenuWindow(user);
+				adminMenuWindow = new AdminMenuWindow();
 				adminMenuWindow.setVisible(true);
 			}
 		}
