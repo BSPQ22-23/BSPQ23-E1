@@ -118,10 +118,10 @@ Rental rentaltest = new Rental(movietest, usertest,currentDate , currentDate);
 	            }
 	    List<Movie> movies2 = MovieDAO.getInstance().getAll();
 	    
+	    
 	    for(Movie m : movies) {
-	    	for(Movie m1 : movies2) {
-	    	assertEquals(m, m1);
-	    	}
+	    	//boolean contains = users2.contains(u);
+	    	assertEquals(movies2.contains(m), true );
 	    }
 	}
 	
