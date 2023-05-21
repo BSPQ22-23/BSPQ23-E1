@@ -35,11 +35,12 @@ public class AdminMenuWindow extends JFrame {
 	private JButton menuEditarPeli;
 	private JButton menuCatalogoPelicula;
 	private JButton menuAnyadirPeli;
-	private JButton menuRecentMovies;
+	private JButton menuRentalMovies;
 
 	private JLabel menuDeustoFlix;
 
 	private EditUsersWindow editUserWindow;
+	private RentalWindow rentalWindow;
 	private MoviesWindow moviesWindow;
 	private MoviesWindowAdmin moviesWindowAdmin;
 	private EditMoviesWindow editMoviesWindow;
@@ -95,9 +96,9 @@ public class AdminMenuWindow extends JFrame {
 		menuDeustoFlix = new JLabel(InternationalizationText.getString("deusto_admin_win"));
 		menuDeustoFlix.setForeground(Color.white);
 
-		menuRecentMovies = new JButton(InternationalizationText.getString("show_rental_history"));
-		menuRecentMovies.setFont(new Font("Arial", Font.ITALIC, 25));
-		menuRecentMovies.setForeground(Color.darkGray);
+		menuRentalMovies = new JButton(InternationalizationText.getString("show_rental_history"));
+		menuRentalMovies.setFont(new Font("Arial", Font.ITALIC, 25));
+		menuRentalMovies.setForeground(Color.darkGray);
 
 		// Create panels
 		JPanel panelArriba = new JPanel();
@@ -115,7 +116,7 @@ public class AdminMenuWindow extends JFrame {
 		panelCentro.add(new JLabel());
 		panelCentro.add(new JLabel());
 		panelCentro.add(menuUsuarios);
-		panelCentro.add(menuRecentMovies);
+		panelCentro.add(menuRentalMovies);
 		panelCentro.add(new JLabel());
 		panelCentro.add(new JLabel());
 		panelCentro.add(menuAnyadirPeli);
@@ -142,11 +143,13 @@ public class AdminMenuWindow extends JFrame {
 			}
 		});
 
-		menuRecentMovies.addActionListener(new ActionListener() {
+		menuRentalMovies.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO
+				Thread hilo = new RentalsWindow();
+				hilo.start();
+				dispose();
 			}
 		});
 		menuAnyadirPeli.addActionListener(new ActionListener() {
@@ -222,7 +225,16 @@ public class AdminMenuWindow extends JFrame {
 	}
 	
 	
-	
+	class RentalsWindow extends Thread {
+		public void run() {
+			if (rentalWindow != null) {
+				rentalWindow.setVisible(true);
+			} else {
+				rentalWindow = new RentalWindow();
+				rentalWindow.setVisible(true);
+			}
+		}
+	}
 	
 	/**
 	 * Thread class for the movies catalog window.
