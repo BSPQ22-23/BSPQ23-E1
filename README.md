@@ -27,3 +27,14 @@ Now, the client sample code can be executed in a new command window with
 
     mvn exec:java -Pclient
 
+To generate doxygen reports (MUST install doxygen & configure system variables first)
+
+	 mvn doxygen:report
+	 
+To copy generated html directory into docs folder
+
+	 mvn validate
+	 
+To remove generated target files including dir docs with html code
+
+	 mvn clean
