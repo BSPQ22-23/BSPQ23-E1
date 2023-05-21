@@ -28,7 +28,7 @@ jobs:
       run: mvn clean compile
     
     - name: Start MySQL service
-      run: net start MySQL80
+      run: net start MySQL*
 
       
     - name: Enhance database
