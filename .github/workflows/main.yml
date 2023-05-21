@@ -29,8 +29,8 @@ jobs:
     
     - name: Start MySQL 
       run: |
-       $mysqlCommand = "mysql -uroot -p < sql/videoclubdb.sql"
-        Invoke-Expression -Command $mysqlCommand
+        $sqlFilePath = "sql/videoclubdb.sql"
+        Get-Content $sqlFilePath | mysql -uroot -p
 
 
       
