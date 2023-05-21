@@ -39,9 +39,11 @@ public class AdminMenuWindow extends JFrame {
 	private JLabel menuDeustoFlix;
 
 	private MoviesWindow moviesWindow;
+	private MoviesWindowAdmin moviesWindowAdmin;
 	private EditMoviesWindow editMoviesWindow;
 	private NewMovieWindow newMovieWindow;
 	private User user;
+	
 	protected static final Logger logger = LogManager.getLogger();
 
 	/**
@@ -49,9 +51,9 @@ public class AdminMenuWindow extends JFrame {
 	 *
 	 * @param user The logged-in user.
 	 */
-	public AdminMenuWindow(User user) {
-
-		this.user = user;
+	public AdminMenuWindow() {
+		
+		
 
 		this.setTitle("DeustoVideoClub - Admin - Menu");
 		this.setSize(900, 600);
@@ -208,11 +210,11 @@ public class AdminMenuWindow extends JFrame {
 	 */
 	class moviesCatalogWindow extends Thread {
 		public void run() {
-			if (moviesWindow != null) {
-				moviesWindow.setVisible(true);
+			if (moviesWindowAdmin != null) {
+				moviesWindowAdmin.setVisible(true);
 			} else {
-				moviesWindow = new MoviesWindow(user);
-				moviesWindow.setVisible(true);
+				moviesWindowAdmin = new MoviesWindowAdmin();
+				moviesWindowAdmin.setVisible(true);
 			}
 		}
 	}
@@ -225,7 +227,7 @@ public class AdminMenuWindow extends JFrame {
 			if (newMovieWindow != null) {
 				newMovieWindow.setVisible(true);
 			} else {
-				newMovieWindow = new NewMovieWindow(user);
+				newMovieWindow = new NewMovieWindow();
 				newMovieWindow.setVisible(true);
 			}
 		}
@@ -239,7 +241,7 @@ public class AdminMenuWindow extends JFrame {
 			if (editMoviesWindow != null) {
 				editMoviesWindow.setVisible(true);
 			} else {
-				editMoviesWindow = new EditMoviesWindow(user);
+				editMoviesWindow = new EditMoviesWindow();
 				editMoviesWindow.setVisible(true);
 			}
 		}

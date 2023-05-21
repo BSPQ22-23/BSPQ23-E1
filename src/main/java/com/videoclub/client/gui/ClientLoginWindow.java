@@ -182,7 +182,7 @@ public class ClientLoginWindow extends JFrame {
 				if (adminMenuWindow != null) {
 					adminMenuWindow.setVisible(true);
 				} else {
-					adminMenuWindow = new AdminMenuWindow(user);
+					adminMenuWindow = new AdminMenuWindow();
 					adminMenuWindow.setVisible(true);
 				}
 			}
