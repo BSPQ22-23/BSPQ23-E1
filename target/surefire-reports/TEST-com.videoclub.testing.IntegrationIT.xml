@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.videoclub.testing.IntegrationIT" time="6.87" tests="9" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="20"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\Aritz Candina\OneDrive\Documentos\GitHub\BSPQ23-E1\target\test-classes;C:\Users\Aritz Candina\OneDrive\Documentos\GitHub\BSPQ23-E1\target\classes;C:\Users\Aritz Candina\.m2\repository\org\glassfish\jersey\containers\jersey-container-servlet-core\2.35\jersey-container-servlet-core-2.35.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\hk2\external\jakarta.inject\2.6.1\jakarta.inject-2.6.1.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\jersey\core\jersey-common\2.35\jersey-common-2.35.jar;C:\Users\Aritz Candina\.m2\repository\jakarta\annotation\jakarta.annotation-api\1.3.5\jakarta.annotation-api-1.3.5.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\hk2\osgi-resource-locator\1.0.3\osgi-resource-locator-1.0.3.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\jersey\core\jersey-server\2.35\jersey-server-2.35.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\jersey\core\jersey-client\2.35\jersey-client-2.35.jar;C:\Users\Aritz Candina\.m2\repository\jakarta\validation\jakarta.validation-api\2.0.2\jakarta.validation-api-2.0.2.jar;C:\Users\Aritz Candina\.m2\repository\jakarta\ws\rs\jakarta.ws.rs-api\2.1.6\jakarta.ws.rs-api-2.1.6.jar;C:\Users\Aritz Candina\.m2\repository\com\github\noconnor\junitperf\1.22.1\junitperf-1.22.1.jar;C:\Users\Aritz Candina\.m2\repository\com\github\noconnor\junitperf-core\1.22.1\junitperf-core-1.22.1.jar;C:\Users\Aritz Candina\.m2\repository\org\projectlombok\lombok\1.18.24\lombok-1.18.24.jar;C:\Users\Aritz Candina\.m2\repository\org\apache\commons\commons-lang3\3.11\commons-lang3-3.11.jar;C:\Users\Aritz Candina\.m2\repository\ch\qos\logback\logback-classic\1.3.0\logback-classic-1.3.0.jar;C:\Users\Aritz Candina\.m2\repository\ch\qos\logback\logback-core\1.3.0\logback-core-1.3.0.jar;C:\Users\Aritz Candina\.m2\repository\org\slf4j\slf4j-api\2.0.0\slf4j-api-2.0.0.jar;C:\Users\Aritz Candina\.m2\repository\com\google\guava\guava\30.1-jre\guava-30.1-jre.jar;C:\Users\Aritz Candina\.m2\repository\com\google\guava\failureaccess\1.0.1\failureaccess-1.0.1.jar;C:\Users\Aritz Candina\.m2\repository\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\Aritz Candina\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\Aritz Candina\.m2\repository\org\checkerframework\checker-qual\3.5.0\checker-qual-3.5.0.jar;C:\Users\Aritz Candina\.m2\repository\com\google\errorprone\error_prone_annotations\2.3.4\error_prone_annotations-2.3.4.jar;C:\Users\Aritz Candina\.m2\repository\com\google\j2objc\j2objc-annotations\1.3\j2objc-annotations-1.3.jar;C:\Users\Aritz Candina\.m2\repository\commons-collections\commons-collections\3.2.2\commons-collections-3.2.2.jar;C:\Users\Aritz Candina\.m2\repository\org\apache\commons\commons-math3\3.6.1\commons-math3-3.6.1.jar;C:\Users\Aritz Candina\.m2\repository\org\jtwig\jtwig-core\5.86.1.RELEASE\jtwig-core-5.86.1.RELEASE.jar;C:\Users\Aritz Candina\.m2\repository\org\jtwig\jtwig-reflection\5.86.1.RELEASE\jtwig-reflection-5.86.1.RELEASE.jar;C:\Users\Aritz Candina\.m2\repository\org\parboiled\parboiled-java\1.1.7\parboiled-java-1.1.7.jar;C:\Users\Aritz Candina\.m2\repository\org\parboiled\parboiled-core\1.1.7\parboiled-core-1.1.7.jar;C:\Users\Aritz Candina\.m2\repository\org\ow2\asm\asm\5.0.3\asm-5.0.3.jar;C:\Users\Aritz Candina\.m2\repository\org\ow2\asm\asm-tree\5.0.3\asm-tree-5.0.3.jar;C:\Users\Aritz Candina\.m2\repository\org\ow2\asm\asm-analysis\5.0.3\asm-analysis-5.0.3.jar;C:\Users\Aritz Candina\.m2\repository\org\ow2\asm\asm-util\5.0.3\asm-util-5.0.3.jar;C:\Users\Aritz Candina\.m2\repository\com\googlecode\concurrentlinkedhashmap\concurrentlinkedhashmap-lru\1.4.2\concurrentlinkedhashmap-lru-1.4.2.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\jersey\inject\jersey-hk2\2.35\jersey-hk2-2.35.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\hk2\hk2-locator\2.6.1\hk2-locator-2.6.1.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\hk2\external\aopalliance-repackaged\2.6.1\aopalliance-repackaged-2.6.1.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\hk2\hk2-api\2.6.1\hk2-api-2.6.1.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\hk2\hk2-utils\2.6.1\hk2-utils-2.6.1.jar;C:\Users\Aritz Candina\.m2\repository\org\javassist\javassist\3.25.0-GA\javassist-3.25.0-GA.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\jersey\media\jersey-media-json-jackson\2.35\jersey-media-json-jackson-2.35.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\jersey\ext\jersey-entity-filtering\2.35\jersey-entity-filtering-2.35.jar;C:\Users\Aritz Candina\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.12.2\jackson-annotations-2.12.2.jar;C:\Users\Aritz Candina\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.12.2\jackson-databind-2.12.2.jar;C:\Users\Aritz Candina\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.12.2\jackson-core-2.12.2.jar;C:\Users\Aritz Candina\.m2\repository\com\fasterxml\jackson\module\jackson-module-jaxb-annotations\2.12.2\jackson-module-jaxb-annotations-2.12.2.jar;C:\Users\Aritz Candina\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\2.3.2\jakarta.xml.bind-api-2.3.2.jar;C:\Users\Aritz Candina\.m2\repository\jakarta\activation\jakarta.activation-api\1.2.1\jakarta.activation-api-1.2.1.jar;C:\Users\Aritz Candina\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\Aritz Candina\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\Aritz Candina\.m2\repository\org\apache\logging\log4j\log4j-api\2.20.0\log4j-api-2.20.0.jar;C:\Users\Aritz Candina\.m2\repository\org\apache\logging\log4j\log4j-core\2.20.0\log4j-core-2.20.0.jar;C:\Users\Aritz Candina\.m2\repository\org\datanucleus\javax.jdo\3.2.1\javax.jdo-3.2.1.jar;C:\Users\Aritz Candina\.m2\repository\javax\transaction\javax.transaction-api\1.3\javax.transaction-api-1.3.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\corba\glassfish-corba-omgapi\4.2.2\glassfish-corba-omgapi-4.2.2.jar;C:\Users\Aritz Candina\.m2\repository\org\datanucleus\datanucleus-core\6.0.4\datanucleus-core-6.0.4.jar;C:\Users\Aritz Candina\.m2\repository\org\datanucleus\datanucleus-api-jdo\6.0.1\datanucleus-api-jdo-6.0.1.jar;C:\Users\Aritz Candina\.m2\repository\org\datanucleus\datanucleus-rdbms\6.0.4\datanucleus-rdbms-6.0.4.jar;C:\Users\Aritz Candina\.m2\repository\mysql\mysql-connector-java\8.0.29\mysql-connector-java-8.0.29.jar;C:\Users\Aritz Candina\.m2\repository\com\google\protobuf\protobuf-java\3.19.4\protobuf-java-3.19.4.jar;C:\Users\Aritz Candina\.m2\repository\org\datanucleus\datanucleus-maven-plugin\5.0.1\datanucleus-maven-plugin-5.0.1.jar;C:\Users\Aritz Candina\.m2\repository\org\codehaus\plexus\plexus-utils\3.0.8\plexus-utils-3.0.8.jar;C:\Users\Aritz Candina\.m2\repository\org\apache\maven\maven-artifact\3.0.4\maven-artifact-3.0.4.jar;C:\Users\Aritz Candina\.m2\repository\org\apache\maven\maven-plugin-api\3.0.4\maven-plugin-api-3.0.4.jar;C:\Users\Aritz Candina\.m2\repository\org\apache\maven\maven-model\3.0.4\maven-model-3.0.4.jar;C:\Users\Aritz Candina\.m2\repository\org\sonatype\sisu\sisu-inject-plexus\2.3.0\sisu-inject-plexus-2.3.0.jar;C:\Users\Aritz Candina\.m2\repository\org\codehaus\plexus\plexus-component-annotations\1.5.5\plexus-component-annotations-1.5.5.jar;C:\Users\Aritz Candina\.m2\repository\org\sonatype\sisu\sisu-inject-bean\2.3.0\sisu-inject-bean-2.3.0.jar;C:\Users\Aritz Candina\.m2\repository\org\sonatype\sisu\sisu-guice\3.1.0\sisu-guice-3.1.0-no_aop.jar;C:\Users\Aritz Candina\.m2\repository\org\sonatype\sisu\sisu-guava\0.9.9\sisu-guava-0.9.9.jar;C:\Users\Aritz Candina\.m2\repository\org\codehaus\plexus\plexus-container-default\1.5.5\plexus-container-default-1.5.5.jar;C:\Users\Aritz Candina\.m2\repository\org\codehaus\plexus\plexus-classworlds\2.2.2\plexus-classworlds-2.2.2.jar;C:\Users\Aritz Candina\.m2\repository\org\apache\xbean\xbean-reflect\3.4\xbean-reflect-3.4.jar;C:\Users\Aritz Candina\.m2\repository\log4j\log4j\1.2.12\log4j-1.2.12.jar;C:\Users\Aritz Candina\.m2\repository\commons-logging\commons-logging-api\1.1\commons-logging-api-1.1.jar;C:\Users\Aritz Candina\.m2\repository\com\google\collections\google-collections\1.0\google-collections-1.0.jar;C:\Users\Aritz Candina\.m2\repository\com\itextpdf\itextpdf\5.5.9\itextpdf-5.5.9.jar;C:\Users\Aritz Candina\.m2\repository\com\sun\mail\javax.mail\1.6.2\javax.mail-1.6.2.jar;C:\Users\Aritz Candina\.m2\repository\javax\activation\activation\1.1.1\activation-1.1.1.jar;C:\Users\Aritz Candina\.m2\repository\com\google\zxing\core\3.4.1\core-3.4.1.jar;C:\Users\Aritz Candina\.m2\repository\com\google\zxing\javase\3.4.1\javase-3.4.1.jar;C:\Users\Aritz Candina\.m2\repository\com\beust\jcommander\1.78\jcommander-1.78.jar;C:\Users\Aritz Candina\.m2\repository\com\github\jai-imageio\jai-imageio-core\1.4.0\jai-imageio-core-1.4.0.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Europe/Madrid"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="java.vm.specification.version" value="20"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="ES"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-20\bin"/>
+    <property name="sun.java.command" value="C:\Users\Aritz Candina\AppData\Local\Temp\surefire14492834672146720420\surefirebooter12418488332359624759.jar C:\Users\Aritz Candina\AppData\Local\Temp\surefire14492834672146720420 2023-05-21T18-43-01_074-jvmRun1 surefire1738387128773616926tmp surefire_05239256668160330454tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\Aritz Candina\OneDrive\Documentos\GitHub\BSPQ23-E1\target\test-classes;C:\Users\Aritz Candina\OneDrive\Documentos\GitHub\BSPQ23-E1\target\classes;C:\Users\Aritz Candina\.m2\repository\org\glassfish\jersey\containers\jersey-container-servlet-core\2.35\jersey-container-servlet-core-2.35.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\hk2\external\jakarta.inject\2.6.1\jakarta.inject-2.6.1.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\jersey\core\jersey-common\2.35\jersey-common-2.35.jar;C:\Users\Aritz Candina\.m2\repository\jakarta\annotation\jakarta.annotation-api\1.3.5\jakarta.annotation-api-1.3.5.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\hk2\osgi-resource-locator\1.0.3\osgi-resource-locator-1.0.3.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\jersey\core\jersey-server\2.35\jersey-server-2.35.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\jersey\core\jersey-client\2.35\jersey-client-2.35.jar;C:\Users\Aritz Candina\.m2\repository\jakarta\validation\jakarta.validation-api\2.0.2\jakarta.validation-api-2.0.2.jar;C:\Users\Aritz Candina\.m2\repository\jakarta\ws\rs\jakarta.ws.rs-api\2.1.6\jakarta.ws.rs-api-2.1.6.jar;C:\Users\Aritz Candina\.m2\repository\com\github\noconnor\junitperf\1.22.1\junitperf-1.22.1.jar;C:\Users\Aritz Candina\.m2\repository\com\github\noconnor\junitperf-core\1.22.1\junitperf-core-1.22.1.jar;C:\Users\Aritz Candina\.m2\repository\org\projectlombok\lombok\1.18.24\lombok-1.18.24.jar;C:\Users\Aritz Candina\.m2\repository\org\apache\commons\commons-lang3\3.11\commons-lang3-3.11.jar;C:\Users\Aritz Candina\.m2\repository\ch\qos\logback\logback-classic\1.3.0\logback-classic-1.3.0.jar;C:\Users\Aritz Candina\.m2\repository\ch\qos\logback\logback-core\1.3.0\logback-core-1.3.0.jar;C:\Users\Aritz Candina\.m2\repository\org\slf4j\slf4j-api\2.0.0\slf4j-api-2.0.0.jar;C:\Users\Aritz Candina\.m2\repository\com\google\guava\guava\30.1-jre\guava-30.1-jre.jar;C:\Users\Aritz Candina\.m2\repository\com\google\guava\failureaccess\1.0.1\failureaccess-1.0.1.jar;C:\Users\Aritz Candina\.m2\repository\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\Aritz Candina\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\Aritz Candina\.m2\repository\org\checkerframework\checker-qual\3.5.0\checker-qual-3.5.0.jar;C:\Users\Aritz Candina\.m2\repository\com\google\errorprone\error_prone_annotations\2.3.4\error_prone_annotations-2.3.4.jar;C:\Users\Aritz Candina\.m2\repository\com\google\j2objc\j2objc-annotations\1.3\j2objc-annotations-1.3.jar;C:\Users\Aritz Candina\.m2\repository\commons-collections\commons-collections\3.2.2\commons-collections-3.2.2.jar;C:\Users\Aritz Candina\.m2\repository\org\apache\commons\commons-math3\3.6.1\commons-math3-3.6.1.jar;C:\Users\Aritz Candina\.m2\repository\org\jtwig\jtwig-core\5.86.1.RELEASE\jtwig-core-5.86.1.RELEASE.jar;C:\Users\Aritz Candina\.m2\repository\org\jtwig\jtwig-reflection\5.86.1.RELEASE\jtwig-reflection-5.86.1.RELEASE.jar;C:\Users\Aritz Candina\.m2\repository\org\parboiled\parboiled-java\1.1.7\parboiled-java-1.1.7.jar;C:\Users\Aritz Candina\.m2\repository\org\parboiled\parboiled-core\1.1.7\parboiled-core-1.1.7.jar;C:\Users\Aritz Candina\.m2\repository\org\ow2\asm\asm\5.0.3\asm-5.0.3.jar;C:\Users\Aritz Candina\.m2\repository\org\ow2\asm\asm-tree\5.0.3\asm-tree-5.0.3.jar;C:\Users\Aritz Candina\.m2\repository\org\ow2\asm\asm-analysis\5.0.3\asm-analysis-5.0.3.jar;C:\Users\Aritz Candina\.m2\repository\org\ow2\asm\asm-util\5.0.3\asm-util-5.0.3.jar;C:\Users\Aritz Candina\.m2\repository\com\googlecode\concurrentlinkedhashmap\concurrentlinkedhashmap-lru\1.4.2\concurrentlinkedhashmap-lru-1.4.2.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\jersey\inject\jersey-hk2\2.35\jersey-hk2-2.35.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\hk2\hk2-locator\2.6.1\hk2-locator-2.6.1.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\hk2\external\aopalliance-repackaged\2.6.1\aopalliance-repackaged-2.6.1.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\hk2\hk2-api\2.6.1\hk2-api-2.6.1.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\hk2\hk2-utils\2.6.1\hk2-utils-2.6.1.jar;C:\Users\Aritz Candina\.m2\repository\org\javassist\javassist\3.25.0-GA\javassist-3.25.0-GA.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\jersey\media\jersey-media-json-jackson\2.35\jersey-media-json-jackson-2.35.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\jersey\ext\jersey-entity-filtering\2.35\jersey-entity-filtering-2.35.jar;C:\Users\Aritz Candina\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.12.2\jackson-annotations-2.12.2.jar;C:\Users\Aritz Candina\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.12.2\jackson-databind-2.12.2.jar;C:\Users\Aritz Candina\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.12.2\jackson-core-2.12.2.jar;C:\Users\Aritz Candina\.m2\repository\com\fasterxml\jackson\module\jackson-module-jaxb-annotations\2.12.2\jackson-module-jaxb-annotations-2.12.2.jar;C:\Users\Aritz Candina\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\2.3.2\jakarta.xml.bind-api-2.3.2.jar;C:\Users\Aritz Candina\.m2\repository\jakarta\activation\jakarta.activation-api\1.2.1\jakarta.activation-api-1.2.1.jar;C:\Users\Aritz Candina\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\Aritz Candina\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\Aritz Candina\.m2\repository\org\apache\logging\log4j\log4j-api\2.20.0\log4j-api-2.20.0.jar;C:\Users\Aritz Candina\.m2\repository\org\apache\logging\log4j\log4j-core\2.20.0\log4j-core-2.20.0.jar;C:\Users\Aritz Candina\.m2\repository\org\datanucleus\javax.jdo\3.2.1\javax.jdo-3.2.1.jar;C:\Users\Aritz Candina\.m2\repository\javax\transaction\javax.transaction-api\1.3\javax.transaction-api-1.3.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\corba\glassfish-corba-omgapi\4.2.2\glassfish-corba-omgapi-4.2.2.jar;C:\Users\Aritz Candina\.m2\repository\org\datanucleus\datanucleus-core\6.0.4\datanucleus-core-6.0.4.jar;C:\Users\Aritz Candina\.m2\repository\org\datanucleus\datanucleus-api-jdo\6.0.1\datanucleus-api-jdo-6.0.1.jar;C:\Users\Aritz Candina\.m2\repository\org\datanucleus\datanucleus-rdbms\6.0.4\datanucleus-rdbms-6.0.4.jar;C:\Users\Aritz Candina\.m2\repository\mysql\mysql-connector-java\8.0.29\mysql-connector-java-8.0.29.jar;C:\Users\Aritz Candina\.m2\repository\com\google\protobuf\protobuf-java\3.19.4\protobuf-java-3.19.4.jar;C:\Users\Aritz Candina\.m2\repository\org\datanucleus\datanucleus-maven-plugin\5.0.1\datanucleus-maven-plugin-5.0.1.jar;C:\Users\Aritz Candina\.m2\repository\org\codehaus\plexus\plexus-utils\3.0.8\plexus-utils-3.0.8.jar;C:\Users\Aritz Candina\.m2\repository\org\apache\maven\maven-artifact\3.0.4\maven-artifact-3.0.4.jar;C:\Users\Aritz Candina\.m2\repository\org\apache\maven\maven-plugin-api\3.0.4\maven-plugin-api-3.0.4.jar;C:\Users\Aritz Candina\.m2\repository\org\apache\maven\maven-model\3.0.4\maven-model-3.0.4.jar;C:\Users\Aritz Candina\.m2\repository\org\sonatype\sisu\sisu-inject-plexus\2.3.0\sisu-inject-plexus-2.3.0.jar;C:\Users\Aritz Candina\.m2\repository\org\codehaus\plexus\plexus-component-annotations\1.5.5\plexus-component-annotations-1.5.5.jar;C:\Users\Aritz Candina\.m2\repository\org\sonatype\sisu\sisu-inject-bean\2.3.0\sisu-inject-bean-2.3.0.jar;C:\Users\Aritz Candina\.m2\repository\org\sonatype\sisu\sisu-guice\3.1.0\sisu-guice-3.1.0-no_aop.jar;C:\Users\Aritz Candina\.m2\repository\org\sonatype\sisu\sisu-guava\0.9.9\sisu-guava-0.9.9.jar;C:\Users\Aritz Candina\.m2\repository\org\codehaus\plexus\plexus-container-default\1.5.5\plexus-container-default-1.5.5.jar;C:\Users\Aritz Candina\.m2\repository\org\codehaus\plexus\plexus-classworlds\2.2.2\plexus-classworlds-2.2.2.jar;C:\Users\Aritz Candina\.m2\repository\org\apache\xbean\xbean-reflect\3.4\xbean-reflect-3.4.jar;C:\Users\Aritz Candina\.m2\repository\log4j\log4j\1.2.12\log4j-1.2.12.jar;C:\Users\Aritz Candina\.m2\repository\commons-logging\commons-logging-api\1.1\commons-logging-api-1.1.jar;C:\Users\Aritz Candina\.m2\repository\com\google\collections\google-collections\1.0\google-collections-1.0.jar;C:\Users\Aritz Candina\.m2\repository\com\itextpdf\itextpdf\5.5.9\itextpdf-5.5.9.jar;C:\Users\Aritz Candina\.m2\repository\com\sun\mail\javax.mail\1.6.2\javax.mail-1.6.2.jar;C:\Users\Aritz Candina\.m2\repository\javax\activation\activation\1.1.1\activation-1.1.1.jar;C:\Users\Aritz Candina\.m2\repository\com\google\zxing\core\3.4.1\core-3.4.1.jar;C:\Users\Aritz Candina\.m2\repository\com\google\zxing\javase\3.4.1\javase-3.4.1.jar;C:\Users\Aritz Candina\.m2\repository\com\beust\jcommander\1.78\jcommander-1.78.jar;C:\Users\Aritz Candina\.m2\repository\com\github\jai-imageio\jai-imageio-core\1.4.0\jai-imageio-core-1.4.0.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\Aritz Candina"/>
+    <property name="user.language" value="es"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2023-04-18"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-20"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\Aritz Candina\OneDrive\Documentos\GitHub\BSPQ23-E1"/>
+    <property name="java.vm.compressedOopsMode" value="32-bit"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\Aritz Candina\AppData\Local\Temp\surefire14492834672146720420\surefirebooter12418488332359624759.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="20.0.1+9-29"/>
+    <property name="user.name" value="Aritz Candina"/>
+    <property name="stdout.encoding" value="Cp1252"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\Aritz Candina\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\ARITZC~1\AppData\Local\Temp\"/>
+    <property name="java.version" value="20.0.1"/>
+    <property name="user.dir" value="C:\Users\Aritz Candina\OneDrive\Documentos\GitHub\BSPQ23-E1"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-20\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\System32\HWAudioDriverLibs;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\Aritz Candina\Downloads\mysql-8.0.30-winx64\bin;C:\apache-maven-3.9.0\bin;C:\Program Files\Git\cmd;C:\Program Files\TortoiseGit\bin;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Users\Aritz Candina\OneDrive\Escritorio\visualvm_216\bin;C:\Program Files\doxygen\bin\doxygen.exe;C:\Program Files\CMake\bin;C:\Program Files\gs\gs10.01.1\bin;%GHOSTSCRIPT_HOME%\gs\gs10.1.1\bin;C:\Program Files\doxygen\bin;C:\Users\Aritz Candina\AppData\Local\Programs\Python\Python310\Scripts\;C:\Users\Aritz Candina\AppData\Local\Programs\Python\Python310\;C:\Users\Aritz Candina\AppData\Local\Microsoft\WindowsApps;C:\Users\Aritz Candina\AppData\Local\Programs\Python\Python310\;C:\Users\Aritz Candina\AppData\Local\Programs\Python\Python310\Scripts\;C:\apache-ant-1.10.12-bin\apache-ant-1.10.12\bin;C:\Users\Aritz Candina\AppData\Local\GitHubDesktop\bin;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Users\Aritz Candina\OneDrive\Escritorio\visualvm_216\bin;C:\Program Files\doxygen\bin\doxygen.exe;C:\Program Files\CMake\bin;C:\Users\Aritz Candina\AppData\Local\Programs\MiKTeX\miktex\bin\x64\;;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="Cp1252"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="20.0.1+9-29"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="64.0"/>
+  </properties>
+  <testcase name="UserListResource" classname="com.videoclub.testing.IntegrationIT" time="5.703">
+    <system-out><![CDATA[18:43:06,574 (main) DEBUG [DataNucleus.General] - Using PluginRegistry org.datanucleus.plugin.NonManagedPluginRegistry
+18:43:06,593 (main) DEBUG [DataNucleus.General] - Registering bundle org.datanucleus version 6.0.4 at URL file:/C:/Users/Aritz%20Candina/.m2/repository/org/datanucleus/datanucleus-core/6.0.4/datanucleus-core-6.0.4.jar.
+18:43:06,608 (main) DEBUG [DataNucleus.General] - Leyendo extension-points y extensiones del archivo de plug-in jar:file:/C:/Users/Aritz%20Candina/.m2/repository/org/datanucleus/datanucleus-core/6.0.4/datanucleus-core-6.0.4.jar!/plugin.xml.
+18:43:06,616 (main) DEBUG [DataNucleus.General] - Registering bundle org.datanucleus.api.jdo version 6.0.1 at URL file:/C:/Users/Aritz%20Candina/.m2/repository/org/datanucleus/datanucleus-api-jdo/6.0.1/datanucleus-api-jdo-6.0.1.jar.
+18:43:06,621 (main) DEBUG [DataNucleus.General] - Leyendo extension-points y extensiones del archivo de plug-in jar:file:/C:/Users/Aritz%20Candina/.m2/repository/org/datanucleus/datanucleus-api-jdo/6.0.1/datanucleus-api-jdo-6.0.1.jar!/plugin.xml.
+18:43:06,623 (main) DEBUG [DataNucleus.General] - Registering bundle org.datanucleus.store.rdbms version 6.0.4 at URL file:/C:/Users/Aritz%20Candina/.m2/repository/org/datanucleus/datanucleus-rdbms/6.0.4/datanucleus-rdbms-6.0.4.jar.
+18:43:06,627 (main) DEBUG [DataNucleus.General] - Leyendo extension-points y extensiones del archivo de plug-in jar:file:/C:/Users/Aritz%20Candina/.m2/repository/org/datanucleus/datanucleus-rdbms/6.0.4/datanucleus-rdbms-6.0.4.jar!/plugin.xml.
+18:43:06,632 (main) DEBUG [DataNucleus.General] - Registering bundle org.sonatype.inject version 2.3.0 at URL file:/C:/Users/Aritz%20Candina/.m2/repository/org/sonatype/sisu/sisu-inject-bean/2.3.0/sisu-inject-bean-2.3.0.jar.
+18:43:06,633 (main) DEBUG [DataNucleus.General] - Leyendo extension-points y extensiones del archivo de plug-in jar:file:/C:/Users/Aritz%20Candina/.m2/repository/org/sonatype/sisu/sisu-inject-bean/2.3.0/sisu-inject-bean-2.3.0.jar!/plugin.xml.
+18:43:06,646 (main) INFO  [DataNucleus.Persistence] - Propiedad datanucleus.metadata.validate desconocida - vamos a ignorarla
+18:43:06,654 (main) DEBUG [DataNucleus.Persistence] - Tipos de Java inicializando ...
+18:43:06,677 (main) DEBUG [DataNucleus.Persistence] - Soporte para tipos de Java listo : tipos soportados = [B, [C, [D, [F, [I, [J, [Ljava.lang.Boolean;, [Ljava.lang.Byte;, [Ljava.lang.Character;, [Ljava.lang.Double;, [Ljava.lang.Enum;, [Ljava.lang.Float;, [Ljava.lang.Integer;, [Ljava.lang.Long;, [Ljava.lang.Number;, [Ljava.lang.Object;, [Ljava.lang.Short;, [Ljava.lang.String;, [Ljava.math.BigDecimal;, [Ljava.math.BigInteger;, [Ljava.util.Date;, [Ljava.util.Locale;, [S, [Z, boolean, byte, char, double, float, int, java.awt.Color, java.awt.image.BufferedImage, java.lang.Boolean, java.lang.Byte, java.lang.Character, java.lang.Class, java.lang.Double, java.lang.Enum, java.lang.Float, java.lang.Integer, java.lang.Long, java.lang.Number, java.lang.Short, java.lang.String, java.lang.StringBuffer, java.lang.StringBuilder, java.math.BigDecimal, java.math.BigInteger, java.net.URI, java.net.URL, java.sql.Date, java.sql.Time, java.sql.Timestamp, java.time.Duration, java.time.Instant, java.time.LocalDate, java.time.LocalDateTime, java.time.LocalTime, java.time.MonthDay, java.time.OffsetDateTime, java.time.OffsetTime, java.time.Period, java.time.Year, java.time.YearMonth, java.time.ZonedDateTime, java.time.ZoneId, java.time.ZoneOffset, java.util.ArrayList, java.util.Arrays$ArrayList, java.util.BitSet, java.util.Calendar, java.util.Collection, java.util.Currency, java.util.Date, java.util.GregorianCalendar, java.util.HashMap, java.util.HashSet, java.util.Hashtable, java.util.LinkedHashMap, java.util.LinkedHashSet, java.util.LinkedList, java.util.List, java.util.Locale, java.util.Map, java.util.Optional, java.util.PriorityQueue, java.util.Properties, java.util.Queue, java.util.Set, java.util.SortedMap, java.util.SortedSet, java.util.Stack, java.util.TimeZone, java.util.TreeMap, java.util.TreeSet, java.util.UUID, java.util.Vector, long, short
+18:43:06,677 (main) DEBUG [DataNucleus.Persistence] - Inicializando TypeConverters ...
+18:43:06,692 (main) DEBUG [DataNucleus.Persistence] - TypeConverters listo
+18:43:06,693 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for byte[] to : java.nio.ByteBuffer
+18:43:06,693 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for char[] to : java.nio.ByteBuffer
+18:43:06,693 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for double[] to : java.nio.ByteBuffer
+18:43:06,693 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for float[] to : java.nio.ByteBuffer
+18:43:06,693 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for int[] to : java.nio.ByteBuffer
+18:43:06,693 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for long[] to : java.nio.ByteBuffer
+18:43:06,693 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for [Ljava.math.BigDecimal; to : java.nio.ByteBuffer
+18:43:06,693 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for [Ljava.math.BigInteger; to : java.nio.ByteBuffer
+18:43:06,693 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for short[] to : java.nio.ByteBuffer
+18:43:06,693 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for boolean[] to : java.nio.ByteBuffer
+18:43:06,694 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.awt.Color to : int[],java.lang.String
+18:43:06,694 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.awt.image.BufferedImage to : byte[],java.nio.ByteBuffer
+18:43:06,694 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.io.Serializable to : java.lang.String,byte[],java.nio.ByteBuffer
+18:43:06,694 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.lang.Boolean to : java.lang.Character,java.lang.Integer
+18:43:06,694 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.lang.Character to : java.lang.String
+18:43:06,694 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.lang.Class to : java.lang.String
+18:43:06,694 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.lang.Integer to : java.lang.String
+18:43:06,694 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.lang.Long to : java.lang.String
+18:43:06,694 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.lang.StringBuffer to : java.lang.String
+18:43:06,694 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.lang.StringBuilder to : java.lang.String
+18:43:06,694 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.math.BigDecimal to : java.lang.String,java.lang.Double
+18:43:06,694 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.math.BigInteger to : java.lang.String,java.lang.Long
+18:43:06,694 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.net.URI to : java.lang.String
+18:43:06,694 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.net.URL to : java.lang.String
+18:43:06,695 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.sql.Date to : java.util.Date,java.lang.String,java.lang.Long
+18:43:06,695 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.sql.Time to : java.util.Date,java.lang.String,java.lang.Long
+18:43:06,695 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.sql.Timestamp to : java.util.Date,java.lang.String,java.lang.Long
+18:43:06,695 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.time.Duration to : java.lang.String,java.lang.Long,java.lang.Double
+18:43:06,695 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.time.Instant to : java.util.Date,java.lang.String,java.lang.Long,java.sql.Timestamp
+18:43:06,695 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.time.LocalDate to : java.util.Date,java.lang.String,java.sql.Date
+18:43:06,695 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.time.LocalDateTime to : java.util.Date,java.lang.String,java.sql.Timestamp
+18:43:06,695 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.time.LocalTime to : java.sql.Time,java.util.Date,java.lang.String,java.lang.Long
+18:43:06,695 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.time.MonthDay to : java.util.Date,int[],java.lang.String,java.sql.Date
+18:43:06,695 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.time.OffsetDateTime to : java.util.Date,java.lang.String,java.sql.Timestamp
+18:43:06,695 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.time.OffsetTime to : java.sql.Time,java.lang.String,java.lang.Long
+18:43:06,695 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.time.Period to : int[],java.lang.String
+18:43:06,695 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.time.Year to : java.lang.String,java.lang.Integer
+18:43:06,695 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.time.YearMonth to : java.util.Date,int[],java.lang.String,java.sql.Date
+18:43:06,695 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.time.ZonedDateTime to : java.lang.String,java.sql.Timestamp
+18:43:06,695 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.time.ZoneId to : java.lang.String
+18:43:06,696 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.time.ZoneOffset to : java.lang.String
+18:43:06,696 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.util.BitSet to : java.lang.String
+18:43:06,696 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.util.Calendar to : java.util.Date,java.lang.String,java.sql.Timestamp,[Ljava.lang.Object;
+18:43:06,696 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.util.Currency to : java.lang.String
+18:43:06,696 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.util.Date to : java.lang.String,java.lang.Long
+18:43:06,696 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.util.Locale to : java.lang.String
+18:43:06,696 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.util.TimeZone to : java.lang.String
+18:43:06,696 (main) DEBUG [DataNucleus.Persistence] - TypeConverter(s) available for java.util.UUID to : java.lang.String
+18:43:06,700 (main) DEBUG [DataNucleus.MetaData] - MetaDataManager : Input=(XML,Annotations), XML-Validation=false, XML-Suffices=(persistence=*.jdo, orm=orm, query=*.jdoquery), JDO-listener=true
+18:43:06,700 (main) DEBUG [DataNucleus.MetaData] - Registering listener for metadata initialisation
+18:43:06,701 (main) DEBUG [DataNucleus.MetaData] - Listener found initialisation for persistable class com.videoclub.pojo.Movie
+18:43:06,702 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "com.videoclub.pojo.Movie" en /META-INF/package.jdo
+18:43:06,702 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "com.videoclub.pojo.Movie" en /WEB-INF/package.jdo
+18:43:06,703 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "com.videoclub.pojo.Movie" en /package.jdo
+18:43:06,703 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "com.videoclub.pojo.Movie" en /com/package.jdo
+18:43:06,703 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "com.videoclub.pojo.Movie" en /com/videoclub/package.jdo
+18:43:06,703 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "com.videoclub.pojo.Movie" en /com/videoclub/pojo/package.jdo
+18:43:06,703 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "com.videoclub.pojo.Movie" en /com/videoclub/pojo/Movie.jdo
+18:43:06,703 (main) DEBUG [DataNucleus.MetaData] - No hemos encontrado el MetaData del tipo "jdo" por la clase "com.videoclub.pojo.Movie"
+18:43:06,720 (main) DEBUG [DataNucleus.MetaData] - Clase "com.videoclub.pojo.Movie" tiene anotaciones de JDO y vamos a usarlas.
+18:43:06,726 (main) DEBUG [DataNucleus.MetaData] - Clase "com.videoclub.pojo.Movie" : Populando Meta-Data
+18:43:06,727 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "orm" por la clase "com.videoclub.pojo.Movie" en /META-INF/package.orm
+18:43:06,727 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "orm" por la clase "com.videoclub.pojo.Movie" en /WEB-INF/package.orm
+18:43:06,727 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "orm" por la clase "com.videoclub.pojo.Movie" en /package.orm
+18:43:06,727 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "orm" por la clase "com.videoclub.pojo.Movie" en /com/package.orm
+18:43:06,728 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "orm" por la clase "com.videoclub.pojo.Movie" en /com/videoclub/package.orm
+18:43:06,728 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "orm" por la clase "com.videoclub.pojo.Movie" en /com/videoclub/pojo/package.orm
+18:43:06,728 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "orm" por la clase "com.videoclub.pojo.Movie" en /com/videoclub/pojo/Movie.orm
+18:43:06,728 (main) DEBUG [DataNucleus.MetaData] - No hemos encontrado el MetaData del tipo "orm" por la clase "com.videoclub.pojo.Movie"
+18:43:06,728 (main) DEBUG [DataNucleus.MetaData] - Clase "com.videoclub.pojo.Movie" campo "genre" : añadiendo el Meta-Data por el campo como no estaba en la definición de Meta-Data.
+18:43:06,729 (main) DEBUG [DataNucleus.MetaData] - Clase "com.videoclub.pojo.Movie" campo "duration" : añadiendo el Meta-Data por el campo como no estaba en la definición de Meta-Data.
+18:43:06,729 (main) DEBUG [DataNucleus.MetaData] - Clase "com.videoclub.pojo.Movie" campo "year" : añadiendo el Meta-Data por el campo como no estaba en la definición de Meta-Data.
+18:43:06,729 (main) DEBUG [DataNucleus.MetaData] - Clase "com.videoclub.pojo.Movie" campo "director" : añadiendo el Meta-Data por el campo como no estaba en la definición de Meta-Data.
+18:43:06,729 (main) DEBUG [DataNucleus.MetaData] - Clase "com.videoclub.pojo.Movie" campo "rentalPrice" : añadiendo el Meta-Data por el campo como no estaba en la definición de Meta-Data.
+18:43:06,731 (main) DEBUG [DataNucleus.MetaData] - Clase "com.videoclub.pojo.Movie" : Inicializando Meta-Data
+18:43:06,732 (main) DEBUG [DataNucleus.MetaData] - Listener found initialisation for persistable class com.videoclub.pojo.User
+18:43:06,732 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "com.videoclub.pojo.User" en /META-INF/package.jdo
+18:43:06,733 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "com.videoclub.pojo.User" en /WEB-INF/package.jdo
+18:43:06,733 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "com.videoclub.pojo.User" en /package.jdo
+18:43:06,733 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "com.videoclub.pojo.User" en /com/package.jdo
+18:43:06,733 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "com.videoclub.pojo.User" en /com/videoclub/package.jdo
+18:43:06,733 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "com.videoclub.pojo.User" en /com/videoclub/pojo/package.jdo
+18:43:06,734 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "com.videoclub.pojo.User" en /com/videoclub/pojo/User.jdo
+18:43:06,734 (main) DEBUG [DataNucleus.MetaData] - No hemos encontrado el MetaData del tipo "jdo" por la clase "com.videoclub.pojo.User"
+18:43:06,734 (main) DEBUG [DataNucleus.MetaData] - Clase "com.videoclub.pojo.User" tiene anotaciones de JDO y vamos a usarlas.
+18:43:06,734 (main) DEBUG [DataNucleus.MetaData] - Clase "com.videoclub.pojo.User" : Populando Meta-Data
+18:43:06,735 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "orm" por la clase "com.videoclub.pojo.User" en /META-INF/package.orm
+18:43:06,735 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "orm" por la clase "com.videoclub.pojo.User" en /WEB-INF/package.orm
+18:43:06,735 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "orm" por la clase "com.videoclub.pojo.User" en /package.orm
+18:43:06,735 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "orm" por la clase "com.videoclub.pojo.User" en /com/package.orm
+18:43:06,735 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "orm" por la clase "com.videoclub.pojo.User" en /com/videoclub/package.orm
+18:43:06,736 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "orm" por la clase "com.videoclub.pojo.User" en /com/videoclub/pojo/package.orm
+18:43:06,736 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "orm" por la clase "com.videoclub.pojo.User" en /com/videoclub/pojo/User.orm
+18:43:06,736 (main) DEBUG [DataNucleus.MetaData] - No hemos encontrado el MetaData del tipo "orm" por la clase "com.videoclub.pojo.User"
+18:43:06,736 (main) DEBUG [DataNucleus.MetaData] - Clase "com.videoclub.pojo.User" campo "type" : añadiendo el Meta-Data por el campo como no estaba en la definición de Meta-Data.
+18:43:06,736 (main) DEBUG [DataNucleus.MetaData] - Clase "com.videoclub.pojo.User" campo "password" : añadiendo el Meta-Data por el campo como no estaba en la definición de Meta-Data.
+18:43:06,736 (main) DEBUG [DataNucleus.MetaData] - Clase "com.videoclub.pojo.User" campo "email" : añadiendo el Meta-Data por el campo como no estaba en la definición de Meta-Data.
+18:43:06,736 (main) DEBUG [DataNucleus.MetaData] - Clase "com.videoclub.pojo.User" campo "name" : añadiendo el Meta-Data por el campo como no estaba en la definición de Meta-Data.
+18:43:06,736 (main) DEBUG [DataNucleus.MetaData] - Clase "com.videoclub.pojo.User" campo "surname" : añadiendo el Meta-Data por el campo como no estaba en la definición de Meta-Data.
+18:43:06,736 (main) DEBUG [DataNucleus.Persistence] - Tipo de Java com.videoclub.pojo.typeUser como el tipo de Java java.lang.Enum
+18:43:06,737 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "com.videoclub.pojo.typeUser" en /META-INF/package.jdo
+18:43:06,737 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "com.videoclub.pojo.typeUser" en /WEB-INF/package.jdo
+18:43:06,737 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "com.videoclub.pojo.typeUser" en /package.jdo
+18:43:06,737 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "com.videoclub.pojo.typeUser" en /com/package.jdo
+18:43:06,737 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "com.videoclub.pojo.typeUser" en /com/videoclub/package.jdo
+18:43:06,737 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "com.videoclub.pojo.typeUser" en /com/videoclub/pojo/package.jdo
+18:43:06,739 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "com.videoclub.pojo.typeUser" en /com/videoclub/pojo/typeUser.jdo
+18:43:06,739 (main) DEBUG [DataNucleus.MetaData] - No hemos encontrado el MetaData del tipo "jdo" por la clase "com.videoclub.pojo.typeUser"
+18:43:06,739 (main) DEBUG [DataNucleus.MetaData] - Registrando la clase "com.videoclub.pojo.typeUser" no tener Meta-Data
+18:43:06,739 (main) DEBUG [DataNucleus.MetaData] - Clase "com.videoclub.pojo.User" : Inicializando Meta-Data
+18:43:06,739 (main) DEBUG [DataNucleus.MetaData] - Listener found initialisation for persistable class com.videoclub.pojo.Rental
+18:43:06,739 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "com.videoclub.pojo.Rental" en /META-INF/package.jdo
+18:43:06,739 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "com.videoclub.pojo.Rental" en /WEB-INF/package.jdo
+18:43:06,739 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "com.videoclub.pojo.Rental" en /package.jdo
+18:43:06,740 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "com.videoclub.pojo.Rental" en /com/package.jdo
+18:43:06,740 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "com.videoclub.pojo.Rental" en /com/videoclub/package.jdo
+18:43:06,740 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "com.videoclub.pojo.Rental" en /com/videoclub/pojo/package.jdo
+18:43:06,740 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "jdo" por la clase "com.videoclub.pojo.Rental" en /com/videoclub/pojo/Rental.jdo
+18:43:06,740 (main) DEBUG [DataNucleus.MetaData] - No hemos encontrado el MetaData del tipo "jdo" por la clase "com.videoclub.pojo.Rental"
+18:43:06,740 (main) DEBUG [DataNucleus.MetaData] - Clase "com.videoclub.pojo.Rental" tiene anotaciones de JDO y vamos a usarlas.
+18:43:06,742 (main) DEBUG [DataNucleus.MetaData] - Clase "com.videoclub.pojo.Rental" : Populando Meta-Data
+18:43:06,742 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "orm" por la clase "com.videoclub.pojo.Rental" en /META-INF/package.orm
+18:43:06,742 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "orm" por la clase "com.videoclub.pojo.Rental" en /WEB-INF/package.orm
+18:43:06,742 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "orm" por la clase "com.videoclub.pojo.Rental" en /package.orm
+18:43:06,743 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "orm" por la clase "com.videoclub.pojo.Rental" en /com/package.orm
+18:43:06,743 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "orm" por la clase "com.videoclub.pojo.Rental" en /com/videoclub/package.orm
+18:43:06,743 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "orm" por la clase "com.videoclub.pojo.Rental" en /com/videoclub/pojo/package.orm
+18:43:06,743 (main) DEBUG [DataNucleus.MetaData] - No encontramos el MetaData del tipo "orm" por la clase "com.videoclub.pojo.Rental" en /com/videoclub/pojo/Rental.orm
+18:43:06,743 (main) DEBUG [DataNucleus.MetaData] - No hemos encontrado el MetaData del tipo "orm" por la clase "com.videoclub.pojo.Rental"
+18:43:06,743 (main) DEBUG [DataNucleus.MetaData] - Clase "com.videoclub.pojo.Rental" campo "title" : añadiendo el Meta-Data por el campo como no estaba en la definición de Meta-Data.
+18:43:06,743 (main) DEBUG [DataNucleus.MetaData] - Clase "com.videoclub.pojo.Rental" campo "code" : añadiendo el Meta-Data por el campo como no estaba en la definición de Meta-Data.
+18:43:06,743 (main) DEBUG [DataNucleus.MetaData] - Clase "com.videoclub.pojo.Rental" campo "rentalDate" : añadiendo el Meta-Data por el campo como no estaba en la definición de Meta-Data.
+18:43:06,743 (main) DEBUG [DataNucleus.MetaData] - Clase "com.videoclub.pojo.Rental" campo "returnDate" : añadiendo el Meta-Data por el campo como no estaba en la definición de Meta-Data.
+18:43:06,744 (main) DEBUG [DataNucleus.MetaData] - Clase "com.videoclub.pojo.Rental" : Inicializando Meta-Data
+18:43:06,746 (main) DEBUG [DataNucleus.Datastore] - Creating StoreManager for datastore
+18:43:06,784 (main) DEBUG [DataNucleus.Connection] - Creado ConnectionPool "tx" con data source de tipo dbcp2-builtin
+18:43:06,784 (main) DEBUG [DataNucleus.Connection] - Registrado la factoria de connecciones transaccionales bajo el nombre "rdbms/tx"
+18:43:06,784 (main) DEBUG [DataNucleus.Connection] - Registrado la factoria de connecciones nontransaccionales bajo el nombre "rdbms/nontx"
+18:43:06,798 (main) DEBUG [DataNucleus.Connection] - Creado ConnectionPool "nontx" con data source de tipo dbcp2-builtin
+18:43:07,227 (main) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@45e9b12d [conn=null, commitOnRelease=true, closeOnRelease=true, closeOnTxnEnd=true]" en resource "nontx"
+18:43:07,270 (main) DEBUG [DataNucleus.Datastore] - No Soportando el tipo RDBMS de Java java.lang.Float, jdbc-type=REAL
+18:43:07,270 (main) DEBUG [DataNucleus.Datastore] - No Soportando el tipo RDBMS de Java java.lang.String, jdbc-type=NVARCHAR
+18:43:07,270 (main) DEBUG [DataNucleus.Datastore] - No Soportando el tipo RDBMS de Java java.lang.String, jdbc-type=NCHAR
+18:43:07,270 (main) DEBUG [DataNucleus.Datastore] - Soporte de RDBMS configurado para el tipo "[B" con jdbc-types=[BLOB, BINARY, VARBINARY, LONGVARBINARY], sql-types=[BLOB, BINARY, VARBINARY, LONGVARBINARY] y defecto (jdbc-type=LONGVARBINARY, sql-type=LONGVARBINARY)
+18:43:07,271 (main) DEBUG [DataNucleus.Datastore] - Soporte de RDBMS configurado para el tipo "java.io.File" con jdbc-types=[LONGVARBINARY], sql-types=[LONGVARBINARY] y defecto (jdbc-type=LONGVARBINARY, sql-type=LONGVARBINARY)
+18:43:07,271 (main) DEBUG [DataNucleus.Datastore] - Soporte de RDBMS configurado para el tipo "java.io.Serializable" con jdbc-types=[BLOB, BINARY, VARBINARY, LONGVARBINARY], sql-types=[BLOB, BINARY, VARBINARY, LONGVARBINARY] y defecto (jdbc-type=LONGVARBINARY, sql-type=LONGVARBINARY)
+18:43:07,271 (main) DEBUG [DataNucleus.Datastore] - Soporte de RDBMS configurado para el tipo "java.lang.Boolean" con jdbc-types=[SMALLINT, CHAR, BIT, BOOLEAN, TINYINT], sql-types=[SMALLINT, CHAR, BIT, BOOLEAN, TINYINT] y defecto (jdbc-type=BIT, sql-type=BIT)
+18:43:07,271 (main) DEBUG [DataNucleus.Datastore] - Soporte de RDBMS configurado para el tipo "java.lang.Byte" con jdbc-types=[SMALLINT, TINYINT], sql-types=[SMALLINT, TINYINT] y defecto (jdbc-type=TINYINT, sql-type=TINYINT)
+18:43:07,271 (main) DEBUG [DataNucleus.Datastore] - Soporte de RDBMS configurado para el tipo "java.lang.Character" con jdbc-types=[CHAR, INTEGER], sql-types=[CHAR, INTEGER] y defecto (jdbc-type=CHAR, sql-type=CHAR)
+18:43:07,271 (main) DEBUG [DataNucleus.Datastore] - Soporte de RDBMS configurado para el tipo "java.lang.Double" con jdbc-types=[DECIMAL, DOUBLE], sql-types=[DECIMAL, DOUBLE] y defecto (jdbc-type=DOUBLE, sql-type=DOUBLE)
+18:43:07,271 (main) DEBUG [DataNucleus.Datastore] - Soporte de RDBMS configurado para el tipo "java.lang.Float" con jdbc-types=[FLOAT, DECIMAL, DOUBLE], sql-types=[FLOAT, DECIMAL, DOUBLE] y defecto (jdbc-type=FLOAT, sql-type=FLOAT)
+18:43:07,271 (main) DEBUG [DataNucleus.Datastore] - Soporte de RDBMS configurado para el tipo "java.lang.Integer" con jdbc-types=[NUMERIC, SMALLINT, BIGINT, TINYINT, INTEGER], sql-types=[NUMERIC, SMALLINT, BIGINT, TINYINT, INTEGER] y defecto (jdbc-type=INTEGER, sql-type=INTEGER)
+18:43:07,271 (main) DEBUG [DataNucleus.Datastore] - Soporte de RDBMS configurado para el tipo "java.lang.Long" con jdbc-types=[NUMERIC, SMALLINT, BIGINT, TINYINT, INTEGER], sql-types=[NUMERIC, SMALLINT, BIGINT, INT, TINYINT] y defecto (jdbc-type=BIGINT, sql-type=BIGINT)
+18:43:07,271 (main) DEBUG [DataNucleus.Datastore] - Soporte de RDBMS configurado para el tipo "java.lang.Short" con jdbc-types=[SMALLINT, TINYINT, INTEGER], sql-types=[SMALLINT, TINYINT, INTEGER] y defecto (jdbc-type=SMALLINT, sql-type=SMALLINT)
+18:43:07,271 (main) DEBUG [DataNucleus.Datastore] - Soporte de RDBMS configurado para el tipo "java.lang.String" con jdbc-types=[BLOB, LONGVARCHAR, CLOB, VARCHAR, CHAR, BIGINT], sql-types=[BLOB, LONGVARCHAR, CLOB, LONGTEXT, CHAR, BIGINT, TEXT, MEDIUMTEXT, MEDIUMBLOB, VARCHAR, LONGBLOB] y defecto (jdbc-type=VARCHAR, sql-type=VARCHAR)
+18:43:07,271 (main) DEBUG [DataNucleus.Datastore] - Soporte de RDBMS configurado para el tipo "java.math.BigDecimal" con jdbc-types=[NUMERIC, DECIMAL], sql-types=[NUMERIC, DECIMAL] y defecto (jdbc-type=DECIMAL, sql-type=DECIMAL)
+18:43:07,271 (main) DEBUG [DataNucleus.Datastore] - Soporte de RDBMS configurado para el tipo "java.math.BigInteger" con jdbc-types=[NUMERIC, BIGINT], sql-types=[NUMERIC, BIGINT] y defecto (jdbc-type=NUMERIC, sql-type=NUMERIC)
+18:43:07,271 (main) DEBUG [DataNucleus.Datastore] - Soporte de RDBMS configurado para el tipo "java.sql.Date" con jdbc-types=[DATE, TIMESTAMP, VARCHAR, CHAR, BIGINT], sql-types=[DATE, TIMESTAMP, VARCHAR, CHAR, BIGINT] y defecto (jdbc-type=DATE, sql-type=DATE)
+18:43:07,271 (main) DEBUG [DataNucleus.Datastore] - Soporte de RDBMS configurado para el tipo "java.sql.Time" con jdbc-types=[TIMESTAMP, VARCHAR, CHAR, TIME, BIGINT], sql-types=[TIMESTAMP, VARCHAR, CHAR, TIME, BIGINT] y defecto (jdbc-type=TIME, sql-type=TIME)
+18:43:07,271 (main) DEBUG [DataNucleus.Datastore] - Soporte de RDBMS configurado para el tipo "java.sql.Timestamp" con jdbc-types=[DATE, TIMESTAMP, VARCHAR, CHAR, TIME], sql-types=[DATE, TIMESTAMP, VARCHAR, CHAR, TIME] y defecto (jdbc-type=TIMESTAMP, sql-type=TIMESTAMP)
+18:43:07,271 (main) DEBUG [DataNucleus.Datastore] - Soporte de RDBMS configurado para el tipo "java.util.Date" con jdbc-types=[DATE, TIMESTAMP, VARCHAR, CHAR, TIME, BIGINT], sql-types=[DATE, TIMESTAMP, VARCHAR, CHAR, TIME, BIGINT] y defecto (jdbc-type=TIMESTAMP, sql-type=TIMESTAMP)
+18:43:07,271 (main) DEBUG [DataNucleus.Datastore] - Soporte de RDBMS configurado para el tipo "org.datanucleus.identity.DatastoreId" con jdbc-types=[NUMERIC, VARCHAR, CHAR, BIGINT, INTEGER], sql-types=[NUMERIC, VARCHAR, CHAR, BIGINT, INTEGER] y defecto (jdbc-type=BIGINT, sql-type=BIGINT)
+18:43:07,275 (main) DEBUG [DataNucleus.Datastore.Schema] - Vamos a añadir/drop una tabla para determinar el catalogo/esquema para el datasource. Pon "datanucleus.mapping.Catalog"/"datanucleus.mapping.Schema" para evitarlo
+18:43:07,290 (main) DEBUG [DataNucleus.Datastore.Schema] - CREATE TABLE `DELETEME1684687387278`
+(
+    `UNUSED` INTEGER NOT NULL
+) ENGINE=INNODB
+18:43:07,315 (main) DEBUG [DataNucleus.Datastore.Schema] - SQL Tiempo de cumplir = 25 ms
+18:43:07,329 (main) DEBUG [DataNucleus.Datastore.Schema] - No era posible determinar el nombre del esquema por este DataStore
+18:43:07,329 (main) DEBUG [DataNucleus.Datastore.Schema] - DROP TABLE `DELETEME1684687387278` CASCADE
+18:43:07,338 (main) DEBUG [DataNucleus.Datastore.Schema] - SQL Tiempo de cumplir = 9 ms
+18:43:07,338 (main) DEBUG [DataNucleus.Datastore] - ======================= Datastore =========================
+18:43:07,338 (main) DEBUG [DataNucleus.Datastore] - StoreManager : "rdbms" (org.datanucleus.store.rdbms.RDBMSStoreManager)
+18:43:07,338 (main) DEBUG [DataNucleus.Datastore] - Datastore : read-write
+18:43:07,339 (main) DEBUG [DataNucleus.Datastore] - Schema Control : AutoCreate(Tables,Columns,Constraints), Validate(None)
+18:43:07,339 (main) DEBUG [DataNucleus.Datastore] - Schema : NamingFactory=datanucleus2 identifierCase=null
+18:43:07,340 (main) DEBUG [DataNucleus.Datastore] - Query Languages : JDOQL, JPQL, STOREDPROC, SQL
+18:43:07,340 (main) DEBUG [DataNucleus.Datastore] - Queries : Timeout=0
+18:43:07,340 (main) DEBUG [DataNucleus.Datastore] - ===========================================================
+18:43:07,340 (main) DEBUG [DataNucleus.Datastore] - Datastore Adapter : org.datanucleus.store.rdbms.adapter.MySQLAdapter
+18:43:07,340 (main) DEBUG [DataNucleus.Datastore] - Datastore : name="MySQL" version="8.0.32"
+18:43:07,341 (main) DEBUG [DataNucleus.Datastore] - Datastore Driver : name="MySQL Connector/J" version="mysql-connector-java-8.0.29 (Revision: dd61577595edad45c398af508cf91ad26fc4144f)"
+18:43:07,341 (main) DEBUG [DataNucleus.Datastore] - Primary Connection Factory : URL[jdbc:mysql://localhost/videoclubdb]
+18:43:07,341 (main) DEBUG [DataNucleus.Datastore] - Secondary Connection Factory : URL[jdbc:mysql://localhost/videoclubdb]
+18:43:07,342 (main) DEBUG [DataNucleus.Datastore] - Datastore Identifiers : factory="datanucleus2" case="UPPERCASE" catalog=videoclubdb
+18:43:07,344 (main) DEBUG [DataNucleus.Datastore] - Supported Identifier Cases : lowercase "lowercase" "UPPERCASE" 
+18:43:07,346 (main) DEBUG [DataNucleus.Datastore] - Supported Identifier Lengths (max) : Table=64 Column=64 Constraint=64 Index=64 Delimiter=`
+18:43:07,348 (main) DEBUG [DataNucleus.Datastore] - Support for Identifiers in DDL : catalog=true schema=false
+18:43:07,349 (main) DEBUG [DataNucleus.Datastore] - Datastore : rdbmsConstraintCreateMode=DataNucleus, initialiseColumnInfo=ALL, checkTableViewExistence
+18:43:07,349 (main) DEBUG [DataNucleus.Datastore] - Support Statement Batching : yes (max-batch-size=50)
+18:43:07,349 (main) DEBUG [DataNucleus.Datastore] - Queries : Results direction=forward, type=forward-only, concurrency=read-only
+18:43:07,349 (main) DEBUG [DataNucleus.Datastore] - Java-Types : string-default-length=255
+18:43:07,349 (main) DEBUG [DataNucleus.Datastore] - JDBC-Types : VARCHAR, LONGVARCHAR, BOOLEAN, BINARY, VARBINARY, LONGVARBINARY, BIGINT, TINYINT, BIT, CHAR, NUMERIC, DECIMAL, INTEGER, CLOB, SMALLINT, BLOB, FLOAT, DOUBLE, DATE, TIME, TIMESTAMP
+18:43:07,349 (main) DEBUG [DataNucleus.Datastore] - ===========================================================
+18:43:07,349 (main) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@45e9b12d [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@6d08b4e6, commitOnRelease=true, closeOnRelease=true, closeOnTxnEnd=true]" 
+18:43:07,350 (main) DEBUG [DataNucleus.Datastore] - StoreManager now created
+18:43:07,352 (main) DEBUG [DataNucleus.Persistence] - Started pool of ExecutionContext (maxPool=20, reaperThread=false)
+18:43:07,354 (main) DEBUG [DataNucleus.Persistence] - ================= NucleusContext ===============
+18:43:07,354 (main) DEBUG [DataNucleus.Persistence] - DataNucleus Context : Versión: "6.0.4" con JRE "20.0.1" en "Windows 11"
+18:43:07,354 (main) DEBUG [DataNucleus.Persistence] - Persistence API : JDO
+18:43:07,354 (main) DEBUG [DataNucleus.Persistence] - Plugin Registry : org.datanucleus.plugin.NonManagedPluginRegistry
+18:43:07,354 (main) DEBUG [DataNucleus.Persistence] - ClassLoading : default
+18:43:07,362 (main) DEBUG [DataNucleus.Persistence] - Persistence : pm-singlethreaded, nontransactional-read, nontransactional-write, reachability-at-commit, detach-all-on-commit, copy-on-attach, managed-relations(checked), deletion-policy=JDO2, serverTimeZone=Europe/Madrid
+18:43:07,362 (main) DEBUG [DataNucleus.Persistence] - Transactions : type=RESOURCE_LOCAL, mode=datastore, isolation=read-committed
+18:43:07,362 (main) DEBUG [DataNucleus.Persistence] - ValueGeneration : txn-isolation=read-committed connection=New
+18:43:07,364 (main) DEBUG [DataNucleus.Persistence] - Cache : Level1 (soft), Level2 (soft, mode=UNSPECIFIED), QueryResults (soft), Collections/Maps 
+18:43:07,364 (main) DEBUG [DataNucleus.Persistence] - ================================================
+18:43:07,379 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se abrió para la base de datos "org.datanucleus.store.rdbms.RDBMSStoreManager@346f41a9" con transaccion="org.datanucleus.transaction.TransactionImpl@b67cc70"
+18:43:07,384 (main) DEBUG [DataNucleus.Transaction] - Transaction created [DataNucleus Transaction, ID=146762790-1, enlisted resources=[]]
+18:43:07,384 (main) DEBUG [DataNucleus.Transaction] - Transacción empezada para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775 (optimistic=false)
+18:43:07,395 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Compilación (generic) de "SELECT FROM com.videoclub.pojo.User"
+18:43:07,400 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de compilar (generic) = 5 ms
+18:43:07,400 (main) DEBUG [DataNucleus.Query] - QueryCompilation:
+  [symbols: this type=com.videoclub.pojo.User]
+18:43:07,402 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Compilación (base de datos) de "SELECT FROM com.videoclub.pojo.User"
+18:43:07,415 (main) DEBUG [DataNucleus.Persistence] - Va a manjejar la persistencia de Clase : com.videoclub.pojo.User [Tabla : `USER`, Estrategia de heredar : new-table]
+18:43:07,416 (main) DEBUG [DataNucleus.Datastore.Schema] - Campo [com.videoclub.pojo.User.code] -> Columnas [`USER`.`CODE`] usando mapping del tipo "org.datanucleus.store.rdbms.mapping.java.IntegerMapping" (org.datanucleus.store.rdbms.mapping.column.IntegerColumnMapping)
+18:43:07,422 (main) DEBUG [DataNucleus.Datastore.Schema] - La tabla `USER` va a manejar la persistencia de los campos de la clase com.videoclub.pojo.User (estrategia de heredar="new-table")
+18:43:07,423 (main) DEBUG [DataNucleus.Datastore.Schema] - Attempt to find JDBC driver 'typeInfo' for jdbc-type=VARCHAR but sql-type=VARCHAR is not found. Using default sql-type for this jdbc-type.
+18:43:07,423 (main) DEBUG [DataNucleus.Datastore.Schema] - Campo [com.videoclub.pojo.User.email] -> Columnas [`USER`.`EMAIL`] usando mapping del tipo "org.datanucleus.store.rdbms.mapping.java.StringMapping" (org.datanucleus.store.rdbms.mapping.column.VarCharColumnMapping)
+18:43:07,423 (main) DEBUG [DataNucleus.Datastore.Schema] - Attempt to find JDBC driver 'typeInfo' for jdbc-type=VARCHAR but sql-type=VARCHAR is not found. Using default sql-type for this jdbc-type.
+18:43:07,423 (main) DEBUG [DataNucleus.Datastore.Schema] - Campo [com.videoclub.pojo.User.name] -> Columnas [`USER`.`NAME`] usando mapping del tipo "org.datanucleus.store.rdbms.mapping.java.StringMapping" (org.datanucleus.store.rdbms.mapping.column.VarCharColumnMapping)
+18:43:07,424 (main) DEBUG [DataNucleus.Datastore.Schema] - Attempt to find JDBC driver 'typeInfo' for jdbc-type=VARCHAR but sql-type=VARCHAR is not found. Using default sql-type for this jdbc-type.
+18:43:07,424 (main) DEBUG [DataNucleus.Datastore.Schema] - Campo [com.videoclub.pojo.User.password] -> Columnas [`USER`.`PASSWORD`] usando mapping del tipo "org.datanucleus.store.rdbms.mapping.java.StringMapping" (org.datanucleus.store.rdbms.mapping.column.VarCharColumnMapping)
+18:43:07,424 (main) DEBUG [DataNucleus.Datastore.Schema] - Attempt to find JDBC driver 'typeInfo' for jdbc-type=VARCHAR but sql-type=VARCHAR is not found. Using default sql-type for this jdbc-type.
+18:43:07,424 (main) DEBUG [DataNucleus.Datastore.Schema] - Campo [com.videoclub.pojo.User.surname] -> Columnas [`USER`.`SURNAME`] usando mapping del tipo "org.datanucleus.store.rdbms.mapping.java.StringMapping" (org.datanucleus.store.rdbms.mapping.column.VarCharColumnMapping)
+18:43:07,426 (main) DEBUG [DataNucleus.Datastore.Schema] - Campo [com.videoclub.pojo.User.type] -> Columnas [`USER`.`TYPE`] usando mapping del tipo "org.datanucleus.store.rdbms.mapping.java.EnumMapping" (org.datanucleus.store.rdbms.mapping.column.VarCharColumnMapping)
+18:43:07,426 (main) DEBUG [DataNucleus.Datastore.Schema] - Attempt to find JDBC driver 'typeInfo' for jdbc-type=VARCHAR but sql-type=VARCHAR is not found. Using default sql-type for this jdbc-type.
+18:43:07,426 (main) DEBUG [DataNucleus.Datastore.Schema] - Campo [com.videoclub.pojo.User.username] -> Columnas [`USER`.`USERNAME`] usando mapping del tipo "org.datanucleus.store.rdbms.mapping.java.StringMapping" (org.datanucleus.store.rdbms.mapping.column.VarCharColumnMapping)
+18:43:07,426 (main) DEBUG [DataNucleus.Datastore.Schema] - Table/View `USER` ha sido inicializado
+18:43:07,428 (main) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@2539cd1c [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@7c20cdd0, commitOnRelease=true, closeOnRelease=true, closeOnTxnEnd=true]" en resource "nontx" con isolación "serializable" y auto-commit=false
+18:43:07,429 (main) DEBUG [DataNucleus.Datastore.Schema] - Empezando transaccion del esquema con conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@7c20cdd0" y isolacion "serializable"
+18:43:07,432 (main) DEBUG [DataNucleus.Datastore.Schema] - Check of existence of `USER` returned table type of TABLE
+18:43:07,433 (main) DEBUG [DataNucleus.Datastore.Schema] - Cargando información de columna para las tablas "user" por el Catalogo "videoclubdb", el Esquema ""
+18:43:07,444 (main) DEBUG [DataNucleus.Datastore.Schema] - Información de columna cargado por el Catalogo "videoclubdb", el Esquema "", 1 tablas, tiempo = 11 ms
+18:43:07,446 (main) DEBUG [DataNucleus.Datastore.Schema] - Información de columna cargado por la tabla "USER" : hemos encontrado 7 columnas
+18:43:07,454 (main) DEBUG [DataNucleus.Datastore.Schema] - Validando 2 indic(es) de la tabla `USER`
+18:43:07,465 (main) DEBUG [DataNucleus.Datastore.Schema] - Validando 0 foreign key(s) de la tabla `USER`
+18:43:07,468 (main) DEBUG [DataNucleus.Datastore.Schema] - Validando 2 llaves unicas de la tabla `USER`
+18:43:07,469 (main) DEBUG [DataNucleus.Datastore.Schema] - Committing transaccion del esquema "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@7c20cdd0"
+18:43:07,469 (main) DEBUG [DataNucleus.Datastore.Schema] - Cerrando la conneccion de la transaccion del esquema "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@7c20cdd0"
+18:43:07,470 (main) DEBUG [DataNucleus.Connection] - ManagedConnection VA A COMMIT : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@2539cd1c [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@7c20cdd0, commitOnRelease=true, closeOnRelease=true, closeOnTxnEnd=true]"
+18:43:07,470 (main) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@2539cd1c [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@7c20cdd0, commitOnRelease=true, closeOnRelease=true, closeOnTxnEnd=true]" 
+18:43:07,503 (main) DEBUG [DataNucleus.Query] - Compile of JDOQL into SQL - JoinType : navigation(default=(using nullability), filter=(using nullability))
+18:43:07,507 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de compilar (base de datos) = 105
+18:43:07,521 (main) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@4fb56bea [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@5e5beb8a, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" en resource "tx" con isolación "read-committed" y auto-commit=false
+18:43:07,524 (main) DEBUG [DataNucleus.Transaction] - Running enlist operation on resource: org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@6d229b1c, error code TMNOFLAGS and transaction [DataNucleus Transaction, ID=146762790-1, enlisted resources=[]]
+18:43:07,524 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Ejecucion de "SELECT FROM com.videoclub.pojo.User" ...
+18:43:07,525 (main) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "com.mysql.cj.jdbc.ClientPreparedStatement: SELECT 'com.videoclub.pojo.User' AS `DN_TYPE`,`A0`.`CODE`,`A0`.`EMAIL`,`A0`.`NAME`,`A0`.`PASSWORD`,`A0`.`SURNAME`,`A0`.`TYPE`,`A0`.`USERNAME` FROM `USER` `A0`" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@5e5beb8a"
+18:43:07,525 (main) DEBUG [DataNucleus.Datastore.Native] - SELECT 'com.videoclub.pojo.User' AS `DN_TYPE`,`A0`.`CODE`,`A0`.`EMAIL`,`A0`.`NAME`,`A0`.`PASSWORD`,`A0`.`SURNAME`,`A0`.`TYPE`,`A0`.`USERNAME` FROM `USER` `A0`
+18:43:07,527 (main) DEBUG [DataNucleus.Datastore.Retrieve] - SQL Tiempo de cumplir = 2 ms
+18:43:07,530 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de ejecutar = 6 ms
+18:43:07,530 (main) DEBUG [DataNucleus.Transaction] - Haciendo commit de la transaacción para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775
+18:43:07,530 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 0 objetos registrados
+18:43:07,530 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:07,530 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : EMPIEZA
+18:43:07,530 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : TERMINADO
+18:43:07,530 (main) DEBUG [DataNucleus.Transaction] - Committing [DataNucleus Transaction, ID=146762790-1, enlisted resources=[org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@6d229b1c]]
+18:43:07,530 (main) DEBUG [DataNucleus.Connection] - ManagedConnection VA A COMMIT : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@4fb56bea [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@5e5beb8a, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]"
+18:43:07,531 (main) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@4fb56bea [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@5e5beb8a, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" 
+18:43:07,533 (main) DEBUG [DataNucleus.Transaction] - Transacción committed en 2 ms
+18:43:07,533 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se cerró
+]]></system-out>
+  </testcase>
+  <testcase name="RentalListResource" classname="com.videoclub.testing.IntegrationIT" time="0.157">
+    <system-out><![CDATA[18:43:07,677 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se abrió para la base de datos "org.datanucleus.store.rdbms.RDBMSStoreManager@346f41a9" con transaccion="org.datanucleus.transaction.TransactionImpl@6b4fc2d1"
+18:43:07,677 (main) DEBUG [DataNucleus.Transaction] - Transaction created [DataNucleus Transaction, ID=146762790-2, enlisted resources=[]]
+18:43:07,677 (main) DEBUG [DataNucleus.Transaction] - Transacción empezada para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775 (optimistic=false)
+18:43:07,677 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Compilación (generic) de "SELECT FROM com.videoclub.pojo.Rental"
+18:43:07,677 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de compilar (generic) = 0 ms
+18:43:07,677 (main) DEBUG [DataNucleus.Query] - QueryCompilation:
+  [symbols: this type=com.videoclub.pojo.Rental]
+18:43:07,678 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Compilación (base de datos) de "SELECT FROM com.videoclub.pojo.Rental"
+18:43:07,678 (main) DEBUG [DataNucleus.Persistence] - Va a manjejar la persistencia de Clase : com.videoclub.pojo.Rental [Tabla : `RENTAL`, Estrategia de heredar : new-table]
+18:43:07,678 (main) DEBUG [DataNucleus.Datastore.Schema] - Campo [com.videoclub.pojo.Rental.id] -> Columnas [`RENTAL`.`ID`] usando mapping del tipo "org.datanucleus.store.rdbms.mapping.java.IntegerMapping" (org.datanucleus.store.rdbms.mapping.column.IntegerColumnMapping)
+18:43:07,678 (main) DEBUG [DataNucleus.Datastore.Schema] - La tabla `RENTAL` va a manejar la persistencia de los campos de la clase com.videoclub.pojo.Rental (estrategia de heredar="new-table")
+18:43:07,678 (main) DEBUG [DataNucleus.Datastore.Schema] - Campo [com.videoclub.pojo.Rental.code] -> Columnas [`RENTAL`.`CODE`] usando mapping del tipo "org.datanucleus.store.rdbms.mapping.java.IntegerMapping" (org.datanucleus.store.rdbms.mapping.column.IntegerColumnMapping)
+18:43:07,679 (main) DEBUG [DataNucleus.Datastore.Schema] - Campo [com.videoclub.pojo.Rental.rentalDate] -> Columnas [`RENTAL`.`RENTALDATE`] usando mapping del tipo "org.datanucleus.store.rdbms.mapping.java.DateMapping" (org.datanucleus.store.rdbms.mapping.column.TimestampColumnMapping)
+18:43:07,679 (main) DEBUG [DataNucleus.Datastore.Schema] - Campo [com.videoclub.pojo.Rental.returnDate] -> Columnas [`RENTAL`.`RETURNDATE`] usando mapping del tipo "org.datanucleus.store.rdbms.mapping.java.DateMapping" (org.datanucleus.store.rdbms.mapping.column.TimestampColumnMapping)
+18:43:07,679 (main) DEBUG [DataNucleus.Datastore.Schema] - Attempt to find JDBC driver 'typeInfo' for jdbc-type=VARCHAR but sql-type=VARCHAR is not found. Using default sql-type for this jdbc-type.
+18:43:07,679 (main) DEBUG [DataNucleus.Datastore.Schema] - Campo [com.videoclub.pojo.Rental.title] -> Columnas [`RENTAL`.`TITLE`] usando mapping del tipo "org.datanucleus.store.rdbms.mapping.java.StringMapping" (org.datanucleus.store.rdbms.mapping.column.VarCharColumnMapping)
+18:43:07,679 (main) DEBUG [DataNucleus.Datastore.Schema] - Table/View `RENTAL` ha sido inicializado
+18:43:07,680 (main) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@1dad01fe [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@3728a578, commitOnRelease=true, closeOnRelease=true, closeOnTxnEnd=true]" en resource "nontx" con isolación "serializable" y auto-commit=false
+18:43:07,680 (main) DEBUG [DataNucleus.Datastore.Schema] - Empezando transaccion del esquema con conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@3728a578" y isolacion "serializable"
+18:43:07,682 (main) DEBUG [DataNucleus.Datastore.Schema] - Check of existence of `RENTAL` returned table type of TABLE
+18:43:07,682 (main) DEBUG [DataNucleus.Datastore.Schema] - Cargando información de columna para las tablas "rental" por el Catalogo "videoclubdb", el Esquema ""
+18:43:07,689 (main) DEBUG [DataNucleus.Datastore.Schema] - Información de columna cargado por el Catalogo "videoclubdb", el Esquema "", 1 tablas, tiempo = 7 ms
+18:43:07,689 (main) DEBUG [DataNucleus.Datastore.Schema] - Información de columna cargado por la tabla "RENTAL" : hemos encontrado 5 columnas
+18:43:07,691 (main) DEBUG [DataNucleus.Datastore.Schema] - Validando 1 indic(es) de la tabla `RENTAL`
+18:43:07,695 (main) DEBUG [DataNucleus.Datastore.Schema] - Validando 0 foreign key(s) de la tabla `RENTAL`
+18:43:07,697 (main) DEBUG [DataNucleus.Datastore.Schema] - Validando 1 llaves unicas de la tabla `RENTAL`
+18:43:07,697 (main) DEBUG [DataNucleus.Datastore.Schema] - Committing transaccion del esquema "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@3728a578"
+18:43:07,698 (main) DEBUG [DataNucleus.Datastore.Schema] - Cerrando la conneccion de la transaccion del esquema "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@3728a578"
+18:43:07,698 (main) DEBUG [DataNucleus.Connection] - ManagedConnection VA A COMMIT : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@1dad01fe [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@3728a578, commitOnRelease=true, closeOnRelease=true, closeOnTxnEnd=true]"
+18:43:07,698 (main) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@1dad01fe [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@3728a578, commitOnRelease=true, closeOnRelease=true, closeOnTxnEnd=true]" 
+18:43:07,699 (main) DEBUG [DataNucleus.Query] - Compile of JDOQL into SQL - JoinType : navigation(default=(using nullability), filter=(using nullability))
+18:43:07,699 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de compilar (base de datos) = 22
+18:43:07,700 (main) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@1de0641b [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@68b734a8, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" en resource "tx" con isolación "read-committed" y auto-commit=false
+18:43:07,700 (main) DEBUG [DataNucleus.Transaction] - Running enlist operation on resource: org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@1a464fa3, error code TMNOFLAGS and transaction [DataNucleus Transaction, ID=146762790-2, enlisted resources=[]]
+18:43:07,700 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Ejecucion de "SELECT FROM com.videoclub.pojo.Rental" ...
+18:43:07,701 (main) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "com.mysql.cj.jdbc.ClientPreparedStatement: SELECT 'com.videoclub.pojo.Rental' AS `DN_TYPE`,`A0`.`CODE`,`A0`.`ID`,`A0`.`RENTALDATE`,`A0`.`RETURNDATE`,`A0`.`TITLE` FROM `RENTAL` `A0`" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@68b734a8"
+18:43:07,701 (main) DEBUG [DataNucleus.Datastore.Native] - SELECT 'com.videoclub.pojo.Rental' AS `DN_TYPE`,`A0`.`CODE`,`A0`.`ID`,`A0`.`RENTALDATE`,`A0`.`RETURNDATE`,`A0`.`TITLE` FROM `RENTAL` `A0`
+18:43:07,701 (main) DEBUG [DataNucleus.Datastore.Retrieve] - SQL Tiempo de cumplir = 0 ms
+18:43:07,702 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de ejecutar = 2 ms
+18:43:07,702 (main) DEBUG [DataNucleus.Transaction] - Haciendo commit de la transaacción para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775
+18:43:07,702 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 0 objetos registrados
+18:43:07,702 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:07,702 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : EMPIEZA
+18:43:07,702 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : TERMINADO
+18:43:07,702 (main) DEBUG [DataNucleus.Transaction] - Committing [DataNucleus Transaction, ID=146762790-2, enlisted resources=[org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@1a464fa3]]
+18:43:07,702 (main) DEBUG [DataNucleus.Connection] - ManagedConnection VA A COMMIT : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@1de0641b [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@68b734a8, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]"
+18:43:07,702 (main) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@1de0641b [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@68b734a8, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" 
+18:43:07,703 (main) DEBUG [DataNucleus.Transaction] - Transacción committed en 1 ms
+18:43:07,703 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se cerró
+]]></system-out>
+  </testcase>
+  <testcase name="DeleteUserResource" classname="com.videoclub.testing.IntegrationIT" time="0.093">
+    <system-out><![CDATA[18:43:07,793 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se abrió para la base de datos "org.datanucleus.store.rdbms.RDBMSStoreManager@346f41a9" con transaccion="org.datanucleus.transaction.TransactionImpl@3281dfc2"
+18:43:07,793 (main) DEBUG [DataNucleus.Transaction] - Transaction created [DataNucleus Transaction, ID=146762790-3, enlisted resources=[]]
+18:43:07,793 (main) DEBUG [DataNucleus.Transaction] - Transacción empezada para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775 (optimistic=false)
+18:43:07,793 (main) DEBUG [DataNucleus.Query] - Query "SELECT FROM com.videoclub.pojo.User FetchPlan [default]" de lenguaje "JDOQL" existe, por eso utilizamos la compilacion general de antes.
+18:43:07,793 (main) DEBUG [DataNucleus.Query] - Query "SELECT FROM com.videoclub.pojo.User FetchPlan [default]" de lenguaje "JDOQL" para la base de datos "rdbms-mysql" existe, por eso utilizamos la compilacion de datastore de antes
+18:43:07,795 (main) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@16c1519e [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@2a02e34b, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" en resource "tx" con isolación "read-committed" y auto-commit=false
+18:43:07,795 (main) DEBUG [DataNucleus.Transaction] - Running enlist operation on resource: org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@5eabff6b, error code TMNOFLAGS and transaction [DataNucleus Transaction, ID=146762790-3, enlisted resources=[]]
+18:43:07,795 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Ejecucion de "SELECT FROM com.videoclub.pojo.User" ...
+18:43:07,796 (main) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "com.mysql.cj.jdbc.ClientPreparedStatement: SELECT 'com.videoclub.pojo.User' AS `DN_TYPE`,`A0`.`CODE`,`A0`.`EMAIL`,`A0`.`NAME`,`A0`.`PASSWORD`,`A0`.`SURNAME`,`A0`.`TYPE`,`A0`.`USERNAME` FROM `USER` `A0`" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@2a02e34b"
+18:43:07,796 (main) DEBUG [DataNucleus.Datastore.Native] - SELECT 'com.videoclub.pojo.User' AS `DN_TYPE`,`A0`.`CODE`,`A0`.`EMAIL`,`A0`.`NAME`,`A0`.`PASSWORD`,`A0`.`SURNAME`,`A0`.`TYPE`,`A0`.`USERNAME` FROM `USER` `A0`
+18:43:07,796 (main) DEBUG [DataNucleus.Datastore.Retrieve] - SQL Tiempo de cumplir = 0 ms
+18:43:07,796 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de ejecutar = 1 ms
+18:43:07,796 (main) DEBUG [DataNucleus.Transaction] - Haciendo commit de la transaacción para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775
+18:43:07,796 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 0 objetos registrados
+18:43:07,796 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:07,796 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : EMPIEZA
+18:43:07,796 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : TERMINADO
+18:43:07,796 (main) DEBUG [DataNucleus.Transaction] - Committing [DataNucleus Transaction, ID=146762790-3, enlisted resources=[org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@5eabff6b]]
+18:43:07,796 (main) DEBUG [DataNucleus.Connection] - ManagedConnection VA A COMMIT : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@16c1519e [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@2a02e34b, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]"
+18:43:07,797 (main) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@16c1519e [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@2a02e34b, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" 
+18:43:07,797 (main) DEBUG [DataNucleus.Transaction] - Transacción committed en 1 ms
+18:43:07,797 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se cerró
+]]></system-out>
+  </testcase>
+  <testcase name="AddMovieResource" classname="com.videoclub.testing.IntegrationIT" time="0.449"/>
+  <testcase name="AddRentalResource" classname="com.videoclub.testing.IntegrationIT" time="0.054">
+    <system-out><![CDATA[18:43:08,296 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se abrió para la base de datos "org.datanucleus.store.rdbms.RDBMSStoreManager@346f41a9" con transaccion="org.datanucleus.transaction.TransactionImpl@78b7f805"
+18:43:08,296 (main) DEBUG [DataNucleus.Transaction] - Transaction created [DataNucleus Transaction, ID=146762790-4, enlisted resources=[]]
+18:43:08,296 (main) DEBUG [DataNucleus.Transaction] - Transacción empezada para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775 (optimistic=false)
+18:43:08,297 (main) DEBUG [DataNucleus.Query] - Query "SELECT FROM com.videoclub.pojo.Rental FetchPlan [default]" de lenguaje "JDOQL" existe, por eso utilizamos la compilacion general de antes.
+18:43:08,297 (main) DEBUG [DataNucleus.Query] - Query "SELECT FROM com.videoclub.pojo.Rental FetchPlan [default]" de lenguaje "JDOQL" para la base de datos "rdbms-mysql" existe, por eso utilizamos la compilacion de datastore de antes
+18:43:08,299 (main) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@64763e49 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@23468512, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" en resource "tx" con isolación "read-committed" y auto-commit=false
+18:43:08,299 (main) DEBUG [DataNucleus.Transaction] - Running enlist operation on resource: org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@69cd7630, error code TMNOFLAGS and transaction [DataNucleus Transaction, ID=146762790-4, enlisted resources=[]]
+18:43:08,299 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Ejecucion de "SELECT FROM com.videoclub.pojo.Rental" ...
+18:43:08,300 (main) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "com.mysql.cj.jdbc.ClientPreparedStatement: SELECT 'com.videoclub.pojo.Rental' AS `DN_TYPE`,`A0`.`CODE`,`A0`.`ID`,`A0`.`RENTALDATE`,`A0`.`RETURNDATE`,`A0`.`TITLE` FROM `RENTAL` `A0`" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@23468512"
+18:43:08,300 (main) DEBUG [DataNucleus.Datastore.Native] - SELECT 'com.videoclub.pojo.Rental' AS `DN_TYPE`,`A0`.`CODE`,`A0`.`ID`,`A0`.`RENTALDATE`,`A0`.`RETURNDATE`,`A0`.`TITLE` FROM `RENTAL` `A0`
+18:43:08,300 (main) DEBUG [DataNucleus.Datastore.Retrieve] - SQL Tiempo de cumplir = 0 ms
+18:43:08,300 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de ejecutar = 1 ms
+18:43:08,300 (main) DEBUG [DataNucleus.Transaction] - Haciendo commit de la transaacción para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775
+18:43:08,300 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 0 objetos registrados
+18:43:08,300 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:08,300 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : EMPIEZA
+18:43:08,300 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : TERMINADO
+18:43:08,301 (main) DEBUG [DataNucleus.Transaction] - Committing [DataNucleus Transaction, ID=146762790-4, enlisted resources=[org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@69cd7630]]
+18:43:08,301 (main) DEBUG [DataNucleus.Connection] - ManagedConnection VA A COMMIT : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@64763e49 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@23468512, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]"
+18:43:08,301 (main) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@64763e49 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@23468512, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" 
+18:43:08,302 (main) DEBUG [DataNucleus.Transaction] - Transacción committed en 2 ms
+18:43:08,302 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se cerró
+]]></system-out>
+  </testcase>
+  <testcase name="AddUserResource" classname="com.videoclub.testing.IntegrationIT" time="0.155">
+    <system-out><![CDATA[18:43:08,426 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se abrió para la base de datos "org.datanucleus.store.rdbms.RDBMSStoreManager@346f41a9" con transaccion="org.datanucleus.transaction.TransactionImpl@3d615b2e"
+18:43:08,426 (main) DEBUG [DataNucleus.Transaction] - Transaction created [DataNucleus Transaction, ID=146762790-5, enlisted resources=[]]
+18:43:08,426 (main) DEBUG [DataNucleus.Transaction] - Transacción empezada para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775 (optimistic=false)
+18:43:08,426 (main) DEBUG [DataNucleus.Query] - Query "SELECT FROM com.videoclub.pojo.User FetchPlan [default]" de lenguaje "JDOQL" existe, por eso utilizamos la compilacion general de antes.
+18:43:08,426 (main) DEBUG [DataNucleus.Query] - Query "SELECT FROM com.videoclub.pojo.User FetchPlan [default]" de lenguaje "JDOQL" para la base de datos "rdbms-mysql" existe, por eso utilizamos la compilacion de datastore de antes
+18:43:08,428 (main) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@52ca2652 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@65c5bf0e, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" en resource "tx" con isolación "read-committed" y auto-commit=false
+18:43:08,428 (main) DEBUG [DataNucleus.Transaction] - Running enlist operation on resource: org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@697d6ded, error code TMNOFLAGS and transaction [DataNucleus Transaction, ID=146762790-5, enlisted resources=[]]
+18:43:08,428 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Ejecucion de "SELECT FROM com.videoclub.pojo.User" ...
+18:43:08,428 (main) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "com.mysql.cj.jdbc.ClientPreparedStatement: SELECT 'com.videoclub.pojo.User' AS `DN_TYPE`,`A0`.`CODE`,`A0`.`EMAIL`,`A0`.`NAME`,`A0`.`PASSWORD`,`A0`.`SURNAME`,`A0`.`TYPE`,`A0`.`USERNAME` FROM `USER` `A0`" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@65c5bf0e"
+18:43:08,428 (main) DEBUG [DataNucleus.Datastore.Native] - SELECT 'com.videoclub.pojo.User' AS `DN_TYPE`,`A0`.`CODE`,`A0`.`EMAIL`,`A0`.`NAME`,`A0`.`PASSWORD`,`A0`.`SURNAME`,`A0`.`TYPE`,`A0`.`USERNAME` FROM `USER` `A0`
+18:43:08,429 (main) DEBUG [DataNucleus.Datastore.Retrieve] - SQL Tiempo de cumplir = 1 ms
+18:43:08,429 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de ejecutar = 1 ms
+18:43:08,429 (main) DEBUG [DataNucleus.Transaction] - Haciendo commit de la transaacción para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775
+18:43:08,429 (main) DEBUG [DataNucleus.Query] - Leyendo los resultados del query "SELECT FROM com.videoclub.pojo.User" como la conneccion va a cerrar o cometer
+18:43:08,434 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.User:1" no esta en la Cache de nivel 1
+18:43:08,434 (main) DEBUG [DataNucleus.Cache] - Objeto con id "com.videoclub.pojo.User:1" no esta en la Cache de nivel 2
+18:43:08,442 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.User:1" añadido a la Cache de nivel 1 (loadedFlags="[YNNNNNN]")
+18:43:08,445 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.User:1" añadido a la Cache de nivel 2 (campos="[0, 1, 2, 3, 4, 5, 6]", version="")
+18:43:08,449 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 0 objetos registrados
+18:43:08,449 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:08,449 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : EMPIEZA
+18:43:08,449 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : TERMINADO
+18:43:08,450 (main) DEBUG [DataNucleus.Cache] - El objeto con identidad "com.videoclub.pojo.User:1" va a tener los campos siguientes almacendados en el objeto de Level 2 cache : [0, 1, 2, 3, 4, 5, 6]
+18:43:08,451 (main) DEBUG [DataNucleus.Transaction] - Committing [DataNucleus Transaction, ID=146762790-5, enlisted resources=[org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@697d6ded]]
+18:43:08,451 (main) DEBUG [DataNucleus.Connection] - ManagedConnection VA A COMMIT : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@52ca2652 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@65c5bf0e, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]"
+18:43:08,451 (main) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@52ca2652 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@65c5bf0e, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" 
+18:43:08,453 (main) DEBUG [DataNucleus.Persistence] - Haciendo el objeto detachado : "com.videoclub.pojo.User@9b47400" (profundidad=0)
+18:43:08,454 (main) DEBUG [DataNucleus.Persistence] - Objeto con identidad "com.videoclub.pojo.User:1" tiene cambio de lifeycle : "HOLLOW"->"DETACHED_CLEAN"
+18:43:08,454 (main) DEBUG [DataNucleus.Persistence] - Disconectando objeto con identidad "com.videoclub.pojo.User:1" de StateManager[pc=com.videoclub.pojo.User@9b47400, lifecycle=DETACHED_CLEAN]
+18:43:08,454 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad="com.videoclub.pojo.User:1" borrado de la Cache de nivel 1
+18:43:08,455 (main) DEBUG [DataNucleus.Transaction] - Transacción committed en 26 ms
+18:43:08,455 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se cerró
+]]></system-out>
+  </testcase>
+  <testcase name="DeleteRentalResource" classname="com.videoclub.testing.IntegrationIT" time="0.054">
+    <system-out><![CDATA[18:43:08,505 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se abrió para la base de datos "org.datanucleus.store.rdbms.RDBMSStoreManager@346f41a9" con transaccion="org.datanucleus.transaction.TransactionImpl@11d4d979"
+18:43:08,505 (main) DEBUG [DataNucleus.Transaction] - Transaction created [DataNucleus Transaction, ID=146762790-6, enlisted resources=[]]
+18:43:08,505 (main) DEBUG [DataNucleus.Transaction] - Transacción empezada para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775 (optimistic=false)
+18:43:08,505 (main) DEBUG [DataNucleus.Query] - Query "SELECT FROM com.videoclub.pojo.Rental FetchPlan [default]" de lenguaje "JDOQL" existe, por eso utilizamos la compilacion general de antes.
+18:43:08,506 (main) DEBUG [DataNucleus.Query] - Query "SELECT FROM com.videoclub.pojo.Rental FetchPlan [default]" de lenguaje "JDOQL" para la base de datos "rdbms-mysql" existe, por eso utilizamos la compilacion de datastore de antes
+18:43:08,507 (main) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@1d3c112a [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@2a140ce5, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" en resource "tx" con isolación "read-committed" y auto-commit=false
+18:43:08,507 (main) DEBUG [DataNucleus.Transaction] - Running enlist operation on resource: org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@1f71194d, error code TMNOFLAGS and transaction [DataNucleus Transaction, ID=146762790-6, enlisted resources=[]]
+18:43:08,507 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Ejecucion de "SELECT FROM com.videoclub.pojo.Rental" ...
+18:43:08,507 (main) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "com.mysql.cj.jdbc.ClientPreparedStatement: SELECT 'com.videoclub.pojo.Rental' AS `DN_TYPE`,`A0`.`CODE`,`A0`.`ID`,`A0`.`RENTALDATE`,`A0`.`RETURNDATE`,`A0`.`TITLE` FROM `RENTAL` `A0`" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@2a140ce5"
+18:43:08,507 (main) DEBUG [DataNucleus.Datastore.Native] - SELECT 'com.videoclub.pojo.Rental' AS `DN_TYPE`,`A0`.`CODE`,`A0`.`ID`,`A0`.`RENTALDATE`,`A0`.`RETURNDATE`,`A0`.`TITLE` FROM `RENTAL` `A0`
+18:43:08,508 (main) DEBUG [DataNucleus.Datastore.Retrieve] - SQL Tiempo de cumplir = 1 ms
+18:43:08,508 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de ejecutar = 1 ms
+18:43:08,508 (main) DEBUG [DataNucleus.Transaction] - Haciendo commit de la transaacción para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775
+18:43:08,508 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 0 objetos registrados
+18:43:08,508 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:08,508 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : EMPIEZA
+18:43:08,508 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : TERMINADO
+18:43:08,508 (main) DEBUG [DataNucleus.Transaction] - Committing [DataNucleus Transaction, ID=146762790-6, enlisted resources=[org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@1f71194d]]
+18:43:08,508 (main) DEBUG [DataNucleus.Connection] - ManagedConnection VA A COMMIT : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@1d3c112a [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@2a140ce5, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]"
+18:43:08,510 (main) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@1d3c112a [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@2a140ce5, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" 
+18:43:08,511 (main) DEBUG [DataNucleus.Transaction] - Transacción committed en 3 ms
+18:43:08,511 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se cerró
+]]></system-out>
+  </testcase>
+  <testcase name="DeleteMovieResource" classname="com.videoclub.testing.IntegrationIT" time="0.068"/>
+  <testcase name="MovieListResource" classname="com.videoclub.testing.IntegrationIT" time="0.075">
+    <system-out><![CDATA[18:43:08,625 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se abrió para la base de datos "org.datanucleus.store.rdbms.RDBMSStoreManager@346f41a9" con transaccion="org.datanucleus.transaction.TransactionImpl@1f84327b"
+18:43:08,625 (main) DEBUG [DataNucleus.Transaction] - Transaction created [DataNucleus Transaction, ID=146762790-7, enlisted resources=[]]
+18:43:08,625 (main) DEBUG [DataNucleus.Transaction] - Transacción empezada para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775 (optimistic=false)
+18:43:08,625 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Compilación (generic) de "SELECT FROM com.videoclub.pojo.Movie"
+18:43:08,625 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de compilar (generic) = 0 ms
+18:43:08,625 (main) DEBUG [DataNucleus.Query] - QueryCompilation:
+  [symbols: this type=com.videoclub.pojo.Movie]
+18:43:08,625 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Compilación (base de datos) de "SELECT FROM com.videoclub.pojo.Movie"
+18:43:08,626 (main) DEBUG [DataNucleus.Persistence] - Va a manjejar la persistencia de Clase : com.videoclub.pojo.Movie [Tabla : `MOVIE`, Estrategia de heredar : new-table]
+18:43:08,626 (main) DEBUG [DataNucleus.Datastore.Schema] - Campo [com.videoclub.pojo.Movie.code] -> Columnas [`MOVIE`.`CODE`] usando mapping del tipo "org.datanucleus.store.rdbms.mapping.java.IntegerMapping" (org.datanucleus.store.rdbms.mapping.column.IntegerColumnMapping)
+18:43:08,626 (main) DEBUG [DataNucleus.Datastore.Schema] - La tabla `MOVIE` va a manejar la persistencia de los campos de la clase com.videoclub.pojo.Movie (estrategia de heredar="new-table")
+18:43:08,626 (main) DEBUG [DataNucleus.Datastore.Schema] - Attempt to find JDBC driver 'typeInfo' for jdbc-type=VARCHAR but sql-type=VARCHAR is not found. Using default sql-type for this jdbc-type.
+18:43:08,626 (main) DEBUG [DataNucleus.Datastore.Schema] - Campo [com.videoclub.pojo.Movie.director] -> Columnas [`MOVIE`.`DIRECTOR`] usando mapping del tipo "org.datanucleus.store.rdbms.mapping.java.StringMapping" (org.datanucleus.store.rdbms.mapping.column.VarCharColumnMapping)
+18:43:08,626 (main) DEBUG [DataNucleus.Datastore.Schema] - Campo [com.videoclub.pojo.Movie.duration] -> Columnas [`MOVIE`.`DURATION`] usando mapping del tipo "org.datanucleus.store.rdbms.mapping.java.IntegerMapping" (org.datanucleus.store.rdbms.mapping.column.IntegerColumnMapping)
+18:43:08,626 (main) DEBUG [DataNucleus.Datastore.Schema] - Attempt to find JDBC driver 'typeInfo' for jdbc-type=VARCHAR but sql-type=VARCHAR is not found. Using default sql-type for this jdbc-type.
+18:43:08,626 (main) DEBUG [DataNucleus.Datastore.Schema] - Campo [com.videoclub.pojo.Movie.genre] -> Columnas [`MOVIE`.`GENRE`] usando mapping del tipo "org.datanucleus.store.rdbms.mapping.java.StringMapping" (org.datanucleus.store.rdbms.mapping.column.VarCharColumnMapping)
+18:43:08,628 (main) DEBUG [DataNucleus.Datastore.Schema] - Campo [com.videoclub.pojo.Movie.rentalPrice] -> Columnas [`MOVIE`.`RENTALPRICE`] usando mapping del tipo "org.datanucleus.store.rdbms.mapping.java.DoubleMapping" (org.datanucleus.store.rdbms.mapping.column.DoubleColumnMapping)
+18:43:08,628 (main) DEBUG [DataNucleus.Datastore.Schema] - Attempt to find JDBC driver 'typeInfo' for jdbc-type=VARCHAR but sql-type=VARCHAR is not found. Using default sql-type for this jdbc-type.
+18:43:08,628 (main) DEBUG [DataNucleus.Datastore.Schema] - Campo [com.videoclub.pojo.Movie.title] -> Columnas [`MOVIE`.`TITLE`] usando mapping del tipo "org.datanucleus.store.rdbms.mapping.java.StringMapping" (org.datanucleus.store.rdbms.mapping.column.VarCharColumnMapping)
+18:43:08,628 (main) DEBUG [DataNucleus.Datastore.Schema] - Campo [com.videoclub.pojo.Movie.year] -> Columnas [`MOVIE`.`YEAR`] usando mapping del tipo "org.datanucleus.store.rdbms.mapping.java.IntegerMapping" (org.datanucleus.store.rdbms.mapping.column.IntegerColumnMapping)
+18:43:08,628 (main) DEBUG [DataNucleus.Datastore.Schema] - Table/View `MOVIE` ha sido inicializado
+18:43:08,629 (main) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@31834a2b [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@44f0ff2b, commitOnRelease=true, closeOnRelease=true, closeOnTxnEnd=true]" en resource "nontx" con isolación "serializable" y auto-commit=false
+18:43:08,629 (main) DEBUG [DataNucleus.Datastore.Schema] - Empezando transaccion del esquema con conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@44f0ff2b" y isolacion "serializable"
+18:43:08,630 (main) DEBUG [DataNucleus.Datastore.Schema] - Check of existence of `MOVIE` returned table type of TABLE
+18:43:08,631 (main) DEBUG [DataNucleus.Datastore.Schema] - Cargando información de columna para las tablas "movie" por el Catalogo "videoclubdb", el Esquema ""
+18:43:08,634 (main) DEBUG [DataNucleus.Datastore.Schema] - Información de columna cargado por el Catalogo "videoclubdb", el Esquema "", 1 tablas, tiempo = 3 ms
+18:43:08,634 (main) DEBUG [DataNucleus.Datastore.Schema] - Información de columna cargado por la tabla "MOVIE" : hemos encontrado 7 columnas
+18:43:08,637 (main) DEBUG [DataNucleus.Datastore.Schema] - Validando 2 indic(es) de la tabla `MOVIE`
+18:43:08,642 (main) DEBUG [DataNucleus.Datastore.Schema] - Validando 0 foreign key(s) de la tabla `MOVIE`
+18:43:08,643 (main) DEBUG [DataNucleus.Datastore.Schema] - Validando 2 llaves unicas de la tabla `MOVIE`
+18:43:08,643 (main) DEBUG [DataNucleus.Datastore.Schema] - Committing transaccion del esquema "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@44f0ff2b"
+18:43:08,644 (main) DEBUG [DataNucleus.Datastore.Schema] - Cerrando la conneccion de la transaccion del esquema "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@44f0ff2b"
+18:43:08,644 (main) DEBUG [DataNucleus.Connection] - ManagedConnection VA A COMMIT : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@31834a2b [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@44f0ff2b, commitOnRelease=true, closeOnRelease=true, closeOnTxnEnd=true]"
+18:43:08,644 (main) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@31834a2b [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@44f0ff2b, commitOnRelease=true, closeOnRelease=true, closeOnTxnEnd=true]" 
+18:43:08,646 (main) DEBUG [DataNucleus.Query] - Compile of JDOQL into SQL - JoinType : navigation(default=(using nullability), filter=(using nullability))
+18:43:08,646 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de compilar (base de datos) = 21
+18:43:08,648 (main) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@68af87ad [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@43d65a81, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" en resource "tx" con isolación "read-committed" y auto-commit=false
+18:43:08,648 (main) DEBUG [DataNucleus.Transaction] - Running enlist operation on resource: org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@9cfc77, error code TMNOFLAGS and transaction [DataNucleus Transaction, ID=146762790-7, enlisted resources=[]]
+18:43:08,648 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Ejecucion de "SELECT FROM com.videoclub.pojo.Movie" ...
+18:43:08,648 (main) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "com.mysql.cj.jdbc.ClientPreparedStatement: SELECT 'com.videoclub.pojo.Movie' AS `DN_TYPE`,`A0`.`CODE`,`A0`.`DIRECTOR`,`A0`.`DURATION`,`A0`.`GENRE`,`A0`.`RENTALPRICE`,`A0`.`TITLE`,`A0`.`YEAR` FROM `MOVIE` `A0`" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@43d65a81"
+18:43:08,648 (main) DEBUG [DataNucleus.Datastore.Native] - SELECT 'com.videoclub.pojo.Movie' AS `DN_TYPE`,`A0`.`CODE`,`A0`.`DIRECTOR`,`A0`.`DURATION`,`A0`.`GENRE`,`A0`.`RENTALPRICE`,`A0`.`TITLE`,`A0`.`YEAR` FROM `MOVIE` `A0`
+18:43:08,649 (main) DEBUG [DataNucleus.Datastore.Retrieve] - SQL Tiempo de cumplir = 1 ms
+18:43:08,649 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de ejecutar = 1 ms
+18:43:08,649 (main) DEBUG [DataNucleus.Transaction] - Haciendo commit de la transaacción para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775
+18:43:08,650 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 0 objetos registrados
+18:43:08,650 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:08,650 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : EMPIEZA
+18:43:08,650 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : TERMINADO
+18:43:08,650 (main) DEBUG [DataNucleus.Transaction] - Committing [DataNucleus Transaction, ID=146762790-7, enlisted resources=[org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@9cfc77]]
+18:43:08,650 (main) DEBUG [DataNucleus.Connection] - ManagedConnection VA A COMMIT : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@68af87ad [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@43d65a81, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]"
+18:43:08,650 (main) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@68af87ad [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@43d65a81, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" 
+18:43:08,651 (main) DEBUG [DataNucleus.Transaction] - Transacción committed en 2 ms
+18:43:08,651 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se cerró
+]]></system-out>
+  </testcase>
+</testsuite>

@@ -1,0 +1,937 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.videoclub.testing.TestVideoclub" time="0.22" tests="3" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="20"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\Aritz Candina\OneDrive\Documentos\GitHub\BSPQ23-E1\target\test-classes;C:\Users\Aritz Candina\OneDrive\Documentos\GitHub\BSPQ23-E1\target\classes;C:\Users\Aritz Candina\.m2\repository\org\glassfish\jersey\containers\jersey-container-servlet-core\2.35\jersey-container-servlet-core-2.35.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\hk2\external\jakarta.inject\2.6.1\jakarta.inject-2.6.1.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\jersey\core\jersey-common\2.35\jersey-common-2.35.jar;C:\Users\Aritz Candina\.m2\repository\jakarta\annotation\jakarta.annotation-api\1.3.5\jakarta.annotation-api-1.3.5.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\hk2\osgi-resource-locator\1.0.3\osgi-resource-locator-1.0.3.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\jersey\core\jersey-server\2.35\jersey-server-2.35.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\jersey\core\jersey-client\2.35\jersey-client-2.35.jar;C:\Users\Aritz Candina\.m2\repository\jakarta\validation\jakarta.validation-api\2.0.2\jakarta.validation-api-2.0.2.jar;C:\Users\Aritz Candina\.m2\repository\jakarta\ws\rs\jakarta.ws.rs-api\2.1.6\jakarta.ws.rs-api-2.1.6.jar;C:\Users\Aritz Candina\.m2\repository\com\github\noconnor\junitperf\1.22.1\junitperf-1.22.1.jar;C:\Users\Aritz Candina\.m2\repository\com\github\noconnor\junitperf-core\1.22.1\junitperf-core-1.22.1.jar;C:\Users\Aritz Candina\.m2\repository\org\projectlombok\lombok\1.18.24\lombok-1.18.24.jar;C:\Users\Aritz Candina\.m2\repository\org\apache\commons\commons-lang3\3.11\commons-lang3-3.11.jar;C:\Users\Aritz Candina\.m2\repository\ch\qos\logback\logback-classic\1.3.0\logback-classic-1.3.0.jar;C:\Users\Aritz Candina\.m2\repository\ch\qos\logback\logback-core\1.3.0\logback-core-1.3.0.jar;C:\Users\Aritz Candina\.m2\repository\org\slf4j\slf4j-api\2.0.0\slf4j-api-2.0.0.jar;C:\Users\Aritz Candina\.m2\repository\com\google\guava\guava\30.1-jre\guava-30.1-jre.jar;C:\Users\Aritz Candina\.m2\repository\com\google\guava\failureaccess\1.0.1\failureaccess-1.0.1.jar;C:\Users\Aritz Candina\.m2\repository\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\Aritz Candina\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\Aritz Candina\.m2\repository\org\checkerframework\checker-qual\3.5.0\checker-qual-3.5.0.jar;C:\Users\Aritz Candina\.m2\repository\com\google\errorprone\error_prone_annotations\2.3.4\error_prone_annotations-2.3.4.jar;C:\Users\Aritz Candina\.m2\repository\com\google\j2objc\j2objc-annotations\1.3\j2objc-annotations-1.3.jar;C:\Users\Aritz Candina\.m2\repository\commons-collections\commons-collections\3.2.2\commons-collections-3.2.2.jar;C:\Users\Aritz Candina\.m2\repository\org\apache\commons\commons-math3\3.6.1\commons-math3-3.6.1.jar;C:\Users\Aritz Candina\.m2\repository\org\jtwig\jtwig-core\5.86.1.RELEASE\jtwig-core-5.86.1.RELEASE.jar;C:\Users\Aritz Candina\.m2\repository\org\jtwig\jtwig-reflection\5.86.1.RELEASE\jtwig-reflection-5.86.1.RELEASE.jar;C:\Users\Aritz Candina\.m2\repository\org\parboiled\parboiled-java\1.1.7\parboiled-java-1.1.7.jar;C:\Users\Aritz Candina\.m2\repository\org\parboiled\parboiled-core\1.1.7\parboiled-core-1.1.7.jar;C:\Users\Aritz Candina\.m2\repository\org\ow2\asm\asm\5.0.3\asm-5.0.3.jar;C:\Users\Aritz Candina\.m2\repository\org\ow2\asm\asm-tree\5.0.3\asm-tree-5.0.3.jar;C:\Users\Aritz Candina\.m2\repository\org\ow2\asm\asm-analysis\5.0.3\asm-analysis-5.0.3.jar;C:\Users\Aritz Candina\.m2\repository\org\ow2\asm\asm-util\5.0.3\asm-util-5.0.3.jar;C:\Users\Aritz Candina\.m2\repository\com\googlecode\concurrentlinkedhashmap\concurrentlinkedhashmap-lru\1.4.2\concurrentlinkedhashmap-lru-1.4.2.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\jersey\inject\jersey-hk2\2.35\jersey-hk2-2.35.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\hk2\hk2-locator\2.6.1\hk2-locator-2.6.1.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\hk2\external\aopalliance-repackaged\2.6.1\aopalliance-repackaged-2.6.1.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\hk2\hk2-api\2.6.1\hk2-api-2.6.1.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\hk2\hk2-utils\2.6.1\hk2-utils-2.6.1.jar;C:\Users\Aritz Candina\.m2\repository\org\javassist\javassist\3.25.0-GA\javassist-3.25.0-GA.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\jersey\media\jersey-media-json-jackson\2.35\jersey-media-json-jackson-2.35.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\jersey\ext\jersey-entity-filtering\2.35\jersey-entity-filtering-2.35.jar;C:\Users\Aritz Candina\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.12.2\jackson-annotations-2.12.2.jar;C:\Users\Aritz Candina\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.12.2\jackson-databind-2.12.2.jar;C:\Users\Aritz Candina\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.12.2\jackson-core-2.12.2.jar;C:\Users\Aritz Candina\.m2\repository\com\fasterxml\jackson\module\jackson-module-jaxb-annotations\2.12.2\jackson-module-jaxb-annotations-2.12.2.jar;C:\Users\Aritz Candina\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\2.3.2\jakarta.xml.bind-api-2.3.2.jar;C:\Users\Aritz Candina\.m2\repository\jakarta\activation\jakarta.activation-api\1.2.1\jakarta.activation-api-1.2.1.jar;C:\Users\Aritz Candina\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\Aritz Candina\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\Aritz Candina\.m2\repository\org\apache\logging\log4j\log4j-api\2.20.0\log4j-api-2.20.0.jar;C:\Users\Aritz Candina\.m2\repository\org\apache\logging\log4j\log4j-core\2.20.0\log4j-core-2.20.0.jar;C:\Users\Aritz Candina\.m2\repository\org\datanucleus\javax.jdo\3.2.1\javax.jdo-3.2.1.jar;C:\Users\Aritz Candina\.m2\repository\javax\transaction\javax.transaction-api\1.3\javax.transaction-api-1.3.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\corba\glassfish-corba-omgapi\4.2.2\glassfish-corba-omgapi-4.2.2.jar;C:\Users\Aritz Candina\.m2\repository\org\datanucleus\datanucleus-core\6.0.4\datanucleus-core-6.0.4.jar;C:\Users\Aritz Candina\.m2\repository\org\datanucleus\datanucleus-api-jdo\6.0.1\datanucleus-api-jdo-6.0.1.jar;C:\Users\Aritz Candina\.m2\repository\org\datanucleus\datanucleus-rdbms\6.0.4\datanucleus-rdbms-6.0.4.jar;C:\Users\Aritz Candina\.m2\repository\mysql\mysql-connector-java\8.0.29\mysql-connector-java-8.0.29.jar;C:\Users\Aritz Candina\.m2\repository\com\google\protobuf\protobuf-java\3.19.4\protobuf-java-3.19.4.jar;C:\Users\Aritz Candina\.m2\repository\org\datanucleus\datanucleus-maven-plugin\5.0.1\datanucleus-maven-plugin-5.0.1.jar;C:\Users\Aritz Candina\.m2\repository\org\codehaus\plexus\plexus-utils\3.0.8\plexus-utils-3.0.8.jar;C:\Users\Aritz Candina\.m2\repository\org\apache\maven\maven-artifact\3.0.4\maven-artifact-3.0.4.jar;C:\Users\Aritz Candina\.m2\repository\org\apache\maven\maven-plugin-api\3.0.4\maven-plugin-api-3.0.4.jar;C:\Users\Aritz Candina\.m2\repository\org\apache\maven\maven-model\3.0.4\maven-model-3.0.4.jar;C:\Users\Aritz Candina\.m2\repository\org\sonatype\sisu\sisu-inject-plexus\2.3.0\sisu-inject-plexus-2.3.0.jar;C:\Users\Aritz Candina\.m2\repository\org\codehaus\plexus\plexus-component-annotations\1.5.5\plexus-component-annotations-1.5.5.jar;C:\Users\Aritz Candina\.m2\repository\org\sonatype\sisu\sisu-inject-bean\2.3.0\sisu-inject-bean-2.3.0.jar;C:\Users\Aritz Candina\.m2\repository\org\sonatype\sisu\sisu-guice\3.1.0\sisu-guice-3.1.0-no_aop.jar;C:\Users\Aritz Candina\.m2\repository\org\sonatype\sisu\sisu-guava\0.9.9\sisu-guava-0.9.9.jar;C:\Users\Aritz Candina\.m2\repository\org\codehaus\plexus\plexus-container-default\1.5.5\plexus-container-default-1.5.5.jar;C:\Users\Aritz Candina\.m2\repository\org\codehaus\plexus\plexus-classworlds\2.2.2\plexus-classworlds-2.2.2.jar;C:\Users\Aritz Candina\.m2\repository\org\apache\xbean\xbean-reflect\3.4\xbean-reflect-3.4.jar;C:\Users\Aritz Candina\.m2\repository\log4j\log4j\1.2.12\log4j-1.2.12.jar;C:\Users\Aritz Candina\.m2\repository\commons-logging\commons-logging-api\1.1\commons-logging-api-1.1.jar;C:\Users\Aritz Candina\.m2\repository\com\google\collections\google-collections\1.0\google-collections-1.0.jar;C:\Users\Aritz Candina\.m2\repository\com\itextpdf\itextpdf\5.5.9\itextpdf-5.5.9.jar;C:\Users\Aritz Candina\.m2\repository\com\sun\mail\javax.mail\1.6.2\javax.mail-1.6.2.jar;C:\Users\Aritz Candina\.m2\repository\javax\activation\activation\1.1.1\activation-1.1.1.jar;C:\Users\Aritz Candina\.m2\repository\com\google\zxing\core\3.4.1\core-3.4.1.jar;C:\Users\Aritz Candina\.m2\repository\com\google\zxing\javase\3.4.1\javase-3.4.1.jar;C:\Users\Aritz Candina\.m2\repository\com\beust\jcommander\1.78\jcommander-1.78.jar;C:\Users\Aritz Candina\.m2\repository\com\github\jai-imageio\jai-imageio-core\1.4.0\jai-imageio-core-1.4.0.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Europe/Madrid"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="java.vm.specification.version" value="20"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="ES"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-20\bin"/>
+    <property name="sun.java.command" value="C:\Users\Aritz Candina\AppData\Local\Temp\surefire14492834672146720420\surefirebooter12418488332359624759.jar C:\Users\Aritz Candina\AppData\Local\Temp\surefire14492834672146720420 2023-05-21T18-43-01_074-jvmRun1 surefire1738387128773616926tmp surefire_05239256668160330454tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\Aritz Candina\OneDrive\Documentos\GitHub\BSPQ23-E1\target\test-classes;C:\Users\Aritz Candina\OneDrive\Documentos\GitHub\BSPQ23-E1\target\classes;C:\Users\Aritz Candina\.m2\repository\org\glassfish\jersey\containers\jersey-container-servlet-core\2.35\jersey-container-servlet-core-2.35.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\hk2\external\jakarta.inject\2.6.1\jakarta.inject-2.6.1.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\jersey\core\jersey-common\2.35\jersey-common-2.35.jar;C:\Users\Aritz Candina\.m2\repository\jakarta\annotation\jakarta.annotation-api\1.3.5\jakarta.annotation-api-1.3.5.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\hk2\osgi-resource-locator\1.0.3\osgi-resource-locator-1.0.3.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\jersey\core\jersey-server\2.35\jersey-server-2.35.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\jersey\core\jersey-client\2.35\jersey-client-2.35.jar;C:\Users\Aritz Candina\.m2\repository\jakarta\validation\jakarta.validation-api\2.0.2\jakarta.validation-api-2.0.2.jar;C:\Users\Aritz Candina\.m2\repository\jakarta\ws\rs\jakarta.ws.rs-api\2.1.6\jakarta.ws.rs-api-2.1.6.jar;C:\Users\Aritz Candina\.m2\repository\com\github\noconnor\junitperf\1.22.1\junitperf-1.22.1.jar;C:\Users\Aritz Candina\.m2\repository\com\github\noconnor\junitperf-core\1.22.1\junitperf-core-1.22.1.jar;C:\Users\Aritz Candina\.m2\repository\org\projectlombok\lombok\1.18.24\lombok-1.18.24.jar;C:\Users\Aritz Candina\.m2\repository\org\apache\commons\commons-lang3\3.11\commons-lang3-3.11.jar;C:\Users\Aritz Candina\.m2\repository\ch\qos\logback\logback-classic\1.3.0\logback-classic-1.3.0.jar;C:\Users\Aritz Candina\.m2\repository\ch\qos\logback\logback-core\1.3.0\logback-core-1.3.0.jar;C:\Users\Aritz Candina\.m2\repository\org\slf4j\slf4j-api\2.0.0\slf4j-api-2.0.0.jar;C:\Users\Aritz Candina\.m2\repository\com\google\guava\guava\30.1-jre\guava-30.1-jre.jar;C:\Users\Aritz Candina\.m2\repository\com\google\guava\failureaccess\1.0.1\failureaccess-1.0.1.jar;C:\Users\Aritz Candina\.m2\repository\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\Aritz Candina\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\Aritz Candina\.m2\repository\org\checkerframework\checker-qual\3.5.0\checker-qual-3.5.0.jar;C:\Users\Aritz Candina\.m2\repository\com\google\errorprone\error_prone_annotations\2.3.4\error_prone_annotations-2.3.4.jar;C:\Users\Aritz Candina\.m2\repository\com\google\j2objc\j2objc-annotations\1.3\j2objc-annotations-1.3.jar;C:\Users\Aritz Candina\.m2\repository\commons-collections\commons-collections\3.2.2\commons-collections-3.2.2.jar;C:\Users\Aritz Candina\.m2\repository\org\apache\commons\commons-math3\3.6.1\commons-math3-3.6.1.jar;C:\Users\Aritz Candina\.m2\repository\org\jtwig\jtwig-core\5.86.1.RELEASE\jtwig-core-5.86.1.RELEASE.jar;C:\Users\Aritz Candina\.m2\repository\org\jtwig\jtwig-reflection\5.86.1.RELEASE\jtwig-reflection-5.86.1.RELEASE.jar;C:\Users\Aritz Candina\.m2\repository\org\parboiled\parboiled-java\1.1.7\parboiled-java-1.1.7.jar;C:\Users\Aritz Candina\.m2\repository\org\parboiled\parboiled-core\1.1.7\parboiled-core-1.1.7.jar;C:\Users\Aritz Candina\.m2\repository\org\ow2\asm\asm\5.0.3\asm-5.0.3.jar;C:\Users\Aritz Candina\.m2\repository\org\ow2\asm\asm-tree\5.0.3\asm-tree-5.0.3.jar;C:\Users\Aritz Candina\.m2\repository\org\ow2\asm\asm-analysis\5.0.3\asm-analysis-5.0.3.jar;C:\Users\Aritz Candina\.m2\repository\org\ow2\asm\asm-util\5.0.3\asm-util-5.0.3.jar;C:\Users\Aritz Candina\.m2\repository\com\googlecode\concurrentlinkedhashmap\concurrentlinkedhashmap-lru\1.4.2\concurrentlinkedhashmap-lru-1.4.2.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\jersey\inject\jersey-hk2\2.35\jersey-hk2-2.35.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\hk2\hk2-locator\2.6.1\hk2-locator-2.6.1.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\hk2\external\aopalliance-repackaged\2.6.1\aopalliance-repackaged-2.6.1.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\hk2\hk2-api\2.6.1\hk2-api-2.6.1.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\hk2\hk2-utils\2.6.1\hk2-utils-2.6.1.jar;C:\Users\Aritz Candina\.m2\repository\org\javassist\javassist\3.25.0-GA\javassist-3.25.0-GA.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\jersey\media\jersey-media-json-jackson\2.35\jersey-media-json-jackson-2.35.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\jersey\ext\jersey-entity-filtering\2.35\jersey-entity-filtering-2.35.jar;C:\Users\Aritz Candina\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.12.2\jackson-annotations-2.12.2.jar;C:\Users\Aritz Candina\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.12.2\jackson-databind-2.12.2.jar;C:\Users\Aritz Candina\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.12.2\jackson-core-2.12.2.jar;C:\Users\Aritz Candina\.m2\repository\com\fasterxml\jackson\module\jackson-module-jaxb-annotations\2.12.2\jackson-module-jaxb-annotations-2.12.2.jar;C:\Users\Aritz Candina\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\2.3.2\jakarta.xml.bind-api-2.3.2.jar;C:\Users\Aritz Candina\.m2\repository\jakarta\activation\jakarta.activation-api\1.2.1\jakarta.activation-api-1.2.1.jar;C:\Users\Aritz Candina\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\Aritz Candina\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\Aritz Candina\.m2\repository\org\apache\logging\log4j\log4j-api\2.20.0\log4j-api-2.20.0.jar;C:\Users\Aritz Candina\.m2\repository\org\apache\logging\log4j\log4j-core\2.20.0\log4j-core-2.20.0.jar;C:\Users\Aritz Candina\.m2\repository\org\datanucleus\javax.jdo\3.2.1\javax.jdo-3.2.1.jar;C:\Users\Aritz Candina\.m2\repository\javax\transaction\javax.transaction-api\1.3\javax.transaction-api-1.3.jar;C:\Users\Aritz Candina\.m2\repository\org\glassfish\corba\glassfish-corba-omgapi\4.2.2\glassfish-corba-omgapi-4.2.2.jar;C:\Users\Aritz Candina\.m2\repository\org\datanucleus\datanucleus-core\6.0.4\datanucleus-core-6.0.4.jar;C:\Users\Aritz Candina\.m2\repository\org\datanucleus\datanucleus-api-jdo\6.0.1\datanucleus-api-jdo-6.0.1.jar;C:\Users\Aritz Candina\.m2\repository\org\datanucleus\datanucleus-rdbms\6.0.4\datanucleus-rdbms-6.0.4.jar;C:\Users\Aritz Candina\.m2\repository\mysql\mysql-connector-java\8.0.29\mysql-connector-java-8.0.29.jar;C:\Users\Aritz Candina\.m2\repository\com\google\protobuf\protobuf-java\3.19.4\protobuf-java-3.19.4.jar;C:\Users\Aritz Candina\.m2\repository\org\datanucleus\datanucleus-maven-plugin\5.0.1\datanucleus-maven-plugin-5.0.1.jar;C:\Users\Aritz Candina\.m2\repository\org\codehaus\plexus\plexus-utils\3.0.8\plexus-utils-3.0.8.jar;C:\Users\Aritz Candina\.m2\repository\org\apache\maven\maven-artifact\3.0.4\maven-artifact-3.0.4.jar;C:\Users\Aritz Candina\.m2\repository\org\apache\maven\maven-plugin-api\3.0.4\maven-plugin-api-3.0.4.jar;C:\Users\Aritz Candina\.m2\repository\org\apache\maven\maven-model\3.0.4\maven-model-3.0.4.jar;C:\Users\Aritz Candina\.m2\repository\org\sonatype\sisu\sisu-inject-plexus\2.3.0\sisu-inject-plexus-2.3.0.jar;C:\Users\Aritz Candina\.m2\repository\org\codehaus\plexus\plexus-component-annotations\1.5.5\plexus-component-annotations-1.5.5.jar;C:\Users\Aritz Candina\.m2\repository\org\sonatype\sisu\sisu-inject-bean\2.3.0\sisu-inject-bean-2.3.0.jar;C:\Users\Aritz Candina\.m2\repository\org\sonatype\sisu\sisu-guice\3.1.0\sisu-guice-3.1.0-no_aop.jar;C:\Users\Aritz Candina\.m2\repository\org\sonatype\sisu\sisu-guava\0.9.9\sisu-guava-0.9.9.jar;C:\Users\Aritz Candina\.m2\repository\org\codehaus\plexus\plexus-container-default\1.5.5\plexus-container-default-1.5.5.jar;C:\Users\Aritz Candina\.m2\repository\org\codehaus\plexus\plexus-classworlds\2.2.2\plexus-classworlds-2.2.2.jar;C:\Users\Aritz Candina\.m2\repository\org\apache\xbean\xbean-reflect\3.4\xbean-reflect-3.4.jar;C:\Users\Aritz Candina\.m2\repository\log4j\log4j\1.2.12\log4j-1.2.12.jar;C:\Users\Aritz Candina\.m2\repository\commons-logging\commons-logging-api\1.1\commons-logging-api-1.1.jar;C:\Users\Aritz Candina\.m2\repository\com\google\collections\google-collections\1.0\google-collections-1.0.jar;C:\Users\Aritz Candina\.m2\repository\com\itextpdf\itextpdf\5.5.9\itextpdf-5.5.9.jar;C:\Users\Aritz Candina\.m2\repository\com\sun\mail\javax.mail\1.6.2\javax.mail-1.6.2.jar;C:\Users\Aritz Candina\.m2\repository\javax\activation\activation\1.1.1\activation-1.1.1.jar;C:\Users\Aritz Candina\.m2\repository\com\google\zxing\core\3.4.1\core-3.4.1.jar;C:\Users\Aritz Candina\.m2\repository\com\google\zxing\javase\3.4.1\javase-3.4.1.jar;C:\Users\Aritz Candina\.m2\repository\com\beust\jcommander\1.78\jcommander-1.78.jar;C:\Users\Aritz Candina\.m2\repository\com\github\jai-imageio\jai-imageio-core\1.4.0\jai-imageio-core-1.4.0.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\Aritz Candina"/>
+    <property name="user.language" value="es"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2023-04-18"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-20"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\Aritz Candina\OneDrive\Documentos\GitHub\BSPQ23-E1"/>
+    <property name="java.vm.compressedOopsMode" value="32-bit"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\Aritz Candina\AppData\Local\Temp\surefire14492834672146720420\surefirebooter12418488332359624759.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="20.0.1+9-29"/>
+    <property name="user.name" value="Aritz Candina"/>
+    <property name="stdout.encoding" value="Cp1252"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\Aritz Candina\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\ARITZC~1\AppData\Local\Temp\"/>
+    <property name="java.version" value="20.0.1"/>
+    <property name="user.dir" value="C:\Users\Aritz Candina\OneDrive\Documentos\GitHub\BSPQ23-E1"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-20\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\System32\HWAudioDriverLibs;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\Aritz Candina\Downloads\mysql-8.0.30-winx64\bin;C:\apache-maven-3.9.0\bin;C:\Program Files\Git\cmd;C:\Program Files\TortoiseGit\bin;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Users\Aritz Candina\OneDrive\Escritorio\visualvm_216\bin;C:\Program Files\doxygen\bin\doxygen.exe;C:\Program Files\CMake\bin;C:\Program Files\gs\gs10.01.1\bin;%GHOSTSCRIPT_HOME%\gs\gs10.1.1\bin;C:\Program Files\doxygen\bin;C:\Users\Aritz Candina\AppData\Local\Programs\Python\Python310\Scripts\;C:\Users\Aritz Candina\AppData\Local\Programs\Python\Python310\;C:\Users\Aritz Candina\AppData\Local\Microsoft\WindowsApps;C:\Users\Aritz Candina\AppData\Local\Programs\Python\Python310\;C:\Users\Aritz Candina\AppData\Local\Programs\Python\Python310\Scripts\;C:\apache-ant-1.10.12-bin\apache-ant-1.10.12\bin;C:\Users\Aritz Candina\AppData\Local\GitHubDesktop\bin;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Users\Aritz Candina\OneDrive\Escritorio\visualvm_216\bin;C:\Program Files\doxygen\bin\doxygen.exe;C:\Program Files\CMake\bin;C:\Users\Aritz Candina\AppData\Local\Programs\MiKTeX\miktex\bin\x64\;;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="Cp1252"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="20.0.1+9-29"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="64.0"/>
+  </properties>
+  <testcase name="databaseRentalChecking" classname="com.videoclub.testing.TestVideoclub" time="0.05">
+    <system-out><![CDATA[18:43:08,656 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se abrió para la base de datos "org.datanucleus.store.rdbms.RDBMSStoreManager@346f41a9" con transaccion="org.datanucleus.transaction.TransactionImpl@110b7837"
+18:43:08,656 (main) DEBUG [DataNucleus.Transaction] - Transaction created [DataNucleus Transaction, ID=146762790-8, enlisted resources=[]]
+18:43:08,656 (main) DEBUG [DataNucleus.Transaction] - Transacción empezada para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775 (optimistic=false)
+* Storing a class com.videoclub.pojo.User : User [code=0, username=admin,type=ADMIN, password=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918, email=admin@email.com, name=AdminName, surname=AdminSurname]
+18:43:08,659 (main) DEBUG [DataNucleus.Persistence] - Haciendo el objeto persistente : "com.videoclub.pojo.User@1f536481"
+18:43:08,662 (main) DEBUG [DataNucleus.Datastore.Schema] - Attempt to find JDBC driver 'typeInfo' for jdbc-type=VARCHAR but sql-type=VARCHAR is not found. Using default sql-type for this jdbc-type.
+18:43:08,664 (main) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@433ea2ac [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@7f977fba, commitOnRelease=true, closeOnRelease=true, closeOnTxnEnd=true]" en resource "nontx" con isolación "read-committed" y auto-commit=false
+18:43:08,666 (main) DEBUG [DataNucleus.Datastore.Schema] - Check of existence of videoclubdb.`SEQUENCE_TABLE` returned table type of TABLE
+18:43:08,666 (main) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "com.mysql.cj.jdbc.ClientPreparedStatement: SELECT `NEXT_VAL` FROM videoclubdb.`SEQUENCE_TABLE` WHERE `SEQUENCE_NAME`=** NOT SPECIFIED ** FOR UPDATE" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@7f977fba"
+18:43:08,666 (main) DEBUG [DataNucleus.Datastore.Native] - SELECT `NEXT_VAL` FROM videoclubdb.`SEQUENCE_TABLE` WHERE `SEQUENCE_NAME`=? FOR UPDATE
+18:43:08,669 (main) DEBUG [DataNucleus.Datastore.Retrieve] - SQL Tiempo de cumplir = 3 ms
+18:43:08,669 (main) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "com.mysql.cj.jdbc.ClientPreparedStatement: UPDATE videoclubdb.`SEQUENCE_TABLE` SET `NEXT_VAL`=(`NEXT_VAL`+** NOT SPECIFIED **) WHERE `SEQUENCE_NAME`=** NOT SPECIFIED **" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@7f977fba"
+18:43:08,669 (main) DEBUG [DataNucleus.Datastore.Native] - UPDATE videoclubdb.`SEQUENCE_TABLE` SET `NEXT_VAL`=(`NEXT_VAL`+?) WHERE `SEQUENCE_NAME`=?
+18:43:08,671 (main) DEBUG [DataNucleus.Datastore.Persist] - SQL Tiempo de cumplir = 2 ms (numero de lineas cambiado = 1) con el PreparedStatement "org.datanucleus.store.rdbms.datasource.dbcp2.DelegatingPreparedStatement@7f5614f9"
+18:43:08,671 (main) DEBUG [DataNucleus.Datastore] - Cerrando PreparedStatement "org.datanucleus.store.rdbms.datasource.dbcp2.DelegatingPreparedStatement@7f5614f9"
+18:43:08,671 (main) DEBUG [DataNucleus.Datastore] - Cerrando PreparedStatement "org.datanucleus.store.rdbms.datasource.dbcp2.DelegatingPreparedStatement@110e9982"
+18:43:08,671 (main) DEBUG [DataNucleus.ValueGeneration] - Hemos reservado un bloque de 10 valores
+18:43:08,671 (main) DEBUG [DataNucleus.Connection] - ManagedConnection VA A COMMIT : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@433ea2ac [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@7f977fba, commitOnRelease=true, closeOnRelease=true, closeOnTxnEnd=true]"
+18:43:08,674 (main) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@433ea2ac [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@7f977fba, commitOnRelease=true, closeOnRelease=true, closeOnTxnEnd=true]" 
+18:43:08,677 (main) DEBUG [DataNucleus.ValueGeneration] - Valor generado para el campo "com.videoclub.pojo.User.code" con estrategia="increment" (Generador="org.datanucleus.store.rdbms.valuegenerator.TableGenerator") : valor=11
+18:43:08,677 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.User:11" añadido a la Cache de nivel 1 (loadedFlags="[YYYYYYY]")
+18:43:08,677 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.User:11" ha sido puesto en la cache transaccional
+18:43:08,682 (main) DEBUG [DataNucleus.Persistence] - Objeto "com.videoclub.pojo.User@1f536481" va a ser añadido a la tabla "`USER`"
+18:43:08,683 (main) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@126f8f24 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@35e98af, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" en resource "tx" con isolación "read-committed" y auto-commit=false
+18:43:08,683 (main) DEBUG [DataNucleus.Transaction] - Running enlist operation on resource: org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@781aff8b, error code TMNOFLAGS and transaction [DataNucleus Transaction, ID=146762790-8, enlisted resources=[]]
+18:43:08,684 (main) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "com.mysql.cj.jdbc.ClientPreparedStatement: INSERT INTO `USER` (`EMAIL`,`NAME`,`PASSWORD`,`SURNAME`,`TYPE`,`USERNAME`,`CODE`) VALUES (** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **)" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@35e98af"
+18:43:08,684 (main) DEBUG [DataNucleus.Datastore.Persist] - El statement "INSERT INTO `USER` (`EMAIL`,`NAME`,`PASSWORD`,`SURNAME`,`TYPE`,`USERNAME`,`CODE`) VALUES (?,?,?,?,?,?,?)" ya es batchable
+18:43:08,686 (main) DEBUG [DataNucleus.Datastore.Persist] - Añadiendo statement "INSERT INTO `USER` (`EMAIL`,`NAME`,`PASSWORD`,`SURNAME`,`TYPE`,`USERNAME`,`CODE`) VALUES (?,?,?,?,?,?,?)" al batch para procesar (tamaño de batch = 1)
+18:43:08,686 (main) DEBUG [DataNucleus.Datastore.Native] - INSERT INTO `USER` (`EMAIL`,`NAME`,`PASSWORD`,`SURNAME`,`TYPE`,`USERNAME`,`CODE`) VALUES (?,?,?,?,?,?,?)
+18:43:08,687 (main) DEBUG [DataNucleus.Datastore] - SQL Tiempo de cumplir = 1 ms (numero de lineas cambiado = [1]) con el PreparedStatement "org.datanucleus.store.rdbms.datasource.dbcp2.DelegatingPreparedStatement@31f77791"
+18:43:08,688 (main) DEBUG [DataNucleus.Transaction] - Haciendo commit de la transaacción para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775
+18:43:08,688 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 1 objetos registrados
+18:43:08,688 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:08,688 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : EMPIEZA
+18:43:08,688 (main) DEBUG [DataNucleus.Persistence] - Haciendo la calculación de alcanzables con objeto con identidad "com.videoclub.pojo.User:11"
+18:43:08,688 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.User:11" obtenido de la Cache nivel 1 (loadedFlags="[YYYYYYY]")
+18:43:08,688 (main) DEBUG [DataNucleus.Persistence] - Object con id "com.videoclub.pojo.User:11" y estado de vida "P_NEW" añadido a la lista de alcanzables al commit.
+18:43:08,689 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 0 objetos registrados
+18:43:08,689 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:08,689 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : TERMINADO
+18:43:08,689 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.User:11" añadido a la Cache de nivel 2 (campos="[0, 1, 2, 3, 4, 5, 6]", version="")
+18:43:08,689 (main) DEBUG [DataNucleus.Cache] - El objeto con identidad "com.videoclub.pojo.User:11" va a tener los campos siguientes almacendados en el objeto de Level 2 cache : [0, 1, 2, 3, 4, 5, 6]
+18:43:08,689 (main) DEBUG [DataNucleus.Transaction] - Committing [DataNucleus Transaction, ID=146762790-8, enlisted resources=[org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@781aff8b]]
+18:43:08,689 (main) DEBUG [DataNucleus.Connection] - ManagedConnection VA A COMMIT : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@126f8f24 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@35e98af, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]"
+18:43:08,693 (main) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@126f8f24 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@35e98af, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" 
+18:43:08,694 (main) DEBUG [DataNucleus.Persistence] - Haciendo el objeto detachado : "com.videoclub.pojo.User@1f536481" (profundidad=0)
+18:43:08,694 (main) DEBUG [DataNucleus.Persistence] - Objeto con identidad "com.videoclub.pojo.User:11" tiene cambio de lifeycle : "P_NEW"->"DETACHED_CLEAN"
+18:43:08,696 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.User:11" fue borrado de la cache transactional
+18:43:08,696 (main) DEBUG [DataNucleus.Persistence] - Disconectando objeto con identidad "com.videoclub.pojo.User:11" de StateManager[pc=com.videoclub.pojo.User@1f536481, lifecycle=DETACHED_CLEAN]
+18:43:08,696 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad="com.videoclub.pojo.User:11" borrado de la Cache de nivel 1
+18:43:08,696 (main) DEBUG [DataNucleus.Transaction] - Transacción committed en 10 ms
+18:43:08,696 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se cerró
+18:43:08,696 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se abrió para la base de datos "org.datanucleus.store.rdbms.RDBMSStoreManager@346f41a9" con transaccion="org.datanucleus.transaction.TransactionImpl@475f5672"
+18:43:08,696 (main) DEBUG [DataNucleus.Transaction] - Transaction created [DataNucleus Transaction, ID=146762790-9, enlisted resources=[]]
+18:43:08,696 (main) DEBUG [DataNucleus.Transaction] - Transacción empezada para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775 (optimistic=false)
+* Storing a class com.videoclub.pojo.User : User [code=0, username=assaz,type=CLIENT, password=3200a7486419e1efd8cbbad503fb0c6140ef7e7cf69807249fda25d59c215e5c, email=asier.account@email.com, name=Asier, surname=Belloso]
+18:43:08,696 (main) DEBUG [DataNucleus.Persistence] - Haciendo el objeto persistente : "com.videoclub.pojo.User@42297bdf"
+18:43:08,697 (main) DEBUG [DataNucleus.ValueGeneration] - Valor generado para el campo "com.videoclub.pojo.User.code" con estrategia="increment" (Generador="org.datanucleus.store.rdbms.valuegenerator.TableGenerator") : valor=12
+18:43:08,697 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.User:12" añadido a la Cache de nivel 1 (loadedFlags="[YYYYYYY]")
+18:43:08,697 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.User:12" ha sido puesto en la cache transaccional
+18:43:08,697 (main) DEBUG [DataNucleus.Persistence] - Objeto "com.videoclub.pojo.User@42297bdf" va a ser añadido a la tabla "`USER`"
+18:43:08,701 (main) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@5bb911c1 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@6a55594b, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" en resource "tx" con isolación "read-committed" y auto-commit=false
+18:43:08,701 (main) DEBUG [DataNucleus.Transaction] - Running enlist operation on resource: org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@632b305d, error code TMNOFLAGS and transaction [DataNucleus Transaction, ID=146762790-9, enlisted resources=[]]
+18:43:08,701 (main) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "com.mysql.cj.jdbc.ClientPreparedStatement: INSERT INTO `USER` (`EMAIL`,`NAME`,`PASSWORD`,`SURNAME`,`TYPE`,`USERNAME`,`CODE`) VALUES (** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **)" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@6a55594b"
+18:43:08,701 (main) DEBUG [DataNucleus.Datastore.Persist] - El statement "INSERT INTO `USER` (`EMAIL`,`NAME`,`PASSWORD`,`SURNAME`,`TYPE`,`USERNAME`,`CODE`) VALUES (?,?,?,?,?,?,?)" ya es batchable
+18:43:08,702 (main) DEBUG [DataNucleus.Datastore.Persist] - Añadiendo statement "INSERT INTO `USER` (`EMAIL`,`NAME`,`PASSWORD`,`SURNAME`,`TYPE`,`USERNAME`,`CODE`) VALUES (?,?,?,?,?,?,?)" al batch para procesar (tamaño de batch = 1)
+18:43:08,702 (main) DEBUG [DataNucleus.Datastore.Native] - INSERT INTO `USER` (`EMAIL`,`NAME`,`PASSWORD`,`SURNAME`,`TYPE`,`USERNAME`,`CODE`) VALUES (?,?,?,?,?,?,?)
+18:43:08,703 (main) DEBUG [DataNucleus.Datastore] - SQL Tiempo de cumplir = 1 ms (numero de lineas cambiado = [1]) con el PreparedStatement "org.datanucleus.store.rdbms.datasource.dbcp2.DelegatingPreparedStatement@17222c11"
+18:43:08,703 (main) DEBUG [DataNucleus.Transaction] - Haciendo commit de la transaacción para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775
+18:43:08,703 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 1 objetos registrados
+18:43:08,703 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:08,703 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : EMPIEZA
+18:43:08,703 (main) DEBUG [DataNucleus.Persistence] - Haciendo la calculación de alcanzables con objeto con identidad "com.videoclub.pojo.User:12"
+18:43:08,703 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.User:12" obtenido de la Cache nivel 1 (loadedFlags="[YYYYYYY]")
+18:43:08,703 (main) DEBUG [DataNucleus.Persistence] - Object con id "com.videoclub.pojo.User:12" y estado de vida "P_NEW" añadido a la lista de alcanzables al commit.
+18:43:08,703 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 0 objetos registrados
+18:43:08,703 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:08,703 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : TERMINADO
+18:43:08,703 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.User:12" añadido a la Cache de nivel 2 (campos="[0, 1, 2, 3, 4, 5, 6]", version="")
+18:43:08,704 (main) DEBUG [DataNucleus.Cache] - El objeto con identidad "com.videoclub.pojo.User:12" va a tener los campos siguientes almacendados en el objeto de Level 2 cache : [0, 1, 2, 3, 4, 5, 6]
+18:43:08,704 (main) DEBUG [DataNucleus.Transaction] - Committing [DataNucleus Transaction, ID=146762790-9, enlisted resources=[org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@632b305d]]
+18:43:08,704 (main) DEBUG [DataNucleus.Connection] - ManagedConnection VA A COMMIT : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@5bb911c1 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@6a55594b, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]"
+18:43:08,708 (main) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@5bb911c1 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@6a55594b, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" 
+18:43:08,709 (main) DEBUG [DataNucleus.Persistence] - Haciendo el objeto detachado : "com.videoclub.pojo.User@42297bdf" (profundidad=0)
+18:43:08,709 (main) DEBUG [DataNucleus.Persistence] - Objeto con identidad "com.videoclub.pojo.User:12" tiene cambio de lifeycle : "P_NEW"->"DETACHED_CLEAN"
+18:43:08,709 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.User:12" fue borrado de la cache transactional
+18:43:08,709 (main) DEBUG [DataNucleus.Persistence] - Disconectando objeto con identidad "com.videoclub.pojo.User:12" de StateManager[pc=com.videoclub.pojo.User@42297bdf, lifecycle=DETACHED_CLEAN]
+18:43:08,709 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad="com.videoclub.pojo.User:12" borrado de la Cache de nivel 1
+18:43:08,709 (main) DEBUG [DataNucleus.Transaction] - Transacción committed en 7 ms
+18:43:08,710 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se cerró
+18:43:08,710 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se abrió para la base de datos "org.datanucleus.store.rdbms.RDBMSStoreManager@346f41a9" con transaccion="org.datanucleus.transaction.TransactionImpl@25974207"
+18:43:08,710 (main) DEBUG [DataNucleus.Transaction] - Transaction created [DataNucleus Transaction, ID=146762790-10, enlisted resources=[]]
+18:43:08,710 (main) DEBUG [DataNucleus.Transaction] - Transacción empezada para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775 (optimistic=false)
+* Storing a class com.videoclub.pojo.User : User [code=0, username=client,type=CLIENT, password=948fe603f61dc036b5c596dc09fe3ce3f3d30dc90f024c85f3c82db2ccab679d, email=client@email.com, name=ClientName, surname=ClientSurname]
+18:43:08,710 (main) DEBUG [DataNucleus.Persistence] - Haciendo el objeto persistente : "com.videoclub.pojo.User@195113de"
+18:43:08,710 (main) DEBUG [DataNucleus.ValueGeneration] - Valor generado para el campo "com.videoclub.pojo.User.code" con estrategia="increment" (Generador="org.datanucleus.store.rdbms.valuegenerator.TableGenerator") : valor=13
+18:43:08,710 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.User:13" añadido a la Cache de nivel 1 (loadedFlags="[YYYYYYY]")
+18:43:08,710 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.User:13" ha sido puesto en la cache transaccional
+18:43:08,710 (main) DEBUG [DataNucleus.Persistence] - Objeto "com.videoclub.pojo.User@195113de" va a ser añadido a la tabla "`USER`"
+18:43:08,712 (main) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@21a46ff1 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@11b5f4e2, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" en resource "tx" con isolación "read-committed" y auto-commit=false
+18:43:08,712 (main) DEBUG [DataNucleus.Transaction] - Running enlist operation on resource: org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@6bcae9, error code TMNOFLAGS and transaction [DataNucleus Transaction, ID=146762790-10, enlisted resources=[]]
+18:43:08,712 (main) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "com.mysql.cj.jdbc.ClientPreparedStatement: INSERT INTO `USER` (`EMAIL`,`NAME`,`PASSWORD`,`SURNAME`,`TYPE`,`USERNAME`,`CODE`) VALUES (** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **)" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@11b5f4e2"
+18:43:08,712 (main) DEBUG [DataNucleus.Datastore.Persist] - El statement "INSERT INTO `USER` (`EMAIL`,`NAME`,`PASSWORD`,`SURNAME`,`TYPE`,`USERNAME`,`CODE`) VALUES (?,?,?,?,?,?,?)" ya es batchable
+18:43:08,712 (main) DEBUG [DataNucleus.Datastore.Persist] - Añadiendo statement "INSERT INTO `USER` (`EMAIL`,`NAME`,`PASSWORD`,`SURNAME`,`TYPE`,`USERNAME`,`CODE`) VALUES (?,?,?,?,?,?,?)" al batch para procesar (tamaño de batch = 1)
+18:43:08,712 (main) DEBUG [DataNucleus.Datastore.Native] - INSERT INTO `USER` (`EMAIL`,`NAME`,`PASSWORD`,`SURNAME`,`TYPE`,`USERNAME`,`CODE`) VALUES (?,?,?,?,?,?,?)
+18:43:08,714 (main) DEBUG [DataNucleus.Datastore] - SQL Tiempo de cumplir = 2 ms (numero de lineas cambiado = [1]) con el PreparedStatement "org.datanucleus.store.rdbms.datasource.dbcp2.DelegatingPreparedStatement@66d25ba9"
+18:43:08,714 (main) DEBUG [DataNucleus.Transaction] - Haciendo commit de la transaacción para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775
+18:43:08,714 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 1 objetos registrados
+18:43:08,714 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:08,714 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : EMPIEZA
+18:43:08,714 (main) DEBUG [DataNucleus.Persistence] - Haciendo la calculación de alcanzables con objeto con identidad "com.videoclub.pojo.User:13"
+18:43:08,714 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.User:13" obtenido de la Cache nivel 1 (loadedFlags="[YYYYYYY]")
+18:43:08,714 (main) DEBUG [DataNucleus.Persistence] - Object con id "com.videoclub.pojo.User:13" y estado de vida "P_NEW" añadido a la lista de alcanzables al commit.
+18:43:08,714 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 0 objetos registrados
+18:43:08,714 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:08,714 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : TERMINADO
+18:43:08,714 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.User:13" añadido a la Cache de nivel 2 (campos="[0, 1, 2, 3, 4, 5, 6]", version="")
+18:43:08,714 (main) DEBUG [DataNucleus.Cache] - El objeto con identidad "com.videoclub.pojo.User:13" va a tener los campos siguientes almacendados en el objeto de Level 2 cache : [0, 1, 2, 3, 4, 5, 6]
+18:43:08,716 (main) DEBUG [DataNucleus.Transaction] - Committing [DataNucleus Transaction, ID=146762790-10, enlisted resources=[org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@6bcae9]]
+18:43:08,716 (main) DEBUG [DataNucleus.Connection] - ManagedConnection VA A COMMIT : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@21a46ff1 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@11b5f4e2, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]"
+18:43:08,720 (main) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@21a46ff1 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@11b5f4e2, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" 
+18:43:08,721 (main) DEBUG [DataNucleus.Persistence] - Haciendo el objeto detachado : "com.videoclub.pojo.User@195113de" (profundidad=0)
+18:43:08,721 (main) DEBUG [DataNucleus.Persistence] - Objeto con identidad "com.videoclub.pojo.User:13" tiene cambio de lifeycle : "P_NEW"->"DETACHED_CLEAN"
+18:43:08,721 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.User:13" fue borrado de la cache transactional
+18:43:08,721 (main) DEBUG [DataNucleus.Persistence] - Disconectando objeto con identidad "com.videoclub.pojo.User:13" de StateManager[pc=com.videoclub.pojo.User@195113de, lifecycle=DETACHED_CLEAN]
+18:43:08,721 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad="com.videoclub.pojo.User:13" borrado de la Cache de nivel 1
+18:43:08,721 (main) DEBUG [DataNucleus.Transaction] - Transacción committed en 9 ms
+18:43:08,721 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se cerró
+18:43:08,721 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se abrió para la base de datos "org.datanucleus.store.rdbms.RDBMSStoreManager@346f41a9" con transaccion="org.datanucleus.transaction.TransactionImpl@5efe47fd"
+18:43:08,721 (main) DEBUG [DataNucleus.Transaction] - Transaction created [DataNucleus Transaction, ID=146762790-11, enlisted resources=[]]
+18:43:08,722 (main) DEBUG [DataNucleus.Transaction] - Transacción empezada para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775 (optimistic=false)
+* Storing a class com.videoclub.pojo.Movie : Movie [title=Movie1, genre=comedy, duration=90, year=2023, director=paco, rentalPrice=19.9]
+18:43:08,724 (main) DEBUG [DataNucleus.Persistence] - Haciendo el objeto persistente : "com.videoclub.pojo.Movie@7db40fd5"
+18:43:08,725 (main) DEBUG [DataNucleus.Datastore.Schema] - Attempt to find JDBC driver 'typeInfo' for jdbc-type=VARCHAR but sql-type=VARCHAR is not found. Using default sql-type for this jdbc-type.
+18:43:08,726 (main) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@5e1a5f [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@31b0f02, commitOnRelease=true, closeOnRelease=true, closeOnTxnEnd=true]" en resource "nontx" con isolación "read-committed" y auto-commit=false
+18:43:08,728 (main) DEBUG [DataNucleus.Datastore.Schema] - Check of existence of videoclubdb.`SEQUENCE_TABLE` returned table type of TABLE
+18:43:08,728 (main) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "com.mysql.cj.jdbc.ClientPreparedStatement: SELECT `NEXT_VAL` FROM videoclubdb.`SEQUENCE_TABLE` WHERE `SEQUENCE_NAME`=** NOT SPECIFIED ** FOR UPDATE" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@31b0f02"
+18:43:08,728 (main) DEBUG [DataNucleus.Datastore.Native] - SELECT `NEXT_VAL` FROM videoclubdb.`SEQUENCE_TABLE` WHERE `SEQUENCE_NAME`=? FOR UPDATE
+18:43:08,728 (main) DEBUG [DataNucleus.Datastore.Retrieve] - SQL Tiempo de cumplir = 0 ms
+18:43:08,729 (main) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "com.mysql.cj.jdbc.ClientPreparedStatement: UPDATE videoclubdb.`SEQUENCE_TABLE` SET `NEXT_VAL`=(`NEXT_VAL`+** NOT SPECIFIED **) WHERE `SEQUENCE_NAME`=** NOT SPECIFIED **" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@31b0f02"
+18:43:08,729 (main) DEBUG [DataNucleus.Datastore.Native] - UPDATE videoclubdb.`SEQUENCE_TABLE` SET `NEXT_VAL`=(`NEXT_VAL`+?) WHERE `SEQUENCE_NAME`=?
+18:43:08,733 (main) DEBUG [DataNucleus.Datastore.Persist] - SQL Tiempo de cumplir = 4 ms (numero de lineas cambiado = 1) con el PreparedStatement "org.datanucleus.store.rdbms.datasource.dbcp2.DelegatingPreparedStatement@19ae2ee5"
+18:43:08,733 (main) DEBUG [DataNucleus.Datastore] - Cerrando PreparedStatement "org.datanucleus.store.rdbms.datasource.dbcp2.DelegatingPreparedStatement@19ae2ee5"
+18:43:08,733 (main) DEBUG [DataNucleus.Datastore] - Cerrando PreparedStatement "org.datanucleus.store.rdbms.datasource.dbcp2.DelegatingPreparedStatement@6ffd4c0d"
+18:43:08,733 (main) DEBUG [DataNucleus.ValueGeneration] - Hemos reservado un bloque de 10 valores
+18:43:08,733 (main) DEBUG [DataNucleus.Connection] - ManagedConnection VA A COMMIT : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@5e1a5f [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@31b0f02, commitOnRelease=true, closeOnRelease=true, closeOnTxnEnd=true]"
+18:43:08,737 (main) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@5e1a5f [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@31b0f02, commitOnRelease=true, closeOnRelease=true, closeOnTxnEnd=true]" 
+18:43:08,739 (main) DEBUG [DataNucleus.ValueGeneration] - Valor generado para el campo "com.videoclub.pojo.Movie.code" con estrategia="increment" (Generador="org.datanucleus.store.rdbms.valuegenerator.TableGenerator") : valor=11
+18:43:08,739 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Movie:11" añadido a la Cache de nivel 1 (loadedFlags="[YYYYYYY]")
+18:43:08,739 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.Movie:11" ha sido puesto en la cache transaccional
+18:43:08,739 (main) DEBUG [DataNucleus.Persistence] - Objeto "com.videoclub.pojo.Movie@7db40fd5" va a ser añadido a la tabla "`MOVIE`"
+18:43:08,741 (main) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@9fe720a [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@149274cb, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" en resource "tx" con isolación "read-committed" y auto-commit=false
+18:43:08,741 (main) DEBUG [DataNucleus.Transaction] - Running enlist operation on resource: org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@118acf70, error code TMNOFLAGS and transaction [DataNucleus Transaction, ID=146762790-11, enlisted resources=[]]
+18:43:08,741 (main) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "com.mysql.cj.jdbc.ClientPreparedStatement: INSERT INTO `MOVIE` (`DIRECTOR`,`DURATION`,`GENRE`,`RENTALPRICE`,`TITLE`,`YEAR`,`CODE`) VALUES (** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **)" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@149274cb"
+18:43:08,741 (main) DEBUG [DataNucleus.Datastore.Persist] - El statement "INSERT INTO `MOVIE` (`DIRECTOR`,`DURATION`,`GENRE`,`RENTALPRICE`,`TITLE`,`YEAR`,`CODE`) VALUES (?,?,?,?,?,?,?)" ya es batchable
+18:43:08,741 (main) DEBUG [DataNucleus.Datastore.Persist] - Añadiendo statement "INSERT INTO `MOVIE` (`DIRECTOR`,`DURATION`,`GENRE`,`RENTALPRICE`,`TITLE`,`YEAR`,`CODE`) VALUES (?,?,?,?,?,?,?)" al batch para procesar (tamaño de batch = 1)
+18:43:08,742 (main) DEBUG [DataNucleus.Datastore.Native] - INSERT INTO `MOVIE` (`DIRECTOR`,`DURATION`,`GENRE`,`RENTALPRICE`,`TITLE`,`YEAR`,`CODE`) VALUES (?,?,?,?,?,?,?)
+18:43:08,742 (main) DEBUG [DataNucleus.Datastore] - SQL Tiempo de cumplir = 0 ms (numero de lineas cambiado = [1]) con el PreparedStatement "org.datanucleus.store.rdbms.datasource.dbcp2.DelegatingPreparedStatement@f723cdb"
+18:43:08,742 (main) DEBUG [DataNucleus.Transaction] - Haciendo commit de la transaacción para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775
+18:43:08,742 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 1 objetos registrados
+18:43:08,742 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:08,742 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : EMPIEZA
+18:43:08,742 (main) DEBUG [DataNucleus.Persistence] - Haciendo la calculación de alcanzables con objeto con identidad "com.videoclub.pojo.Movie:11"
+18:43:08,742 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Movie:11" obtenido de la Cache nivel 1 (loadedFlags="[YYYYYYY]")
+18:43:08,744 (main) DEBUG [DataNucleus.Persistence] - Object con id "com.videoclub.pojo.Movie:11" y estado de vida "P_NEW" añadido a la lista de alcanzables al commit.
+18:43:08,744 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 0 objetos registrados
+18:43:08,744 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:08,744 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : TERMINADO
+18:43:08,744 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Movie:11" añadido a la Cache de nivel 2 (campos="[0, 1, 2, 3, 4, 5, 6]", version="")
+18:43:08,744 (main) DEBUG [DataNucleus.Cache] - El objeto con identidad "com.videoclub.pojo.Movie:11" va a tener los campos siguientes almacendados en el objeto de Level 2 cache : [0, 1, 2, 3, 4, 5, 6]
+18:43:08,744 (main) DEBUG [DataNucleus.Transaction] - Committing [DataNucleus Transaction, ID=146762790-11, enlisted resources=[org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@118acf70]]
+18:43:08,744 (main) DEBUG [DataNucleus.Connection] - ManagedConnection VA A COMMIT : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@9fe720a [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@149274cb, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]"
+18:43:08,748 (main) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@9fe720a [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@149274cb, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" 
+18:43:08,749 (main) DEBUG [DataNucleus.Persistence] - Haciendo el objeto detachado : "com.videoclub.pojo.Movie@7db40fd5" (profundidad=0)
+18:43:08,749 (main) DEBUG [DataNucleus.Persistence] - Objeto con identidad "com.videoclub.pojo.Movie:11" tiene cambio de lifeycle : "P_NEW"->"DETACHED_CLEAN"
+18:43:08,749 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.Movie:11" fue borrado de la cache transactional
+18:43:08,749 (main) DEBUG [DataNucleus.Persistence] - Disconectando objeto con identidad "com.videoclub.pojo.Movie:11" de StateManager[pc=com.videoclub.pojo.Movie@7db40fd5, lifecycle=DETACHED_CLEAN]
+18:43:08,749 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad="com.videoclub.pojo.Movie:11" borrado de la Cache de nivel 1
+18:43:08,749 (main) DEBUG [DataNucleus.Transaction] - Transacción committed en 7 ms
+18:43:08,749 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se cerró
+18:43:08,749 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se abrió para la base de datos "org.datanucleus.store.rdbms.RDBMSStoreManager@346f41a9" con transaccion="org.datanucleus.transaction.TransactionImpl@11f23203"
+18:43:08,749 (main) DEBUG [DataNucleus.Transaction] - Transaction created [DataNucleus Transaction, ID=146762790-12, enlisted resources=[]]
+18:43:08,749 (main) DEBUG [DataNucleus.Transaction] - Transacción empezada para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775 (optimistic=false)
+* Storing a class com.videoclub.pojo.Movie : Movie [title=Movie2, genre=drama, duration=180, year=1989, director=luis, rentalPrice=5.74]
+18:43:08,749 (main) DEBUG [DataNucleus.Persistence] - Haciendo el objeto persistente : "com.videoclub.pojo.Movie@e91af20"
+18:43:08,750 (main) DEBUG [DataNucleus.ValueGeneration] - Valor generado para el campo "com.videoclub.pojo.Movie.code" con estrategia="increment" (Generador="org.datanucleus.store.rdbms.valuegenerator.TableGenerator") : valor=12
+18:43:08,750 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Movie:12" añadido a la Cache de nivel 1 (loadedFlags="[YYYYYYY]")
+18:43:08,750 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.Movie:12" ha sido puesto en la cache transaccional
+18:43:08,750 (main) DEBUG [DataNucleus.Persistence] - Objeto "com.videoclub.pojo.Movie@e91af20" va a ser añadido a la tabla "`MOVIE`"
+18:43:08,750 (main) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@62c3f556 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@2cfe272f, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" en resource "tx" con isolación "read-committed" y auto-commit=false
+18:43:08,751 (main) DEBUG [DataNucleus.Transaction] - Running enlist operation on resource: org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@2f95653f, error code TMNOFLAGS and transaction [DataNucleus Transaction, ID=146762790-12, enlisted resources=[]]
+18:43:08,751 (main) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "com.mysql.cj.jdbc.ClientPreparedStatement: INSERT INTO `MOVIE` (`DIRECTOR`,`DURATION`,`GENRE`,`RENTALPRICE`,`TITLE`,`YEAR`,`CODE`) VALUES (** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **)" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@2cfe272f"
+18:43:08,751 (main) DEBUG [DataNucleus.Datastore.Persist] - El statement "INSERT INTO `MOVIE` (`DIRECTOR`,`DURATION`,`GENRE`,`RENTALPRICE`,`TITLE`,`YEAR`,`CODE`) VALUES (?,?,?,?,?,?,?)" ya es batchable
+18:43:08,751 (main) DEBUG [DataNucleus.Datastore.Persist] - Añadiendo statement "INSERT INTO `MOVIE` (`DIRECTOR`,`DURATION`,`GENRE`,`RENTALPRICE`,`TITLE`,`YEAR`,`CODE`) VALUES (?,?,?,?,?,?,?)" al batch para procesar (tamaño de batch = 1)
+18:43:08,751 (main) DEBUG [DataNucleus.Datastore.Native] - INSERT INTO `MOVIE` (`DIRECTOR`,`DURATION`,`GENRE`,`RENTALPRICE`,`TITLE`,`YEAR`,`CODE`) VALUES (?,?,?,?,?,?,?)
+18:43:08,752 (main) DEBUG [DataNucleus.Datastore] - SQL Tiempo de cumplir = 1 ms (numero de lineas cambiado = [1]) con el PreparedStatement "org.datanucleus.store.rdbms.datasource.dbcp2.DelegatingPreparedStatement@60dc1a4e"
+18:43:08,752 (main) DEBUG [DataNucleus.Transaction] - Haciendo commit de la transaacción para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775
+18:43:08,752 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 1 objetos registrados
+18:43:08,752 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:08,752 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : EMPIEZA
+18:43:08,752 (main) DEBUG [DataNucleus.Persistence] - Haciendo la calculación de alcanzables con objeto con identidad "com.videoclub.pojo.Movie:12"
+18:43:08,752 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Movie:12" obtenido de la Cache nivel 1 (loadedFlags="[YYYYYYY]")
+18:43:08,752 (main) DEBUG [DataNucleus.Persistence] - Object con id "com.videoclub.pojo.Movie:12" y estado de vida "P_NEW" añadido a la lista de alcanzables al commit.
+18:43:08,752 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 0 objetos registrados
+18:43:08,752 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:08,752 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : TERMINADO
+18:43:08,752 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Movie:12" añadido a la Cache de nivel 2 (campos="[0, 1, 2, 3, 4, 5, 6]", version="")
+18:43:08,752 (main) DEBUG [DataNucleus.Cache] - El objeto con identidad "com.videoclub.pojo.Movie:12" va a tener los campos siguientes almacendados en el objeto de Level 2 cache : [0, 1, 2, 3, 4, 5, 6]
+18:43:08,752 (main) DEBUG [DataNucleus.Transaction] - Committing [DataNucleus Transaction, ID=146762790-12, enlisted resources=[org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@2f95653f]]
+18:43:08,752 (main) DEBUG [DataNucleus.Connection] - ManagedConnection VA A COMMIT : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@62c3f556 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@2cfe272f, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]"
+18:43:08,756 (main) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@62c3f556 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@2cfe272f, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" 
+18:43:08,758 (main) DEBUG [DataNucleus.Persistence] - Haciendo el objeto detachado : "com.videoclub.pojo.Movie@e91af20" (profundidad=0)
+18:43:08,758 (main) DEBUG [DataNucleus.Persistence] - Objeto con identidad "com.videoclub.pojo.Movie:12" tiene cambio de lifeycle : "P_NEW"->"DETACHED_CLEAN"
+18:43:08,758 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.Movie:12" fue borrado de la cache transactional
+18:43:08,758 (main) DEBUG [DataNucleus.Persistence] - Disconectando objeto con identidad "com.videoclub.pojo.Movie:12" de StateManager[pc=com.videoclub.pojo.Movie@e91af20, lifecycle=DETACHED_CLEAN]
+18:43:08,758 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad="com.videoclub.pojo.Movie:12" borrado de la Cache de nivel 1
+18:43:08,758 (main) DEBUG [DataNucleus.Transaction] - Transacción committed en 7 ms
+18:43:08,758 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se cerró
+18:43:08,758 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se abrió para la base de datos "org.datanucleus.store.rdbms.RDBMSStoreManager@346f41a9" con transaccion="org.datanucleus.transaction.TransactionImpl@31efacad"
+18:43:08,758 (main) DEBUG [DataNucleus.Transaction] - Transaction created [DataNucleus Transaction, ID=146762790-13, enlisted resources=[]]
+18:43:08,758 (main) DEBUG [DataNucleus.Transaction] - Transacción empezada para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775 (optimistic=false)
+* Storing a class com.videoclub.pojo.Rental : Rental [id=0, title=Movie2, movie=Movie [title=Movie2, genre=drama, duration=180, year=1989, director=luis, rentalPrice=5.74], code=13, customer=User [code=13, username=client,type=CLIENT, password=948fe603f61dc036b5c596dc09fe3ce3f3d30dc90f024c85f3c82db2ccab679d, email=client@email.com, name=ClientName, surname=ClientSurname], rentalDate=Sun May 21 18:43:08 CEST 2023, returnDate=Sun May 21 18:43:08 CEST 2023]
+18:43:08,775 (main) DEBUG [DataNucleus.Persistence] - Haciendo el objeto persistente : "com.videoclub.pojo.Rental@402f8592"
+18:43:08,776 (main) DEBUG [DataNucleus.Datastore.Schema] - Attempt to find JDBC driver 'typeInfo' for jdbc-type=VARCHAR but sql-type=VARCHAR is not found. Using default sql-type for this jdbc-type.
+18:43:08,777 (main) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@61b65d54 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@b2c4a8b, commitOnRelease=true, closeOnRelease=true, closeOnTxnEnd=true]" en resource "nontx" con isolación "read-committed" y auto-commit=false
+18:43:08,780 (main) DEBUG [DataNucleus.Datastore.Schema] - Check of existence of videoclubdb.`SEQUENCE_TABLE` returned table type of TABLE
+18:43:08,780 (main) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "com.mysql.cj.jdbc.ClientPreparedStatement: SELECT `NEXT_VAL` FROM videoclubdb.`SEQUENCE_TABLE` WHERE `SEQUENCE_NAME`=** NOT SPECIFIED ** FOR UPDATE" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@b2c4a8b"
+18:43:08,780 (main) DEBUG [DataNucleus.Datastore.Native] - SELECT `NEXT_VAL` FROM videoclubdb.`SEQUENCE_TABLE` WHERE `SEQUENCE_NAME`=? FOR UPDATE
+18:43:08,781 (main) DEBUG [DataNucleus.Datastore.Retrieve] - SQL Tiempo de cumplir = 1 ms
+18:43:08,782 (main) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "com.mysql.cj.jdbc.ClientPreparedStatement: SELECT MAX(`ID`) FROM videoclubdb.`RENTAL`" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@b2c4a8b"
+18:43:08,782 (main) DEBUG [DataNucleus.Datastore.Native] - SELECT MAX(`ID`) FROM videoclubdb.`RENTAL`
+18:43:08,783 (main) DEBUG [DataNucleus.Datastore.Retrieve] - SQL Tiempo de cumplir = 1 ms
+18:43:08,783 (main) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "com.mysql.cj.jdbc.ClientPreparedStatement: INSERT INTO videoclubdb.`SEQUENCE_TABLE` (`SEQUENCE_NAME`,`NEXT_VAL`) VALUES (** NOT SPECIFIED **,** NOT SPECIFIED **)" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@b2c4a8b"
+18:43:08,783 (main) DEBUG [DataNucleus.Datastore.Native] - INSERT INTO videoclubdb.`SEQUENCE_TABLE` (`SEQUENCE_NAME`,`NEXT_VAL`) VALUES (?,?)
+18:43:08,784 (main) DEBUG [DataNucleus.Datastore.Persist] - SQL Tiempo de cumplir = 1 ms (numero de lineas cambiado = 1) con el PreparedStatement "org.datanucleus.store.rdbms.datasource.dbcp2.DelegatingPreparedStatement@7f2c57fe"
+18:43:08,784 (main) DEBUG [DataNucleus.Datastore] - Cerrando PreparedStatement "org.datanucleus.store.rdbms.datasource.dbcp2.DelegatingPreparedStatement@7f2c57fe"
+18:43:08,784 (main) DEBUG [DataNucleus.Datastore] - Cerrando PreparedStatement "org.datanucleus.store.rdbms.datasource.dbcp2.DelegatingPreparedStatement@790d8fdd"
+18:43:08,784 (main) DEBUG [DataNucleus.Datastore] - Cerrando PreparedStatement "org.datanucleus.store.rdbms.datasource.dbcp2.DelegatingPreparedStatement@3dbd7107"
+18:43:08,784 (main) DEBUG [DataNucleus.ValueGeneration] - Hemos reservado un bloque de 10 valores
+18:43:08,784 (main) DEBUG [DataNucleus.Connection] - ManagedConnection VA A COMMIT : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@61b65d54 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@b2c4a8b, commitOnRelease=true, closeOnRelease=true, closeOnTxnEnd=true]"
+18:43:08,788 (main) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@61b65d54 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@b2c4a8b, commitOnRelease=true, closeOnRelease=true, closeOnTxnEnd=true]" 
+18:43:08,790 (main) DEBUG [DataNucleus.ValueGeneration] - Valor generado para el campo "com.videoclub.pojo.Rental.id" con estrategia="increment" (Generador="org.datanucleus.store.rdbms.valuegenerator.TableGenerator") : valor=1
+18:43:08,790 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Rental:1" añadido a la Cache de nivel 1 (loadedFlags="[YYYYY]")
+18:43:08,790 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.Rental:1" ha sido puesto en la cache transaccional
+18:43:08,791 (main) DEBUG [DataNucleus.Persistence] - Objeto "com.videoclub.pojo.Rental@402f8592" va a ser añadido a la tabla "`RENTAL`"
+18:43:08,791 (main) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@5f8a02cf [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@26d5a317, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" en resource "tx" con isolación "read-committed" y auto-commit=false
+18:43:08,791 (main) DEBUG [DataNucleus.Transaction] - Running enlist operation on resource: org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@70b6db83, error code TMNOFLAGS and transaction [DataNucleus Transaction, ID=146762790-13, enlisted resources=[]]
+18:43:08,792 (main) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "com.mysql.cj.jdbc.ClientPreparedStatement: INSERT INTO `RENTAL` (`CODE`,`RENTALDATE`,`RETURNDATE`,`TITLE`,`ID`) VALUES (** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **)" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@26d5a317"
+18:43:08,792 (main) DEBUG [DataNucleus.Datastore.Persist] - El statement "INSERT INTO `RENTAL` (`CODE`,`RENTALDATE`,`RETURNDATE`,`TITLE`,`ID`) VALUES (?,?,?,?,?)" ya es batchable
+18:43:08,792 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:1" va a tener el valor en el campo "returnDate" cambiado por un SCO wrapper
+18:43:08,792 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:1" va a tener el valor en el campo "rentalDate" cambiado por un SCO wrapper
+18:43:08,792 (main) DEBUG [DataNucleus.Datastore.Persist] - Añadiendo statement "INSERT INTO `RENTAL` (`CODE`,`RENTALDATE`,`RETURNDATE`,`TITLE`,`ID`) VALUES (?,?,?,?,?)" al batch para procesar (tamaño de batch = 1)
+18:43:08,792 (main) DEBUG [DataNucleus.Datastore.Native] - INSERT INTO `RENTAL` (`CODE`,`RENTALDATE`,`RETURNDATE`,`TITLE`,`ID`) VALUES (?,?,?,?,?)
+18:43:08,799 (main) DEBUG [DataNucleus.Datastore] - SQL Tiempo de cumplir = 7 ms (numero de lineas cambiado = [1]) con el PreparedStatement "org.datanucleus.store.rdbms.datasource.dbcp2.DelegatingPreparedStatement@47df5041"
+18:43:08,799 (main) DEBUG [DataNucleus.Transaction] - Haciendo commit de la transaacción para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775
+18:43:08,799 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 1 objetos registrados
+18:43:08,799 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:08,799 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : EMPIEZA
+18:43:08,799 (main) DEBUG [DataNucleus.Persistence] - Haciendo la calculación de alcanzables con objeto con identidad "com.videoclub.pojo.Rental:1"
+18:43:08,799 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Rental:1" obtenido de la Cache nivel 1 (loadedFlags="[YYYYY]")
+18:43:08,800 (main) DEBUG [DataNucleus.Persistence] - Object con id "com.videoclub.pojo.Rental:1" y estado de vida "P_NEW" añadido a la lista de alcanzables al commit.
+18:43:08,800 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 0 objetos registrados
+18:43:08,800 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:08,800 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : TERMINADO
+18:43:08,800 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Rental:1" añadido a la Cache de nivel 2 (campos="[0, 1, 2, 3, 4]", version="")
+18:43:08,800 (main) DEBUG [DataNucleus.Cache] - El objeto con identidad "com.videoclub.pojo.Rental:1" va a tener los campos siguientes almacendados en el objeto de Level 2 cache : [0, 1, 2, 3, 4]
+18:43:08,800 (main) DEBUG [DataNucleus.Transaction] - Committing [DataNucleus Transaction, ID=146762790-13, enlisted resources=[org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@70b6db83]]
+18:43:08,800 (main) DEBUG [DataNucleus.Connection] - ManagedConnection VA A COMMIT : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@5f8a02cf [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@26d5a317, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]"
+18:43:08,804 (main) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@5f8a02cf [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@26d5a317, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" 
+18:43:08,804 (main) DEBUG [DataNucleus.Persistence] - Haciendo el objeto detachado : "com.videoclub.pojo.Rental@402f8592" (profundidad=0)
+18:43:08,804 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:1" va a tener el SCO wrapper en el campo "rentalDate" cambiado por el valor
+18:43:08,804 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:1" va a tener el SCO wrapper en el campo "returnDate" cambiado por el valor
+18:43:08,805 (main) DEBUG [DataNucleus.Persistence] - Objeto con identidad "com.videoclub.pojo.Rental:1" tiene cambio de lifeycle : "P_NEW"->"DETACHED_CLEAN"
+18:43:08,805 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.Rental:1" fue borrado de la cache transactional
+18:43:08,805 (main) DEBUG [DataNucleus.Persistence] - Disconectando objeto con identidad "com.videoclub.pojo.Rental:1" de StateManager[pc=com.videoclub.pojo.Rental@402f8592, lifecycle=DETACHED_CLEAN]
+18:43:08,805 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad="com.videoclub.pojo.Rental:1" borrado de la Cache de nivel 1
+18:43:08,805 (main) DEBUG [DataNucleus.Transaction] - Transacción committed en 13 ms
+18:43:08,805 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se cerró
+18:43:08,805 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se abrió para la base de datos "org.datanucleus.store.rdbms.RDBMSStoreManager@346f41a9" con transaccion="org.datanucleus.transaction.TransactionImpl@6070775e"
+18:43:08,805 (main) DEBUG [DataNucleus.Transaction] - Transaction created [DataNucleus Transaction, ID=146762790-14, enlisted resources=[]]
+18:43:08,805 (main) DEBUG [DataNucleus.Transaction] - Transacción empezada para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775 (optimistic=false)
+* Storing a class com.videoclub.pojo.Rental : Rental [id=0, title=Movie1, movie=Movie [title=Movie1, genre=comedy, duration=90, year=2023, director=paco, rentalPrice=19.9], code=12, customer=User [code=12, username=assaz,type=CLIENT, password=3200a7486419e1efd8cbbad503fb0c6140ef7e7cf69807249fda25d59c215e5c, email=asier.account@email.com, name=Asier, surname=Belloso], rentalDate=Sun May 21 18:43:08 CEST 2023, returnDate=Sun May 21 18:43:08 CEST 2023]
+18:43:08,805 (main) DEBUG [DataNucleus.Persistence] - Haciendo el objeto persistente : "com.videoclub.pojo.Rental@224c7de4"
+18:43:08,806 (main) DEBUG [DataNucleus.ValueGeneration] - Valor generado para el campo "com.videoclub.pojo.Rental.id" con estrategia="increment" (Generador="org.datanucleus.store.rdbms.valuegenerator.TableGenerator") : valor=2
+18:43:08,806 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Rental:2" añadido a la Cache de nivel 1 (loadedFlags="[YYYYY]")
+18:43:08,806 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.Rental:2" ha sido puesto en la cache transaccional
+18:43:08,806 (main) DEBUG [DataNucleus.Persistence] - Objeto "com.videoclub.pojo.Rental@224c7de4" va a ser añadido a la tabla "`RENTAL`"
+18:43:08,806 (main) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@55846997 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@805e72e, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" en resource "tx" con isolación "read-committed" y auto-commit=false
+18:43:08,806 (main) DEBUG [DataNucleus.Transaction] - Running enlist operation on resource: org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@49671897, error code TMNOFLAGS and transaction [DataNucleus Transaction, ID=146762790-14, enlisted resources=[]]
+18:43:08,806 (main) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "com.mysql.cj.jdbc.ClientPreparedStatement: INSERT INTO `RENTAL` (`CODE`,`RENTALDATE`,`RETURNDATE`,`TITLE`,`ID`) VALUES (** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **)" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@805e72e"
+18:43:08,807 (main) DEBUG [DataNucleus.Datastore.Persist] - El statement "INSERT INTO `RENTAL` (`CODE`,`RENTALDATE`,`RETURNDATE`,`TITLE`,`ID`) VALUES (?,?,?,?,?)" ya es batchable
+18:43:08,807 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:2" va a tener el valor en el campo "returnDate" cambiado por un SCO wrapper
+18:43:08,807 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:2" va a tener el valor en el campo "rentalDate" cambiado por un SCO wrapper
+18:43:08,807 (main) DEBUG [DataNucleus.Datastore.Persist] - Añadiendo statement "INSERT INTO `RENTAL` (`CODE`,`RENTALDATE`,`RETURNDATE`,`TITLE`,`ID`) VALUES (?,?,?,?,?)" al batch para procesar (tamaño de batch = 1)
+18:43:08,807 (main) DEBUG [DataNucleus.Datastore.Native] - INSERT INTO `RENTAL` (`CODE`,`RENTALDATE`,`RETURNDATE`,`TITLE`,`ID`) VALUES (?,?,?,?,?)
+18:43:08,808 (main) DEBUG [DataNucleus.Datastore] - SQL Tiempo de cumplir = 1 ms (numero de lineas cambiado = [1]) con el PreparedStatement "org.datanucleus.store.rdbms.datasource.dbcp2.DelegatingPreparedStatement@47a4eee2"
+18:43:08,808 (main) DEBUG [DataNucleus.Transaction] - Haciendo commit de la transaacción para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775
+18:43:08,808 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 1 objetos registrados
+18:43:08,808 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:08,808 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : EMPIEZA
+18:43:08,808 (main) DEBUG [DataNucleus.Persistence] - Haciendo la calculación de alcanzables con objeto con identidad "com.videoclub.pojo.Rental:2"
+18:43:08,808 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Rental:2" obtenido de la Cache nivel 1 (loadedFlags="[YYYYY]")
+18:43:08,808 (main) DEBUG [DataNucleus.Persistence] - Object con id "com.videoclub.pojo.Rental:2" y estado de vida "P_NEW" añadido a la lista de alcanzables al commit.
+18:43:08,808 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 0 objetos registrados
+18:43:08,808 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:08,808 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : TERMINADO
+18:43:08,808 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Rental:2" añadido a la Cache de nivel 2 (campos="[0, 1, 2, 3, 4]", version="")
+18:43:08,808 (main) DEBUG [DataNucleus.Cache] - El objeto con identidad "com.videoclub.pojo.Rental:2" va a tener los campos siguientes almacendados en el objeto de Level 2 cache : [0, 1, 2, 3, 4]
+18:43:08,808 (main) DEBUG [DataNucleus.Transaction] - Committing [DataNucleus Transaction, ID=146762790-14, enlisted resources=[org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@49671897]]
+18:43:08,808 (main) DEBUG [DataNucleus.Connection] - ManagedConnection VA A COMMIT : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@55846997 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@805e72e, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]"
+18:43:08,812 (main) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@55846997 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@805e72e, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" 
+18:43:08,814 (main) DEBUG [DataNucleus.Persistence] - Haciendo el objeto detachado : "com.videoclub.pojo.Rental@224c7de4" (profundidad=0)
+18:43:08,814 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:2" va a tener el SCO wrapper en el campo "rentalDate" cambiado por el valor
+18:43:08,814 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:2" va a tener el SCO wrapper en el campo "returnDate" cambiado por el valor
+18:43:08,814 (main) DEBUG [DataNucleus.Persistence] - Objeto con identidad "com.videoclub.pojo.Rental:2" tiene cambio de lifeycle : "P_NEW"->"DETACHED_CLEAN"
+18:43:08,814 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.Rental:2" fue borrado de la cache transactional
+18:43:08,814 (main) DEBUG [DataNucleus.Persistence] - Disconectando objeto con identidad "com.videoclub.pojo.Rental:2" de StateManager[pc=com.videoclub.pojo.Rental@224c7de4, lifecycle=DETACHED_CLEAN]
+18:43:08,814 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad="com.videoclub.pojo.Rental:2" borrado de la Cache de nivel 1
+18:43:08,814 (main) DEBUG [DataNucleus.Transaction] - Transacción committed en 7 ms
+18:43:08,814 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se cerró
+18:43:08,814 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se abrió para la base de datos "org.datanucleus.store.rdbms.RDBMSStoreManager@346f41a9" con transaccion="org.datanucleus.transaction.TransactionImpl@2afdf6b7"
+18:43:08,814 (main) DEBUG [DataNucleus.Transaction] - Transaction created [DataNucleus Transaction, ID=146762790-15, enlisted resources=[]]
+18:43:08,815 (main) DEBUG [DataNucleus.Transaction] - Transacción empezada para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775 (optimistic=false)
+* Storing a class com.videoclub.pojo.Rental : Rental [id=0, title=Movie1, movie=Movie [title=Movie1, genre=comedy, duration=90, year=2023, director=paco, rentalPrice=19.9], code=13, customer=User [code=13, username=client,type=CLIENT, password=948fe603f61dc036b5c596dc09fe3ce3f3d30dc90f024c85f3c82db2ccab679d, email=client@email.com, name=ClientName, surname=ClientSurname], rentalDate=Sun May 21 18:43:08 CEST 2023, returnDate=Sun May 21 18:43:08 CEST 2023]
+18:43:08,815 (main) DEBUG [DataNucleus.Persistence] - Haciendo el objeto persistente : "com.videoclub.pojo.Rental@50211483"
+18:43:08,815 (main) DEBUG [DataNucleus.ValueGeneration] - Valor generado para el campo "com.videoclub.pojo.Rental.id" con estrategia="increment" (Generador="org.datanucleus.store.rdbms.valuegenerator.TableGenerator") : valor=3
+18:43:08,815 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Rental:3" añadido a la Cache de nivel 1 (loadedFlags="[YYYYY]")
+18:43:08,815 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.Rental:3" ha sido puesto en la cache transaccional
+18:43:08,815 (main) DEBUG [DataNucleus.Persistence] - Objeto "com.videoclub.pojo.Rental@50211483" va a ser añadido a la tabla "`RENTAL`"
+18:43:08,816 (main) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@1472208d [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@35bd8bc9, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" en resource "tx" con isolación "read-committed" y auto-commit=false
+18:43:08,816 (main) DEBUG [DataNucleus.Transaction] - Running enlist operation on resource: org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@6de004f1, error code TMNOFLAGS and transaction [DataNucleus Transaction, ID=146762790-15, enlisted resources=[]]
+18:43:08,816 (main) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "com.mysql.cj.jdbc.ClientPreparedStatement: INSERT INTO `RENTAL` (`CODE`,`RENTALDATE`,`RETURNDATE`,`TITLE`,`ID`) VALUES (** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **)" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@35bd8bc9"
+18:43:08,816 (main) DEBUG [DataNucleus.Datastore.Persist] - El statement "INSERT INTO `RENTAL` (`CODE`,`RENTALDATE`,`RETURNDATE`,`TITLE`,`ID`) VALUES (?,?,?,?,?)" ya es batchable
+18:43:08,816 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:3" va a tener el valor en el campo "returnDate" cambiado por un SCO wrapper
+18:43:08,817 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:3" va a tener el valor en el campo "rentalDate" cambiado por un SCO wrapper
+18:43:08,817 (main) DEBUG [DataNucleus.Datastore.Persist] - Añadiendo statement "INSERT INTO `RENTAL` (`CODE`,`RENTALDATE`,`RETURNDATE`,`TITLE`,`ID`) VALUES (?,?,?,?,?)" al batch para procesar (tamaño de batch = 1)
+18:43:08,817 (main) DEBUG [DataNucleus.Datastore.Native] - INSERT INTO `RENTAL` (`CODE`,`RENTALDATE`,`RETURNDATE`,`TITLE`,`ID`) VALUES (?,?,?,?,?)
+18:43:08,818 (main) DEBUG [DataNucleus.Datastore] - SQL Tiempo de cumplir = 1 ms (numero de lineas cambiado = [1]) con el PreparedStatement "org.datanucleus.store.rdbms.datasource.dbcp2.DelegatingPreparedStatement@191c6e13"
+18:43:08,818 (main) DEBUG [DataNucleus.Transaction] - Haciendo commit de la transaacción para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775
+18:43:08,818 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 1 objetos registrados
+18:43:08,819 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:08,819 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : EMPIEZA
+18:43:08,819 (main) DEBUG [DataNucleus.Persistence] - Haciendo la calculación de alcanzables con objeto con identidad "com.videoclub.pojo.Rental:3"
+18:43:08,819 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Rental:3" obtenido de la Cache nivel 1 (loadedFlags="[YYYYY]")
+18:43:08,819 (main) DEBUG [DataNucleus.Persistence] - Object con id "com.videoclub.pojo.Rental:3" y estado de vida "P_NEW" añadido a la lista de alcanzables al commit.
+18:43:08,819 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 0 objetos registrados
+18:43:08,819 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:08,819 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : TERMINADO
+18:43:08,819 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Rental:3" añadido a la Cache de nivel 2 (campos="[0, 1, 2, 3, 4]", version="")
+18:43:08,819 (main) DEBUG [DataNucleus.Cache] - El objeto con identidad "com.videoclub.pojo.Rental:3" va a tener los campos siguientes almacendados en el objeto de Level 2 cache : [0, 1, 2, 3, 4]
+18:43:08,819 (main) DEBUG [DataNucleus.Transaction] - Committing [DataNucleus Transaction, ID=146762790-15, enlisted resources=[org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@6de004f1]]
+18:43:08,819 (main) DEBUG [DataNucleus.Connection] - ManagedConnection VA A COMMIT : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@1472208d [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@35bd8bc9, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]"
+18:43:08,822 (main) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@1472208d [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@35bd8bc9, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" 
+18:43:08,823 (main) DEBUG [DataNucleus.Persistence] - Haciendo el objeto detachado : "com.videoclub.pojo.Rental@50211483" (profundidad=0)
+18:43:08,823 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:3" va a tener el SCO wrapper en el campo "rentalDate" cambiado por el valor
+18:43:08,823 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:3" va a tener el SCO wrapper en el campo "returnDate" cambiado por el valor
+18:43:08,823 (main) DEBUG [DataNucleus.Persistence] - Objeto con identidad "com.videoclub.pojo.Rental:3" tiene cambio de lifeycle : "P_NEW"->"DETACHED_CLEAN"
+18:43:08,823 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.Rental:3" fue borrado de la cache transactional
+18:43:08,823 (main) DEBUG [DataNucleus.Persistence] - Disconectando objeto con identidad "com.videoclub.pojo.Rental:3" de StateManager[pc=com.videoclub.pojo.Rental@50211483, lifecycle=DETACHED_CLEAN]
+18:43:08,823 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad="com.videoclub.pojo.Rental:3" borrado de la Cache de nivel 1
+18:43:08,823 (main) DEBUG [DataNucleus.Transaction] - Transacción committed en 6 ms
+18:43:08,823 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se cerró
+18:43:08,823 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se abrió para la base de datos "org.datanucleus.store.rdbms.RDBMSStoreManager@346f41a9" con transaccion="org.datanucleus.transaction.TransactionImpl@1a8e9ed9"
+18:43:08,823 (main) DEBUG [DataNucleus.Transaction] - Transaction created [DataNucleus Transaction, ID=146762790-16, enlisted resources=[]]
+18:43:08,823 (main) DEBUG [DataNucleus.Transaction] - Transacción empezada para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775 (optimistic=false)
+* Storing a class com.videoclub.pojo.Rental : Rental [id=0, title=Movie2, movie=Movie [title=Movie2, genre=drama, duration=180, year=1989, director=luis, rentalPrice=5.74], code=11, customer=User [code=11, username=admin,type=ADMIN, password=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918, email=admin@email.com, name=AdminName, surname=AdminSurname], rentalDate=Sun May 21 18:43:08 CEST 2023, returnDate=Sun May 21 18:43:08 CEST 2023]
+18:43:08,824 (main) DEBUG [DataNucleus.Persistence] - Haciendo el objeto persistente : "com.videoclub.pojo.Rental@12fcb2c3"
+18:43:08,824 (main) DEBUG [DataNucleus.ValueGeneration] - Valor generado para el campo "com.videoclub.pojo.Rental.id" con estrategia="increment" (Generador="org.datanucleus.store.rdbms.valuegenerator.TableGenerator") : valor=4
+18:43:08,824 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Rental:4" añadido a la Cache de nivel 1 (loadedFlags="[YYYYY]")
+18:43:08,824 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.Rental:4" ha sido puesto en la cache transaccional
+18:43:08,824 (main) DEBUG [DataNucleus.Persistence] - Objeto "com.videoclub.pojo.Rental@12fcb2c3" va a ser añadido a la tabla "`RENTAL`"
+18:43:08,824 (main) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@39ab5ef7 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@517704, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" en resource "tx" con isolación "read-committed" y auto-commit=false
+18:43:08,824 (main) DEBUG [DataNucleus.Transaction] - Running enlist operation on resource: org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@77cca767, error code TMNOFLAGS and transaction [DataNucleus Transaction, ID=146762790-16, enlisted resources=[]]
+18:43:08,824 (main) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "com.mysql.cj.jdbc.ClientPreparedStatement: INSERT INTO `RENTAL` (`CODE`,`RENTALDATE`,`RETURNDATE`,`TITLE`,`ID`) VALUES (** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **)" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@517704"
+18:43:08,824 (main) DEBUG [DataNucleus.Datastore.Persist] - El statement "INSERT INTO `RENTAL` (`CODE`,`RENTALDATE`,`RETURNDATE`,`TITLE`,`ID`) VALUES (?,?,?,?,?)" ya es batchable
+18:43:08,824 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:4" va a tener el valor en el campo "returnDate" cambiado por un SCO wrapper
+18:43:08,826 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:4" va a tener el valor en el campo "rentalDate" cambiado por un SCO wrapper
+18:43:08,826 (main) DEBUG [DataNucleus.Datastore.Persist] - Añadiendo statement "INSERT INTO `RENTAL` (`CODE`,`RENTALDATE`,`RETURNDATE`,`TITLE`,`ID`) VALUES (?,?,?,?,?)" al batch para procesar (tamaño de batch = 1)
+18:43:08,826 (main) DEBUG [DataNucleus.Datastore.Native] - INSERT INTO `RENTAL` (`CODE`,`RENTALDATE`,`RETURNDATE`,`TITLE`,`ID`) VALUES (?,?,?,?,?)
+18:43:08,827 (main) DEBUG [DataNucleus.Datastore] - SQL Tiempo de cumplir = 1 ms (numero de lineas cambiado = [1]) con el PreparedStatement "org.datanucleus.store.rdbms.datasource.dbcp2.DelegatingPreparedStatement@23444a36"
+18:43:08,827 (main) DEBUG [DataNucleus.Transaction] - Haciendo commit de la transaacción para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775
+18:43:08,827 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 1 objetos registrados
+18:43:08,827 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:08,827 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : EMPIEZA
+18:43:08,827 (main) DEBUG [DataNucleus.Persistence] - Haciendo la calculación de alcanzables con objeto con identidad "com.videoclub.pojo.Rental:4"
+18:43:08,827 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Rental:4" obtenido de la Cache nivel 1 (loadedFlags="[YYYYY]")
+18:43:08,827 (main) DEBUG [DataNucleus.Persistence] - Object con id "com.videoclub.pojo.Rental:4" y estado de vida "P_NEW" añadido a la lista de alcanzables al commit.
+18:43:08,827 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 0 objetos registrados
+18:43:08,827 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:08,827 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : TERMINADO
+18:43:08,827 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Rental:4" añadido a la Cache de nivel 2 (campos="[0, 1, 2, 3, 4]", version="")
+18:43:08,827 (main) DEBUG [DataNucleus.Cache] - El objeto con identidad "com.videoclub.pojo.Rental:4" va a tener los campos siguientes almacendados en el objeto de Level 2 cache : [0, 1, 2, 3, 4]
+18:43:08,827 (main) DEBUG [DataNucleus.Transaction] - Committing [DataNucleus Transaction, ID=146762790-16, enlisted resources=[org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@77cca767]]
+18:43:08,828 (main) DEBUG [DataNucleus.Connection] - ManagedConnection VA A COMMIT : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@39ab5ef7 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@517704, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]"
+18:43:08,831 (main) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@39ab5ef7 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@517704, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" 
+18:43:08,832 (main) DEBUG [DataNucleus.Persistence] - Haciendo el objeto detachado : "com.videoclub.pojo.Rental@12fcb2c3" (profundidad=0)
+18:43:08,832 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:4" va a tener el SCO wrapper en el campo "rentalDate" cambiado por el valor
+18:43:08,832 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:4" va a tener el SCO wrapper en el campo "returnDate" cambiado por el valor
+18:43:08,832 (main) DEBUG [DataNucleus.Persistence] - Objeto con identidad "com.videoclub.pojo.Rental:4" tiene cambio de lifeycle : "P_NEW"->"DETACHED_CLEAN"
+18:43:08,832 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.Rental:4" fue borrado de la cache transactional
+18:43:08,832 (main) DEBUG [DataNucleus.Persistence] - Disconectando objeto con identidad "com.videoclub.pojo.Rental:4" de StateManager[pc=com.videoclub.pojo.Rental@12fcb2c3, lifecycle=DETACHED_CLEAN]
+18:43:08,832 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad="com.videoclub.pojo.Rental:4" borrado de la Cache de nivel 1
+18:43:08,832 (main) DEBUG [DataNucleus.Transaction] - Transacción committed en 6 ms
+18:43:08,832 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se cerró
+18:43:08,832 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se abrió para la base de datos "org.datanucleus.store.rdbms.RDBMSStoreManager@346f41a9" con transaccion="org.datanucleus.transaction.TransactionImpl@30a9e3db"
+18:43:08,832 (main) DEBUG [DataNucleus.Transaction] - Transaction created [DataNucleus Transaction, ID=146762790-17, enlisted resources=[]]
+18:43:08,832 (main) DEBUG [DataNucleus.Transaction] - Transacción empezada para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775 (optimistic=false)
+* Storing a class com.videoclub.pojo.Rental : Rental [id=0, title=Movie1, movie=Movie [title=Movie1, genre=comedy, duration=90, year=2023, director=paco, rentalPrice=19.9], code=12, customer=User [code=12, username=assaz,type=CLIENT, password=3200a7486419e1efd8cbbad503fb0c6140ef7e7cf69807249fda25d59c215e5c, email=asier.account@email.com, name=Asier, surname=Belloso], rentalDate=Sun May 21 18:43:08 CEST 2023, returnDate=Sun May 21 18:43:08 CEST 2023]
+18:43:08,832 (main) DEBUG [DataNucleus.Persistence] - Haciendo el objeto persistente : "com.videoclub.pojo.Rental@2e0fdbe9"
+18:43:08,833 (main) DEBUG [DataNucleus.ValueGeneration] - Valor generado para el campo "com.videoclub.pojo.Rental.id" con estrategia="increment" (Generador="org.datanucleus.store.rdbms.valuegenerator.TableGenerator") : valor=5
+18:43:08,833 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Rental:5" añadido a la Cache de nivel 1 (loadedFlags="[YYYYY]")
+18:43:08,833 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.Rental:5" ha sido puesto en la cache transaccional
+18:43:08,833 (main) DEBUG [DataNucleus.Persistence] - Objeto "com.videoclub.pojo.Rental@2e0fdbe9" va a ser añadido a la tabla "`RENTAL`"
+18:43:08,834 (main) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@696b52bc [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@1f884bd6, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" en resource "tx" con isolación "read-committed" y auto-commit=false
+18:43:08,834 (main) DEBUG [DataNucleus.Transaction] - Running enlist operation on resource: org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@4f081b5d, error code TMNOFLAGS and transaction [DataNucleus Transaction, ID=146762790-17, enlisted resources=[]]
+18:43:08,834 (main) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "com.mysql.cj.jdbc.ClientPreparedStatement: INSERT INTO `RENTAL` (`CODE`,`RENTALDATE`,`RETURNDATE`,`TITLE`,`ID`) VALUES (** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **)" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@1f884bd6"
+18:43:08,834 (main) DEBUG [DataNucleus.Datastore.Persist] - El statement "INSERT INTO `RENTAL` (`CODE`,`RENTALDATE`,`RETURNDATE`,`TITLE`,`ID`) VALUES (?,?,?,?,?)" ya es batchable
+18:43:08,835 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:5" va a tener el valor en el campo "returnDate" cambiado por un SCO wrapper
+18:43:08,835 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:5" va a tener el valor en el campo "rentalDate" cambiado por un SCO wrapper
+18:43:08,835 (main) DEBUG [DataNucleus.Datastore.Persist] - Añadiendo statement "INSERT INTO `RENTAL` (`CODE`,`RENTALDATE`,`RETURNDATE`,`TITLE`,`ID`) VALUES (?,?,?,?,?)" al batch para procesar (tamaño de batch = 1)
+18:43:08,835 (main) DEBUG [DataNucleus.Datastore.Native] - INSERT INTO `RENTAL` (`CODE`,`RENTALDATE`,`RETURNDATE`,`TITLE`,`ID`) VALUES (?,?,?,?,?)
+18:43:08,837 (main) DEBUG [DataNucleus.Datastore] - SQL Tiempo de cumplir = 2 ms (numero de lineas cambiado = [1]) con el PreparedStatement "org.datanucleus.store.rdbms.datasource.dbcp2.DelegatingPreparedStatement@29013ef2"
+18:43:08,837 (main) DEBUG [DataNucleus.Transaction] - Haciendo commit de la transaacción para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775
+18:43:08,837 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 1 objetos registrados
+18:43:08,837 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:08,837 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : EMPIEZA
+18:43:08,837 (main) DEBUG [DataNucleus.Persistence] - Haciendo la calculación de alcanzables con objeto con identidad "com.videoclub.pojo.Rental:5"
+18:43:08,837 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Rental:5" obtenido de la Cache nivel 1 (loadedFlags="[YYYYY]")
+18:43:08,837 (main) DEBUG [DataNucleus.Persistence] - Object con id "com.videoclub.pojo.Rental:5" y estado de vida "P_NEW" añadido a la lista de alcanzables al commit.
+18:43:08,837 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 0 objetos registrados
+18:43:08,837 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:08,837 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : TERMINADO
+18:43:08,837 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Rental:5" añadido a la Cache de nivel 2 (campos="[0, 1, 2, 3, 4]", version="")
+18:43:08,838 (main) DEBUG [DataNucleus.Cache] - El objeto con identidad "com.videoclub.pojo.Rental:5" va a tener los campos siguientes almacendados en el objeto de Level 2 cache : [0, 1, 2, 3, 4]
+18:43:08,838 (main) DEBUG [DataNucleus.Transaction] - Committing [DataNucleus Transaction, ID=146762790-17, enlisted resources=[org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@4f081b5d]]
+18:43:08,838 (main) DEBUG [DataNucleus.Connection] - ManagedConnection VA A COMMIT : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@696b52bc [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@1f884bd6, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]"
+18:43:08,843 (main) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@696b52bc [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@1f884bd6, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" 
+18:43:08,844 (main) DEBUG [DataNucleus.Persistence] - Haciendo el objeto detachado : "com.videoclub.pojo.Rental@2e0fdbe9" (profundidad=0)
+18:43:08,844 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:5" va a tener el SCO wrapper en el campo "rentalDate" cambiado por el valor
+18:43:08,844 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:5" va a tener el SCO wrapper en el campo "returnDate" cambiado por el valor
+18:43:08,844 (main) DEBUG [DataNucleus.Persistence] - Objeto con identidad "com.videoclub.pojo.Rental:5" tiene cambio de lifeycle : "P_NEW"->"DETACHED_CLEAN"
+18:43:08,844 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.Rental:5" fue borrado de la cache transactional
+18:43:08,844 (main) DEBUG [DataNucleus.Persistence] - Disconectando objeto con identidad "com.videoclub.pojo.Rental:5" de StateManager[pc=com.videoclub.pojo.Rental@2e0fdbe9, lifecycle=DETACHED_CLEAN]
+18:43:08,844 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad="com.videoclub.pojo.Rental:5" borrado de la Cache de nivel 1
+18:43:08,844 (main) DEBUG [DataNucleus.Transaction] - Transacción committed en 9 ms
+18:43:08,844 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se cerró
+18:43:08,845 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se abrió para la base de datos "org.datanucleus.store.rdbms.RDBMSStoreManager@346f41a9" con transaccion="org.datanucleus.transaction.TransactionImpl@5f395ce1"
+18:43:08,845 (main) DEBUG [DataNucleus.Transaction] - Transaction created [DataNucleus Transaction, ID=146762790-18, enlisted resources=[]]
+18:43:08,845 (main) DEBUG [DataNucleus.Transaction] - Transacción empezada para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775 (optimistic=false)
+18:43:08,846 (main) DEBUG [DataNucleus.Query] - JDOQL Single-String de "SELECT FROM com.videoclub.pojo.Rental WHERE id == 1"
+18:43:08,848 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Compilación (generic) de "SELECT UNIQUE FROM com.videoclub.pojo.Rental WHERE id == 1"
+18:43:08,853 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de compilar (generic) = 5 ms
+18:43:08,853 (main) DEBUG [DataNucleus.Query] - QueryCompilation:
+  [filter:DyadicExpression{PrimaryExpression{id}  =  Literal{1}}]
+  [symbols: this type=com.videoclub.pojo.Rental]
+18:43:08,855 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Compilación (base de datos) de "SELECT UNIQUE FROM com.videoclub.pojo.Rental WHERE id == 1"
+18:43:08,855 (main) DEBUG [DataNucleus.Query] - Compile of JDOQL into SQL - JoinType : navigation(default=(using nullability), filter=(using nullability))
+18:43:08,858 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de compilar (base de datos) = 3
+18:43:08,859 (main) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@551be9f6 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@269222ae, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" en resource "tx" con isolación "read-committed" y auto-commit=false
+18:43:08,859 (main) DEBUG [DataNucleus.Transaction] - Running enlist operation on resource: org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@13250132, error code TMNOFLAGS and transaction [DataNucleus Transaction, ID=146762790-18, enlisted resources=[]]
+18:43:08,859 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Ejecucion de "SELECT UNIQUE FROM com.videoclub.pojo.Rental WHERE id == 1" ...
+18:43:08,859 (main) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "com.mysql.cj.jdbc.ClientPreparedStatement: SELECT 'com.videoclub.pojo.Rental' AS `DN_TYPE`,`A0`.`CODE`,`A0`.`ID`,`A0`.`RENTALDATE`,`A0`.`RETURNDATE`,`A0`.`TITLE` FROM `RENTAL` `A0` WHERE `A0`.`ID` = 1" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@269222ae"
+18:43:08,859 (main) DEBUG [DataNucleus.Datastore.Native] - SELECT 'com.videoclub.pojo.Rental' AS `DN_TYPE`,`A0`.`CODE`,`A0`.`ID`,`A0`.`RENTALDATE`,`A0`.`RETURNDATE`,`A0`.`TITLE` FROM `RENTAL` `A0` WHERE `A0`.`ID` = 1
+18:43:08,860 (main) DEBUG [DataNucleus.Datastore.Retrieve] - SQL Tiempo de cumplir = 1 ms
+18:43:08,860 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de ejecutar = 1 ms
+18:43:08,860 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Rental:1" no esta en la Cache de nivel 1
+18:43:08,860 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Rental:1" añadido a la Cache de nivel 1 (loadedFlags="[NYNNN]")
+18:43:08,862 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:1" va a tener el valor en el campo "rentalDate" cambiado por un SCO wrapper
+18:43:08,862 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:1" va a tener el valor en el campo "returnDate" cambiado por un SCO wrapper
+18:43:08,862 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.Rental:1" ha sido puesto en la cache transaccional
+18:43:08,862 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Rental:1" obtenido de la Cache nivel 2 (campos="[0, 1, 2, 3, 4]", version="") - representado como "com.videoclub.pojo.Rental@44bc2449"
+18:43:08,862 (main) DEBUG [DataNucleus.Persistence] - Detachando una copia del objeto "com.videoclub.pojo.Rental@44bc2449" (profundidad=0) como "com.videoclub.pojo.Rental@57151b3a" - campos-detachados=[0, 1, 2, 3, 4], campos-para-obtener=null
+18:43:08,863 (main) DEBUG [DataNucleus.Transaction] - Haciendo commit de la transaacción para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775
+18:43:08,863 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 0 objetos registrados
+18:43:08,863 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:08,863 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : EMPIEZA
+18:43:08,863 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : TERMINADO
+18:43:08,863 (main) DEBUG [DataNucleus.Cache] - El objeto con identidad "com.videoclub.pojo.Rental:1" va a tener los campos siguientes almacendados en el objeto de Level 2 cache : [0, 1, 2, 3, 4]
+18:43:08,863 (main) DEBUG [DataNucleus.Transaction] - Committing [DataNucleus Transaction, ID=146762790-18, enlisted resources=[org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@13250132]]
+18:43:08,863 (main) DEBUG [DataNucleus.Connection] - ManagedConnection VA A COMMIT : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@551be9f6 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@269222ae, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]"
+18:43:08,864 (main) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@551be9f6 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@269222ae, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" 
+18:43:08,865 (main) DEBUG [DataNucleus.Persistence] - Haciendo el objeto detachado : "com.videoclub.pojo.Rental@44bc2449" (profundidad=0)
+18:43:08,865 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:1" va a tener el SCO wrapper en el campo "rentalDate" cambiado por el valor
+18:43:08,865 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:1" va a tener el SCO wrapper en el campo "returnDate" cambiado por el valor
+18:43:08,865 (main) DEBUG [DataNucleus.Persistence] - Objeto con identidad "com.videoclub.pojo.Rental:1" tiene cambio de lifeycle : "P_CLEAN"->"DETACHED_CLEAN"
+18:43:08,865 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.Rental:1" fue borrado de la cache transactional
+18:43:08,865 (main) DEBUG [DataNucleus.Persistence] - Disconectando objeto con identidad "com.videoclub.pojo.Rental:1" de StateManager[pc=com.videoclub.pojo.Rental@44bc2449, lifecycle=DETACHED_CLEAN]
+18:43:08,865 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad="com.videoclub.pojo.Rental:1" borrado de la Cache de nivel 1
+18:43:08,865 (main) DEBUG [DataNucleus.Transaction] - Transacción committed en 2 ms
+18:43:08,865 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se cerró
+18:43:08,865 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se abrió para la base de datos "org.datanucleus.store.rdbms.RDBMSStoreManager@346f41a9" con transaccion="org.datanucleus.transaction.TransactionImpl@2dff7085"
+18:43:08,865 (main) DEBUG [DataNucleus.Transaction] - Transaction created [DataNucleus Transaction, ID=146762790-19, enlisted resources=[]]
+18:43:08,866 (main) DEBUG [DataNucleus.Transaction] - Transacción empezada para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775 (optimistic=false)
+18:43:08,866 (main) DEBUG [DataNucleus.Query] - JDOQL Single-String de "SELECT FROM com.videoclub.pojo.Rental WHERE id == 2"
+18:43:08,866 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Compilación (generic) de "SELECT UNIQUE FROM com.videoclub.pojo.Rental WHERE id == 2"
+18:43:08,866 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de compilar (generic) = 0 ms
+18:43:08,866 (main) DEBUG [DataNucleus.Query] - QueryCompilation:
+  [filter:DyadicExpression{PrimaryExpression{id}  =  Literal{2}}]
+  [symbols: this type=com.videoclub.pojo.Rental]
+18:43:08,866 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Compilación (base de datos) de "SELECT UNIQUE FROM com.videoclub.pojo.Rental WHERE id == 2"
+18:43:08,866 (main) DEBUG [DataNucleus.Query] - Compile of JDOQL into SQL - JoinType : navigation(default=(using nullability), filter=(using nullability))
+18:43:08,867 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de compilar (base de datos) = 0
+18:43:08,868 (main) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@5d1d9d73 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@b30a50d, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" en resource "tx" con isolación "read-committed" y auto-commit=false
+18:43:08,868 (main) DEBUG [DataNucleus.Transaction] - Running enlist operation on resource: org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@764a3e5d, error code TMNOFLAGS and transaction [DataNucleus Transaction, ID=146762790-19, enlisted resources=[]]
+18:43:08,868 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Ejecucion de "SELECT UNIQUE FROM com.videoclub.pojo.Rental WHERE id == 2" ...
+18:43:08,868 (main) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "com.mysql.cj.jdbc.ClientPreparedStatement: SELECT 'com.videoclub.pojo.Rental' AS `DN_TYPE`,`A0`.`CODE`,`A0`.`ID`,`A0`.`RENTALDATE`,`A0`.`RETURNDATE`,`A0`.`TITLE` FROM `RENTAL` `A0` WHERE `A0`.`ID` = 2" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@b30a50d"
+18:43:08,868 (main) DEBUG [DataNucleus.Datastore.Native] - SELECT 'com.videoclub.pojo.Rental' AS `DN_TYPE`,`A0`.`CODE`,`A0`.`ID`,`A0`.`RENTALDATE`,`A0`.`RETURNDATE`,`A0`.`TITLE` FROM `RENTAL` `A0` WHERE `A0`.`ID` = 2
+18:43:08,869 (main) DEBUG [DataNucleus.Datastore.Retrieve] - SQL Tiempo de cumplir = 1 ms
+18:43:08,869 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de ejecutar = 1 ms
+18:43:08,869 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Rental:2" no esta en la Cache de nivel 1
+18:43:08,869 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Rental:2" añadido a la Cache de nivel 1 (loadedFlags="[NYNNN]")
+18:43:08,869 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:2" va a tener el valor en el campo "rentalDate" cambiado por un SCO wrapper
+18:43:08,870 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:2" va a tener el valor en el campo "returnDate" cambiado por un SCO wrapper
+18:43:08,870 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.Rental:2" ha sido puesto en la cache transaccional
+18:43:08,870 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Rental:2" obtenido de la Cache nivel 2 (campos="[0, 1, 2, 3, 4]", version="") - representado como "com.videoclub.pojo.Rental@5db3d57c"
+18:43:08,870 (main) DEBUG [DataNucleus.Persistence] - Detachando una copia del objeto "com.videoclub.pojo.Rental@5db3d57c" (profundidad=0) como "com.videoclub.pojo.Rental@395f52ed" - campos-detachados=[0, 1, 2, 3, 4], campos-para-obtener=null
+18:43:08,870 (main) DEBUG [DataNucleus.Transaction] - Haciendo commit de la transaacción para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775
+18:43:08,870 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 0 objetos registrados
+18:43:08,870 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:08,870 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : EMPIEZA
+18:43:08,870 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : TERMINADO
+18:43:08,870 (main) DEBUG [DataNucleus.Cache] - El objeto con identidad "com.videoclub.pojo.Rental:2" va a tener los campos siguientes almacendados en el objeto de Level 2 cache : [0, 1, 2, 3, 4]
+18:43:08,870 (main) DEBUG [DataNucleus.Transaction] - Committing [DataNucleus Transaction, ID=146762790-19, enlisted resources=[org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@764a3e5d]]
+18:43:08,870 (main) DEBUG [DataNucleus.Connection] - ManagedConnection VA A COMMIT : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@5d1d9d73 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@b30a50d, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]"
+18:43:08,870 (main) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@5d1d9d73 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@b30a50d, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" 
+18:43:08,872 (main) DEBUG [DataNucleus.Persistence] - Haciendo el objeto detachado : "com.videoclub.pojo.Rental@5db3d57c" (profundidad=0)
+18:43:08,872 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:2" va a tener el SCO wrapper en el campo "rentalDate" cambiado por el valor
+18:43:08,872 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:2" va a tener el SCO wrapper en el campo "returnDate" cambiado por el valor
+18:43:08,872 (main) DEBUG [DataNucleus.Persistence] - Objeto con identidad "com.videoclub.pojo.Rental:2" tiene cambio de lifeycle : "P_CLEAN"->"DETACHED_CLEAN"
+18:43:08,872 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.Rental:2" fue borrado de la cache transactional
+18:43:08,872 (main) DEBUG [DataNucleus.Persistence] - Disconectando objeto con identidad "com.videoclub.pojo.Rental:2" de StateManager[pc=com.videoclub.pojo.Rental@5db3d57c, lifecycle=DETACHED_CLEAN]
+18:43:08,872 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad="com.videoclub.pojo.Rental:2" borrado de la Cache de nivel 1
+18:43:08,872 (main) DEBUG [DataNucleus.Transaction] - Transacción committed en 2 ms
+18:43:08,872 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se cerró
+18:43:08,872 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se abrió para la base de datos "org.datanucleus.store.rdbms.RDBMSStoreManager@346f41a9" con transaccion="org.datanucleus.transaction.TransactionImpl@102c18e"
+18:43:08,872 (main) DEBUG [DataNucleus.Transaction] - Transaction created [DataNucleus Transaction, ID=146762790-20, enlisted resources=[]]
+18:43:08,872 (main) DEBUG [DataNucleus.Transaction] - Transacción empezada para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775 (optimistic=false)
+18:43:08,872 (main) DEBUG [DataNucleus.Query] - JDOQL Single-String de "SELECT FROM com.videoclub.pojo.Rental WHERE id == 3"
+18:43:08,872 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Compilación (generic) de "SELECT UNIQUE FROM com.videoclub.pojo.Rental WHERE id == 3"
+18:43:08,872 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de compilar (generic) = 0 ms
+18:43:08,872 (main) DEBUG [DataNucleus.Query] - QueryCompilation:
+  [filter:DyadicExpression{PrimaryExpression{id}  =  Literal{3}}]
+  [symbols: this type=com.videoclub.pojo.Rental]
+18:43:08,872 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Compilación (base de datos) de "SELECT UNIQUE FROM com.videoclub.pojo.Rental WHERE id == 3"
+18:43:08,872 (main) DEBUG [DataNucleus.Query] - Compile of JDOQL into SQL - JoinType : navigation(default=(using nullability), filter=(using nullability))
+18:43:08,873 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de compilar (base de datos) = 1
+18:43:08,873 (main) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@3c7279a5 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@2bebd114, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" en resource "tx" con isolación "read-committed" y auto-commit=false
+18:43:08,873 (main) DEBUG [DataNucleus.Transaction] - Running enlist operation on resource: org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@b379bc6, error code TMNOFLAGS and transaction [DataNucleus Transaction, ID=146762790-20, enlisted resources=[]]
+18:43:08,873 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Ejecucion de "SELECT UNIQUE FROM com.videoclub.pojo.Rental WHERE id == 3" ...
+18:43:08,873 (main) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "com.mysql.cj.jdbc.ClientPreparedStatement: SELECT 'com.videoclub.pojo.Rental' AS `DN_TYPE`,`A0`.`CODE`,`A0`.`ID`,`A0`.`RENTALDATE`,`A0`.`RETURNDATE`,`A0`.`TITLE` FROM `RENTAL` `A0` WHERE `A0`.`ID` = 3" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@2bebd114"
+18:43:08,873 (main) DEBUG [DataNucleus.Datastore.Native] - SELECT 'com.videoclub.pojo.Rental' AS `DN_TYPE`,`A0`.`CODE`,`A0`.`ID`,`A0`.`RENTALDATE`,`A0`.`RETURNDATE`,`A0`.`TITLE` FROM `RENTAL` `A0` WHERE `A0`.`ID` = 3
+18:43:08,874 (main) DEBUG [DataNucleus.Datastore.Retrieve] - SQL Tiempo de cumplir = 1 ms
+18:43:08,874 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de ejecutar = 1 ms
+18:43:08,874 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Rental:3" no esta en la Cache de nivel 1
+18:43:08,874 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Rental:3" añadido a la Cache de nivel 1 (loadedFlags="[NYNNN]")
+18:43:08,874 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:3" va a tener el valor en el campo "rentalDate" cambiado por un SCO wrapper
+18:43:08,874 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:3" va a tener el valor en el campo "returnDate" cambiado por un SCO wrapper
+18:43:08,874 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.Rental:3" ha sido puesto en la cache transaccional
+18:43:08,874 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Rental:3" obtenido de la Cache nivel 2 (campos="[0, 1, 2, 3, 4]", version="") - representado como "com.videoclub.pojo.Rental@18dcb8a7"
+18:43:08,874 (main) DEBUG [DataNucleus.Persistence] - Detachando una copia del objeto "com.videoclub.pojo.Rental@18dcb8a7" (profundidad=0) como "com.videoclub.pojo.Rental@f882465" - campos-detachados=[0, 1, 2, 3, 4], campos-para-obtener=null
+18:43:08,874 (main) DEBUG [DataNucleus.Transaction] - Haciendo commit de la transaacción para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775
+18:43:08,874 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 0 objetos registrados
+18:43:08,874 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:08,874 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : EMPIEZA
+18:43:08,874 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : TERMINADO
+18:43:08,874 (main) DEBUG [DataNucleus.Cache] - El objeto con identidad "com.videoclub.pojo.Rental:3" va a tener los campos siguientes almacendados en el objeto de Level 2 cache : [0, 1, 2, 3, 4]
+18:43:08,874 (main) DEBUG [DataNucleus.Transaction] - Committing [DataNucleus Transaction, ID=146762790-20, enlisted resources=[org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@b379bc6]]
+18:43:08,874 (main) DEBUG [DataNucleus.Connection] - ManagedConnection VA A COMMIT : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@3c7279a5 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@2bebd114, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]"
+18:43:08,874 (main) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@3c7279a5 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@2bebd114, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" 
+18:43:08,876 (main) DEBUG [DataNucleus.Persistence] - Haciendo el objeto detachado : "com.videoclub.pojo.Rental@18dcb8a7" (profundidad=0)
+18:43:08,876 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:3" va a tener el SCO wrapper en el campo "rentalDate" cambiado por el valor
+18:43:08,876 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:3" va a tener el SCO wrapper en el campo "returnDate" cambiado por el valor
+18:43:08,876 (main) DEBUG [DataNucleus.Persistence] - Objeto con identidad "com.videoclub.pojo.Rental:3" tiene cambio de lifeycle : "P_CLEAN"->"DETACHED_CLEAN"
+18:43:08,876 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.Rental:3" fue borrado de la cache transactional
+18:43:08,876 (main) DEBUG [DataNucleus.Persistence] - Disconectando objeto con identidad "com.videoclub.pojo.Rental:3" de StateManager[pc=com.videoclub.pojo.Rental@18dcb8a7, lifecycle=DETACHED_CLEAN]
+18:43:08,876 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad="com.videoclub.pojo.Rental:3" borrado de la Cache de nivel 1
+18:43:08,876 (main) DEBUG [DataNucleus.Transaction] - Transacción committed en 2 ms
+18:43:08,876 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se cerró
+18:43:08,876 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se abrió para la base de datos "org.datanucleus.store.rdbms.RDBMSStoreManager@346f41a9" con transaccion="org.datanucleus.transaction.TransactionImpl@4a50c746"
+18:43:08,876 (main) DEBUG [DataNucleus.Transaction] - Transaction created [DataNucleus Transaction, ID=146762790-21, enlisted resources=[]]
+18:43:08,876 (main) DEBUG [DataNucleus.Transaction] - Transacción empezada para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775 (optimistic=false)
+18:43:08,876 (main) DEBUG [DataNucleus.Query] - JDOQL Single-String de "SELECT FROM com.videoclub.pojo.Rental WHERE id == 4"
+18:43:08,876 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Compilación (generic) de "SELECT UNIQUE FROM com.videoclub.pojo.Rental WHERE id == 4"
+18:43:08,876 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de compilar (generic) = 0 ms
+18:43:08,876 (main) DEBUG [DataNucleus.Query] - QueryCompilation:
+  [filter:DyadicExpression{PrimaryExpression{id}  =  Literal{4}}]
+  [symbols: this type=com.videoclub.pojo.Rental]
+18:43:08,877 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Compilación (base de datos) de "SELECT UNIQUE FROM com.videoclub.pojo.Rental WHERE id == 4"
+18:43:08,877 (main) DEBUG [DataNucleus.Query] - Compile of JDOQL into SQL - JoinType : navigation(default=(using nullability), filter=(using nullability))
+18:43:08,877 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de compilar (base de datos) = 0
+18:43:08,878 (main) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@6ef2f7ad [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@22d477c2, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" en resource "tx" con isolación "read-committed" y auto-commit=false
+18:43:08,878 (main) DEBUG [DataNucleus.Transaction] - Running enlist operation on resource: org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@5e85c21b, error code TMNOFLAGS and transaction [DataNucleus Transaction, ID=146762790-21, enlisted resources=[]]
+18:43:08,878 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Ejecucion de "SELECT UNIQUE FROM com.videoclub.pojo.Rental WHERE id == 4" ...
+18:43:08,879 (main) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "com.mysql.cj.jdbc.ClientPreparedStatement: SELECT 'com.videoclub.pojo.Rental' AS `DN_TYPE`,`A0`.`CODE`,`A0`.`ID`,`A0`.`RENTALDATE`,`A0`.`RETURNDATE`,`A0`.`TITLE` FROM `RENTAL` `A0` WHERE `A0`.`ID` = 4" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@22d477c2"
+18:43:08,879 (main) DEBUG [DataNucleus.Datastore.Native] - SELECT 'com.videoclub.pojo.Rental' AS `DN_TYPE`,`A0`.`CODE`,`A0`.`ID`,`A0`.`RENTALDATE`,`A0`.`RETURNDATE`,`A0`.`TITLE` FROM `RENTAL` `A0` WHERE `A0`.`ID` = 4
+18:43:08,880 (main) DEBUG [DataNucleus.Datastore.Retrieve] - SQL Tiempo de cumplir = 1 ms
+18:43:08,880 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de ejecutar = 2 ms
+18:43:08,880 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Rental:4" no esta en la Cache de nivel 1
+18:43:08,880 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Rental:4" añadido a la Cache de nivel 1 (loadedFlags="[NYNNN]")
+18:43:08,880 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:4" va a tener el valor en el campo "rentalDate" cambiado por un SCO wrapper
+18:43:08,880 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:4" va a tener el valor en el campo "returnDate" cambiado por un SCO wrapper
+18:43:08,880 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.Rental:4" ha sido puesto en la cache transaccional
+18:43:08,880 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Rental:4" obtenido de la Cache nivel 2 (campos="[0, 1, 2, 3, 4]", version="") - representado como "com.videoclub.pojo.Rental@38e83838"
+18:43:08,880 (main) DEBUG [DataNucleus.Persistence] - Detachando una copia del objeto "com.videoclub.pojo.Rental@38e83838" (profundidad=0) como "com.videoclub.pojo.Rental@7f0f84d4" - campos-detachados=[0, 1, 2, 3, 4], campos-para-obtener=null
+18:43:08,881 (main) DEBUG [DataNucleus.Transaction] - Haciendo commit de la transaacción para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775
+18:43:08,881 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 0 objetos registrados
+18:43:08,881 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:08,881 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : EMPIEZA
+18:43:08,881 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : TERMINADO
+18:43:08,881 (main) DEBUG [DataNucleus.Cache] - El objeto con identidad "com.videoclub.pojo.Rental:4" va a tener los campos siguientes almacendados en el objeto de Level 2 cache : [0, 1, 2, 3, 4]
+18:43:08,881 (main) DEBUG [DataNucleus.Transaction] - Committing [DataNucleus Transaction, ID=146762790-21, enlisted resources=[org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@5e85c21b]]
+18:43:08,881 (main) DEBUG [DataNucleus.Connection] - ManagedConnection VA A COMMIT : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@6ef2f7ad [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@22d477c2, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]"
+18:43:08,882 (main) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@6ef2f7ad [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@22d477c2, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" 
+18:43:08,882 (main) DEBUG [DataNucleus.Persistence] - Haciendo el objeto detachado : "com.videoclub.pojo.Rental@38e83838" (profundidad=0)
+18:43:08,883 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:4" va a tener el SCO wrapper en el campo "rentalDate" cambiado por el valor
+18:43:08,883 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:4" va a tener el SCO wrapper en el campo "returnDate" cambiado por el valor
+18:43:08,883 (main) DEBUG [DataNucleus.Persistence] - Objeto con identidad "com.videoclub.pojo.Rental:4" tiene cambio de lifeycle : "P_CLEAN"->"DETACHED_CLEAN"
+18:43:08,883 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.Rental:4" fue borrado de la cache transactional
+18:43:08,883 (main) DEBUG [DataNucleus.Persistence] - Disconectando objeto con identidad "com.videoclub.pojo.Rental:4" de StateManager[pc=com.videoclub.pojo.Rental@38e83838, lifecycle=DETACHED_CLEAN]
+18:43:08,883 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad="com.videoclub.pojo.Rental:4" borrado de la Cache de nivel 1
+18:43:08,883 (main) DEBUG [DataNucleus.Transaction] - Transacción committed en 2 ms
+18:43:08,883 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se cerró
+18:43:08,883 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se abrió para la base de datos "org.datanucleus.store.rdbms.RDBMSStoreManager@346f41a9" con transaccion="org.datanucleus.transaction.TransactionImpl@26e8ff8c"
+18:43:08,883 (main) DEBUG [DataNucleus.Transaction] - Transaction created [DataNucleus Transaction, ID=146762790-22, enlisted resources=[]]
+18:43:08,883 (main) DEBUG [DataNucleus.Transaction] - Transacción empezada para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775 (optimistic=false)
+18:43:08,883 (main) DEBUG [DataNucleus.Query] - JDOQL Single-String de "SELECT FROM com.videoclub.pojo.Rental WHERE id == 5"
+18:43:08,883 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Compilación (generic) de "SELECT UNIQUE FROM com.videoclub.pojo.Rental WHERE id == 5"
+18:43:08,883 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de compilar (generic) = 0 ms
+18:43:08,884 (main) DEBUG [DataNucleus.Query] - QueryCompilation:
+  [filter:DyadicExpression{PrimaryExpression{id}  =  Literal{5}}]
+  [symbols: this type=com.videoclub.pojo.Rental]
+18:43:08,884 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Compilación (base de datos) de "SELECT UNIQUE FROM com.videoclub.pojo.Rental WHERE id == 5"
+18:43:08,884 (main) DEBUG [DataNucleus.Query] - Compile of JDOQL into SQL - JoinType : navigation(default=(using nullability), filter=(using nullability))
+18:43:08,884 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de compilar (base de datos) = 0
+18:43:08,886 (main) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@25791d40 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@448c92fc, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" en resource "tx" con isolación "read-committed" y auto-commit=false
+18:43:08,886 (main) DEBUG [DataNucleus.Transaction] - Running enlist operation on resource: org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@251c8145, error code TMNOFLAGS and transaction [DataNucleus Transaction, ID=146762790-22, enlisted resources=[]]
+18:43:08,886 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Ejecucion de "SELECT UNIQUE FROM com.videoclub.pojo.Rental WHERE id == 5" ...
+18:43:08,886 (main) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "com.mysql.cj.jdbc.ClientPreparedStatement: SELECT 'com.videoclub.pojo.Rental' AS `DN_TYPE`,`A0`.`CODE`,`A0`.`ID`,`A0`.`RENTALDATE`,`A0`.`RETURNDATE`,`A0`.`TITLE` FROM `RENTAL` `A0` WHERE `A0`.`ID` = 5" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@448c92fc"
+18:43:08,886 (main) DEBUG [DataNucleus.Datastore.Native] - SELECT 'com.videoclub.pojo.Rental' AS `DN_TYPE`,`A0`.`CODE`,`A0`.`ID`,`A0`.`RENTALDATE`,`A0`.`RETURNDATE`,`A0`.`TITLE` FROM `RENTAL` `A0` WHERE `A0`.`ID` = 5
+18:43:08,887 (main) DEBUG [DataNucleus.Datastore.Retrieve] - SQL Tiempo de cumplir = 1 ms
+18:43:08,887 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de ejecutar = 1 ms
+18:43:08,887 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Rental:5" no esta en la Cache de nivel 1
+18:43:08,887 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Rental:5" añadido a la Cache de nivel 1 (loadedFlags="[NYNNN]")
+18:43:08,887 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:5" va a tener el valor en el campo "rentalDate" cambiado por un SCO wrapper
+18:43:08,887 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:5" va a tener el valor en el campo "returnDate" cambiado por un SCO wrapper
+18:43:08,887 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.Rental:5" ha sido puesto en la cache transaccional
+18:43:08,887 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Rental:5" obtenido de la Cache nivel 2 (campos="[0, 1, 2, 3, 4]", version="") - representado como "com.videoclub.pojo.Rental@7abeabe9"
+18:43:08,887 (main) DEBUG [DataNucleus.Persistence] - Detachando una copia del objeto "com.videoclub.pojo.Rental@7abeabe9" (profundidad=0) como "com.videoclub.pojo.Rental@dbed7fd" - campos-detachados=[0, 1, 2, 3, 4], campos-para-obtener=null
+18:43:08,887 (main) DEBUG [DataNucleus.Transaction] - Haciendo commit de la transaacción para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775
+18:43:08,887 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 0 objetos registrados
+18:43:08,887 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:08,887 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : EMPIEZA
+18:43:08,887 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : TERMINADO
+18:43:08,888 (main) DEBUG [DataNucleus.Cache] - El objeto con identidad "com.videoclub.pojo.Rental:5" va a tener los campos siguientes almacendados en el objeto de Level 2 cache : [0, 1, 2, 3, 4]
+18:43:08,888 (main) DEBUG [DataNucleus.Transaction] - Committing [DataNucleus Transaction, ID=146762790-22, enlisted resources=[org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@251c8145]]
+18:43:08,888 (main) DEBUG [DataNucleus.Connection] - ManagedConnection VA A COMMIT : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@25791d40 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@448c92fc, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]"
+18:43:08,888 (main) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@25791d40 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@448c92fc, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" 
+18:43:08,888 (main) DEBUG [DataNucleus.Persistence] - Haciendo el objeto detachado : "com.videoclub.pojo.Rental@7abeabe9" (profundidad=0)
+18:43:08,888 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:5" va a tener el SCO wrapper en el campo "rentalDate" cambiado por el valor
+18:43:08,888 (main) DEBUG [DataNucleus.Persistence] - El objeto con identidad "com.videoclub.pojo.Rental:5" va a tener el SCO wrapper en el campo "returnDate" cambiado por el valor
+18:43:08,888 (main) DEBUG [DataNucleus.Persistence] - Objeto con identidad "com.videoclub.pojo.Rental:5" tiene cambio de lifeycle : "P_CLEAN"->"DETACHED_CLEAN"
+18:43:08,888 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.Rental:5" fue borrado de la cache transactional
+18:43:08,888 (main) DEBUG [DataNucleus.Persistence] - Disconectando objeto con identidad "com.videoclub.pojo.Rental:5" de StateManager[pc=com.videoclub.pojo.Rental@7abeabe9, lifecycle=DETACHED_CLEAN]
+18:43:08,888 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad="com.videoclub.pojo.Rental:5" borrado de la Cache de nivel 1
+18:43:08,888 (main) DEBUG [DataNucleus.Transaction] - Transacción committed en 1 ms
+18:43:08,888 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se cerró
+]]></system-out>
+  </testcase>
+  <testcase name="databaseMovieChecking" classname="com.videoclub.testing.TestVideoclub" time="0.01">
+    <system-out><![CDATA[18:43:08,889 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se abrió para la base de datos "org.datanucleus.store.rdbms.RDBMSStoreManager@346f41a9" con transaccion="org.datanucleus.transaction.TransactionImpl@7e5efcab"
+18:43:08,889 (main) DEBUG [DataNucleus.Transaction] - Transaction created [DataNucleus Transaction, ID=146762790-23, enlisted resources=[]]
+18:43:08,889 (main) DEBUG [DataNucleus.Transaction] - Transacción empezada para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775 (optimistic=false)
+18:43:08,889 (main) DEBUG [DataNucleus.Query] - JDOQL Single-String de "SELECT FROM com.videoclub.pojo.Movie WHERE title == 'Movie1'"
+18:43:08,889 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Compilación (generic) de "SELECT UNIQUE FROM com.videoclub.pojo.Movie WHERE title == 'Movie1'"
+18:43:08,889 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de compilar (generic) = 0 ms
+18:43:08,890 (main) DEBUG [DataNucleus.Query] - QueryCompilation:
+  [filter:DyadicExpression{PrimaryExpression{title}  =  Literal{Movie1}}]
+  [symbols: this type=com.videoclub.pojo.Movie]
+18:43:08,890 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Compilación (base de datos) de "SELECT UNIQUE FROM com.videoclub.pojo.Movie WHERE title == 'Movie1'"
+18:43:08,890 (main) DEBUG [DataNucleus.Query] - Compile of JDOQL into SQL - JoinType : navigation(default=(using nullability), filter=(using nullability))
+18:43:08,890 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de compilar (base de datos) = 0
+18:43:08,891 (main) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@3db65c0d [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@1edccfd4, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" en resource "tx" con isolación "read-committed" y auto-commit=false
+18:43:08,891 (main) DEBUG [DataNucleus.Transaction] - Running enlist operation on resource: org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@8c43966, error code TMNOFLAGS and transaction [DataNucleus Transaction, ID=146762790-23, enlisted resources=[]]
+18:43:08,891 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Ejecucion de "SELECT UNIQUE FROM com.videoclub.pojo.Movie WHERE title == 'Movie1'" ...
+18:43:08,891 (main) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "com.mysql.cj.jdbc.ClientPreparedStatement: SELECT 'com.videoclub.pojo.Movie' AS `DN_TYPE`,`A0`.`CODE`,`A0`.`DIRECTOR`,`A0`.`DURATION`,`A0`.`GENRE`,`A0`.`RENTALPRICE`,`A0`.`TITLE`,`A0`.`YEAR` FROM `MOVIE` `A0` WHERE `A0`.`TITLE` = 'Movie1'" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@1edccfd4"
+18:43:08,891 (main) DEBUG [DataNucleus.Datastore.Native] - SELECT 'com.videoclub.pojo.Movie' AS `DN_TYPE`,`A0`.`CODE`,`A0`.`DIRECTOR`,`A0`.`DURATION`,`A0`.`GENRE`,`A0`.`RENTALPRICE`,`A0`.`TITLE`,`A0`.`YEAR` FROM `MOVIE` `A0` WHERE `A0`.`TITLE` = 'Movie1'
+18:43:08,892 (main) DEBUG [DataNucleus.Datastore.Retrieve] - SQL Tiempo de cumplir = 1 ms
+18:43:08,892 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de ejecutar = 1 ms
+18:43:08,892 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Movie:11" no esta en la Cache de nivel 1
+18:43:08,892 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Movie:11" añadido a la Cache de nivel 1 (loadedFlags="[YNNNNNN]")
+18:43:08,892 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.Movie:11" ha sido puesto en la cache transaccional
+18:43:08,892 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Movie:11" obtenido de la Cache nivel 2 (campos="[0, 1, 2, 3, 4, 5, 6]", version="") - representado como "com.videoclub.pojo.Movie@11a3a45f"
+18:43:08,892 (main) DEBUG [DataNucleus.Persistence] - Detachando una copia del objeto "com.videoclub.pojo.Movie@11a3a45f" (profundidad=0) como "com.videoclub.pojo.Movie@8c0a23f" - campos-detachados=[0, 1, 2, 3, 4, 5, 6], campos-para-obtener=null
+18:43:08,892 (main) DEBUG [DataNucleus.Transaction] - Haciendo commit de la transaacción para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775
+18:43:08,892 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 0 objetos registrados
+18:43:08,892 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:08,892 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : EMPIEZA
+18:43:08,892 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : TERMINADO
+18:43:08,893 (main) DEBUG [DataNucleus.Cache] - El objeto con identidad "com.videoclub.pojo.Movie:11" va a tener los campos siguientes almacendados en el objeto de Level 2 cache : [0, 1, 2, 3, 4, 5, 6]
+18:43:08,898 (main) DEBUG [DataNucleus.Transaction] - Committing [DataNucleus Transaction, ID=146762790-23, enlisted resources=[org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@8c43966]]
+18:43:08,898 (main) DEBUG [DataNucleus.Connection] - ManagedConnection VA A COMMIT : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@3db65c0d [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@1edccfd4, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]"
+18:43:08,898 (main) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@3db65c0d [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@1edccfd4, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" 
+18:43:08,899 (main) DEBUG [DataNucleus.Persistence] - Haciendo el objeto detachado : "com.videoclub.pojo.Movie@11a3a45f" (profundidad=0)
+18:43:08,899 (main) DEBUG [DataNucleus.Persistence] - Objeto con identidad "com.videoclub.pojo.Movie:11" tiene cambio de lifeycle : "P_CLEAN"->"DETACHED_CLEAN"
+18:43:08,899 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.Movie:11" fue borrado de la cache transactional
+18:43:08,899 (main) DEBUG [DataNucleus.Persistence] - Disconectando objeto con identidad "com.videoclub.pojo.Movie:11" de StateManager[pc=com.videoclub.pojo.Movie@11a3a45f, lifecycle=DETACHED_CLEAN]
+18:43:08,899 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad="com.videoclub.pojo.Movie:11" borrado de la Cache de nivel 1
+18:43:08,899 (main) DEBUG [DataNucleus.Transaction] - Transacción committed en 7 ms
+18:43:08,899 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se cerró
+18:43:08,899 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se abrió para la base de datos "org.datanucleus.store.rdbms.RDBMSStoreManager@346f41a9" con transaccion="org.datanucleus.transaction.TransactionImpl@26c8b296"
+18:43:08,899 (main) DEBUG [DataNucleus.Transaction] - Transaction created [DataNucleus Transaction, ID=146762790-24, enlisted resources=[]]
+18:43:08,899 (main) DEBUG [DataNucleus.Transaction] - Transacción empezada para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775 (optimistic=false)
+18:43:08,899 (main) DEBUG [DataNucleus.Query] - JDOQL Single-String de "SELECT FROM com.videoclub.pojo.Movie WHERE title == 'Movie2'"
+18:43:08,900 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Compilación (generic) de "SELECT UNIQUE FROM com.videoclub.pojo.Movie WHERE title == 'Movie2'"
+18:43:08,900 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de compilar (generic) = 0 ms
+18:43:08,900 (main) DEBUG [DataNucleus.Query] - QueryCompilation:
+  [filter:DyadicExpression{PrimaryExpression{title}  =  Literal{Movie2}}]
+  [symbols: this type=com.videoclub.pojo.Movie]
+18:43:08,900 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Compilación (base de datos) de "SELECT UNIQUE FROM com.videoclub.pojo.Movie WHERE title == 'Movie2'"
+18:43:08,900 (main) DEBUG [DataNucleus.Query] - Compile of JDOQL into SQL - JoinType : navigation(default=(using nullability), filter=(using nullability))
+18:43:08,901 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de compilar (base de datos) = 0
+18:43:08,902 (main) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@7f27f59b [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@1c98b4eb, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" en resource "tx" con isolación "read-committed" y auto-commit=false
+18:43:08,902 (main) DEBUG [DataNucleus.Transaction] - Running enlist operation on resource: org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@45801322, error code TMNOFLAGS and transaction [DataNucleus Transaction, ID=146762790-24, enlisted resources=[]]
+18:43:08,902 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Ejecucion de "SELECT UNIQUE FROM com.videoclub.pojo.Movie WHERE title == 'Movie2'" ...
+18:43:08,902 (main) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "com.mysql.cj.jdbc.ClientPreparedStatement: SELECT 'com.videoclub.pojo.Movie' AS `DN_TYPE`,`A0`.`CODE`,`A0`.`DIRECTOR`,`A0`.`DURATION`,`A0`.`GENRE`,`A0`.`RENTALPRICE`,`A0`.`TITLE`,`A0`.`YEAR` FROM `MOVIE` `A0` WHERE `A0`.`TITLE` = 'Movie2'" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@1c98b4eb"
+18:43:08,902 (main) DEBUG [DataNucleus.Datastore.Native] - SELECT 'com.videoclub.pojo.Movie' AS `DN_TYPE`,`A0`.`CODE`,`A0`.`DIRECTOR`,`A0`.`DURATION`,`A0`.`GENRE`,`A0`.`RENTALPRICE`,`A0`.`TITLE`,`A0`.`YEAR` FROM `MOVIE` `A0` WHERE `A0`.`TITLE` = 'Movie2'
+18:43:08,903 (main) DEBUG [DataNucleus.Datastore.Retrieve] - SQL Tiempo de cumplir = 1 ms
+18:43:08,903 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de ejecutar = 1 ms
+18:43:08,903 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Movie:12" no esta en la Cache de nivel 1
+18:43:08,903 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Movie:12" añadido a la Cache de nivel 1 (loadedFlags="[YNNNNNN]")
+18:43:08,903 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.Movie:12" ha sido puesto en la cache transaccional
+18:43:08,903 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.Movie:12" obtenido de la Cache nivel 2 (campos="[0, 1, 2, 3, 4, 5, 6]", version="") - representado como "com.videoclub.pojo.Movie@3520958b"
+18:43:08,904 (main) DEBUG [DataNucleus.Persistence] - Detachando una copia del objeto "com.videoclub.pojo.Movie@3520958b" (profundidad=0) como "com.videoclub.pojo.Movie@5b1e88f" - campos-detachados=[0, 1, 2, 3, 4, 5, 6], campos-para-obtener=null
+18:43:08,904 (main) DEBUG [DataNucleus.Transaction] - Haciendo commit de la transaacción para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775
+18:43:08,904 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 0 objetos registrados
+18:43:08,904 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:08,904 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : EMPIEZA
+18:43:08,904 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : TERMINADO
+18:43:08,904 (main) DEBUG [DataNucleus.Cache] - El objeto con identidad "com.videoclub.pojo.Movie:12" va a tener los campos siguientes almacendados en el objeto de Level 2 cache : [0, 1, 2, 3, 4, 5, 6]
+18:43:08,904 (main) DEBUG [DataNucleus.Transaction] - Committing [DataNucleus Transaction, ID=146762790-24, enlisted resources=[org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@45801322]]
+18:43:08,904 (main) DEBUG [DataNucleus.Connection] - ManagedConnection VA A COMMIT : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@7f27f59b [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@1c98b4eb, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]"
+18:43:08,905 (main) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@7f27f59b [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@1c98b4eb, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" 
+18:43:08,905 (main) DEBUG [DataNucleus.Persistence] - Haciendo el objeto detachado : "com.videoclub.pojo.Movie@3520958b" (profundidad=0)
+18:43:08,907 (main) DEBUG [DataNucleus.Persistence] - Objeto con identidad "com.videoclub.pojo.Movie:12" tiene cambio de lifeycle : "P_CLEAN"->"DETACHED_CLEAN"
+18:43:08,907 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.Movie:12" fue borrado de la cache transactional
+18:43:08,907 (main) DEBUG [DataNucleus.Persistence] - Disconectando objeto con identidad "com.videoclub.pojo.Movie:12" de StateManager[pc=com.videoclub.pojo.Movie@3520958b, lifecycle=DETACHED_CLEAN]
+18:43:08,907 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad="com.videoclub.pojo.Movie:12" borrado de la Cache de nivel 1
+18:43:08,907 (main) DEBUG [DataNucleus.Transaction] - Transacción committed en 3 ms
+18:43:08,907 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se cerró
+]]></system-out>
+  </testcase>
+  <testcase name="databaseUserChecking" classname="com.videoclub.testing.TestVideoclub" time="0.019">
+    <system-out><![CDATA[18:43:08,907 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se abrió para la base de datos "org.datanucleus.store.rdbms.RDBMSStoreManager@346f41a9" con transaccion="org.datanucleus.transaction.TransactionImpl@11c88cca"
+18:43:08,908 (main) DEBUG [DataNucleus.Transaction] - Transaction created [DataNucleus Transaction, ID=146762790-25, enlisted resources=[]]
+18:43:08,908 (main) DEBUG [DataNucleus.Transaction] - Transacción empezada para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775 (optimistic=false)
+18:43:08,908 (main) DEBUG [DataNucleus.Query] - JDOQL Single-String de "SELECT FROM com.videoclub.pojo.User WHERE email == 'admin@email.com'"
+18:43:08,908 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Compilación (generic) de "SELECT UNIQUE FROM com.videoclub.pojo.User WHERE email == 'admin@email.com'"
+18:43:08,908 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de compilar (generic) = 0 ms
+18:43:08,908 (main) DEBUG [DataNucleus.Query] - QueryCompilation:
+  [filter:DyadicExpression{PrimaryExpression{email}  =  Literal{admin@email.com}}]
+  [symbols: this type=com.videoclub.pojo.User]
+18:43:08,908 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Compilación (base de datos) de "SELECT UNIQUE FROM com.videoclub.pojo.User WHERE email == 'admin@email.com'"
+18:43:08,908 (main) DEBUG [DataNucleus.Query] - Compile of JDOQL into SQL - JoinType : navigation(default=(using nullability), filter=(using nullability))
+18:43:08,909 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de compilar (base de datos) = 0
+18:43:08,910 (main) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@bb3ecfe [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@5ec88f9e, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" en resource "tx" con isolación "read-committed" y auto-commit=false
+18:43:08,910 (main) DEBUG [DataNucleus.Transaction] - Running enlist operation on resource: org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@7a04f730, error code TMNOFLAGS and transaction [DataNucleus Transaction, ID=146762790-25, enlisted resources=[]]
+18:43:08,910 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Ejecucion de "SELECT UNIQUE FROM com.videoclub.pojo.User WHERE email == 'admin@email.com'" ...
+18:43:08,910 (main) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "com.mysql.cj.jdbc.ClientPreparedStatement: SELECT 'com.videoclub.pojo.User' AS `DN_TYPE`,`A0`.`CODE`,`A0`.`EMAIL`,`A0`.`NAME`,`A0`.`PASSWORD`,`A0`.`SURNAME`,`A0`.`TYPE`,`A0`.`USERNAME` FROM `USER` `A0` WHERE `A0`.`EMAIL` = 'admin@email.com'" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@5ec88f9e"
+18:43:08,910 (main) DEBUG [DataNucleus.Datastore.Native] - SELECT 'com.videoclub.pojo.User' AS `DN_TYPE`,`A0`.`CODE`,`A0`.`EMAIL`,`A0`.`NAME`,`A0`.`PASSWORD`,`A0`.`SURNAME`,`A0`.`TYPE`,`A0`.`USERNAME` FROM `USER` `A0` WHERE `A0`.`EMAIL` = 'admin@email.com'
+18:43:08,910 (main) DEBUG [DataNucleus.Datastore.Retrieve] - SQL Tiempo de cumplir = 0 ms
+18:43:08,911 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de ejecutar = 1 ms
+18:43:08,911 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.User:11" no esta en la Cache de nivel 1
+18:43:08,911 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.User:11" añadido a la Cache de nivel 1 (loadedFlags="[YNNNNNN]")
+18:43:08,911 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.User:11" ha sido puesto en la cache transaccional
+18:43:08,911 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.User:11" obtenido de la Cache nivel 2 (campos="[0, 1, 2, 3, 4, 5, 6]", version="") - representado como "com.videoclub.pojo.User@2fd1ad8a"
+18:43:08,911 (main) DEBUG [DataNucleus.Persistence] - Detachando una copia del objeto "com.videoclub.pojo.User@2fd1ad8a" (profundidad=0) como "com.videoclub.pojo.User@582e9152" - campos-detachados=[0, 1, 2, 3, 4, 5, 6], campos-para-obtener=null
+18:43:08,911 (main) DEBUG [DataNucleus.Transaction] - Haciendo commit de la transaacción para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775
+18:43:08,911 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 0 objetos registrados
+18:43:08,911 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:08,911 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : EMPIEZA
+18:43:08,911 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : TERMINADO
+18:43:08,911 (main) DEBUG [DataNucleus.Cache] - El objeto con identidad "com.videoclub.pojo.User:11" va a tener los campos siguientes almacendados en el objeto de Level 2 cache : [0, 1, 2, 3, 4, 5, 6]
+18:43:08,911 (main) DEBUG [DataNucleus.Transaction] - Committing [DataNucleus Transaction, ID=146762790-25, enlisted resources=[org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@7a04f730]]
+18:43:08,911 (main) DEBUG [DataNucleus.Connection] - ManagedConnection VA A COMMIT : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@bb3ecfe [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@5ec88f9e, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]"
+18:43:08,912 (main) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@bb3ecfe [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@5ec88f9e, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" 
+18:43:08,912 (main) DEBUG [DataNucleus.Persistence] - Haciendo el objeto detachado : "com.videoclub.pojo.User@2fd1ad8a" (profundidad=0)
+18:43:08,912 (main) DEBUG [DataNucleus.Persistence] - Objeto con identidad "com.videoclub.pojo.User:11" tiene cambio de lifeycle : "P_CLEAN"->"DETACHED_CLEAN"
+18:43:08,912 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.User:11" fue borrado de la cache transactional
+18:43:08,912 (main) DEBUG [DataNucleus.Persistence] - Disconectando objeto con identidad "com.videoclub.pojo.User:11" de StateManager[pc=com.videoclub.pojo.User@2fd1ad8a, lifecycle=DETACHED_CLEAN]
+18:43:08,912 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad="com.videoclub.pojo.User:11" borrado de la Cache de nivel 1
+18:43:08,912 (main) DEBUG [DataNucleus.Transaction] - Transacción committed en 1 ms
+18:43:08,913 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se cerró
+18:43:08,913 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se abrió para la base de datos "org.datanucleus.store.rdbms.RDBMSStoreManager@346f41a9" con transaccion="org.datanucleus.transaction.TransactionImpl@349c4d1c"
+18:43:08,913 (main) DEBUG [DataNucleus.Transaction] - Transaction created [DataNucleus Transaction, ID=146762790-26, enlisted resources=[]]
+18:43:08,913 (main) DEBUG [DataNucleus.Transaction] - Transacción empezada para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775 (optimistic=false)
+18:43:08,913 (main) DEBUG [DataNucleus.Query] - JDOQL Single-String de "SELECT FROM com.videoclub.pojo.User WHERE email == 'asier.account@email.com'"
+18:43:08,913 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Compilación (generic) de "SELECT UNIQUE FROM com.videoclub.pojo.User WHERE email == 'asier.account@email.com'"
+18:43:08,913 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de compilar (generic) = 0 ms
+18:43:08,913 (main) DEBUG [DataNucleus.Query] - QueryCompilation:
+  [filter:DyadicExpression{PrimaryExpression{email}  =  Literal{asier.account@email.com}}]
+  [symbols: this type=com.videoclub.pojo.User]
+18:43:08,913 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Compilación (base de datos) de "SELECT UNIQUE FROM com.videoclub.pojo.User WHERE email == 'asier.account@email.com'"
+18:43:08,913 (main) DEBUG [DataNucleus.Query] - Compile of JDOQL into SQL - JoinType : navigation(default=(using nullability), filter=(using nullability))
+18:43:08,914 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de compilar (base de datos) = 1
+18:43:08,915 (main) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@7971c2a9 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@2fd39436, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" en resource "tx" con isolación "read-committed" y auto-commit=false
+18:43:08,915 (main) DEBUG [DataNucleus.Transaction] - Running enlist operation on resource: org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@60b5e80d, error code TMNOFLAGS and transaction [DataNucleus Transaction, ID=146762790-26, enlisted resources=[]]
+18:43:08,915 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Ejecucion de "SELECT UNIQUE FROM com.videoclub.pojo.User WHERE email == 'asier.account@email.com'" ...
+18:43:08,915 (main) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "com.mysql.cj.jdbc.ClientPreparedStatement: SELECT 'com.videoclub.pojo.User' AS `DN_TYPE`,`A0`.`CODE`,`A0`.`EMAIL`,`A0`.`NAME`,`A0`.`PASSWORD`,`A0`.`SURNAME`,`A0`.`TYPE`,`A0`.`USERNAME` FROM `USER` `A0` WHERE `A0`.`EMAIL` = 'asier.account@email.com'" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@2fd39436"
+18:43:08,915 (main) DEBUG [DataNucleus.Datastore.Native] - SELECT 'com.videoclub.pojo.User' AS `DN_TYPE`,`A0`.`CODE`,`A0`.`EMAIL`,`A0`.`NAME`,`A0`.`PASSWORD`,`A0`.`SURNAME`,`A0`.`TYPE`,`A0`.`USERNAME` FROM `USER` `A0` WHERE `A0`.`EMAIL` = 'asier.account@email.com'
+18:43:08,915 (main) DEBUG [DataNucleus.Datastore.Retrieve] - SQL Tiempo de cumplir = 0 ms
+18:43:08,915 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de ejecutar = 0 ms
+18:43:08,915 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.User:12" no esta en la Cache de nivel 1
+18:43:08,916 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.User:12" añadido a la Cache de nivel 1 (loadedFlags="[YNNNNNN]")
+18:43:08,916 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.User:12" ha sido puesto en la cache transaccional
+18:43:08,916 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.User:12" obtenido de la Cache nivel 2 (campos="[0, 1, 2, 3, 4, 5, 6]", version="") - representado como "com.videoclub.pojo.User@31aab981"
+18:43:08,916 (main) DEBUG [DataNucleus.Persistence] - Detachando una copia del objeto "com.videoclub.pojo.User@31aab981" (profundidad=0) como "com.videoclub.pojo.User@411fa0ce" - campos-detachados=[0, 1, 2, 3, 4, 5, 6], campos-para-obtener=null
+18:43:08,916 (main) DEBUG [DataNucleus.Transaction] - Haciendo commit de la transaacción para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775
+18:43:08,916 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 0 objetos registrados
+18:43:08,916 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:08,916 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : EMPIEZA
+18:43:08,916 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : TERMINADO
+18:43:08,916 (main) DEBUG [DataNucleus.Cache] - El objeto con identidad "com.videoclub.pojo.User:12" va a tener los campos siguientes almacendados en el objeto de Level 2 cache : [0, 1, 2, 3, 4, 5, 6]
+18:43:08,916 (main) DEBUG [DataNucleus.Transaction] - Committing [DataNucleus Transaction, ID=146762790-26, enlisted resources=[org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@60b5e80d]]
+18:43:08,916 (main) DEBUG [DataNucleus.Connection] - ManagedConnection VA A COMMIT : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@7971c2a9 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@2fd39436, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]"
+18:43:08,916 (main) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@7971c2a9 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@2fd39436, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" 
+18:43:08,917 (main) DEBUG [DataNucleus.Persistence] - Haciendo el objeto detachado : "com.videoclub.pojo.User@31aab981" (profundidad=0)
+18:43:08,917 (main) DEBUG [DataNucleus.Persistence] - Objeto con identidad "com.videoclub.pojo.User:12" tiene cambio de lifeycle : "P_CLEAN"->"DETACHED_CLEAN"
+18:43:08,917 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.User:12" fue borrado de la cache transactional
+18:43:08,917 (main) DEBUG [DataNucleus.Persistence] - Disconectando objeto con identidad "com.videoclub.pojo.User:12" de StateManager[pc=com.videoclub.pojo.User@31aab981, lifecycle=DETACHED_CLEAN]
+18:43:08,917 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad="com.videoclub.pojo.User:12" borrado de la Cache de nivel 1
+18:43:08,917 (main) DEBUG [DataNucleus.Transaction] - Transacción committed en 1 ms
+18:43:08,917 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se cerró
+18:43:08,917 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se abrió para la base de datos "org.datanucleus.store.rdbms.RDBMSStoreManager@346f41a9" con transaccion="org.datanucleus.transaction.TransactionImpl@78e68401"
+18:43:08,917 (main) DEBUG [DataNucleus.Transaction] - Transaction created [DataNucleus Transaction, ID=146762790-27, enlisted resources=[]]
+18:43:08,917 (main) DEBUG [DataNucleus.Transaction] - Transacción empezada para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775 (optimistic=false)
+18:43:08,917 (main) DEBUG [DataNucleus.Query] - JDOQL Single-String de "SELECT FROM com.videoclub.pojo.User WHERE email == 'client@email.com'"
+18:43:08,917 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Compilación (generic) de "SELECT UNIQUE FROM com.videoclub.pojo.User WHERE email == 'client@email.com'"
+18:43:08,917 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de compilar (generic) = 0 ms
+18:43:08,917 (main) DEBUG [DataNucleus.Query] - QueryCompilation:
+  [filter:DyadicExpression{PrimaryExpression{email}  =  Literal{client@email.com}}]
+  [symbols: this type=com.videoclub.pojo.User]
+18:43:08,917 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Compilación (base de datos) de "SELECT UNIQUE FROM com.videoclub.pojo.User WHERE email == 'client@email.com'"
+18:43:08,917 (main) DEBUG [DataNucleus.Query] - Compile of JDOQL into SQL - JoinType : navigation(default=(using nullability), filter=(using nullability))
+18:43:08,919 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de compilar (base de datos) = 2
+18:43:08,919 (main) DEBUG [DataNucleus.Connection] - ManagedConnection ABIERTO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@4b9dbf07 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@797fcf9, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" en resource "tx" con isolación "read-committed" y auto-commit=false
+18:43:08,919 (main) DEBUG [DataNucleus.Transaction] - Running enlist operation on resource: org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@16bd7ae1, error code TMNOFLAGS and transaction [DataNucleus Transaction, ID=146762790-27, enlisted resources=[]]
+18:43:08,919 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Ejecucion de "SELECT UNIQUE FROM com.videoclub.pojo.User WHERE email == 'client@email.com'" ...
+18:43:08,919 (main) DEBUG [DataNucleus.Datastore] - Utilizando PreparedStatement "com.mysql.cj.jdbc.ClientPreparedStatement: SELECT 'com.videoclub.pojo.User' AS `DN_TYPE`,`A0`.`CODE`,`A0`.`EMAIL`,`A0`.`NAME`,`A0`.`PASSWORD`,`A0`.`SURNAME`,`A0`.`TYPE`,`A0`.`USERNAME` FROM `USER` `A0` WHERE `A0`.`EMAIL` = 'client@email.com'" para la conneccion "org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@797fcf9"
+18:43:08,919 (main) DEBUG [DataNucleus.Datastore.Native] - SELECT 'com.videoclub.pojo.User' AS `DN_TYPE`,`A0`.`CODE`,`A0`.`EMAIL`,`A0`.`NAME`,`A0`.`PASSWORD`,`A0`.`SURNAME`,`A0`.`TYPE`,`A0`.`USERNAME` FROM `USER` `A0` WHERE `A0`.`EMAIL` = 'client@email.com'
+18:43:08,919 (main) DEBUG [DataNucleus.Datastore.Retrieve] - SQL Tiempo de cumplir = 0 ms
+18:43:08,919 (main) DEBUG [DataNucleus.Query] - Query de JDOQL : Tiempo de ejecutar = 0 ms
+18:43:08,920 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.User:13" no esta en la Cache de nivel 1
+18:43:08,920 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.User:13" añadido a la Cache de nivel 1 (loadedFlags="[YNNNNNN]")
+18:43:08,920 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.User:13" ha sido puesto en la cache transaccional
+18:43:08,920 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad "com.videoclub.pojo.User:13" obtenido de la Cache nivel 2 (campos="[0, 1, 2, 3, 4, 5, 6]", version="") - representado como "com.videoclub.pojo.User@3312f4f4"
+18:43:08,920 (main) DEBUG [DataNucleus.Persistence] - Detachando una copia del objeto "com.videoclub.pojo.User@3312f4f4" (profundidad=0) como "com.videoclub.pojo.User@6b27b2d0" - campos-detachados=[0, 1, 2, 3, 4, 5, 6], campos-para-obtener=null
+18:43:08,920 (main) DEBUG [DataNucleus.Transaction] - Haciendo commit de la transaacción para el ExecutionContext org.datanucleus.ExecutionContextImpl@68d6d775
+18:43:08,920 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() empezado con flush ordenado - 0 objetos registrados
+18:43:08,920 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext.internalFlush() terminado
+18:43:08,920 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : EMPIEZA
+18:43:08,920 (main) DEBUG [DataNucleus.Persistence] - Persistence-By-Reachability (commit) : TERMINADO
+18:43:08,920 (main) DEBUG [DataNucleus.Cache] - El objeto con identidad "com.videoclub.pojo.User:13" va a tener los campos siguientes almacendados en el objeto de Level 2 cache : [0, 1, 2, 3, 4, 5, 6]
+18:43:08,920 (main) DEBUG [DataNucleus.Transaction] - Committing [DataNucleus Transaction, ID=146762790-27, enlisted resources=[org.datanucleus.store.rdbms.ConnectionFactoryImpl$EmulatedXAResource@16bd7ae1]]
+18:43:08,920 (main) DEBUG [DataNucleus.Connection] - ManagedConnection VA A COMMIT : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@4b9dbf07 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@797fcf9, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]"
+18:43:08,920 (main) DEBUG [DataNucleus.Connection] - ManagedConnection CERRADO : "org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl@4b9dbf07 [conn=org.datanucleus.store.rdbms.datasource.dbcp2.PoolingDataSource$PoolGuardConnectionWrapper@797fcf9, commitOnRelease=false, closeOnRelease=false, closeOnTxnEnd=true]" 
+18:43:08,921 (main) DEBUG [DataNucleus.Persistence] - Haciendo el objeto detachado : "com.videoclub.pojo.User@3312f4f4" (profundidad=0)
+18:43:08,921 (main) DEBUG [DataNucleus.Persistence] - Objeto con identidad "com.videoclub.pojo.User:13" tiene cambio de lifeycle : "P_CLEAN"->"DETACHED_CLEAN"
+18:43:08,921 (main) DEBUG [DataNucleus.Transaction] - Objeto con identidad "com.videoclub.pojo.User:13" fue borrado de la cache transactional
+18:43:08,921 (main) DEBUG [DataNucleus.Persistence] - Disconectando objeto con identidad "com.videoclub.pojo.User:13" de StateManager[pc=com.videoclub.pojo.User@3312f4f4, lifecycle=DETACHED_CLEAN]
+18:43:08,921 (main) DEBUG [DataNucleus.Cache] - Objeto con identidad="com.videoclub.pojo.User:13" borrado de la Cache de nivel 1
+18:43:08,921 (main) DEBUG [DataNucleus.Transaction] - Transacción committed en 1 ms
+18:43:08,921 (main) DEBUG [DataNucleus.Persistence] - ExecutionContext "org.datanucleus.ExecutionContextImpl@68d6d775" se cerró
+User [code=11, username=admin,type=ADMIN, password=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918, email=admin@email.com, name=AdminName, surname=AdminSurname] - User [code=11, username=admin,type=ADMIN, password=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918, email=admin@email.com, name=AdminName, surname=AdminSurname]
+]]></system-out>
+  </testcase>
+</testsuite>
