@@ -1,29 +1,18 @@
 package com.videoclub.client.gui;
 
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
-import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.itextpdf.text.log.SysoCounter;
 import com.videoclub.Internationalization.InternationalizationText;
-import com.videoclub.dao.MovieDAO;
-import com.videoclub.dao.RentalDAO;
-import com.videoclub.dao.UserDAO;
-import com.videoclub.pojo.Movie;
-import com.videoclub.pojo.Rental;
-import com.videoclub.pojo.User;
 
 
 
@@ -37,8 +26,6 @@ public class ClientMenuRentals extends JFrame {
 	private JPanel panelSouth;
 	private JPanel panelCentre;
 	private JButton btnBack;
-	private static final String SERVER_ENDPOINT = "http://localhost:8080/webapi";
-    private static final String USERS_RESOURCE ="users";
 
 	/**
 	 * Launch the application.

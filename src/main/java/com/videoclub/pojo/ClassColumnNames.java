@@ -12,9 +12,15 @@ public class ClassColumnNames<T> {
 		this.clazz = clazz;
 		this.columnName = columnName;
 	}
+	/**Function to get the class
+	 * @return The class of the object
+	 */
 	public Class<T> getClazz() {
 		return clazz;
 	}
+	/**Function to get the column name
+	 * @return String of the column name
+	 */
 	public String getColumnName() {
 		return columnName;
 	}

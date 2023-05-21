@@ -4,36 +4,17 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.EOFException;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-
-import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.ws.rs.ProcessingException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -47,16 +28,12 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.videoclub.Internationalization.InternationalizationText;
-import com.videoclub.client.gui.AdminMenuWindow.LogInWindow;
-import com.videoclub.dao.MovieDAO;
-import com.videoclub.encrypt.PasswordEncrypt;
 import com.videoclub.pojo.Movie;
-import com.videoclub.pojo.User;
-import com.videoclub.pojo.typeUser;
 
 
 public class NewMovieWindow extends JFrame {
 	
+	private static final long serialVersionUID = 6812172554786776573L;
 	private JButton exit;
 	private JButton create;
 	
@@ -192,6 +169,11 @@ public class NewMovieWindow extends JFrame {
 		
 	}
 	
+	/**Function to align the lines.
+	 * @param cont Container
+	 * @param etiqueta String with a text
+	 * @param campo Component
+	 */
 	public static void posicionaLinea( Container cont, String etiqueta, Component campo) {
 		JPanel tempPanel = new JPanel();
 		tempPanel.setLayout( new FlowLayout(FlowLayout.CENTER) ); // flow ajustado a la izquierda

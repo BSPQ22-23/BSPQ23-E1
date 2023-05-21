@@ -6,13 +6,10 @@ import java.awt.Container;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 
-import javax.mail.MessagingException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -22,17 +19,9 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
-import com.google.zxing.WriterException;
-import com.itextpdf.text.DocumentException;
 import com.videoclub.Internationalization.InternationalizationText;
 import com.videoclub.client.ConnectionToServer;
-import com.videoclub.dao.MovieDAO;
-import com.videoclub.dao.RentalDAO;
-import com.videoclub.pojo.Movie;
 import com.videoclub.pojo.Rental;
-import com.videoclub.pojo.User;
-import com.videoclub.pojo.typeUser;
-import com.videoclub.receipt.Receipt;
 
 public class RentalWindow extends JFrame {
 
@@ -116,6 +105,9 @@ public class RentalWindow extends JFrame {
 
 		}
 	
+	/**Function to initialize the table.
+	 * 
+	 */
 	public void initializeTable() {
 		
 		//Cabecera
@@ -138,12 +130,12 @@ public class RentalWindow extends JFrame {
 		tableRentals.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 	}
 	
+	/**Function to load the model
+	 * 
+	 */
 	public void loadModel() {
 		ConnectionToServer cts = new ConnectionToServer();
-		//TODO Tiene que llamar al Server, esto esta mal.
-		//--------------------------------------------------
 		listRentals = cts.takeRentalListClient();
-		//--------------------------------------------------
 		while (modelRentals.getRowCount() > 0) {
 			modelRentals.removeRow(0);
 		}

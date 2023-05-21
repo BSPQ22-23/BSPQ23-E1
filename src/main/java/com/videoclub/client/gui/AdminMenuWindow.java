@@ -18,10 +18,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.videoclub.Internationalization.InternationalizationText;
-import com.videoclub.client.gui.ClientMenuWindow.LogInWindow;
-import com.videoclub.client.gui.ClientMenuWindow.moviesCatalogWindow;
-import com.videoclub.client.gui.ClientMenuWindow.viewMovieWindow;
-import com.videoclub.dao.MovieDAO;
+import com.videoclub.client.ConnectionToServer;
 import com.videoclub.pojo.Movie;
 import com.videoclub.pojo.User;
 
@@ -45,7 +42,6 @@ public class AdminMenuWindow extends JFrame {
 
 	private EditUsersWindow editUserWindow;
 	private RentalWindow rentalWindow;
-	private MoviesWindow moviesWindow;
 	private MoviesWindowAdmin moviesWindowAdmin;
 	private EditMoviesWindow editMoviesWindow;
 	private NewMovieWindow newMovieWindow;
@@ -192,8 +188,9 @@ public class AdminMenuWindow extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				ConnectionToServer cts = new ConnectionToServer();
 				String title = JOptionPane.showInputDialog(InternationalizationText.getString("typeinmovie"));
-				movie = MovieDAO.getInstance().find(title, Movie.ColumnsNameMovie.title);
+				movie = cts.showMovieClient(title);
 				if (movie != null) {
 					Thread hilo = new viewMovieAdminWindow();
 					hilo.start();
@@ -223,6 +220,9 @@ public class AdminMenuWindow extends JFrame {
 			ClientLoginWindow.main(null);
 		}
 	}
+	/**
+	 * Thread class for the ViewMovieWindow.
+	 */
 	class viewMovieAdminWindow extends Thread {
 		public void run() {
 			if (viewMovieAdminWindow != null) {

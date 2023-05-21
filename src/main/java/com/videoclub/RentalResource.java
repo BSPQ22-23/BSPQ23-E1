@@ -15,8 +15,6 @@ import javax.ws.rs.core.Response;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.videoclub.Internationalization.InternationalizationText;
 import com.videoclub.dao.RentalDAO;
 import com.videoclub.pojo.Rental;

@@ -91,7 +91,11 @@ public class ConnectionToServer {
         }
 		return false;
 	}
-	//TODO
+	
+	/** Function that Client uses to request the server the register of a new Rental.
+	 * @param rental Rental to save.
+	 * @return True = Registered, False = Not Registered or some problem
+	 */
 	public boolean saveRentalClient(Rental rental) {
 		Client client = ClientBuilder.newClient();
         final WebTarget appTarget = client.target(SERVER_ENDPOINT);
@@ -113,6 +117,9 @@ public class ConnectionToServer {
 		return false;
 		
 	}
+	/**Function that Client uses to request the server the list of Movies of the database.
+	 * @return List with all the movies.
+	 */
 	public List<Movie> takeMovieListClient(){
 		Client client = ClientBuilder.newClient();
         final WebTarget appTarget = client.target(SERVER_ENDPOINT);
@@ -139,6 +146,9 @@ public class ConnectionToServer {
 		
 	}
 	
+	/**Function that Client uses to request the server the list of users of the database.
+	 * @return List with all the movies.
+	 */
 	public List<User> takeUserListClient(){
 		Client client = ClientBuilder.newClient();
         final WebTarget appTarget = client.target(SERVER_ENDPOINT);
@@ -165,6 +175,10 @@ public class ConnectionToServer {
 		
 	}
 	
+	/**Function that Client uses to request the server to update the data of a movie.
+	 * @param movie Movie with the information to be changed.
+	 * @return True = Correct Update, False = Bad Update
+	 */
 	public boolean updateMovieClient(Movie movie) {
 		Client client = ClientBuilder.newClient();
         final WebTarget appTarget = client.target(SERVER_ENDPOINT);
@@ -190,6 +204,10 @@ public class ConnectionToServer {
 		return false;
 	}
 	
+	/**Function that Client uses to request the server to delete the movie.
+	 * @param m Movie to delete.
+	 * @return True = Deleted, False = Error deleting
+	 */
 	public boolean deleteMovieClient(Movie m) {
 		Client client = ClientBuilder.newClient();
         final WebTarget appTarget = client.target(SERVER_ENDPOINT);
@@ -212,6 +230,10 @@ public class ConnectionToServer {
 		return false;
 	}
 	
+	/**Function that Client uses to request the server to delete the user.
+	 * @param u User to delete.
+	 * @return True = Deleted, False = Error deleting
+	 */
 	public boolean deleteUserClient(User u) {
 		Client client = ClientBuilder.newClient();
         final WebTarget appTarget = client.target(SERVER_ENDPOINT);
@@ -233,6 +255,10 @@ public class ConnectionToServer {
         }
 		return false;
 	}
+	/**Function that Client uses to request the server to update the password of the user.
+	 * @param u User to update the password.
+	 * @return True = Updated, False = Error updating
+	 */
 	public boolean changePasswordUserClient(User u) {
 		Client client = ClientBuilder.newClient();
         WebTarget target = client.target(SERVER_ENDPOINT);
@@ -253,7 +279,9 @@ public class ConnectionToServer {
 		return false;
 	
 	}
-	
+	/**Function that Client uses to request the server the list of rentals of the database.
+	 * @return List with all the rentals.
+	 */
 	public List<Rental> takeRentalListClient(){
 		Client client = ClientBuilder.newClient();
         final WebTarget appTarget = client.target(SERVER_ENDPOINT);
@@ -277,6 +305,34 @@ public class ConnectionToServer {
             logger.error("Error - "+ o.getMessage());
         }
 		return listRentals;
+		
+	}
+	
+	public Movie showMovieClient(String s) {
+		Client client = ClientBuilder.newClient();
+        final WebTarget appTarget = client.target(SERVER_ENDPOINT);
+		Movie movie = null;
+		try {
+            Response response = appTarget.path(MOVIES_RESOURCE)
+            	.path("/movie/"+s)
+                .request(MediaType.APPLICATION_JSON)
+                .get();
+            if (response.getStatusInfo().toEnum() == Status.ACCEPTED) {
+                // the response is a generic type (a List<User>)
+                GenericType<Movie> listType = new GenericType<Movie>(){};
+                movie = response.readEntity(listType);
+                logger.info("Movie retrieved correctly from database.");
+                return movie;
+                
+            } else if(response.getStatusInfo().toEnum() == Status.NOT_ACCEPTABLE){
+                logger.error("Error - Movie not found");
+            }else {
+            	logger.error("Error - "+response.getStatusInfo().toEnum());
+            }
+        } catch (ProcessingException o) {
+            logger.error("Error - "+ o.getMessage());
+        }
+		return null;
 		
 	}
 }

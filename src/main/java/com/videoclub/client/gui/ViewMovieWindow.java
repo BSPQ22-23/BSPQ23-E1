@@ -17,12 +17,9 @@ import javax.swing.JPanel;
 
 import com.videoclub.Internationalization.InternationalizationText;
 import com.videoclub.client.ConnectionToServer;
-import com.videoclub.client.gui.MoviesWindow.menuWindow;
-import com.videoclub.dao.RentalDAO;
 import com.videoclub.pojo.Movie;
 import com.videoclub.pojo.Rental;
 import com.videoclub.pojo.User;
-import com.videoclub.pojo.typeUser;
 
 public class ViewMovieWindow extends JFrame{
 	
@@ -110,7 +107,6 @@ public class ViewMovieWindow extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				ConnectionToServer cts = new ConnectionToServer();
 				Rental r = new Rental(m,user,new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()));
-				//TODO
 				boolean isRegistered = cts.saveRentalClient(r);
 				if(isRegistered) {
 					Thread hilo = new menuWindow();

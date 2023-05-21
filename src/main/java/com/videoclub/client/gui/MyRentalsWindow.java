@@ -3,7 +3,6 @@ package com.videoclub.client.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,11 +24,6 @@ import org.apache.logging.log4j.Logger;
 
 import com.videoclub.Internationalization.InternationalizationText;
 import com.videoclub.client.ConnectionToServer;
-import com.videoclub.client.gui.MoviesWindow.menuWindow;
-import com.videoclub.dao.MovieDAO;
-import com.videoclub.dao.RentalDAO;
-import com.videoclub.dao.UserDAO;
-import com.videoclub.pojo.Movie;
 import com.videoclub.pojo.Rental;
 import com.videoclub.pojo.User;
 
@@ -50,25 +44,6 @@ public class MyRentalsWindow extends JFrame {
 	
 	private List<Rental> listRentals;
 	
-	/*public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			
-			@Override
-			public void run() {
-				try {
-					MyRentalsWindow frame = new MyRentalsWindow();
-					frame.setTitle("DeustoVideoClub - My history of rentals");
-					frame.setVisible(true);
-					frame.setSize(900, 600);
-					frame.setLocation( 420, 100 );
-					frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-					frame.setResizable(false);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
 	
 	public MyRentalsWindow(User user) {
 		
@@ -121,6 +96,10 @@ public class MyRentalsWindow extends JFrame {
 				}
 			});
 		}
+	
+	/**Function to initialize the table
+	 * 
+	 */
 	public void initializeTable() {
 		
 		//Cabecera
@@ -143,9 +122,11 @@ public class MyRentalsWindow extends JFrame {
 		tableRentals.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 	}
 	
+	/**Function to load the model
+	 * 
+	 */
 	public void loadModel() {
 		ConnectionToServer cts = new ConnectionToServer();
-		//TODO Malllllll
 		listRentals = cts.takeRentalListClient();
 		while (modelRentals.getRowCount() > 0) {
 			modelRentals.removeRow(0);

@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import com.videoclub.Internationalization.InternationalizationText;
-import com.videoclub.dao.MovieDAO;
+import com.videoclub.client.ConnectionToServer;
 import com.videoclub.pojo.Movie;
 import com.videoclub.pojo.User;
 
@@ -26,11 +26,7 @@ public class ClientMenuWindow extends JFrame{
 
 	
 	private static final long serialVersionUID = 2702524318727010309L;
-	
-	private JLabel menuAreaPersonal;
-	private JLabel menuAreaDeustoFlix;
-	private JLabel menuAreaPersonal2;
-	private JLabel menuAreaDeustoFlix2;
+
 	
 	private JButton menuMyRentals;
 	private JButton menuFiltro;
@@ -52,6 +48,9 @@ public class ClientMenuWindow extends JFrame{
 		
 	}
 	
+	/**
+	 * @param user
+	 */
 	public ClientMenuWindow(User user) {
 		
 		this.user = user;
@@ -86,21 +85,7 @@ public class ClientMenuWindow extends JFrame{
 		menuCatalogoPelicula.setFont(new Font("Arial", Font.ITALIC, 25));
 		menuCatalogoPelicula.setForeground(Color.darkGray);
 		
-		menuAreaPersonal = new JLabel("==================== Personal");
-		menuAreaPersonal.setFont(new Font("Arial", Font.ITALIC, 25));
-		menuAreaPersonal.setForeground(Color.blue);
 		
-		menuAreaPersonal2 = new JLabel("Area ======================");
-		menuAreaPersonal2.setFont(new Font("Arial", Font.ITALIC, 25));
-		menuAreaPersonal2.setForeground(Color.blue);
-
-		menuAreaDeustoFlix = new JLabel("============== DeustoVideoClub");
-		menuAreaDeustoFlix.setFont(new Font("Arial", Font.ITALIC, 25));
-		menuAreaDeustoFlix.setForeground(Color.blue);
-		
-		menuAreaDeustoFlix2 = new JLabel("Area =====================");
-		menuAreaDeustoFlix2.setFont(new Font("Arial", Font.ITALIC, 25));
-		menuAreaDeustoFlix2.setForeground(Color.blue);
 		
 
 		
@@ -108,7 +93,7 @@ public class ClientMenuWindow extends JFrame{
 		menuDeustoFlix.setForeground(Color.white);
 		
 	
-		//Creamos los paneles
+		
 		JPanel panelArriba = new JPanel();
 		JPanel panelCentro = new JPanel();
 		
@@ -121,12 +106,12 @@ public class ClientMenuWindow extends JFrame{
 		//Panel Central
 		panelCentro.setLayout(new GridLayout(8, 2));
 		panelCentro.setBackground(new Color(214, 234, 248));
-		panelCentro.add(menuAreaPersonal);
-		panelCentro.add(menuAreaPersonal2);
+		panelCentro.add(new JLabel());
+		panelCentro.add(new JLabel());
 		panelCentro.add(menuMyRentals);
 		panelCentro.add(new JLabel());
-		panelCentro.add(menuAreaDeustoFlix);
-		panelCentro.add(menuAreaDeustoFlix2);
+		panelCentro.add(new JLabel());
+		panelCentro.add(new JLabel());
 		panelCentro.add(menuCatalogoPelicula);
 		panelCentro.add(menuFiltro);
 		panelCentro.add(new JLabel());
@@ -140,10 +125,6 @@ public class ClientMenuWindow extends JFrame{
 		
 		cp.add(panelCentro, BorderLayout.CENTER);
 		
-		
-		//Creamos todos los ActionListeners de esta ventana
-		
-		//1º) Este boton llama a la VentanaUsuario y desaparece la ventana VentanaMenu existente
 		menuCambiarUsuario.addActionListener(new ActionListener() {
 			
 			@Override
@@ -156,7 +137,6 @@ public class ClientMenuWindow extends JFrame{
 			}
 		});
 		
-		//3º) Este boton llama a la VentanaPeliculas y desaparece la ventana VentanaMenu existente
 		menuCatalogoPelicula.addActionListener(new ActionListener() {
 			
 			@Override
@@ -167,13 +147,14 @@ public class ClientMenuWindow extends JFrame{
 				
 			}
 		});
-		//4º) Este boton llama a la VentanaBusqueda y desaparece la ventana VentanaMenu existente
+		
 		menuFiltro.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				ConnectionToServer cts = new ConnectionToServer();
 				String title = JOptionPane.showInputDialog(InternationalizationText.getString("typeinmovie"));
-				movie = MovieDAO.getInstance().find(title, Movie.ColumnsNameMovie.title);
+				movie =cts.showMovieClient(title);
 				if (movie != null) {
 					Thread hilo = new viewMovieWindow();
 					hilo.start();
@@ -181,7 +162,7 @@ public class ClientMenuWindow extends JFrame{
 				}
 			}
 		});
-		//5º) Este boton llama a la VentanaMisRentals y desaparece la ventana VentanaMenu existente
+		
 		menuMyRentals.addActionListener(new ActionListener() {
 			
 			@Override

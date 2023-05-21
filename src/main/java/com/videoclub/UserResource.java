@@ -18,11 +18,9 @@ import org.apache.logging.log4j.Logger;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.videoclub.Internationalization.InternationalizationText;
-import com.videoclub.dao.MovieDAO;
 import com.videoclub.dao.RentalDAO;
 import com.videoclub.dao.UserDAO;
 import com.videoclub.encrypt.PasswordEncrypt;
-import com.videoclub.pojo.Movie;
 import com.videoclub.pojo.Rental;
 import com.videoclub.pojo.User;
 
@@ -172,17 +170,5 @@ public class UserResource {
     	}
     	return Response.status(Status.NOT_FOUND).build();
     }
-    
-    /*
-    @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response updateUser(User user) {
-    
-        UserDAO.getInstance().update(user); 
-        logger.info("Updating user {} ...", user.getCode());
-        
-        return Response.status(Response.Status.OK).build();
-    }
-    */
+   
 }

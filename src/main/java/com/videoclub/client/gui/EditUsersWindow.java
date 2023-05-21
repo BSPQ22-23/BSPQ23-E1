@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,33 +13,20 @@ import java.util.List;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.ws.rs.ProcessingException;
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.GenericType;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.videoclub.client.ConnectionToServer;
-import com.videoclub.client.gui.NewMovieWindow.AdminWindow;
-import com.videoclub.dao.MovieDAO;
-import com.videoclub.pojo.Movie;
 import com.videoclub.pojo.User;
 
 public class EditUsersWindow extends JFrame {
@@ -48,7 +34,6 @@ public class EditUsersWindow extends JFrame {
 
 	private static final long serialVersionUID = -7282072359640068019L;
 	private JButton exit;
-	private JButton save;
 	private JButton delete;
 	
 	
@@ -67,10 +52,6 @@ public class EditUsersWindow extends JFrame {
 	private HashMap<String,User> grupoUsers; 
 	private AdminMenuWindow adminMenuWindow;
 	
-	
-
-	private static final String SERVER_ENDPOINT = "http://localhost:8080/webapi";
-    private static final String MOVIES_RESOURCE ="movies";
     protected static final Logger logger = LogManager.getLogger();
 	
     

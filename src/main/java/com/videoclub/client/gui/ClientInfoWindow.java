@@ -33,15 +33,11 @@ public class ClientInfoWindow extends JFrame {
 	private JPanel contentPane;
     private JPanel panelSouth;
     private JPanel panelCentre;
-    private JLabel lblOldPass;
-    private JTextField txtOldPass;
     private JLabel lblNewPass;
     private JTextField textPass;
     private JButton btnSave;
     private JButton btnBack;
     protected static final Logger logger = LogManager.getLogger();
-    private static final String SERVER_ENDPOINT = "http://localhost:8080/webapi";
-    private static final String USERS_RESOURCE = "users";
     private ClientMenuWindow clientMenuWindow;
     private User user;
     /**

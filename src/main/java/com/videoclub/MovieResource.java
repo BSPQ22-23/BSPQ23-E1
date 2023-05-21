@@ -104,8 +104,10 @@ public class MovieResource {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
     }
-    //TODO Comentarla
-    
+    /**Update the information of the Movie.
+     * @param movie Movie with the new information.
+     * @return Response.
+     */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -126,5 +128,21 @@ public class MovieResource {
     	return Response.status(Status.NOT_FOUND).build();
     	
     }
+    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/movie/{title}")
+    public Response getMovieByTitle(@PathParam("title")String title) {
+        Movie movie = MovieDAO.getInstance().find(title, Movie.ColumnsNameMovie.title);
+        if(movie != null) {
+        	logger.info("Movie retrieved from the database.");
+        	return Response.accepted(movie).build();
+        }
+        logger.info("Movie not found.");
+		return Response.notAcceptable(null).build();
+        
+    }
+
+    
     
 }

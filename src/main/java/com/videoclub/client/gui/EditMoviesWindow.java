@@ -23,23 +23,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.ws.rs.ProcessingException;
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.GenericType;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.videoclub.client.ConnectionToServer;
-import com.videoclub.client.gui.NewMovieWindow.AdminWindow;
-import com.videoclub.dao.MovieDAO;
 import com.videoclub.pojo.Movie;
-import com.videoclub.pojo.User;
 
 public class EditMoviesWindow extends JFrame {
 	
@@ -66,10 +55,6 @@ public class EditMoviesWindow extends JFrame {
 	private HashMap<String,Movie> grupoMovies; 
 	private AdminMenuWindow adminMenuWindow;
 	
-	
-
-	private static final String SERVER_ENDPOINT = "http://localhost:8080/webapi";
-    private static final String MOVIES_RESOURCE ="movies";
     protected static final Logger logger = LogManager.getLogger();
 	
     
@@ -164,7 +149,6 @@ public class EditMoviesWindow extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(!title.getText().equals("") && !genre.getText().equals("") && !duration.getText().equals("") && !year.getText().equals("") && !director.getText().equals("") && !rentalPrice.getText().equals(""))
 				{
-					//TODO
 					Movie m = grupoMovies.get(movies.getSelectedValue());
 					m.setTitle(title.getText());
 					m.setGenre(genre.getText());
@@ -189,7 +173,6 @@ public class EditMoviesWindow extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub 
 				Movie m = grupoMovies.get(movies.getSelectedValue());
 				
 				boolean hasDeleted = cts.deleteMovieClient(m);
@@ -250,7 +233,6 @@ public class EditMoviesWindow extends JFrame {
 	
 	public DefaultListModel<String> cargarPeliculas()
 	{
-		//TODO HAcerlo bien en funciones
 		ConnectionToServer cts = new ConnectionToServer();
 		HashMap<String,Movie> grupo = new HashMap<String,Movie>();
 		List<Movie> listMovies = cts.takeMovieListClient();

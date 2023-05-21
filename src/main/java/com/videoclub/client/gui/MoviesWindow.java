@@ -26,8 +26,6 @@ import com.google.zxing.WriterException;
 import com.itextpdf.text.DocumentException;
 import com.videoclub.Internationalization.InternationalizationText;
 import com.videoclub.client.ConnectionToServer;
-import com.videoclub.dao.MovieDAO;
-import com.videoclub.dao.RentalDAO;
 import com.videoclub.pojo.Movie;
 import com.videoclub.pojo.Rental;
 import com.videoclub.pojo.User;
@@ -121,10 +119,7 @@ public class MoviesWindow extends JFrame {
 				int row = tableMovies.getSelectedRow();
 				Movie selectedMovie = listMovies.get(row);
 				Rental r = new Rental(selectedMovie,user,new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()));
-				//TODO Tiene que llamar al Server, esto esta mal.
-				//--------------------------------------------------
 				boolean isRented = cts.saveRentalClient(r);
-				//--------------------------------------------------
 				if(isRented) {
 					try {
 						Receipt.generatepdf(user, r);
@@ -164,10 +159,7 @@ public class MoviesWindow extends JFrame {
 	
 	public void loadModel() {
 		ConnectionToServer cts = new ConnectionToServer();
-		//TODO Tiene que llamar al Server, esto esta mal.
-		//--------------------------------------------------
 		listMovies = cts.takeMovieListClient();
-		//--------------------------------------------------
 		while (modelMovies.getRowCount() > 0) {
 			modelMovies.removeRow(0);
 		}

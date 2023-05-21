@@ -1,4 +1,4 @@
-package com.videoclub.client.gui;
+	package com.videoclub.client.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -7,7 +7,6 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,12 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.videoclub.Internationalization.InternationalizationText;
-import com.videoclub.client.gui.MoviesWindow.menuWindow;
-import com.videoclub.dao.RentalDAO;
 import com.videoclub.pojo.Movie;
-import com.videoclub.pojo.Rental;
 import com.videoclub.pojo.User;
-import com.videoclub.pojo.typeUser;
 
 public class ViewMovieAdminWindow extends JFrame{
 	
