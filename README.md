@@ -27,7 +27,7 @@ Now, the client sample code can be executed in a new command window with
 
     mvn exec:java -Pclient
 
-To generate doxygen reports
+To generate doxygen reports (MUST install doxygen & configure system variables first)
 
 	 mvn doxygen:report
 	 

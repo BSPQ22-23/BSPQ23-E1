@@ -17,4 +17,18 @@ jobs:
         java-version: 11
 
     - name: Build with Maven
-      run: mvnw.cmd clean install
+      run: mvnw.cmd clean compile
+    
+    - name: Run server
+      run: mvn jetty:run
+
+    - name: Prepare database for integration tests
+      run:  sudo /etc/init.d/mysql start
+ 
+      mvn datanucleus:enhance datanucleus:schema-create
+
+    - name: Execute tests
+      run: mvn test
+
+    - name: Run client
+      run: mvn exec:java -Pclient
