@@ -25,7 +25,7 @@ jobs:
         job-status: success
 
     - name: Build with Maven
-      run: mvnw.cmd clean compile
+      run: mvn clean compile
     
     - name: Run server
       run: mvn jetty:run
