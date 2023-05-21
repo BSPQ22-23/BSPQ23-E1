@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import org.apache.logging.log4j.LogManager;
@@ -19,6 +20,9 @@ import org.apache.logging.log4j.Logger;
 import com.videoclub.Internationalization.InternationalizationText;
 import com.videoclub.client.gui.ClientMenuWindow.LogInWindow;
 import com.videoclub.client.gui.ClientMenuWindow.moviesCatalogWindow;
+import com.videoclub.client.gui.ClientMenuWindow.viewMovieWindow;
+import com.videoclub.dao.MovieDAO;
+import com.videoclub.pojo.Movie;
 import com.videoclub.pojo.User;
 
 
@@ -45,7 +49,9 @@ public class AdminMenuWindow extends JFrame {
 	private MoviesWindowAdmin moviesWindowAdmin;
 	private EditMoviesWindow editMoviesWindow;
 	private NewMovieWindow newMovieWindow;
+	private ViewMovieAdminWindow viewMovieAdminWindow;
 	private User user;
+	private Movie movie;
 	
 	protected static final Logger logger = LogManager.getLogger();
 
@@ -186,7 +192,13 @@ public class AdminMenuWindow extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO
+				String title = JOptionPane.showInputDialog(InternationalizationText.getString("typeinmovie"));
+				movie = MovieDAO.getInstance().find(title, Movie.ColumnsNameMovie.title);
+				if (movie != null) {
+					Thread hilo = new viewMovieAdminWindow();
+					hilo.start();
+					dispose();
+				}
 			}
 		});
 
@@ -211,7 +223,16 @@ public class AdminMenuWindow extends JFrame {
 			ClientLoginWindow.main(null);
 		}
 	}
-	
+	class viewMovieAdminWindow extends Thread {
+		public void run() {
+			if (viewMovieAdminWindow != null) {
+				viewMovieAdminWindow.setVisible(true);
+			} else {
+				viewMovieAdminWindow = new ViewMovieAdminWindow(user, movie);
+				viewMovieAdminWindow.setVisible(true);
+			}
+		}
+	}
 	
 	class UsersWindow extends Thread {
 		public void run() {
