@@ -93,6 +93,23 @@ public class ConnectionToServer {
 	}
 	//TODO
 	public boolean saveRentalClient(Rental rental) {
+		Client client = ClientBuilder.newClient();
+        final WebTarget appTarget = client.target(SERVER_ENDPOINT);
+        try {
+            Response response = appTarget.path(RENTALS_RESOURCE)
+                .request(MediaType.APPLICATION_JSON)
+                .post(Entity.entity(rental, MediaType.APPLICATION_JSON));
+
+            // check that the response was HTTP ACCEPTED
+            if (response.getStatusInfo().toEnum() == Status.ACCEPTED) {
+            	logger.info("Rental succesfully registered.");
+            	return true;
+            } else {
+            	logger.info("Error - " +response.getStatusInfo().toEnum());
+            }
+        } catch (ProcessingException o) {
+            logger.info("Unexpected Error - " + o.getMessage());
+        }
 		return false;
 		
 	}
@@ -235,5 +252,31 @@ public class ConnectionToServer {
         }
 		return false;
 	
+	}
+	
+	public List<Rental> takeRentalListClient(){
+		Client client = ClientBuilder.newClient();
+        final WebTarget appTarget = client.target(SERVER_ENDPOINT);
+		List<Rental> listRentals = null;
+		try {
+            Response response = appTarget.path(RENTALS_RESOURCE)
+                .request(MediaType.APPLICATION_JSON)
+                .get();
+
+            // check that the response was HTTP OK
+            if (response.getStatusInfo().toEnum() == Status.OK) {
+                // the response is a generic type (a List<User>)
+                GenericType<List<Rental>> listType = new GenericType<List<Rental>>(){};
+                listRentals = response.readEntity(listType);
+                logger.info("List of rentals retrieved correctly from database.");
+                
+            } else {
+                logger.error("Error - "+ response);
+            }
+        } catch (ProcessingException o) {
+            logger.error("Error - "+ o.getMessage());
+        }
+		return listRentals;
+		
 	}
 }

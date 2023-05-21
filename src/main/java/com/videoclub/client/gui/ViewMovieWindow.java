@@ -12,9 +12,11 @@ import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import com.videoclub.Internationalization.InternationalizationText;
+import com.videoclub.client.ConnectionToServer;
 import com.videoclub.client.gui.MoviesWindow.menuWindow;
 import com.videoclub.dao.RentalDAO;
 import com.videoclub.pojo.Movie;
@@ -106,11 +108,18 @@ public class ViewMovieWindow extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				ConnectionToServer cts = new ConnectionToServer();
 				Rental r = new Rental(m,user,new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()));
-				RentalDAO.getInstance().save(r);
-				Thread hilo = new menuWindow();
-				hilo.start();
-				dispose();
+				//TODO
+				boolean isRegistered = cts.saveRentalClient(r);
+				if(isRegistered) {
+					Thread hilo = new menuWindow();
+					hilo.start();
+					dispose();
+				}else {
+					JOptionPane.showMessageDialog(null, "Error renting the movie: "+m);
+				}
+				
 			}
 		});
 		

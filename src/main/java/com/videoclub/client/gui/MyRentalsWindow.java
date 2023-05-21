@@ -24,6 +24,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.videoclub.Internationalization.InternationalizationText;
+import com.videoclub.client.ConnectionToServer;
 import com.videoclub.client.gui.MoviesWindow.menuWindow;
 import com.videoclub.dao.MovieDAO;
 import com.videoclub.dao.RentalDAO;
@@ -143,8 +144,9 @@ public class MyRentalsWindow extends JFrame {
 	}
 	
 	public void loadModel() {
-		
-		listRentals = RentalDAO.getInstance().getAll();
+		ConnectionToServer cts = new ConnectionToServer();
+		//TODO Malllllll
+		listRentals = cts.takeRentalListClient();
 		while (modelRentals.getRowCount() > 0) {
 			modelRentals.removeRow(0);
 		}

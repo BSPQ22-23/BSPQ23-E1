@@ -25,6 +25,7 @@ import javax.swing.table.DefaultTableModel;
 import com.google.zxing.WriterException;
 import com.itextpdf.text.DocumentException;
 import com.videoclub.Internationalization.InternationalizationText;
+import com.videoclub.client.ConnectionToServer;
 import com.videoclub.dao.MovieDAO;
 import com.videoclub.dao.RentalDAO;
 import com.videoclub.pojo.Movie;
@@ -116,20 +117,24 @@ public class MoviesWindow extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				ConnectionToServer cts = new ConnectionToServer();
 				int row = tableMovies.getSelectedRow();
 				Movie selectedMovie = listMovies.get(row);
 				Rental r = new Rental(selectedMovie,user,new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()));
 				//TODO Tiene que llamar al Server, esto esta mal.
 				//--------------------------------------------------
-				RentalDAO.getInstance().save(r);
+				boolean isRented = cts.saveRentalClient(r);
 				//--------------------------------------------------
-				try {
-					Receipt.generatepdf(user, r);
-				} catch (DocumentException | IOException | MessagingException e1) {
-					e1.printStackTrace();
-				} catch (WriterException e1) {
-					e1.printStackTrace();
+				if(isRented) {
+					try {
+						Receipt.generatepdf(user, r);
+					} catch (DocumentException | IOException | MessagingException e1) {
+						e1.printStackTrace();
+					} catch (WriterException e1) {
+						e1.printStackTrace();
+					}
 				}
+				
 			}
 		});
 		}
@@ -158,9 +163,10 @@ public class MoviesWindow extends JFrame {
 	}
 	
 	public void loadModel() {
+		ConnectionToServer cts = new ConnectionToServer();
 		//TODO Tiene que llamar al Server, esto esta mal.
 		//--------------------------------------------------
-		listMovies = MovieDAO.getInstance().getAll();
+		listMovies = cts.takeMovieListClient();
 		//--------------------------------------------------
 		while (modelMovies.getRowCount() > 0) {
 			modelMovies.removeRow(0);

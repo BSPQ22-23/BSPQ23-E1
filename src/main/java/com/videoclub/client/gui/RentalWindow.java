@@ -25,6 +25,7 @@ import javax.swing.table.DefaultTableModel;
 import com.google.zxing.WriterException;
 import com.itextpdf.text.DocumentException;
 import com.videoclub.Internationalization.InternationalizationText;
+import com.videoclub.client.ConnectionToServer;
 import com.videoclub.dao.MovieDAO;
 import com.videoclub.dao.RentalDAO;
 import com.videoclub.pojo.Movie;
@@ -138,9 +139,10 @@ public class RentalWindow extends JFrame {
 	}
 	
 	public void loadModel() {
+		ConnectionToServer cts = new ConnectionToServer();
 		//TODO Tiene que llamar al Server, esto esta mal.
 		//--------------------------------------------------
-		listRentals = RentalDAO.getInstance().getAll();
+		listRentals = cts.takeRentalListClient();
 		//--------------------------------------------------
 		while (modelRentals.getRowCount() > 0) {
 			modelRentals.removeRow(0);

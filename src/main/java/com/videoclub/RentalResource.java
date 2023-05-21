@@ -55,7 +55,7 @@ public class RentalResource {
     public Response addRental(Rental rental) {
         RentalDAO.getInstance().save(rental);
         logger.info(rental + InternationalizationText.getString("add_db_rental"));
-        return Response.ok(rental).build();
+        return Response.accepted(rental).build();
     }
 
     /**
