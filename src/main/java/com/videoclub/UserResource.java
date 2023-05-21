@@ -119,7 +119,7 @@ public class UserResource {
     			
     		}
 	    	
-	    	//UserDAO.getInstance().delete(userToDelete);
+	    	UserDAO.getInstance().delete(userToDelete);
 	        logger.info(InternationalizationText.getString("remove_db_user") + code);
 	        return Response.status(Response.Status.OK).build();
     	} else {

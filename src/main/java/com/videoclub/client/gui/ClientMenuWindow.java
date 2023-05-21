@@ -32,14 +32,12 @@ public class ClientMenuWindow extends JFrame{
 	private JLabel menuAreaPersonal2;
 	private JLabel menuAreaDeustoFlix2;
 	
-	private JButton menuMiLista;
 	private JButton menuMyRentals;
 	private JButton menuFiltro;
 	private JButton menuCambiarUsuario;
 	private JButton menuCatalogoPelicula;
 	private JButton menuDatosUsuario;
-	private JButton menuHistorial;
-	private JButton menuRecentMovies;
+
 	
 	private JLabel menuDeustoFlix;
 	
@@ -71,10 +69,6 @@ public class ClientMenuWindow extends JFrame{
 		menuDatosUsuario = new JButton(InternationalizationText.getString("change_password"));
 		menuDatosUsuario.setFont(new Font("Arial", Font.ITALIC, 25));
 		menuDatosUsuario.setForeground(Color.darkGray);
-		
-		menuMiLista = new JButton(InternationalizationText.getString("movie_list_personal"));
-		menuMiLista.setFont(new Font("Arial", Font.ITALIC, 25));
-		menuMiLista.setForeground(Color.darkGray);
 		
 		menuMyRentals = new JButton(InternationalizationText.getString("rental_history"));
 		menuMyRentals.setFont(new Font("Arial", Font.ITALIC, 25));
@@ -108,17 +102,12 @@ public class ClientMenuWindow extends JFrame{
 		menuAreaDeustoFlix2.setFont(new Font("Arial", Font.ITALIC, 25));
 		menuAreaDeustoFlix2.setForeground(Color.blue);
 		
-		menuHistorial = new JButton(InternationalizationText.getString("rating_history"));
-		menuHistorial.setFont(new Font("Arial", Font.ITALIC, 25));
-		menuHistorial.setForeground(Color.darkGray);
+
 		
 		menuDeustoFlix = new JLabel("DEUSTO VIDEOCLUB");
 		menuDeustoFlix.setForeground(Color.white);
 		
-		menuRecentMovies = new JButton(InternationalizationText.getString("recent_movies"));
-		menuRecentMovies.setFont(new Font("Arial", Font.ITALIC, 25));
-		menuRecentMovies.setForeground(Color.darkGray);
-		
+	
 		//Creamos los paneles
 		JPanel panelArriba = new JPanel();
 		JPanel panelCentro = new JPanel();
@@ -135,14 +124,14 @@ public class ClientMenuWindow extends JFrame{
 		panelCentro.add(menuAreaPersonal);
 		panelCentro.add(menuAreaPersonal2);
 		panelCentro.add(menuMyRentals);
-		panelCentro.add(menuMiLista);
-		panelCentro.add(menuHistorial);
 		panelCentro.add(new JLabel());
 		panelCentro.add(menuAreaDeustoFlix);
 		panelCentro.add(menuAreaDeustoFlix2);
 		panelCentro.add(menuCatalogoPelicula);
 		panelCentro.add(menuFiltro);
-		panelCentro.add(menuRecentMovies);
+		panelCentro.add(new JLabel());
+		panelCentro.add(new JLabel());
+		panelCentro.add(new JLabel());
 		panelCentro.add(new JLabel());
 		panelCentro.add(new JLabel());
 		panelCentro.add(new JLabel());
@@ -202,15 +191,7 @@ public class ClientMenuWindow extends JFrame{
 				 dispose();
 			}
 		});
-		//7º) Este boton llama a la VentanaMiLista y desaparece la ventana VentanaMenu existente
-		menuMiLista.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				
-			}
-		});
+		
 		menuDatosUsuario.addActionListener(new ActionListener() {
 			
 			@Override
@@ -221,14 +202,7 @@ public class ClientMenuWindow extends JFrame{
 				 dispose();
 			}
 		});
-		menuHistorial.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				
-			}
-		});
+		
 		
 	}
 	
