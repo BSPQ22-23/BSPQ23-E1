@@ -78,7 +78,7 @@ public class UserResource {
     @Path("/{code}")
     public Response deleteUser(@PathParam("code") String code) {
     	boolean hasTheUser = false;
-    	User userToDelete = UserDAO.getInstance().find(code, User.ColumnsNameUser.code);
+    	User userToDelete = UserDAO.getInstance().find(code, User.ColumnsNameUser.username);
     	if(userToDelete != null)
             hasTheUser = true;
     	

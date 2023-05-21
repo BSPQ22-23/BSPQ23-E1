@@ -121,6 +121,32 @@ public class ConnectionToServer {
 		
 	}
 	
+	public List<User> takeUserListClient(){
+		Client client = ClientBuilder.newClient();
+        final WebTarget appTarget = client.target(SERVER_ENDPOINT);
+		List<User> listUser = null;
+		try {
+            Response response = appTarget.path(USERS_RESOURCE)
+                .request(MediaType.APPLICATION_JSON)
+                .get();
+
+            // check that the response was HTTP OK
+            if (response.getStatusInfo().toEnum() == Status.OK) {
+                // the response is a generic type (a List<User>)
+                GenericType<List<User>> listType = new GenericType<List<User>>(){};
+                listUser = response.readEntity(listType);
+                logger.info("List of users retrieved correctly from database.");
+                
+            } else {
+                logger.error("Error - ", response);
+            }
+        } catch (ProcessingException o) {
+            logger.error("Error - ", o.getMessage());
+        }
+		return listUser;
+		
+	}
+	
 	public boolean updateMovieClient(Movie movie) {
 		Client client = ClientBuilder.newClient();
         final WebTarget appTarget = client.target(SERVER_ENDPOINT);
@@ -161,6 +187,28 @@ public class ConnectionToServer {
                 return true;
             } else if(response.getStatusInfo().toEnum() == Status.NOT_FOUND){
                 logger.error("Error - No movies found in the database");
+            }
+        } catch (ProcessingException o) {
+            logger.error("Error" + o.getMessage());
+        }
+		return false;
+	}
+	
+	public boolean deleteUserClient(User u) {
+		Client client = ClientBuilder.newClient();
+        final WebTarget appTarget = client.target(SERVER_ENDPOINT);
+		try {
+            Response response = appTarget.path(USERS_RESOURCE)
+                .path(u.getUsername())
+                .request()
+                .delete();
+
+            // check if the response was ok
+            if (response.getStatusInfo().toEnum() == Status.OK) {
+                logger.info("User correctly deleted from server");
+                return true;
+            } else if(response.getStatusInfo().toEnum() == Status.NOT_FOUND){
+                logger.error("Error - No Users found in the database");
             }
         } catch (ProcessingException o) {
             logger.error("Error" + o.getMessage());

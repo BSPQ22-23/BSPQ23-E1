@@ -14,11 +14,13 @@ import java.util.List;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
@@ -41,7 +43,7 @@ import com.videoclub.dao.MovieDAO;
 import com.videoclub.pojo.Movie;
 import com.videoclub.pojo.User;
 
-public class EditMoviesWindow extends JFrame {
+public class EditUsersWindow extends JFrame {
 	
 
 	private static final long serialVersionUID = -7282072359640068019L;
@@ -50,20 +52,19 @@ public class EditMoviesWindow extends JFrame {
 	private JButton delete;
 	
 	
-	private JTextField title;
-	private JTextField genre;
-	private JTextField duration;
-	private JTextField year;
-	private JTextField director;
-	private JTextField rentalPrice;
+	private JTextField username;
+	private JPasswordField password;
+	private JTextField email;
+	private JTextField name;
+	private JTextField surname;
+	private JTextField type;
 	private JTextField empty;
 	
-	private JLabel text;
 	
-	JList<String> movies;
+	JList<String> users;
 	
 	
-	private HashMap<String,Movie> grupoMovies; 
+	private HashMap<String,User> grupoUsers; 
 	private AdminMenuWindow adminMenuWindow;
 	
 	
@@ -73,7 +74,7 @@ public class EditMoviesWindow extends JFrame {
     protected static final Logger logger = LogManager.getLogger();
 	
     
-	public EditMoviesWindow()
+	public EditUsersWindow()
 	{
 		
 		
@@ -84,39 +85,37 @@ public class EditMoviesWindow extends JFrame {
 		ConnectionToServer cts = new ConnectionToServer();
 		
 		exit = new JButton("Back");
-		save = new JButton("Save");
 		delete = new JButton("Delete");
 		delete.setEnabled(false);
 		
-		title = new JTextField(20);
-		title.setEnabled(false);
-		genre = new JTextField(20);
-		genre.setEnabled(false);
-		duration = new JTextField(20);
-		duration.setEnabled(false);
-		year = new JTextField(20);
-		year.setEnabled(false);
-		director = new JTextField(20);
-		director.setEnabled(false);
-		rentalPrice = new JTextField(20);
-		rentalPrice.setEnabled(false);
+		username = new JTextField(20);
+		username.setEnabled(false);
+		password = new JPasswordField(20);
+		password.setEnabled(false);
+		email = new JTextField(20);
+		email.setEnabled(false);
+		name = new JTextField(20);
+		name.setEnabled(false);
+		surname = new JTextField(20);
+		surname.setEnabled(false);
+		type = new JTextField(20);
+		type.setEnabled(false);
 		
 		empty = new JTextField();
 		empty.setVisible(false);
 		
-		text = new JLabel("Complete the following fields to introduce a new Movie");
-		text.setForeground(Color.white);
+
 		
 		
 		
-		movies = new JList<String>();
-		movies.setFixedCellWidth(200);
-		movies.setFixedCellHeight(50);
-		movies.setModel(cargarPeliculas());
+		users = new JList<String>();
+		users.setFixedCellWidth(200);
+		users.setFixedCellHeight(50);
+		users.setModel(cargarUsuarios());
 		//movies.setBackground(new Color(60,141,207));
 		DefaultListModel<String> lm = new DefaultListModel<String>();
 		
-		JScrollPane spIzquierda = new JScrollPane(movies);
+		JScrollPane spIzquierda = new JScrollPane(users);
 		
 		JPanel panelArriba = new JPanel();
 		JPanel panelIzquierda = new JPanel();
@@ -128,19 +127,18 @@ public class EditMoviesWindow extends JFrame {
 		
 		
 		panelArriba.setBackground(Color.red);
-		text.setFont(new Font("Arial", Font.BOLD, 16));
-		panelArriba.add(text);
+
 		
 		
 		panelCentro.setLayout(new GridLayout(8,2));
 		posicionaLinea(panelCentro,"",empty);
 		posicionaLinea(panelCentro,"",empty);
-		posicionaLinea(panelCentro,"Title: ",title);
-		posicionaLinea(panelCentro,"Genre: ",genre);
-		posicionaLinea(panelCentro,"Duration: ",duration);
-		posicionaLinea(panelCentro,"Year: ",year);
-		posicionaLinea(panelCentro,"Director: ",director);
-		posicionaLinea(panelCentro,"RentalPrice: ",rentalPrice);
+		posicionaLinea(panelCentro,"Username: ",username);
+		posicionaLinea(panelCentro,"Password: ",password);
+		posicionaLinea(panelCentro,"Email: ",email);
+		posicionaLinea(panelCentro,"Name: ",name);
+		posicionaLinea(panelCentro,"Surname: ",surname);
+		posicionaLinea(panelCentro,"Type: ",type);
 		posicionaLinea(panelCentro,"",empty);
 		posicionaLinea(panelCentro,"",empty);
 		posicionaLinea(panelCentro,"",empty);
@@ -149,7 +147,6 @@ public class EditMoviesWindow extends JFrame {
 		posicionaLinea(panelCentro,"",empty);
 		
 
-		panelAbajo.add(save);
 		panelAbajo.add(delete);
 		panelAbajo.add(exit);
 		
@@ -158,53 +155,29 @@ public class EditMoviesWindow extends JFrame {
 		cp.add(panelCentro, BorderLayout.CENTER);
 		cp.add(panelAbajo, BorderLayout.SOUTH);
 		
-		save.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(!title.getText().equals("") && !genre.getText().equals("") && !duration.getText().equals("") && !year.getText().equals("") && !director.getText().equals("") && !rentalPrice.getText().equals(""))
-				{
-					//TODO
-					Movie m = grupoMovies.get(movies.getSelectedValue());
-					m.setTitle(title.getText());
-					m.setGenre(genre.getText());
-					m.setDuration(Integer.parseInt(duration.getText()));
-					m.setYear(Integer.parseInt(year.getText()));
-					m.setDirector(director.getText());
-					m.setRentalPrice(Double.parseDouble(rentalPrice.getText()));
-					boolean correctUpadte = cts.updateMovieClient(m);
-					if(correctUpadte) {
-						movies.setModel(cargarPeliculas());
-						logger.info("JList updated.");
-					}
-					
-				}else{
-					JOptionPane.showMessageDialog(null, "You have to complete all the fields.");
-					logger.info("Error - You have to complete all the fields");
-				}
-				
-			}
-		});
+		
+
+	
 		delete.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub 
-				Movie m = grupoMovies.get(movies.getSelectedValue());
+				// TODO Auto-generated method stub
+				User u = grupoUsers.get(users.getSelectedValue());
 				
-				boolean hasDeleted = cts.deleteMovieClient(m);
+				boolean hasDeleted = cts.deleteUserClient(u);
 				if(hasDeleted) {
-					grupoMovies.remove(movies.getSelectedValue());
-	                ((DefaultListModel<String>)movies.getModel()).removeElement(m.getTitle());
+					grupoUsers.remove(users.getSelectedValue());
+	                ((DefaultListModel<String>)users.getModel()).removeElement(u.getUsername());
 				}
             	
 				delete.setEnabled(false);
-				title.setText("");
-				genre.setText("");
-				duration.setText("");
-				year.setText("");
-				director.setText("");
-				rentalPrice.setText("");
+				username.setText("");
+				password.setText("");
+				email.setText("");
+				name.setText("");
+				surname.setText("");
+				type.setText("");
 				
 			}
 		});
@@ -219,20 +192,15 @@ public class EditMoviesWindow extends JFrame {
 			}
 		});
 		
-		movies.addListSelectionListener(new ListSelectionListener() {
+		users.addListSelectionListener(new ListSelectionListener() {
 			
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
-				if (movies.getSelectedValue()!=null)
+				if (users.getSelectedValue()!=null)
 				{
-					cargaDatosPeli(grupoMovies.get(movies.getSelectedValue()));
+					cargaDatosUser(grupoUsers.get(users.getSelectedValue()));
 					delete.setEnabled(true);
-					title.setEnabled(true);
-					genre.setEnabled(true);
-					duration.setEnabled(true);
-					year.setEnabled(true);
-					director.setEnabled(true);
-					rentalPrice.setEnabled(true);
+					
 				}
 			}
 		});
@@ -248,39 +216,39 @@ public class EditMoviesWindow extends JFrame {
 		
 	}
 	
-	public DefaultListModel<String> cargarPeliculas()
+	public DefaultListModel<String> cargarUsuarios()
 	{
-		//TODO HAcerlo bien en funciones
+		
 		ConnectionToServer cts = new ConnectionToServer();
-		HashMap<String,Movie> grupo = new HashMap<String,Movie>();
-		List<Movie> listMovies = cts.takeMovieListClient();
+		HashMap<String,User> grupo = new HashMap<String,User>();
+		List<User> listUsers = cts.takeUserListClient();
 
 		DefaultListModel<String> dl = new DefaultListModel<String>();
 		String s;
 		
-		if(listMovies != null) {
-			for(Movie m: listMovies)
+		if(listUsers != null) {
+			for(User u: listUsers)
 			{
-				grupo.put(m.getTitle(), m);
-				s = m.getTitle();
+				grupo.put(u.getUsername(), u);
+				s = u.getUsername();
 				
 				dl.addElement(s);
 			}
-			grupoMovies = grupo;
+			grupoUsers = grupo;
 			return dl;
 		}
 		return null;
 		
 	}
 	
-	public  void cargaDatosPeli(Movie m ) {
-		if (m != null) {
-			title.setText(m.getTitle());
-			genre.setText(m.getGenre());
-			duration.setText(Integer.toString(m.getDuration()));
-			year.setText(Integer.toString(m.getYear()));
-			director.setText(m.getDirector());
-			rentalPrice.setText(Double.toString(m.getRentalPrice()));
+	public  void cargaDatosUser(User u ) {
+		if (u != null) {
+			username.setText(u.getUsername());
+			password.setText(u.getPassword());
+			email.setText(u.getEmail());
+			name.setText(u.getName());
+			surname.setText(u.getSurname());
+			type.setText(u.getType().toString());
 		}
 	}
 	class AdminWindow extends Thread{

@@ -21,6 +21,7 @@ import com.videoclub.client.gui.ClientMenuWindow.LogInWindow;
 import com.videoclub.client.gui.ClientMenuWindow.moviesCatalogWindow;
 import com.videoclub.pojo.User;
 
+
 /**
  * GUI window for the admin menu.
  */
@@ -38,6 +39,7 @@ public class AdminMenuWindow extends JFrame {
 
 	private JLabel menuDeustoFlix;
 
+	private EditUsersWindow editUserWindow;
 	private MoviesWindow moviesWindow;
 	private MoviesWindowAdmin moviesWindowAdmin;
 	private EditMoviesWindow editMoviesWindow;
@@ -134,7 +136,9 @@ public class AdminMenuWindow extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO
+				Thread hilo = new UsersWindow();
+				hilo.start();
+				dispose();
 			}
 		});
 
@@ -204,7 +208,22 @@ public class AdminMenuWindow extends JFrame {
 			ClientLoginWindow.main(null);
 		}
 	}
-
+	
+	
+	class UsersWindow extends Thread {
+		public void run() {
+			if (editUserWindow != null) {
+				editUserWindow.setVisible(true);
+			} else {
+				editUserWindow = new EditUsersWindow();
+				editUserWindow.setVisible(true);
+			}
+		}
+	}
+	
+	
+	
+	
 	/**
 	 * Thread class for the movies catalog window.
 	 */
