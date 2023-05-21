@@ -20,8 +20,11 @@ jobs:
           mysql -uroot -proot < sql/videoclubdb.sql
           mvn --batch-mode --update-snapshots datanucleus:enhance datanucleus:schema-create
 
-      - name: Start server in new tab
-        run: gnome-terminal --tab --title="Server" -- bash -c "mvn --batch-mode --update-snapshots jetty:run"
+      - name: Start server
+        run: |
+          sudo apt-get install -y tmux
+          tmux new-session -d -s server "mvn --batch-mode --update-snapshots jetty:run"
 
-      - name: Run tests in new tab
-        run: gnome-terminal --tab --title="Tests" -- bash -c "mvn --batch-mode --update-snapshots test"
+      - name: Run tests
+        run: |
+          tmux new-session -d -s tests "mvn --batch-mode --update-snapshots test"
