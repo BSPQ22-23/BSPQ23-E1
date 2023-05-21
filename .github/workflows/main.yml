@@ -27,8 +27,8 @@ jobs:
     - name: Build with Maven
       run: mvn clean compile
     
-    - name: Start MySQL service
-      run: net start MySQL*
+    - name: Start MySQL 
+      run:  mysql –uroot -p < sql/create-messages.sql
 
       
     - name: Enhance database
