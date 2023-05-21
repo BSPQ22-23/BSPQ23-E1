@@ -17,6 +17,7 @@ com\videoclub\client\gui\ClientMenuWindow$InfoWindow.class
 com\videoclub\pojo\Movie.class
 com\videoclub\pojo\User.class
 com\videoclub\client\gui\ViewMovieWindow.class
+com\videoclub\client\ConnectionToServer$4.class
 com\videoclub\client\gui\MoviesWindowAdmin$1.class
 com\videoclub\client\gui\RentalWindow$2.class
 com\videoclub\client\gui\ClientLoginWindow$1.class
@@ -37,8 +38,6 @@ com\videoclub\client\gui\ClientSignUpWindow.class
 com\videoclub\client\gui\AdminMenuWindow$movieWindow.class
 com\videoclub\receipt\Receipt.class
 com\videoclub\client\gui\AdminMenuWindow$editWindow.class
-com\videoclub\client\ClientApp$1.class
-com\videoclub\client\ClientApp.class
 com\videoclub\client\gui\EditUsersWindow$1.class
 com\videoclub\client\gui\MoviesWindow$menuWindow.class
 com\videoclub\dao\RentalDAO.class
@@ -90,7 +89,6 @@ com\videoclub\client\gui\ClientSignUpWindow$1.class
 com\videoclub\client\gui\EditUsersWindow$AdminWindow.class
 com\videoclub\MovieResource.class
 com\videoclub\client\gui\ClientMenuWindow$2.class
-com\videoclub\client\gui\ClientMenuWindow$6.class
 com\videoclub\client\gui\MyRentalsWindow.class
 com\videoclub\client\gui\NewMovieWindow$AdminWindow.class
 com\videoclub\client\gui\ClientLoginWindow$3.class
@@ -110,7 +108,6 @@ com\videoclub\client\gui\AdminMenuWindow$1.class
 com\videoclub\client\gui\ClientSignUpWindow$2.class
 com\videoclub\client\gui\MoviesWindow$1.class
 com\videoclub\client\gui\ClientMenuWindow$1.class
-com\videoclub\client\gui\ClientMenuWindow$7.class
 com\videoclub\client\gui\AdminMenuWindow.class
 com\videoclub\client\gui\NewMovieWindow$1.class
 com\videoclub\pojo\Rental$ColumnsNameRental.class

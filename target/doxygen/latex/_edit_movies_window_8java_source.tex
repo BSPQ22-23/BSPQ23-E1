@@ -1,0 +1,316 @@
+\hypertarget{_edit_movies_window_8java_source}{}\doxysection{Edit\+Movies\+Window.\+java}
+\label{_edit_movies_window_8java_source}\index{src/main/java/com/videoclub/client/gui/EditMoviesWindow.java@{src/main/java/com/videoclub/client/gui/EditMoviesWindow.java}}
+\mbox{\hyperlink{_edit_movies_window_8java}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00001}00001\ \textcolor{keyword}{package\ }com.videoclub.client.gui;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00003}00003\ \textcolor{keyword}{import}\ java.awt.BorderLayout;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00004}00004\ \textcolor{keyword}{import}\ java.awt.Color;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00005}00005\ \textcolor{keyword}{import}\ java.awt.Component;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00006}00006\ \textcolor{keyword}{import}\ java.awt.Container;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00007}00007\ \textcolor{keyword}{import}\ java.awt.FlowLayout;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00008}00008\ \textcolor{keyword}{import}\ java.awt.Font;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00009}00009\ \textcolor{keyword}{import}\ java.awt.GridLayout;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00010}00010\ \textcolor{keyword}{import}\ java.awt.event.ActionEvent;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00011}00011\ \textcolor{keyword}{import}\ java.awt.event.ActionListener;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00012}00012\ \textcolor{keyword}{import}\ java.util.HashMap;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00013}00013\ \textcolor{keyword}{import}\ java.util.List;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00015}00015\ \textcolor{keyword}{import}\ javax.swing.DefaultListModel;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00016}00016\ \textcolor{keyword}{import}\ javax.swing.JButton;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00017}00017\ \textcolor{keyword}{import}\ javax.swing.JFrame;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00018}00018\ \textcolor{keyword}{import}\ javax.swing.JLabel;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00019}00019\ \textcolor{keyword}{import}\ javax.swing.JList;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00020}00020\ \textcolor{keyword}{import}\ javax.swing.JOptionPane;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00021}00021\ \textcolor{keyword}{import}\ javax.swing.JPanel;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00022}00022\ \textcolor{keyword}{import}\ javax.swing.JScrollPane;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00023}00023\ \textcolor{keyword}{import}\ javax.swing.JTextField;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00024}00024\ \textcolor{keyword}{import}\ javax.swing.event.ListSelectionEvent;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00025}00025\ \textcolor{keyword}{import}\ javax.swing.event.ListSelectionListener;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00026}00026\ \textcolor{keyword}{import}\ javax.ws.rs.ProcessingException;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00027}00027\ \textcolor{keyword}{import}\ javax.ws.rs.client.Client;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00028}00028\ \textcolor{keyword}{import}\ javax.ws.rs.client.ClientBuilder;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00029}00029\ \textcolor{keyword}{import}\ javax.ws.rs.client.WebTarget;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00030}00030\ \textcolor{keyword}{import}\ javax.ws.rs.core.GenericType;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00031}00031\ \textcolor{keyword}{import}\ javax.ws.rs.core.MediaType;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00032}00032\ \textcolor{keyword}{import}\ javax.ws.rs.core.Response;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00033}00033\ \textcolor{keyword}{import}\ javax.ws.rs.core.Response.Status;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00035}00035\ \textcolor{keyword}{import}\ org.apache.logging.log4j.LogManager;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00036}00036\ \textcolor{keyword}{import}\ org.apache.logging.log4j.Logger;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00038}00038\ \textcolor{keyword}{import}\ com.videoclub.client.ConnectionToServer;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00039}00039\ \textcolor{keyword}{import}\ com.videoclub.client.gui.NewMovieWindow.AdminWindow;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00040}00040\ \textcolor{keyword}{import}\ com.videoclub.dao.MovieDAO;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00041}00041\ \textcolor{keyword}{import}\ com.videoclub.pojo.Movie;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00042}00042\ \textcolor{keyword}{import}\ com.videoclub.pojo.User;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00044}\mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1gui_1_1_edit_movies_window}{00044}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1gui_1_1_edit_movies_window}{EditMoviesWindow}}\ \textcolor{keyword}{extends}\ JFrame\ \{}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00045}00045\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00047}00047\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ \textcolor{keyword}{final}\ \textcolor{keywordtype}{long}\ serialVersionUID\ =\ -\/7282072359640068019L;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00048}00048\ \ \ \ \ \textcolor{keyword}{private}\ JButton\ exit;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00049}00049\ \ \ \ \ \textcolor{keyword}{private}\ JButton\ save;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00050}00050\ \ \ \ \ \textcolor{keyword}{private}\ JButton\ delete;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00051}00051\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00052}00052\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00053}00053\ \ \ \ \ \textcolor{keyword}{private}\ JTextField\ title;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00054}00054\ \ \ \ \ \textcolor{keyword}{private}\ JTextField\ genre;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00055}00055\ \ \ \ \ \textcolor{keyword}{private}\ JTextField\ duration;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00056}00056\ \ \ \ \ \textcolor{keyword}{private}\ JTextField\ year;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00057}00057\ \ \ \ \ \textcolor{keyword}{private}\ JTextField\ director;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00058}00058\ \ \ \ \ \textcolor{keyword}{private}\ JTextField\ rentalPrice;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00059}00059\ \ \ \ \ \textcolor{keyword}{private}\ JTextField\ empty;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00060}00060\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00061}00061\ \ \ \ \ \textcolor{keyword}{private}\ JLabel\ text;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00062}00062\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00063}00063\ \ \ \ \ JList<String>\ movies;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00064}00064\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00065}00065\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00066}00066\ \ \ \ \ \textcolor{keyword}{private}\ HashMap<String,Movie>\ grupoMovies;\ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00067}00067\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1gui_1_1_admin_menu_window}{AdminMenuWindow}}\ adminMenuWindow;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00068}00068\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00069}00069\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00071}00071\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ \textcolor{keyword}{final}\ String\ SERVER\_ENDPOINT\ =\ \textcolor{stringliteral}{"{}http://localhost:8080/webapi"{}};}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00072}00072\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ \textcolor{keyword}{final}\ String\ MOVIES\_RESOURCE\ =\textcolor{stringliteral}{"{}movies"{}};}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00073}\mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1gui_1_1_edit_movies_window_a39f2442994fde45b807d057589af7360}{00073}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{static}\ \textcolor{keyword}{final}\ Logger\ \mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1gui_1_1_edit_movies_window_a39f2442994fde45b807d057589af7360}{logger}}\ =\ LogManager.getLogger();}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00074}00074\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00075}00075\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00076}\mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1gui_1_1_edit_movies_window_acbd53b48cfbf354cb1427a7d7cdf7848}{00076}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1gui_1_1_edit_movies_window_acbd53b48cfbf354cb1427a7d7cdf7848}{EditMoviesWindow}}()}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00077}00077\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00078}00078\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00079}00079\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00080}00080\ \ \ \ \ \ \ \ \ this.setSize(900,\ 600);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00081}00081\ \ \ \ \ \ \ \ \ this.setLocation(\ 420,\ 100\ );}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00082}00082\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00083}00083\ \ \ \ \ \ \ \ \ Container\ cp\ =\ this.getContentPane();}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00084}00084\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1_connection_to_server}{ConnectionToServer}}\ cts\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1_connection_to_server}{ConnectionToServer}}();}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00085}00085\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00086}00086\ \ \ \ \ \ \ \ \ exit\ =\ \textcolor{keyword}{new}\ JButton(\textcolor{stringliteral}{"{}Back"{}});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00087}00087\ \ \ \ \ \ \ \ \ save\ =\ \textcolor{keyword}{new}\ JButton(\textcolor{stringliteral}{"{}Save"{}});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00088}00088\ \ \ \ \ \ \ \ \ delete\ =\ \textcolor{keyword}{new}\ JButton(\textcolor{stringliteral}{"{}Delete"{}});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00089}00089\ \ \ \ \ \ \ \ \ delete.setEnabled(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00090}00090\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00091}00091\ \ \ \ \ \ \ \ \ title\ =\ \textcolor{keyword}{new}\ JTextField(20);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00092}00092\ \ \ \ \ \ \ \ \ title.setEnabled(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00093}00093\ \ \ \ \ \ \ \ \ genre\ =\ \textcolor{keyword}{new}\ JTextField(20);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00094}00094\ \ \ \ \ \ \ \ \ genre.setEnabled(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00095}00095\ \ \ \ \ \ \ \ \ duration\ =\ \textcolor{keyword}{new}\ JTextField(20);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00096}00096\ \ \ \ \ \ \ \ \ duration.setEnabled(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00097}00097\ \ \ \ \ \ \ \ \ year\ =\ \textcolor{keyword}{new}\ JTextField(20);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00098}00098\ \ \ \ \ \ \ \ \ year.setEnabled(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00099}00099\ \ \ \ \ \ \ \ \ director\ =\ \textcolor{keyword}{new}\ JTextField(20);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00100}00100\ \ \ \ \ \ \ \ \ director.setEnabled(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00101}00101\ \ \ \ \ \ \ \ \ rentalPrice\ =\ \textcolor{keyword}{new}\ JTextField(20);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00102}00102\ \ \ \ \ \ \ \ \ rentalPrice.setEnabled(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00103}00103\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00104}00104\ \ \ \ \ \ \ \ \ empty\ =\ \textcolor{keyword}{new}\ JTextField();}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00105}00105\ \ \ \ \ \ \ \ \ empty.setVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00106}00106\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00107}00107\ \ \ \ \ \ \ \ \ text\ =\ \textcolor{keyword}{new}\ JLabel(\textcolor{stringliteral}{"{}Complete\ the\ following\ fields\ to\ introduce\ a\ new\ Movie"{}});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00108}00108\ \ \ \ \ \ \ \ \ text.setForeground(Color.white);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00109}00109\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00110}00110\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00111}00111\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00112}00112\ \ \ \ \ \ \ \ \ movies\ =\ \textcolor{keyword}{new}\ JList<String>();}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00113}00113\ \ \ \ \ \ \ \ \ movies.setFixedCellWidth(200);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00114}00114\ \ \ \ \ \ \ \ \ movies.setFixedCellHeight(50);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00115}00115\ \ \ \ \ \ \ \ \ movies.setModel(\mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1gui_1_1_edit_movies_window_a511f6d4e3adf558b95241943f0df31ef}{cargarPeliculas}}());}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00116}00116\ \ \ \ \ \ \ \ \ \textcolor{comment}{//movies.setBackground(new\ Color(60,141,207));}}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00117}00117\ \ \ \ \ \ \ \ \ DefaultListModel<String>\ lm\ =\ \textcolor{keyword}{new}\ DefaultListModel<String>();}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00118}00118\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00119}00119\ \ \ \ \ \ \ \ \ JScrollPane\ spIzquierda\ =\ \textcolor{keyword}{new}\ JScrollPane(movies);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00120}00120\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00121}00121\ \ \ \ \ \ \ \ \ JPanel\ panelArriba\ =\ \textcolor{keyword}{new}\ JPanel();}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00122}00122\ \ \ \ \ \ \ \ \ JPanel\ panelIzquierda\ =\ \textcolor{keyword}{new}\ JPanel();}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00123}00123\ \ \ \ \ \ \ \ \ JPanel\ panelCentro\ =\ \textcolor{keyword}{new}\ JPanel();}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00124}00124\ \ \ \ \ \ \ \ \ JPanel\ panelAbajo\ =\ \textcolor{keyword}{new}\ JPanel();}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00125}00125\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00126}00126\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00127}00127\ \ \ \ \ \ \ \ \ panelIzquierda.add(spIzquierda);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00128}00128\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00129}00129\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00130}00130\ \ \ \ \ \ \ \ \ panelArriba.setBackground(Color.red);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00131}00131\ \ \ \ \ \ \ \ \ text.setFont(\textcolor{keyword}{new}\ Font(\textcolor{stringliteral}{"{}Arial"{}},\ Font.BOLD,\ 16));}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00132}00132\ \ \ \ \ \ \ \ \ panelArriba.add(text);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00133}00133\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00134}00134\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00135}00135\ \ \ \ \ \ \ \ \ panelCentro.setLayout(\textcolor{keyword}{new}\ GridLayout(8,2));}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00136}00136\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1gui_1_1_edit_movies_window_a69e56dfd2dca6133b870063743450653}{posicionaLinea}}(panelCentro,\textcolor{stringliteral}{"{}"{}},empty);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00137}00137\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1gui_1_1_edit_movies_window_a69e56dfd2dca6133b870063743450653}{posicionaLinea}}(panelCentro,\textcolor{stringliteral}{"{}"{}},empty);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00138}00138\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1gui_1_1_edit_movies_window_a69e56dfd2dca6133b870063743450653}{posicionaLinea}}(panelCentro,\textcolor{stringliteral}{"{}Title:\ "{}},title);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00139}00139\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1gui_1_1_edit_movies_window_a69e56dfd2dca6133b870063743450653}{posicionaLinea}}(panelCentro,\textcolor{stringliteral}{"{}Genre:\ "{}},genre);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00140}00140\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1gui_1_1_edit_movies_window_a69e56dfd2dca6133b870063743450653}{posicionaLinea}}(panelCentro,\textcolor{stringliteral}{"{}Duration:\ "{}},duration);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00141}00141\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1gui_1_1_edit_movies_window_a69e56dfd2dca6133b870063743450653}{posicionaLinea}}(panelCentro,\textcolor{stringliteral}{"{}Year:\ "{}},year);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00142}00142\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1gui_1_1_edit_movies_window_a69e56dfd2dca6133b870063743450653}{posicionaLinea}}(panelCentro,\textcolor{stringliteral}{"{}Director:\ "{}},director);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00143}00143\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1gui_1_1_edit_movies_window_a69e56dfd2dca6133b870063743450653}{posicionaLinea}}(panelCentro,\textcolor{stringliteral}{"{}RentalPrice:\ "{}},rentalPrice);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00144}00144\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1gui_1_1_edit_movies_window_a69e56dfd2dca6133b870063743450653}{posicionaLinea}}(panelCentro,\textcolor{stringliteral}{"{}"{}},empty);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00145}00145\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1gui_1_1_edit_movies_window_a69e56dfd2dca6133b870063743450653}{posicionaLinea}}(panelCentro,\textcolor{stringliteral}{"{}"{}},empty);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00146}00146\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1gui_1_1_edit_movies_window_a69e56dfd2dca6133b870063743450653}{posicionaLinea}}(panelCentro,\textcolor{stringliteral}{"{}"{}},empty);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00147}00147\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1gui_1_1_edit_movies_window_a69e56dfd2dca6133b870063743450653}{posicionaLinea}}(panelCentro,\textcolor{stringliteral}{"{}"{}},empty);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00148}00148\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1gui_1_1_edit_movies_window_a69e56dfd2dca6133b870063743450653}{posicionaLinea}}(panelCentro,\textcolor{stringliteral}{"{}"{}},empty);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00149}00149\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1gui_1_1_edit_movies_window_a69e56dfd2dca6133b870063743450653}{posicionaLinea}}(panelCentro,\textcolor{stringliteral}{"{}"{}},empty);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00150}00150\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00152}00152\ \ \ \ \ \ \ \ \ panelAbajo.add(save);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00153}00153\ \ \ \ \ \ \ \ \ panelAbajo.add(delete);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00154}00154\ \ \ \ \ \ \ \ \ panelAbajo.add(exit);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00155}00155\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00156}00156\ \ \ \ \ \ \ \ \ cp.add(panelIzquierda,\ BorderLayout.WEST);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00157}00157\ \ \ \ \ \ \ \ \ cp.add(panelArriba,\ BorderLayout.NORTH);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00158}00158\ \ \ \ \ \ \ \ \ cp.add(panelCentro,\ BorderLayout.CENTER);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00159}00159\ \ \ \ \ \ \ \ \ cp.add(panelAbajo,\ BorderLayout.SOUTH);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00160}00160\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00161}00161\ \ \ \ \ \ \ \ \ save.addActionListener(\textcolor{keyword}{new}\ ActionListener()\ \{}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ @Override}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ actionPerformed(ActionEvent\ e)\ \{}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!title.getText().equals(\textcolor{stringliteral}{"{}"{}})\ \&\&\ !genre.getText().equals(\textcolor{stringliteral}{"{}"{}})\ \&\&\ !duration.getText().equals(\textcolor{stringliteral}{"{}"{}})\ \&\&\ !year.getText().equals(\textcolor{stringliteral}{"{}"{}})\ \&\&\ !director.getText().equals(\textcolor{stringliteral}{"{}"{}})\ \&\&\ !rentalPrice.getText().equals(\textcolor{stringliteral}{"{}"{}}))}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//TODO}}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_movie}{Movie}}\ m\ =\ grupoMovies.get(movies.getSelectedValue());}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m.\mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_movie_a02ee3793af478c3b978b35a60c4f5dce}{setTitle}}(title.getText());}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m.\mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_movie_aeeb9a2357e74cc0d9f0915b8cce3cbd8}{setGenre}}(genre.getText());}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m.\mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_movie_ad44c55a47a82b626fea58720177d0128}{setDuration}}(Integer.parseInt(duration.getText()));}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m.\mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_movie_a6123c21110324cac96a94273ec32d39c}{setYear}}(Integer.parseInt(year.getText()));}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m.\mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_movie_a3522b77493fad21f7801e683db20eacc}{setDirector}}(director.getText());}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m.\mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_movie_afad9a6a5a6d9b4f45afc459997679845}{setRentalPrice}}(Double.parseDouble(rentalPrice.getText()));}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{boolean}\ correctUpadte\ =\ cts.\mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1_connection_to_server_ac3c72f67a9b58e59f81173c6894852a7}{updateMovieClient}}(m);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(correctUpadte)\ \{}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ movies.setModel(\mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1gui_1_1_edit_movies_window_a511f6d4e3adf558b95241943f0df31ef}{cargarPeliculas}}());}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1gui_1_1_edit_movies_window_a39f2442994fde45b807d057589af7360}{logger}}.info(\textcolor{stringliteral}{"{}JList\ updated."{}});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JOptionPane.showMessageDialog(\textcolor{keyword}{null},\ \textcolor{stringliteral}{"{}You\ have\ to\ complete\ all\ the\ fields."{}});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1gui_1_1_edit_movies_window_a39f2442994fde45b807d057589af7360}{logger}}.info(\textcolor{stringliteral}{"{}Error\ -\/\ You\ have\ to\ complete\ all\ the\ fields"{}});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00187}00187\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00188}00188\ \ \ \ \ \ \ \ \ delete.addActionListener(\textcolor{keyword}{new}\ ActionListener()\ \{}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ @Override}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ actionPerformed(ActionEvent\ e)\ \{}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO\ Auto-\/generated\ method\ stub\ }}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_movie}{Movie}}\ m\ =\ grupoMovies.get(movies.getSelectedValue());}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{boolean}\ hasDeleted\ =\ cts.\mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1_connection_to_server_a2a9b5f49d3a328fd8ac7ab6bed84e4b5}{deleteMovieClient}}(m);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(hasDeleted)\ \{}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ grupoMovies.remove(movies.getSelectedValue());}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((DefaultListModel<String>)movies.getModel()).removeElement(m.\mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_movie_a7a4d9617c5f1141212353e370908e782}{getTitle}}());}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ delete.setEnabled(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ title.setText(\textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ genre.setText(\textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ duration.setText(\textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ year.setText(\textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ director.setText(\textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rentalPrice.setText(\textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00210}00210\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00211}00211\ \ \ \ \ \ \ \ \ exit.addActionListener(\textcolor{keyword}{new}\ ActionListener()\ \{}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ @Override}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ actionPerformed(ActionEvent\ e)\ \{}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Thread\ hilo\ =\ \textcolor{keyword}{new}\ AdminWindow();}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ hilo.start();}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dispose();}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00220}00220\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00221}00221\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00222}00222\ \ \ \ \ \ \ \ \ movies.addListSelectionListener(\textcolor{keyword}{new}\ ListSelectionListener()\ \{}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ @Override}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ valueChanged(ListSelectionEvent\ e)\ \{}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (movies.getSelectedValue()!=\textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00228}00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1gui_1_1_edit_movies_window_a61d60a18db5eeb3d44ecbb607c17d4da}{cargaDatosPeli}}(grupoMovies.get(movies.getSelectedValue()));}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ delete.setEnabled(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00230}00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ title.setEnabled(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ genre.setEnabled(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00232}00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ duration.setEnabled(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00233}00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ year.setEnabled(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00234}00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ director.setEnabled(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00235}00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rentalPrice.setEnabled(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00237}00237\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00238}00238\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00239}00239\ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00240}00240\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00241}00241\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00242}\mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1gui_1_1_edit_movies_window_a69e56dfd2dca6133b870063743450653}{00242}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1gui_1_1_edit_movies_window_a69e56dfd2dca6133b870063743450653}{posicionaLinea}}(\ Container\ cont,\ String\ etiqueta,\ Component\ campo)\ \{}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00243}00243\ \ \ \ \ \ \ \ \ JPanel\ tempPanel\ =\ \textcolor{keyword}{new}\ JPanel();}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00244}00244\ \ \ \ \ \ \ \ \ tempPanel.setLayout(\ \textcolor{keyword}{new}\ FlowLayout(FlowLayout.CENTER)\ );\ \textcolor{comment}{//\ flow\ ajustado\ a\ la\ izquierda}}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00245}00245\ \ \ \ \ \ \ \ \ tempPanel.add(\ \textcolor{keyword}{new}\ JLabel(\ etiqueta\ )\ );}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00246}00246\ \ \ \ \ \ \ \ \ tempPanel.add(\ campo\ );}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00247}00247\ \ \ \ \ \ \ \ \ cont.add(\ tempPanel\ );}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00248}00248\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00249}00249\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00250}00250\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00251}\mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1gui_1_1_edit_movies_window_a511f6d4e3adf558b95241943f0df31ef}{00251}}\ \ \ \ \ \textcolor{keyword}{public}\ DefaultListModel<String>\ \mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1gui_1_1_edit_movies_window_a511f6d4e3adf558b95241943f0df31ef}{cargarPeliculas}}()}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00252}00252\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00253}00253\ \ \ \ \ \ \ \ \ \textcolor{comment}{//TODO\ HAcerlo\ bien\ en\ funciones}}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00254}00254\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1_connection_to_server}{ConnectionToServer}}\ cts\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1_connection_to_server}{ConnectionToServer}}();}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00255}00255\ \ \ \ \ \ \ \ \ HashMap<String,Movie>\ grupo\ =\ \textcolor{keyword}{new}\ HashMap<String,Movie>();}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00256}00256\ \ \ \ \ \ \ \ \ List<Movie>\ listMovies\ =\ cts.\mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1_connection_to_server_aceacc5c75251edebe830334d4577c71c}{takeMovieListClient}}();}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00257}00257\ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00258}00258\ \ \ \ \ \ \ \ \ DefaultListModel<String>\ dl\ =\ \textcolor{keyword}{new}\ DefaultListModel<String>();}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00259}00259\ \ \ \ \ \ \ \ \ String\ s;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00260}00260\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00261}00261\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(listMovies\ !=\ \textcolor{keyword}{null})\ \{}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_movie}{Movie}}\ m:\ listMovies)}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ grupo.put(m.getTitle(),\ m);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s\ =\ m.getTitle();}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00266}00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00267}00267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dl.addElement(s);}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00268}00268\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00269}00269\ \ \ \ \ \ \ \ \ \ \ \ \ grupoMovies\ =\ grupo;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00270}00270\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dl;}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00271}00271\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00272}00272\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00273}00273\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00274}00274\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00275}00275\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00276}\mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1gui_1_1_edit_movies_window_a61d60a18db5eeb3d44ecbb607c17d4da}{00276}}\ \ \ \ \ \textcolor{keyword}{public}\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1videoclub_1_1client_1_1gui_1_1_edit_movies_window_a61d60a18db5eeb3d44ecbb607c17d4da}{cargaDatosPeli}}(\mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_movie}{Movie}}\ m\ )\ \{}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00277}00277\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\ !=\ \textcolor{keyword}{null})\ \{}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00278}00278\ \ \ \ \ \ \ \ \ \ \ \ \ title.setText(m.\mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_movie_a7a4d9617c5f1141212353e370908e782}{getTitle}}());}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00279}00279\ \ \ \ \ \ \ \ \ \ \ \ \ genre.setText(m.\mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_movie_a588c1f9bd16a76a758d7b16729d5a445}{getGenre}}());}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ duration.setText(Integer.toString(m.\mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_movie_a6d4122f1c6694ce0f7f1335d335ea9d0}{getDuration}}()));}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00281}00281\ \ \ \ \ \ \ \ \ \ \ \ \ year.setText(Integer.toString(m.\mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_movie_a367d469957d887c3953fff60513315fe}{getYear}}()));}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00282}00282\ \ \ \ \ \ \ \ \ \ \ \ \ director.setText(m.\mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_movie_acb396ac0d9b5109202d18a0c4fcb8cc8}{getDirector}}());}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00283}00283\ \ \ \ \ \ \ \ \ \ \ \ \ rentalPrice.setText(Double.toString(m.\mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_movie_ae3bb9178aea7e1ec8421febfab5c775a}{getRentalPrice}}()));}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00284}00284\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00285}00285\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00286}00286\ \ \ \ \ \textcolor{keyword}{class\ }AdminWindow\ \textcolor{keyword}{extends}\ Thread\{}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00287}00287\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ run()\ \{}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00288}00288\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (adminMenuWindow\ !=\ \textcolor{keyword}{null})\ \{}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00289}00289\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ adminMenuWindow.setVisible(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00290}00290\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00291}00291\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ adminMenuWindow\ =\ \textcolor{keyword}{new}\ AdminMenuWindow();}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00292}00292\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ adminMenuWindow.setVisible(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00293}00293\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00294}00294\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00295}00295\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00296}00296\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00297}00297\ \ \ \ \ \textcolor{comment}{/*public\ static\ void\ main(String[]\ args)}}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00298}00298\ \textcolor{comment}{\ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00299}00299\ \textcolor{comment}{\ \ \ \ \ \ \ \ EditMoviesWindow\ ventana\ =\ new\ EditMoviesWindow();}}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00300}00300\ \textcolor{comment}{\ \ \ \ \ \ \ \ ventana.setSize(900,\ 600);}}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00301}00301\ \textcolor{comment}{\ \ \ \ \ \ \ \ ventana.setLocation(\ 420,\ 100\ );}}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00302}00302\ \textcolor{comment}{\ \ \ \ \ \ \ \ ventana.setVisible(\ true\ );}}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00303}00303\ \textcolor{comment}{\ \ \ \ \ \ \ \ ventana.setDefaultCloseOperation(JFrame.EXIT\_ON\_CLOSE);}}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00304}00304\ \textcolor{comment}{\ \ \ \ \ \ \ \ ventana.setResizable(false);}}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00305}00305\ \textcolor{comment}{\ \ \ \ \}*/}}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00306}00306\ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00307}00307\ \}}
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00308}00308\ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00309}00309\ }
+\DoxyCodeLine{\Hypertarget{_edit_movies_window_8java_source_l00310}00310\ }
+
+\end{DoxyCode}
