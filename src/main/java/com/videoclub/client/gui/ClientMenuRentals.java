@@ -11,11 +11,19 @@ import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import com.itextpdf.text.log.SysoCounter;
 import com.videoclub.Internationalization.InternationalizationText;
+import com.videoclub.dao.MovieDAO;
+import com.videoclub.dao.RentalDAO;
+import com.videoclub.dao.UserDAO;
+import com.videoclub.pojo.Movie;
+import com.videoclub.pojo.Rental;
+import com.videoclub.pojo.User;
 
 
 

@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,8 +19,15 @@ import javax.swing.border.EmptyBorder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.itextpdf.text.log.SysoCounter;
 import com.videoclub.Internationalization.InternationalizationText;
 import com.videoclub.client.ConnectionToServer;
+import com.videoclub.dao.MovieDAO;
+import com.videoclub.dao.RentalDAO;
+import com.videoclub.dao.UserDAO;
+import com.videoclub.encrypt.PasswordEncrypt;
+import com.videoclub.pojo.Movie;
+import com.videoclub.pojo.Rental;
 import com.videoclub.pojo.User;
 import com.videoclub.pojo.typeUser;
 
@@ -51,8 +60,9 @@ public class ClientLoginWindow extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					User u1 = new User("admin", PasswordEncrypt.encryptPassword("admin"), "admin@email.com", "AdminName", "AdminSurname", typeUser.ADMIN);
+					UserDAO.getInstance().save(u1);
 					ClientLoginWindow frame = new ClientLoginWindow();
-					
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -109,7 +119,7 @@ public class ClientLoginWindow extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				User user = cts.logInClient(textNick.getText(), textPass.getText());
+				user = cts.logInClient(textNick.getText(), textPass.getText());
 		        if(user != null) {
 			        if(user.getType() == typeUser.ADMIN) {
 			        	op = 0;
@@ -125,8 +135,6 @@ public class ClientLoginWindow extends JFrame {
 		        }
 			}
 		});
-		
-	
 		
 		btnRegister.addActionListener(new ActionListener() {
 			
@@ -155,6 +163,7 @@ public class ClientLoginWindow extends JFrame {
 				dispose();
 			}
 		});
+		
 	}
 	
 	class RegisterWindowThread extends Thread{

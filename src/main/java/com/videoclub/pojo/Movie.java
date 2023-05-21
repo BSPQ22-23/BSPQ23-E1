@@ -103,5 +103,11 @@ public class Movie {
     	// TODO Auto-generated method stub
     	return this.title.equals(((Movie) obj).getTitle());
     }
+	@Override
+	public String toString() {
+		return "Movie [title=" + title + ", genre=" + genre + ", duration=" + duration + ", year=" + year
+				+ ", director=" + director + ", rentalPrice=" + rentalPrice + "]";
+	}
+    
 }
 
