@@ -17,8 +17,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.videoclub.Internationalization.InternationalizationText;
+import com.videoclub.dao.MovieDAO;
 import com.videoclub.dao.UserDAO;
 import com.videoclub.encrypt.PasswordEncrypt;
+import com.videoclub.pojo.Movie;
 import com.videoclub.pojo.User;
 
 
@@ -110,6 +112,32 @@ public class UserResource {
     			return Response.status(Status.NOT_ACCEPTABLE).build();
     		}
     	}
+    }
+    /**Update the user.
+     * 
+     * @param user User with the new parameters to change.
+     * @return Response with the corresponding Status depending of the result obtained. Also, sends the user.
+     */
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/updateuser")
+    public Response updateMovie(User user) {
+    	User userFromDB = UserDAO.getInstance().find(Integer.toString(user.getCode()), User.ColumnsNameUser.code);
+    	logger.info(user.getCode());
+    	if(userFromDB != null) {
+    		userFromDB.setEmail(user.getEmail());
+    		userFromDB.setFavouriteMovieList(user.getFavouriteMovieList());
+    		userFromDB.setName(user.getName());
+    		userFromDB.setPassword(user.getPassword());
+    		userFromDB.setSurname(user.getSurname());
+    		userFromDB.setType(user.getType());
+    		userFromDB.setUsername(user.getUsername());
+        	UserDAO.getInstance().save(userFromDB);
+        	logger.info("User updated correctly.");
+        	return Response.accepted(userFromDB).build();
+    	}
+    	return Response.status(Status.NOT_FOUND).build();
     }
     
     /*

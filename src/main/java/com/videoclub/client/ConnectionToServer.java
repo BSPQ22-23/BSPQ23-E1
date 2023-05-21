@@ -16,6 +16,7 @@ import javax.ws.rs.core.Response.Status;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.videoclub.Internationalization.InternationalizationText;
 import com.videoclub.pojo.Movie;
 import com.videoclub.pojo.Rental;
 import com.videoclub.pojo.User;
@@ -215,5 +216,24 @@ public class ConnectionToServer {
         }
 		return false;
 	}
+	public boolean changePasswordUserClient(User u) {
+		Client client = ClientBuilder.newClient();
+        WebTarget target = client.target(SERVER_ENDPOINT);
+
+        Response response = target.path(USERS_RESOURCE)
+        		.path("/updateuser")
+                .request(MediaType.APPLICATION_JSON)
+                .post(Entity.entity(u, MediaType.APPLICATION_JSON));
+
+        if (response.getStatusInfo().toEnum() == Status.ACCEPTED) {
+            logger.info(InternationalizationText.getString("user_upd_correct"));
+            return true;
+        } else if(response.getStatusInfo().toEnum() == Status.NOT_FOUND){
+            logger.error("Error - User not found in the database");
+        }else {
+            logger.info(InternationalizationText.getString("user_upd_fail"));
+        }
+		return false;
 	
+	}
 }

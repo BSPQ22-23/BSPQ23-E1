@@ -13,17 +13,12 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.videoclub.Internationalization.InternationalizationText;
+import com.videoclub.client.ConnectionToServer;
 import com.videoclub.encrypt.PasswordEncrypt;
 import com.videoclub.pojo.User;
 
@@ -47,15 +42,18 @@ public class ClientInfoWindow extends JFrame {
     protected static final Logger logger = LogManager.getLogger();
     private static final String SERVER_ENDPOINT = "http://localhost:8080/webapi";
     private static final String USERS_RESOURCE = "users";
-
+    private ClientMenuWindow clientMenuWindow;
+    private User user;
     /**
      * Create the frame.
      *
      * @param user The User object representing the logged-in user.
      */
     public ClientInfoWindow(User user) {
+    	this.user = user;
+    	
+    	ConnectionToServer cts = new ConnectionToServer();
         // Frame settings
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
         setLocationRelativeTo(null);
 
@@ -99,28 +97,19 @@ public class ClientInfoWindow extends JFrame {
 
                 if (choice == JOptionPane.YES_OPTION) {
                     // Update the user's password
-                    user.setPassword(PasswordEncrypt.encryptPassword(textPass.getText()));
+                	String passwordSaved = user.getPassword();
+                	user.setPassword(PasswordEncrypt.encryptPassword(textPass.getText()));
+                	boolean correctUpdate = cts.changePasswordUserClient(user);
+                	if(correctUpdate) {
+                		JOptionPane.showMessageDialog(null, "Password changed succesfully.");
+                		textPass.setText("");
+                	}else {
+                		user.setPassword(passwordSaved);
+                	}
 
-                    //TODO
-                    Client client = ClientBuilder.newClient();
-                    WebTarget target = client.target(SERVER_ENDPOINT);
-
-                    Response response = target.path(USERS_RESOURCE)
-                            .request(MediaType.APPLICATION_JSON)
-                            .post(Entity.entity(user, MediaType.APPLICATION_JSON));
-
-                    if (response.getStatus() == Response.Status.OK.getStatusCode()) {
-                        logger.info(InternationalizationText.getString("user_upd_correct"));
-                    } else {
-                        logger.info(InternationalizationText.getString("user_upd_fail"));
-                    }
-
-                    response.close();
-                    client.close();
                 }
-
-                // Return to the menu window
                 Thread hilo = new MenuWindow();
+                ClientMenuWindow.setCodUser(user.getCode());
                 hilo.start();
                 dispose();
             }
@@ -132,6 +121,7 @@ public class ClientInfoWindow extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 // Return to the menu window
                 Thread hilo = new MenuWindow();
+                ClientMenuWindow.setCodUser(user.getCode());
                 hilo.start();
                 dispose();
             }
@@ -143,7 +133,13 @@ public class ClientInfoWindow extends JFrame {
      */
     class MenuWindow extends Thread {
         public void run() {
-            ClientMenuWindow.main(null);
+        	if(clientMenuWindow != null) {
+                clientMenuWindow.setVisible(true);
+        	}else {
+        		clientMenuWindow = new ClientMenuWindow(user);
+        		clientMenuWindow.setVisible(true);
+        	}
+            
         }
     }
 }

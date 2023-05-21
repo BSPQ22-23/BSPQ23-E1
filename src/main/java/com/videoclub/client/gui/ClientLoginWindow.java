@@ -60,8 +60,6 @@ public class ClientLoginWindow extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					User u1 = new User("admin", PasswordEncrypt.encryptPassword("admin"), "admin@email.com", "AdminName", "AdminSurname", typeUser.ADMIN);
-					UserDAO.getInstance().save(u1);
 					ClientLoginWindow frame = new ClientLoginWindow();
 					frame.setVisible(true);
 				} catch (Exception e) {
