@@ -28,7 +28,10 @@ jobs:
       run: mvn clean compile
     
     - name: Start MySQL 
-      run:  mysql –uroot -p < sql/videoclubdb.sql
+      run: |
+       $mysqlCommand = "mysql -uroot -p < sql/videoclubdb.sql"
+        Invoke-Expression -Command $mysqlCommand
+
 
       
     - name: Enhance database
