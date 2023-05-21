@@ -53,10 +53,10 @@ public class Rental {
 
     //TODO check this
     public User getCustomer() {
-    	String code1 = Integer.toString(code);
-    	if(customer == null && code1 != null)
+    	String code1 = Integer.toString(this.code);
+    	if(this.customer == null && code1 != null)
 			return (customer = UserDAO.getInstance().find(code1,User.ColumnsNameUser.code));
-        return customer;
+        return this.customer;
     }
 
     public void setCustomer(User customer) {
@@ -101,5 +101,10 @@ public class Rental {
     	// TODO Auto-generated method stub
     	return this.id == (((Rental) obj).getId());
     }
+	@Override
+	public String toString() {
+		return "Rental [id=" + id + ", title=" + title + ", movie=" + movie + ", code=" + code + ", customer="
+				+ customer + ", rentalDate=" + rentalDate + ", returnDate=" + returnDate + "]";
+	}
 }
 

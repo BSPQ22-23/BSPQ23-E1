@@ -47,6 +47,8 @@ public class MyRentalsWindow extends JFrame {
 	private User user;
 	protected static final Logger logger = LogManager.getLogger();
 	
+	private List<Rental> listRentals;
+	
 	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			
@@ -142,20 +144,20 @@ public class MyRentalsWindow extends JFrame {
 	
 	public void loadModel() {
 		
-		List<Rental> listRentals = RentalDAO.getInstance().getAll();
-		
+		listRentals = RentalDAO.getInstance().getAll();
 		while (modelRentals.getRowCount() > 0) {
 			modelRentals.removeRow(0);
 		}
-		for(Rental r: listRentals) {
-			logger.info(r.getCustomer().getCode() == user.getCode());
-			if (r.getCustomer().getCode() == user.getCode()) {
-				Object [] row = {r.getId(), r.getMovie().getTitle(), r.getCustomer().getCode(), r.getRentalDate(), r.getReturnDate()};
-				modelRentals.addRow(row);
+		if (listRentals != null) {
+			for(Rental r: listRentals) {
+				logger.info(r.getCustomer().getCode() == user.getCode());
+				if (r.getCustomer().getCode() == user.getCode()) {
+					Object [] row = {r.getId(), r.getMovie().getTitle(), r.getCustomer().getCode(), r.getRentalDate(), r.getReturnDate()};
+					modelRentals.addRow(row);
+				}
 			}
 		}
 	}
-	
 	class menuWindow extends Thread {
 		public void run() {
 			if (clientMenuWindow != null) {
@@ -171,7 +173,5 @@ public class MyRentalsWindow extends JFrame {
 		public void run() {
 		}
 	}
-	
-
 
 }

@@ -107,7 +107,6 @@ public class MoviesWindow extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
 				Thread hilo = new menuWindow();
 				hilo.start();
 				dispose();
