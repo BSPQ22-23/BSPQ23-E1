@@ -18,7 +18,9 @@ import org.apache.logging.log4j.Logger;
 
 import com.videoclub.Internationalization.InternationalizationText;
 import com.videoclub.dao.MovieDAO;
+import com.videoclub.dao.RentalDAO;
 import com.videoclub.pojo.Movie;
+import com.videoclub.pojo.Rental;
 
 /**
  * Resource class for movies.
@@ -66,18 +68,39 @@ public class MovieResource {
     @DELETE
     @Path("/{title}")
     public Response deleteMovie(@PathParam("title") String title) {
+    	List<Rental> rentals = RentalDAO.getInstance().getAll();
+    	
         boolean hasTheMovie = false;
         Movie movieToDelete = MovieDAO.getInstance().find(title, Movie.ColumnsNameMovie.title);
-
         if (movieToDelete != null)
             hasTheMovie = true;
+        
 
         if (hasTheMovie) {
+        	try {
+    			for(Rental r: rentals)
+    	    	{
+    	    		System.out.println(movieToDelete.getCode()==(r.getMovie().getCode()));
+    	    		
+    	    		if(movieToDelete.getCode()==(r.getMovie().getCode()))
+    	    		{
+    	    			
+    	    			RentalDAO.getInstance().delete(r);
+    	    		}
+    	    	}
+    			
+    		} 
+    		catch(Exception e)
+    		{
+    			e.printStackTrace();
+    			
+    		}
+        		
+        	
             MovieDAO.getInstance().delete(movieToDelete);
             logger.info(InternationalizationText.getString("remove_db_movie") + title);
             return Response.status(Response.Status.OK).build();
         } else {
-            logger.info("No movies found with -" + title + "- title");
             return Response.status(Response.Status.NOT_FOUND).build();
         }
     }
