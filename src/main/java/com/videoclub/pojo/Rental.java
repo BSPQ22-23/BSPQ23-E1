@@ -80,9 +80,6 @@ public class Rental {
         this.returnDate = returnDate;
     }
     
-    public enum columnsName{
-    	id,title,code,rentalDate,returnDate
-    }
     public static class ColumnsNameRental extends ClassColumnNames<Rental>{
 
 		protected ColumnsNameRental(String columnName) {

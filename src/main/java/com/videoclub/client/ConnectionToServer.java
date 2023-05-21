@@ -48,6 +48,7 @@ public class ConnectionToServer {
                 // the response is a generic type (a List<User>)
                 GenericType<User> listType = new GenericType<User>(){};
                 user = response.readEntity(listType);
+                logger.info("Log In accepted. Welcome, "+user.getName()+" "+user.getSurname());
                 return user;
             } else if (response.getStatusInfo().toEnum() == Status.NOT_ACCEPTABLE){
             	logger.info("Error - Password does not match.");
@@ -61,7 +62,10 @@ public class ConnectionToServer {
         }
 		return null;
 	}
-	
+	/** Function that Client uses to request the server the register of a new User.
+	 * @param user User to add.
+	 * @return True = Registered, False = Not Registered because of a problem.
+	 */
 	public boolean registerClient(User user) {
 		Client client = ClientBuilder.newClient();
         final WebTarget appTarget = client.target(SERVER_ENDPOINT);
@@ -91,10 +95,77 @@ public class ConnectionToServer {
 		return false;
 		
 	}
-	//TODO
 	public List<Movie> takeMovieListClient(){
-		return null;
+		Client client = ClientBuilder.newClient();
+        final WebTarget appTarget = client.target(SERVER_ENDPOINT);
+		List<Movie> listMovies = null;
+		try {
+            Response response = appTarget.path(MOVIES_RESOURCE)
+                .request(MediaType.APPLICATION_JSON)
+                .get();
+
+            // check that the response was HTTP OK
+            if (response.getStatusInfo().toEnum() == Status.OK) {
+                // the response is a generic type (a List<User>)
+                GenericType<List<Movie>> listType = new GenericType<List<Movie>>(){};
+                listMovies = response.readEntity(listType);
+                logger.info("List of movies retrieved correctly from database.");
+                
+            } else {
+                logger.error("Error - ", response);
+            }
+        } catch (ProcessingException o) {
+            logger.error("Error - ", o.getMessage());
+        }
+		return listMovies;
 		
+	}
+	
+	public boolean updateMovieClient(Movie movie) {
+		Client client = ClientBuilder.newClient();
+        final WebTarget appTarget = client.target(SERVER_ENDPOINT);
+		try {
+            Response response = appTarget.path(MOVIES_RESOURCE)
+            	.path("/updatemovie")
+                .request(MediaType.APPLICATION_JSON)
+                .post(Entity.entity(movie, MediaType.APPLICATION_JSON));
+
+            // check if the response was ok
+            if (response.getStatusInfo().toEnum() == Status.ACCEPTED) {
+                Movie movieObtained = response.readEntity(Movie.class);
+                logger.info("The movie with code: "+movieObtained.getCode()+" has been updated correctly.");
+                return true;
+            } else if(response.getStatusInfo().toEnum() == Status.NOT_FOUND){
+                logger.error("Error - Movie not found in database.");
+            }else {
+            	logger.error("Error - Unknown Error");
+            }
+        } catch (ProcessingException e) {
+            logger.info("Error - " + e.getMessage());
+        }
+		return false;
+	}
+	
+	public boolean deleteMovieClient(Movie m) {
+		Client client = ClientBuilder.newClient();
+        final WebTarget appTarget = client.target(SERVER_ENDPOINT);
+		try {
+            Response response = appTarget.path(MOVIES_RESOURCE)
+                .path(m.getTitle())
+                .request()
+                .delete();
+
+            // check if the response was ok
+            if (response.getStatusInfo().toEnum() == Status.OK) {
+                logger.info("Movie correctly deleted from server");
+                return true;
+            } else if(response.getStatusInfo().toEnum() == Status.NOT_FOUND){
+                logger.error("Error - No movies found in the database");
+            }
+        } catch (ProcessingException o) {
+            logger.error("Error" + o.getMessage());
+        }
+		return false;
 	}
 	
 }

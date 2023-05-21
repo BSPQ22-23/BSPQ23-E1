@@ -1,6 +1,5 @@
 package com.videoclub;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -12,6 +11,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -54,7 +54,7 @@ public class MovieResource {
     public Response addMovie(Movie movie) {
         MovieDAO.getInstance().save(movie);
         logger.info(movie.getTitle() + " " + InternationalizationText.getString("add_db_movie"));
-        return Response.ok(new Movie(movie.getTitle())).build();
+        return Response.ok(new Movie(movie.getCode())).build();
     }
 
     /**
@@ -81,4 +81,26 @@ public class MovieResource {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
     }
+    
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/updatemovie")
+    public Response updateMovie(Movie movie) {
+    	Movie movieFromDB = MovieDAO.getInstance().find(Integer.toString(movie.getCode()), Movie.ColumnsNameMovie.code);
+    	if(movieFromDB != null) {
+    		movieFromDB.setDirector(movie.getDirector());
+        	movieFromDB.setDuration(movie.getDuration());
+        	movieFromDB.setGenre(movie.getGenre());
+        	movieFromDB.setRentalPrice(movie.getRentalPrice());
+        	movieFromDB.setTitle(movie.getTitle());
+        	movieFromDB.setYear(movie.getYear());
+        	MovieDAO.getInstance().save(movieFromDB);
+        	logger.info("Movie updated correctly.");
+        	return Response.accepted(movieFromDB).build();
+    	}
+    	return Response.status(Status.NOT_FOUND).build();
+    	
+    }
+    
 }

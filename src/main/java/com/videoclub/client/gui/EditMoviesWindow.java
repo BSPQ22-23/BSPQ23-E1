@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -31,6 +32,10 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.videoclub.client.ConnectionToServer;
 import com.videoclub.client.gui.NewMovieWindow.AdminWindow;
 import com.videoclub.dao.MovieDAO;
 import com.videoclub.pojo.Movie;
@@ -38,6 +43,8 @@ import com.videoclub.pojo.User;
 
 public class EditMoviesWindow extends JFrame {
 	
+
+	private static final long serialVersionUID = -7282072359640068019L;
 	private JButton exit;
 	private JButton save;
 	private JButton delete;
@@ -63,6 +70,7 @@ public class EditMoviesWindow extends JFrame {
 
 	private static final String SERVER_ENDPOINT = "http://localhost:8080/webapi";
     private static final String MOVIES_RESOURCE ="movies";
+    protected static final Logger logger = LogManager.getLogger();
 	
     
 	public EditMoviesWindow()
@@ -73,6 +81,7 @@ public class EditMoviesWindow extends JFrame {
 		this.setLocation( 420, 100 );
 		
 		Container cp = this.getContentPane();
+		ConnectionToServer cts = new ConnectionToServer();
 		
 		exit = new JButton("Back");
 		save = new JButton("Save");
@@ -163,11 +172,15 @@ public class EditMoviesWindow extends JFrame {
 					m.setYear(Integer.parseInt(year.getText()));
 					m.setDirector(director.getText());
 					m.setRentalPrice(Double.parseDouble(rentalPrice.getText()));
-					MovieDAO.getInstance().save(m);
-				}
-				else
-				{
-					System.out.println("You have to complete all the fields");
+					boolean correctUpadte = cts.updateMovieClient(m);
+					if(correctUpadte) {
+						movies.setModel(cargarPeliculas());
+						logger.info("JList updated.");
+					}
+					
+				}else{
+					JOptionPane.showMessageDialog(null, "You have to complete all the fields.");
+					logger.info("Error - You have to complete all the fields");
 				}
 				
 			}
@@ -180,26 +193,12 @@ public class EditMoviesWindow extends JFrame {
 				//TODO NO CHURRULA 
 				Movie m = grupoMovies.get(movies.getSelectedValue());
 				
-				Client client = ClientBuilder.newClient();
-		        final WebTarget appTarget = client.target(SERVER_ENDPOINT);
-				try {
-		            Response response = appTarget.path(MOVIES_RESOURCE)
-		                .path(m.getTitle())
-		                .request()
-		                .delete();
-
-		            // check if the response was ok
-		            if (response.getStatusInfo().toEnum() == Status.OK) {
-		            	grupoMovies.remove(movies.getSelectedValue());
-                        ((DefaultListModel<String>)movies.getModel()).removeElement(m.getTitle());
-		                System.out.println("Movie correctly deleted from server");
-		            } else {
-		                System.out.format("Error deleting a movie list. %s%n", response);
-		            }
-		        } catch (ProcessingException o) {
-		            System.out.format("Error posting a new movie. %s%n", o.getMessage());
-		        }
-				
+				boolean hasDeleted = cts.deleteMovieClient(m);
+				if(hasDeleted) {
+					grupoMovies.remove(movies.getSelectedValue());
+	                ((DefaultListModel<String>)movies.getModel()).removeElement(m.getTitle());
+				}
+            	
 				delete.setEnabled(false);
 				title.setText("");
 				genre.setText("");
@@ -235,9 +234,7 @@ public class EditMoviesWindow extends JFrame {
 					year.setEnabled(true);
 					director.setEnabled(true);
 					rentalPrice.setEnabled(true);
-					
 				}
-				
 			}
 		});
 
@@ -254,39 +251,26 @@ public class EditMoviesWindow extends JFrame {
 	
 	public DefaultListModel<String> cargarPeliculas()
 	{
+		//TODO HAcerlo bien en funciones
+		ConnectionToServer cts = new ConnectionToServer();
 		HashMap<String,Movie> grupo = new HashMap<String,Movie>();
-		Client client = ClientBuilder.newClient();
-        final WebTarget appTarget = client.target(SERVER_ENDPOINT);
-		List<Movie> listMovies = null;
-		try {
-            Response response = appTarget.path(MOVIES_RESOURCE)
-                .request(MediaType.APPLICATION_JSON)
-                .get();
+		List<Movie> listMovies = cts.takeMovieListClient();
 
-            // check that the response was HTTP OK
-            if (response.getStatusInfo().toEnum() == Status.OK) {
-                // the response is a generic type (a List<User>)
-                GenericType<List<Movie>> listType = new GenericType<List<Movie>>(){};
-                listMovies = response.readEntity(listType);
-                
-            } else {
-                System.out.format("Error obtaining movie list. %s%n", response);
-            }
-        } catch (ProcessingException o) {
-            System.out.format("Error obtaining movie list. %s%n", o.getMessage());
-        }
-		
 		DefaultListModel<String> dl = new DefaultListModel<String>();
 		String s;
-		for(Movie m: listMovies)
-		{
-			grupo.put(m.getTitle(), m);
-			s = m.getTitle();
-			
-			dl.addElement(s);
+		
+		if(listMovies != null) {
+			for(Movie m: listMovies)
+			{
+				grupo.put(m.getTitle(), m);
+				s = m.getTitle();
+				
+				dl.addElement(s);
+			}
+			grupoMovies = grupo;
+			return dl;
 		}
-		grupoMovies = grupo;
-		return dl;
+		return null;
 		
 	}
 	
