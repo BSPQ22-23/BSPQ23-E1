@@ -28,7 +28,7 @@ jobs:
       run: mvn clean compile
     
     - name: Start MySQL 
-      run:  mysql –uroot -p < sql/create-messages.sql
+      run:  mysql –uroot -p < sql/videoclubdb.sql
 
       
     - name: Enhance database
