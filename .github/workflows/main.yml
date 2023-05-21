@@ -20,5 +20,8 @@ jobs:
           mysql -uroot -proot < sql/videoclubdb.sql
           mvn --batch-mode --update-snapshots datanucleus:enhance datanucleus:schema-create
 
-      - name: Build with Maven including integration tests
-        run: mvn --batch-mode --update-snapshots package
+      - name: Start server in new tab
+        run: gnome-terminal --tab --title="Server" -- bash -c "mvn --batch-mode --update-snapshots jetty:run"
+
+      - name: Run tests in new tab
+        run: gnome-terminal --tab --title="Tests" -- bash -c "mvn --batch-mode --update-snapshots test"
