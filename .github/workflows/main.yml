@@ -32,8 +32,11 @@ jobs:
 
     - name: Prepare database for integration tests
       run:  sudo /etc/init.d/mysql start
- 
-      mvn datanucleus:enhance datanucleus:schema-create
+      
+    - name: Enhance database
+      run: mvn datanucleus:enhance 
+    - name: Create schema
+      run: mvn datanucleus:schema-create
 
     - name: Execute tests
       run: mvn test
