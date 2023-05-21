@@ -23,6 +23,7 @@ import com.videoclub.dao.RentalDAO;
 import com.videoclub.dao.UserDAO;
 import com.videoclub.encrypt.PasswordEncrypt;
 import com.videoclub.pojo.Movie;
+import com.videoclub.pojo.MovieGenre;
 import com.videoclub.pojo.Rental;
 import com.videoclub.pojo.User;
 import com.videoclub.pojo.typeUser;
@@ -38,7 +39,7 @@ private String movietitle = "test";
 private int Rentalid =0;
 Date currentDate = new Date();
 User usertest = new User("test",PasswordEncrypt.encryptPassword("test"), "test@gmail.com", "test", "test", typeUser.CLIENT );
-Movie movietest = new Movie("test", "test", 100, 2021, "test", 15);
+Movie movietest = new Movie("test", MovieGenre.COMEDY, 100, 2021, "test", 15);
 Rental rentaltest = new Rental(movietest, usertest,currentDate , currentDate);
 	@Test
 	public void UserListResource() {

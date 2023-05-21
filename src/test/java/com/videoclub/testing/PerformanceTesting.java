@@ -1,16 +1,18 @@
 package com.videoclub.testing;
 
-import com.github.noconnor.junitperf.*;
+import org.junit.Rule;
+import org.junit.Test;
+
+import com.github.noconnor.junitperf.JUnitPerfRule;
+import com.github.noconnor.junitperf.JUnitPerfTest;
+import com.github.noconnor.junitperf.JUnitPerfTestRequirement;
 import com.github.noconnor.junitperf.reporting.providers.HtmlReportGenerator;
 import com.videoclub.dao.MovieDAO;
 import com.videoclub.dao.UserDAO;
 import com.videoclub.pojo.Movie;
-import com.videoclub.pojo.Rental;
+import com.videoclub.pojo.MovieGenre;
 import com.videoclub.pojo.User;
 import com.videoclub.pojo.typeUser;
-
-import org.junit.Rule;
-import org.junit.Test;
 
 public class PerformanceTesting {
 
@@ -28,7 +30,7 @@ public class PerformanceTesting {
 	@JUnitPerfTest(durationMs= 2000, threads= 20)
 	@JUnitPerfTestRequirement(maxLatency = 10)
 	public void testErrorSaving() {
-		Movie movie = new Movie("a", "b", 10, 10, "tirano", 767.9);
+		Movie movie = new Movie("a", MovieGenre.ANIMATION, 10, 10, "tirano", 767.9);
 		MovieDAO.getInstance().save(movie);
 	}
 }

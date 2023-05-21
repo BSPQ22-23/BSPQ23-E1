@@ -14,6 +14,7 @@ import java.util.List;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -29,6 +30,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.videoclub.client.ConnectionToServer;
 import com.videoclub.pojo.Movie;
+import com.videoclub.pojo.MovieGenre;
 
 public class EditMoviesWindow extends JFrame {
 	
@@ -40,7 +42,7 @@ public class EditMoviesWindow extends JFrame {
 	
 	
 	private JTextField title;
-	private JTextField genre;
+	private JComboBox<MovieGenre> genre;
 	private JTextField duration;
 	private JTextField year;
 	private JTextField director;
@@ -75,7 +77,7 @@ public class EditMoviesWindow extends JFrame {
 		
 		title = new JTextField(20);
 		title.setEnabled(false);
-		genre = new JTextField(20);
+		genre = new JComboBox<MovieGenre>(MovieGenre.values());
 		genre.setEnabled(false);
 		duration = new JTextField(20);
 		duration.setEnabled(false);
@@ -147,11 +149,11 @@ public class EditMoviesWindow extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(!title.getText().equals("") && !genre.getText().equals("") && !duration.getText().equals("") && !year.getText().equals("") && !director.getText().equals("") && !rentalPrice.getText().equals(""))
+				if(!title.getText().equals("") && !genre.getSelectedItem().toString().equals("") && !duration.getText().equals("") && !year.getText().equals("") && !director.getText().equals("") && !rentalPrice.getText().equals(""))
 				{
 					Movie m = grupoMovies.get(movies.getSelectedValue());
 					m.setTitle(title.getText());
-					m.setGenre(genre.getText());
+					m.setGenre((MovieGenre)genre.getSelectedItem());
 					m.setDuration(Integer.parseInt(duration.getText()));
 					m.setYear(Integer.parseInt(year.getText()));
 					m.setDirector(director.getText());
@@ -183,7 +185,7 @@ public class EditMoviesWindow extends JFrame {
             	
 				delete.setEnabled(false);
 				title.setText("");
-				genre.setText("");
+				genre.setSelectedIndex(0);
 				duration.setText("");
 				year.setText("");
 				director.setText("");
@@ -258,7 +260,7 @@ public class EditMoviesWindow extends JFrame {
 	public  void cargaDatosPeli(Movie m ) {
 		if (m != null) {
 			title.setText(m.getTitle());
-			genre.setText(m.getGenre());
+			genre.setSelectedItem(m.getGenre());
 			duration.setText(Integer.toString(m.getDuration()));
 			year.setText(Integer.toString(m.getYear()));
 			director.setText(m.getDirector());

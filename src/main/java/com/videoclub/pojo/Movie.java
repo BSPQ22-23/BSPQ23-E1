@@ -13,7 +13,7 @@ public class Movie {
 	private int code;
 	@Unique
     private String title;
-    private String genre;
+    private MovieGenre genre;
     private int duration;
     private int year;
     private String director;
@@ -26,7 +26,7 @@ public class Movie {
     	this.code=code;
     }
     // Constructor of the Movie class
-    public Movie(String title, String genre, int duration, int year, String director, double rentalPrice) {
+    public Movie(String title, MovieGenre genre, int duration, int year, String director, double rentalPrice) {
         this.title = title;
         this.genre = genre;
         this.duration = duration;
@@ -60,11 +60,11 @@ public class Movie {
         this.title = title;
     }
     
-    public String getGenre() {
+    public MovieGenre getGenre() {
         return genre;
     }
     
-    public void setGenre(String genre) {
+    public void setGenre(MovieGenre genre) {
         this.genre = genre;
     }
     

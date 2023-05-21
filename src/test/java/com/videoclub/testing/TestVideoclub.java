@@ -1,11 +1,9 @@
 package com.videoclub.testing;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.util.Date;
 
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -14,6 +12,7 @@ import com.videoclub.dao.RentalDAO;
 import com.videoclub.dao.UserDAO;
 import com.videoclub.encrypt.PasswordEncrypt;
 import com.videoclub.pojo.Movie;
+import com.videoclub.pojo.MovieGenre;
 import com.videoclub.pojo.Rental;
 import com.videoclub.pojo.User;
 import com.videoclub.pojo.typeUser;
@@ -33,13 +32,13 @@ public class TestVideoclub {
 		UserDAO.getInstance().save(u2);
 		UserDAO.getInstance().save(u3);
 		
-		m1 = new Movie("Movie1", "comedy", 90, 2023, "paco", 19.9);
-		m2 = new Movie("Movie2", "drama", 180, 1989, "luis", 5.74);
-		m3 = new Movie("Movie3", "drama", 90, 2012, "luis", 4.25);
-		m4 = new Movie("Movie4", "horror", 160, 2004, "juana", 14.34);
-		m5 = new Movie("Movie5", "comedy", 90, 1997, "paco", 9.25);
-		m6 = new Movie("Movie6", "horror", 120, 2015, "juana", 6.74);
-		m7 = new Movie("Movie7", "comedy", 90, 1990, "paco", 6.75);
+		m1 = new Movie("Movie1", MovieGenre.COMEDY, 90, 2023, "paco", 19.9);
+		m2 = new Movie("Movie2", MovieGenre.DETECTIVE, 180, 1989, "luis", 5.74);
+		m3 = new Movie("Movie3", MovieGenre.DRAMA, 90, 2012, "luis", 4.25);
+		m4 = new Movie("Movie4", MovieGenre.COMEDY, 160, 2004, "juana", 14.34);
+		m5 = new Movie("Movie5", MovieGenre.MUSICAL, 90, 1997, "paco", 9.25);
+		m6 = new Movie("Movie6", MovieGenre.FANTASY, 120, 2015, "juana", 6.74);
+		m7 = new Movie("Movie7", MovieGenre.THRILLER, 90, 1990, "paco", 6.75);
 		
 		MovieDAO.getInstance().save(m1);
 		MovieDAO.getInstance().save(m2);

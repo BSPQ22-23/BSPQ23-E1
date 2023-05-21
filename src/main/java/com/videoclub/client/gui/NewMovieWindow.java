@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -29,6 +30,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.videoclub.Internationalization.InternationalizationText;
 import com.videoclub.pojo.Movie;
+import com.videoclub.pojo.MovieGenre;
 
 
 public class NewMovieWindow extends JFrame {
@@ -39,7 +41,7 @@ public class NewMovieWindow extends JFrame {
 	
 	
 	private JTextField title;
-	private JTextField genre;
+	private JComboBox<MovieGenre> genre;
 	private JTextField duration;
 	private JTextField year;
 	private JTextField director;
@@ -76,7 +78,7 @@ public class NewMovieWindow extends JFrame {
 		
 		
 		title = new JTextField(20);
-		genre = new JTextField(20);
+		genre = new JComboBox<MovieGenre>(MovieGenre.values());
 		duration = new JTextField(20);
 		year = new JTextField(20);
 		director = new JTextField(20);
@@ -128,10 +130,10 @@ public class NewMovieWindow extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Client client = ClientBuilder.newClient();
 				final WebTarget appTarget = client.target(SERVER_ENDPOINT);
-				if(!title.getText().equals("") && !genre.getText().equals("") && !duration.getText().equals("") && !year.getText().equals("") && !director.getText().equals("") && !rentalPrice.getText().equals(""))
+				if(!title.getText().equals("") && !genre.getSelectedItem().toString().equals("") && !duration.getText().equals("") && !year.getText().equals("") && !director.getText().equals("") && !rentalPrice.getText().equals(""))
 				{
 					try {
-						Movie m = new Movie(title.getText(),genre.getText(), Integer.parseInt(duration.getText()), Integer.parseInt(year.getText()),director.getText(), Double.parseDouble(rentalPrice.getText()));
+						Movie m = new Movie(title.getText(),(MovieGenre) genre.getSelectedItem(), Integer.parseInt(duration.getText()), Integer.parseInt(year.getText()),director.getText(), Double.parseDouble(rentalPrice.getText()));
 			            Response response = appTarget.path(MOVIES_RESOURCE)
 			                .request(MediaType.APPLICATION_JSON)
 			                .post(Entity.entity(m, MediaType.APPLICATION_JSON)
