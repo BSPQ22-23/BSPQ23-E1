@@ -1,0 +1,131 @@
+\hypertarget{classcom_1_1videoclub_1_1_movie_resource}{}\doxysection{com.\+videoclub.\+Movie\+Resource Class Reference}
+\label{classcom_1_1videoclub_1_1_movie_resource}\index{com.videoclub.MovieResource@{com.videoclub.MovieResource}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ \mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_movie}{Movie}} $>$ \mbox{\hyperlink{classcom_1_1videoclub_1_1_movie_resource_a923d49d2781b16e24e7c269c0d6b318b}{get\+Movies}} ()
+\item 
+Response \mbox{\hyperlink{classcom_1_1videoclub_1_1_movie_resource_aaf0b98b899a7f466b3e56be9d9a1a02c}{add\+Movie}} (\mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_movie}{Movie}} movie)
+\item 
+Response \mbox{\hyperlink{classcom_1_1videoclub_1_1_movie_resource_aa60040ab7c50cbdab5fd27cd40f3f183}{delete\+Movie}} (@Path\+Param(\char`\"{}title\char`\"{}) String title)
+\item 
+Response \mbox{\hyperlink{classcom_1_1videoclub_1_1_movie_resource_a5a96aa754e2dfd2e6cd1288f613775f2}{update\+Movie}} (\mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_movie}{Movie}} movie)
+\item 
+Response \mbox{\hyperlink{classcom_1_1videoclub_1_1_movie_resource_a441c6dfc7d8452d7ec8e83db0382df05}{get\+Movie\+By\+Title}} (@Path\+Param(\char`\"{}title\char`\"{}) String title)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final Logger \mbox{\hyperlink{classcom_1_1videoclub_1_1_movie_resource_a6ce5156f913eb21ce79c7a513a49a5fb}{logger}} = Log\+Manager.\+get\+Logger()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Resource class for movies. Handles CRUD operations for movies. 
+
+Definition at line \mbox{\hyperlink{_movie_resource_8java_source_l00030}{30}} of file \mbox{\hyperlink{_movie_resource_8java_source}{Movie\+Resource.\+java}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcom_1_1videoclub_1_1_movie_resource_aaf0b98b899a7f466b3e56be9d9a1a02c}\label{classcom_1_1videoclub_1_1_movie_resource_aaf0b98b899a7f466b3e56be9d9a1a02c}} 
+\index{com.videoclub.MovieResource@{com.videoclub.MovieResource}!addMovie@{addMovie}}
+\index{addMovie@{addMovie}!com.videoclub.MovieResource@{com.videoclub.MovieResource}}
+\doxysubsubsection{\texorpdfstring{addMovie()}{addMovie()}}
+{\footnotesize\ttfamily Response com.\+videoclub.\+Movie\+Resource.\+add\+Movie (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_movie}{Movie}}}]{movie }\end{DoxyParamCaption})}
+
+Adds a new movie to the database.
+
+
+\begin{DoxyParams}{Parameters}
+{\em movie} & Movie to add. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK response. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_movie_resource_8java_source_l00056}{56}} of file \mbox{\hyperlink{_movie_resource_8java_source}{Movie\+Resource.\+java}}.
+
+\mbox{\Hypertarget{classcom_1_1videoclub_1_1_movie_resource_aa60040ab7c50cbdab5fd27cd40f3f183}\label{classcom_1_1videoclub_1_1_movie_resource_aa60040ab7c50cbdab5fd27cd40f3f183}} 
+\index{com.videoclub.MovieResource@{com.videoclub.MovieResource}!deleteMovie@{deleteMovie}}
+\index{deleteMovie@{deleteMovie}!com.videoclub.MovieResource@{com.videoclub.MovieResource}}
+\doxysubsubsection{\texorpdfstring{deleteMovie()}{deleteMovie()}}
+{\footnotesize\ttfamily Response com.\+videoclub.\+Movie\+Resource.\+delete\+Movie (\begin{DoxyParamCaption}\item[{@Path\+Param(\char`\"{}title\char`\"{}) String}]{title }\end{DoxyParamCaption})}
+
+Deletes a movie from the database.
+
+
+\begin{DoxyParams}{Parameters}
+{\em title} & Title of the movie. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status Response. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_movie_resource_8java_source_l00070}{70}} of file \mbox{\hyperlink{_movie_resource_8java_source}{Movie\+Resource.\+java}}.
+
+\mbox{\Hypertarget{classcom_1_1videoclub_1_1_movie_resource_a441c6dfc7d8452d7ec8e83db0382df05}\label{classcom_1_1videoclub_1_1_movie_resource_a441c6dfc7d8452d7ec8e83db0382df05}} 
+\index{com.videoclub.MovieResource@{com.videoclub.MovieResource}!getMovieByTitle@{getMovieByTitle}}
+\index{getMovieByTitle@{getMovieByTitle}!com.videoclub.MovieResource@{com.videoclub.MovieResource}}
+\doxysubsubsection{\texorpdfstring{getMovieByTitle()}{getMovieByTitle()}}
+{\footnotesize\ttfamily Response com.\+videoclub.\+Movie\+Resource.\+get\+Movie\+By\+Title (\begin{DoxyParamCaption}\item[{@Path\+Param(\char`\"{}title\char`\"{}) String}]{title }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_movie_resource_8java_source_l00135}{135}} of file \mbox{\hyperlink{_movie_resource_8java_source}{Movie\+Resource.\+java}}.
+
+\mbox{\Hypertarget{classcom_1_1videoclub_1_1_movie_resource_a923d49d2781b16e24e7c269c0d6b318b}\label{classcom_1_1videoclub_1_1_movie_resource_a923d49d2781b16e24e7c269c0d6b318b}} 
+\index{com.videoclub.MovieResource@{com.videoclub.MovieResource}!getMovies@{getMovies}}
+\index{getMovies@{getMovies}!com.videoclub.MovieResource@{com.videoclub.MovieResource}}
+\doxysubsubsection{\texorpdfstring{getMovies()}{getMovies()}}
+{\footnotesize\ttfamily List$<$ \mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_movie}{Movie}} $>$ com.\+videoclub.\+Movie\+Resource.\+get\+Movies (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Retrieves movies from the database.
+
+\begin{DoxyReturn}{Returns}
+List of movies. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_movie_resource_8java_source_l00041}{41}} of file \mbox{\hyperlink{_movie_resource_8java_source}{Movie\+Resource.\+java}}.
+
+\mbox{\Hypertarget{classcom_1_1videoclub_1_1_movie_resource_a5a96aa754e2dfd2e6cd1288f613775f2}\label{classcom_1_1videoclub_1_1_movie_resource_a5a96aa754e2dfd2e6cd1288f613775f2}} 
+\index{com.videoclub.MovieResource@{com.videoclub.MovieResource}!updateMovie@{updateMovie}}
+\index{updateMovie@{updateMovie}!com.videoclub.MovieResource@{com.videoclub.MovieResource}}
+\doxysubsubsection{\texorpdfstring{updateMovie()}{updateMovie()}}
+{\footnotesize\ttfamily Response com.\+videoclub.\+Movie\+Resource.\+update\+Movie (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_movie}{Movie}}}]{movie }\end{DoxyParamCaption})}
+
+Update the information of the Movie. 
+\begin{DoxyParams}{Parameters}
+{\em movie} & Movie with the new information. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Response. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_movie_resource_8java_source_l00115}{115}} of file \mbox{\hyperlink{_movie_resource_8java_source}{Movie\+Resource.\+java}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classcom_1_1videoclub_1_1_movie_resource_a6ce5156f913eb21ce79c7a513a49a5fb}\label{classcom_1_1videoclub_1_1_movie_resource_a6ce5156f913eb21ce79c7a513a49a5fb}} 
+\index{com.videoclub.MovieResource@{com.videoclub.MovieResource}!logger@{logger}}
+\index{logger@{logger}!com.videoclub.MovieResource@{com.videoclub.MovieResource}}
+\doxysubsubsection{\texorpdfstring{logger}{logger}}
+{\footnotesize\ttfamily final Logger com.\+videoclub.\+Movie\+Resource.\+logger = Log\+Manager.\+get\+Logger()\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_movie_resource_8java_source_l00031}{31}} of file \mbox{\hyperlink{_movie_resource_8java_source}{Movie\+Resource.\+java}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/videoclub/\mbox{\hyperlink{_movie_resource_8java}{Movie\+Resource.\+java}}\end{DoxyCompactItemize}

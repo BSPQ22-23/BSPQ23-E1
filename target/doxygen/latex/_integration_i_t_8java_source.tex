@@ -1,0 +1,227 @@
+\hypertarget{_integration_i_t_8java_source}{}\doxysection{Integration\+IT.\+java}
+\label{_integration_i_t_8java_source}\index{src/test/java/com/videoclub/testing/IntegrationIT.java@{src/test/java/com/videoclub/testing/IntegrationIT.java}}
+\mbox{\hyperlink{_integration_i_t_8java}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00001}\mbox{\hyperlink{namespacecom_1_1videoclub_1_1testing}{00001}}\ \textcolor{keyword}{package\ }com.videoclub.testing;}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00003}00003\ \textcolor{keyword}{import}\ \textcolor{keyword}{static}\ org.junit.Assert.*;}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00005}00005\ \textcolor{keyword}{import}\ java.util.ArrayList;}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00006}00006\ \textcolor{keyword}{import}\ java.util.Date;}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00007}00007\ \textcolor{keyword}{import}\ java.util.List;}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00010}00010\ \textcolor{keyword}{import}\ javax.ws.rs.client.Client;}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00011}00011\ \textcolor{keyword}{import}\ javax.ws.rs.client.ClientBuilder;}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00012}00012\ \textcolor{keyword}{import}\ javax.ws.rs.client.Entity;}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00013}00013\ \textcolor{keyword}{import}\ javax.ws.rs.client.WebTarget;}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00014}00014\ \textcolor{keyword}{import}\ javax.ws.rs.core.GenericType;}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00015}00015\ \textcolor{keyword}{import}\ javax.ws.rs.core.MediaType;}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00016}00016\ \textcolor{keyword}{import}\ javax.ws.rs.core.Response;}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00017}00017\ \textcolor{keyword}{import}\ javax.ws.rs.core.Response.Status;}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00019}00019\ \textcolor{keyword}{import}\ org.junit.Test;}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00021}00021\ \textcolor{keyword}{import}\ com.videoclub.dao.MovieDAO;}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00022}00022\ \textcolor{keyword}{import}\ com.videoclub.dao.RentalDAO;}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00023}00023\ \textcolor{keyword}{import}\ com.videoclub.dao.UserDAO;}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00024}00024\ \textcolor{keyword}{import}\ com.videoclub.encrypt.PasswordEncrypt;}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00025}00025\ \textcolor{keyword}{import}\ com.videoclub.pojo.Movie;}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00026}00026\ \textcolor{keyword}{import}\ com.videoclub.pojo.MovieGenre;}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00027}00027\ \textcolor{keyword}{import}\ com.videoclub.pojo.Rental;}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00028}00028\ \textcolor{keyword}{import}\ com.videoclub.pojo.User;}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00029}00029\ \textcolor{keyword}{import}\ com.videoclub.pojo.typeUser;}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00031}\mbox{\hyperlink{classcom_1_1videoclub_1_1testing_1_1_integration_i_t}{00031}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classcom_1_1videoclub_1_1testing_1_1_integration_i_t}{IntegrationIT}}\ \{}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00033}00033\ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ \textcolor{keyword}{final}\ String\ SERVER\_ENDPOINT\ =\ \textcolor{stringliteral}{"{}http://localhost:8080/webapi"{}};}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00034}00034\ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ \textcolor{keyword}{final}\ String\ USERS\_RESOURCE\ =\textcolor{stringliteral}{"{}users"{}};}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00035}00035\ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ \textcolor{keyword}{final}\ String\ RENTALS\_RESOURCE\ =\textcolor{stringliteral}{"{}rentals"{}};}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00036}00036\ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ \textcolor{keyword}{final}\ String\ MOVIES\_RESOURCE\ =\textcolor{stringliteral}{"{}movies"{}};}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00037}00037\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ usercode\ =0;}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00038}00038\ \textcolor{keyword}{private}\ String\ movietitle\ =\ \textcolor{stringliteral}{"{}test"{}};}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00039}00039\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ Rentalid\ =0;}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00040}00040\ Date\ currentDate\ =\ \textcolor{keyword}{new}\ Date();}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00041}00041\ \mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_user}{User}}\ usertest\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_user}{User}}(\textcolor{stringliteral}{"{}test"{}},\mbox{\hyperlink{classcom_1_1videoclub_1_1encrypt_1_1_password_encrypt}{PasswordEncrypt}}.\mbox{\hyperlink{classcom_1_1videoclub_1_1encrypt_1_1_password_encrypt_a94612e91cdc37a9c5fd324a489f3e3a0}{encryptPassword}}(\textcolor{stringliteral}{"{}test"{}}),\ \textcolor{stringliteral}{"{}test@gmail.com"{}},\ \textcolor{stringliteral}{"{}test"{}},\ \textcolor{stringliteral}{"{}test"{}},\ \mbox{\hyperlink{enumcom_1_1videoclub_1_1pojo_1_1type_user}{typeUser}}.\mbox{\hyperlink{enumcom_1_1videoclub_1_1pojo_1_1type_user_aec677c8ac829f28b47c2a566d264a890}{CLIENT}}\ );}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00042}00042\ \mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_movie}{Movie}}\ movietest\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_movie}{Movie}}(\textcolor{stringliteral}{"{}test"{}},\ \mbox{\hyperlink{enumcom_1_1videoclub_1_1pojo_1_1_movie_genre}{MovieGenre}}.\mbox{\hyperlink{enumcom_1_1videoclub_1_1pojo_1_1_movie_genre_a2e4dd0d8f200112472b449fa604880cd}{COMEDY}},\ 100,\ 2021,\ \textcolor{stringliteral}{"{}test"{}},\ 15);}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00043}00043\ \mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_rental}{Rental}}\ rentaltest\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_rental}{Rental}}(movietest,\ usertest,currentDate\ ,\ currentDate);}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00044}00044\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00045}\mbox{\hyperlink{classcom_1_1videoclub_1_1testing_1_1_integration_i_t_a8f9af98998d8f29c74d0904415f9e88e}{00045}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1videoclub_1_1testing_1_1_integration_i_t_a8f9af98998d8f29c74d0904415f9e88e}{UserListResource}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00046}00046\ \ \ \ \ \ \ \ \ List<User>\ users=\ \textcolor{keyword}{new}\ ArrayList<>();}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00047}00047\ \ \ \ \ \ \ \ \ \ Client\ client\ =\ ClientBuilder.newClient();}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{final}\ WebTarget\ appTarget\ =\ client.target(SERVER\_ENDPOINT);}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00049}00049\ \ \ \ \ \ \ \ \ \ Response\ response\ =\ appTarget.path(USERS\_RESOURCE)}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .request(MediaType.APPLICATION\_JSON)}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .get();}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ check\ that\ the\ response\ was\ HTTP\ OK}}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.getStatusInfo().toEnum()\ ==\ Status.OK)}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ response\ is\ a\ generic\ type\ (a\ List<User>)}}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GenericType<List<User>>\ listType\ =\ \textcolor{keyword}{new}\ GenericType<List<User>>()\{\};}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ users\ =\ response.readEntity(listType);}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00060}00060\ \ \ \ \ \ \ \ \ List<User>\ users2\ =\ \mbox{\hyperlink{classcom_1_1videoclub_1_1dao_1_1_user_d_a_o}{UserDAO}}.\mbox{\hyperlink{classcom_1_1videoclub_1_1dao_1_1_user_d_a_o_ae0c88696bb85295346aceaa93020104e}{getInstance}}().\mbox{\hyperlink{classcom_1_1videoclub_1_1dao_1_1_user_d_a_o_ab3af2a10c6a144152817e34f02f26757}{getAll}}();}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00061}00061\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00062}00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_user}{User}}\ u\ :\ users)\ \{}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//boolean\ contains\ =\ users2.contains(u);}}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ assertEquals(users2.contains(u),\ \textcolor{keyword}{true}\ );}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00065}00065\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00067}00067\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00068}00068\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00069}00069\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00070}\mbox{\hyperlink{classcom_1_1videoclub_1_1testing_1_1_integration_i_t_af15b464f457a025518aa9ee14c38cbd7}{00070}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1videoclub_1_1testing_1_1_integration_i_t_af15b464f457a025518aa9ee14c38cbd7}{AddUserResource}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00071}00071\ \ \ \ \ \ \ \ \ Client\ client\ =\ ClientBuilder.newClient();}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00072}00072\ \ \ \ \ \ \ \ \ \textcolor{keyword}{final}\ WebTarget\ appTarget\ =\ client.target(SERVER\_ENDPOINT);}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00073}00073\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_user}{User}}\ usertest\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_user}{User}}(\textcolor{stringliteral}{"{}test"{}},\mbox{\hyperlink{classcom_1_1videoclub_1_1encrypt_1_1_password_encrypt}{PasswordEncrypt}}.\mbox{\hyperlink{classcom_1_1videoclub_1_1encrypt_1_1_password_encrypt_a94612e91cdc37a9c5fd324a489f3e3a0}{encryptPassword}}(\textcolor{stringliteral}{"{}test"{}}),\ \textcolor{stringliteral}{"{}test@gmail.com"{}},\ \textcolor{stringliteral}{"{}test"{}},\ \textcolor{stringliteral}{"{}test"{}},\ \mbox{\hyperlink{enumcom_1_1videoclub_1_1pojo_1_1type_user}{typeUser}}.\mbox{\hyperlink{enumcom_1_1videoclub_1_1pojo_1_1type_user_aec677c8ac829f28b47c2a566d264a890}{CLIENT}}\ );}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00074}00074\ \ \ \ \ \ \ \ \ Response\ response\ =\ appTarget.path(USERS\_RESOURCE)}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ .request(MediaType.APPLICATION\_JSON)}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ .post(Entity.entity(usertest,\ MediaType.APPLICATION\_JSON)}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00077}00077\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00078}00078\ \ \ \ \ \ \ \ \ List<User>\ users2\ =\ \mbox{\hyperlink{classcom_1_1videoclub_1_1dao_1_1_user_d_a_o}{UserDAO}}.\mbox{\hyperlink{classcom_1_1videoclub_1_1dao_1_1_user_d_a_o_ae0c88696bb85295346aceaa93020104e}{getInstance}}().\mbox{\hyperlink{classcom_1_1videoclub_1_1dao_1_1_user_d_a_o_ab3af2a10c6a144152817e34f02f26757}{getAll}}();}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00079}00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =0;\ i\ <\ users2.size();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(usertest.\mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_user_a735c95144871bcbc73ef3836f2cca5e0}{equals}}(users2.get(i)))\ \{}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ usercode\ =\ users2.get(i).getCode();}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00083}00083\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00084}00084\ \ \ \ \ \ \ \ \ assertEquals(users2.contains(usertest),\ \textcolor{keyword}{true});\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00085}00085\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00086}00086\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00087}00087\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00088}00088\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00089}\mbox{\hyperlink{classcom_1_1videoclub_1_1testing_1_1_integration_i_t_a08f596083d68bb5d07ffd1a60d8bcfe0}{00089}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1videoclub_1_1testing_1_1_integration_i_t_a08f596083d68bb5d07ffd1a60d8bcfe0}{DeleteUserResource}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00090}00090\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00091}00091\ \ \ \ \ \ \ \ \ Client\ client\ =\ ClientBuilder.newClient();}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00092}00092\ \ \ \ \ \ \ \ \ \textcolor{keyword}{final}\ WebTarget\ appTarget\ =\ client.target(SERVER\_ENDPOINT);}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00093}00093\ \ \ \ \ \ \ \ \ \ Response\ response\ =\ appTarget.path(USERS\_RESOURCE)}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .path(Integer.toString(usercode))}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .request()}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .delete();}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00097}00097\ \ \ \ \ \ \ \ \ \ List<User>\ users\ =\ \mbox{\hyperlink{classcom_1_1videoclub_1_1dao_1_1_user_d_a_o}{UserDAO}}.\mbox{\hyperlink{classcom_1_1videoclub_1_1dao_1_1_user_d_a_o_ae0c88696bb85295346aceaa93020104e}{getInstance}}().\mbox{\hyperlink{classcom_1_1videoclub_1_1dao_1_1_user_d_a_o_ab3af2a10c6a144152817e34f02f26757}{getAll}}();}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00098}00098\ \ \ \ \ \ \ \ \ \ usertest.\mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_user_a51442ed179fecda44fa6e99851abce2c}{setCode}}(usercode);}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00099}00099\ \ \ \ \ \ \ \ \ \ assertFalse(users.contains(usertest));\ \ \ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00100}00100\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00101}00101\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00102}00102\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00103}00103\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00104}00104\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00105}\mbox{\hyperlink{classcom_1_1videoclub_1_1testing_1_1_integration_i_t_abfca4e4c89d5dc1d56d85fe3afeb24ab}{00105}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1videoclub_1_1testing_1_1_integration_i_t_abfca4e4c89d5dc1d56d85fe3afeb24ab}{MovieListResource}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00106}00106\ \ \ \ \ \ \ \ \ List<Movie>\ movies=\ \textcolor{keyword}{new}\ ArrayList<>();}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00107}00107\ \ \ \ \ \ \ \ \ \ Client\ client\ =\ ClientBuilder.newClient();}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{final}\ WebTarget\ appTarget\ =\ client.target(SERVER\_ENDPOINT);}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00109}00109\ \ \ \ \ \ \ \ \ \ Response\ response\ =\ appTarget.path(MOVIES\_RESOURCE)}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .request(MediaType.APPLICATION\_JSON)}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .get();}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ check\ that\ the\ response\ was\ HTTP\ OK}}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.getStatusInfo().toEnum()\ ==\ Status.OK)}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ response\ is\ a\ generic\ type\ (a\ List<User>)}}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GenericType<List<Movie>>\ listType\ =\ \textcolor{keyword}{new}\ GenericType<List<Movie>>()\{\};}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ movies\ =\ response.readEntity(listType);}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00120}00120\ \ \ \ \ \ \ \ \ List<Movie>\ movies2\ =\ \mbox{\hyperlink{classcom_1_1videoclub_1_1dao_1_1_movie_d_a_o}{MovieDAO}}.\mbox{\hyperlink{classcom_1_1videoclub_1_1dao_1_1_movie_d_a_o_acfe61c3870d8ce2bdacf70f727db98e4}{getInstance}}().\mbox{\hyperlink{classcom_1_1videoclub_1_1dao_1_1_movie_d_a_o_a3ef838f6816f85e9bade0da654a2ab18}{getAll}}();}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00121}00121\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00122}00122\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00123}00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_movie}{Movie}}\ m\ :\ movies)\ \{}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//boolean\ contains\ =\ users2.contains(u);}}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ assertEquals(movies2.contains(m),\ \textcolor{keyword}{true}\ );}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00126}00126\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00127}00127\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00128}00128\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00129}00129\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00130}\mbox{\hyperlink{classcom_1_1videoclub_1_1testing_1_1_integration_i_t_a6a68bd57ddd21ac8b681985a33dd348a}{00130}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1videoclub_1_1testing_1_1_integration_i_t_a6a68bd57ddd21ac8b681985a33dd348a}{AddMovieResource}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00131}00131\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00132}00132\ \ \ \ \ \ \ \ \ Client\ client\ =\ ClientBuilder.newClient();}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00133}00133\ \ \ \ \ \ \ \ \ \textcolor{keyword}{final}\ WebTarget\ appTarget\ =\ client.target(SERVER\_ENDPOINT);}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00134}00134\ \ \ \ \ \ \ \ \ Response\ response\ =\ appTarget.path(MOVIES\_RESOURCE)}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ .request(MediaType.APPLICATION\_JSON)}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ .post(Entity.entity(movietest,\ MediaType.APPLICATION\_JSON)}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00137}00137\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00138}00138\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00139}00139\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_movie}{Movie}}\ movieTit\ =\ response.readEntity(\mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_movie}{Movie}}.class);}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00140}00140\ \ \ \ \ \ \ \ \ \textcolor{comment}{//movietitle=movieTit.getTitle();}}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00141}00141\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ check\ if\ the\ response\ was\ ok}}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00142}00142\ \ \ \ \ \ \ \ \ assertEquals(response.getStatusInfo().toEnum(),Status.OK);}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00143}00143\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00144}00144\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00145}00145\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00146}00146\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00147}\mbox{\hyperlink{classcom_1_1videoclub_1_1testing_1_1_integration_i_t_aa8a7b735d3b286c0f01a922966dfb26a}{00147}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1videoclub_1_1testing_1_1_integration_i_t_aa8a7b735d3b286c0f01a922966dfb26a}{DeleteMovieResource}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00148}00148\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00149}00149\ \ \ \ \ \ \ \ \ Client\ client\ =\ ClientBuilder.newClient();}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00150}00150\ \ \ \ \ \ \ \ \ \textcolor{keyword}{final}\ WebTarget\ appTarget\ =\ client.target(SERVER\_ENDPOINT);}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00151}00151\ \ \ \ \ \ \ \ \ \ Response\ response\ =\ appTarget.path(MOVIES\_RESOURCE)}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .path(movietitle)}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .request()}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .delete();}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00155}00155\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00156}00156\ \ \ \ \ \ \ \ \ \ assertEquals(response.getStatusInfo().toEnum(),Status.OK);}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00157}00157\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00158}00158\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00159}00159\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00160}00160\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00161}\mbox{\hyperlink{classcom_1_1videoclub_1_1testing_1_1_integration_i_t_a68d91a584e4d434aaf96867fe34aecfa}{00161}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1videoclub_1_1testing_1_1_integration_i_t_a68d91a584e4d434aaf96867fe34aecfa}{RentalListResource}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00162}00162\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00163}00163\ \ \ \ \ \ \ \ \ List<Rental>\ rentals=\ \textcolor{keyword}{new}\ ArrayList<>();}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00164}00164\ \ \ \ \ \ \ \ \ \ Client\ client\ =\ ClientBuilder.newClient();}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{final}\ WebTarget\ appTarget\ =\ client.target(SERVER\_ENDPOINT);}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00166}00166\ \ \ \ \ \ \ \ \ \ Response\ response\ =\ appTarget.path(RENTALS\_RESOURCE)}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .request(MediaType.APPLICATION\_JSON)}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .get();}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00169}00169\ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ check\ that\ the\ response\ was\ HTTP\ OK}}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.getStatusInfo().toEnum()\ ==\ Status.OK)}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ response\ is\ a\ generic\ type\ (a\ List<User>)}}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GenericType<List<Rental>>\ listType\ =\ \textcolor{keyword}{new}\ GenericType<List<Rental>>()\{\};}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rentals\ =\ response.readEntity(listType);}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00177}00177\ \ \ \ \ \ \ \ \ List<Rental>\ rentals2\ =\ \mbox{\hyperlink{classcom_1_1videoclub_1_1dao_1_1_rental_d_a_o}{RentalDAO}}.\mbox{\hyperlink{classcom_1_1videoclub_1_1dao_1_1_rental_d_a_o_ab0a4bf355b281f504bb77a820254369e}{getInstance}}().\mbox{\hyperlink{classcom_1_1videoclub_1_1dao_1_1_rental_d_a_o_a40a1da76ef5658bc320ba216ee7ce4db}{getAll}}();}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00178}00178\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00179}00179\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_rental}{Rental}}\ r\ :\ rentals2)\ \{}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//boolean\ contains\ =\ users2.contains(u);}}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ assertEquals(rentals.contains(r),\ \textcolor{keyword}{true}\ );}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00182}00182\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00183}00183\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00184}00184\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00185}00185\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00186}\mbox{\hyperlink{classcom_1_1videoclub_1_1testing_1_1_integration_i_t_a946df3e736b36ebbb91136ba78d5e9db}{00186}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1videoclub_1_1testing_1_1_integration_i_t_a946df3e736b36ebbb91136ba78d5e9db}{AddRentalResource}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00187}00187\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00188}00188\ \ \ \ \ \ \ \ \ Client\ client\ =\ ClientBuilder.newClient();}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00189}00189\ \ \ \ \ \ \ \ \ \textcolor{keyword}{final}\ WebTarget\ appTarget\ =\ client.target(SERVER\_ENDPOINT);}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00190}00190\ \ \ \ \ \ \ \ \ Response\ response\ =\ appTarget.path(USERS\_RESOURCE)}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ .request(MediaType.APPLICATION\_JSON)}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ .post(Entity.entity(rentaltest,\ MediaType.APPLICATION\_JSON)}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00193}00193\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00194}00194\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00195}00195\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ check\ if\ the\ response\ was\ ok}}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00196}00196\ \ \ \ \ \ \ \ \ List<Rental>\ rentals\ =\ \mbox{\hyperlink{classcom_1_1videoclub_1_1dao_1_1_rental_d_a_o}{RentalDAO}}.\mbox{\hyperlink{classcom_1_1videoclub_1_1dao_1_1_rental_d_a_o_ab0a4bf355b281f504bb77a820254369e}{getInstance}}().\mbox{\hyperlink{classcom_1_1videoclub_1_1dao_1_1_rental_d_a_o_a40a1da76ef5658bc320ba216ee7ce4db}{getAll}}();}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00197}00197\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =0;\ i\ <\ rentals.size();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(rentaltest.\mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_rental_a95ddd62e2ebb1fe07b75250cbcce6fe2}{equals}}(rentals.get(i)))\ \{}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Rentalid\ =\ rentals.get(i).getId();}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rentaltest.\mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_rental_a9d2941b33670d3a33335a611984ec834}{setId}}(Rentalid);}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00202}00202\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00203}00203\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00204}00204\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00205}00205\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00206}00206\ \ \ \ \ @Test}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00207}\mbox{\hyperlink{classcom_1_1videoclub_1_1testing_1_1_integration_i_t_a03ead83eb8b90c7ae5b935a380954546}{00207}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1videoclub_1_1testing_1_1_integration_i_t_a03ead83eb8b90c7ae5b935a380954546}{DeleteRentalResource}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00208}00208\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00209}00209\ \ \ \ \ \ \ \ \ Client\ client\ =\ ClientBuilder.newClient();}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00210}00210\ \ \ \ \ \ \ \ \ \textcolor{keyword}{final}\ WebTarget\ appTarget\ =\ client.target(SERVER\_ENDPOINT);}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00211}00211\ \ \ \ \ \ \ \ \ \ Response\ response\ =\ appTarget.path(USERS\_RESOURCE)}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .path(Integer.toString(Rentalid))}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .request()}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .delete();}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00215}00215\ \ \ \ \ \ \ \ \ \ List<Rental>\ rentals\ =\ \mbox{\hyperlink{classcom_1_1videoclub_1_1dao_1_1_rental_d_a_o}{RentalDAO}}.\mbox{\hyperlink{classcom_1_1videoclub_1_1dao_1_1_rental_d_a_o_ab0a4bf355b281f504bb77a820254369e}{getInstance}}().\mbox{\hyperlink{classcom_1_1videoclub_1_1dao_1_1_rental_d_a_o_a40a1da76ef5658bc320ba216ee7ce4db}{getAll}}();}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00216}00216\ \ \ \ \ \ \ \ \ \ rentaltest.\mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_rental_a9d2941b33670d3a33335a611984ec834}{setId}}(Rentalid);}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00217}00217\ \ \ \ \ \ \ \ \ \ assertFalse(rentals.contains(rentaltest));\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00218}00218\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00219}00219\ }
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00220}00220\ \}}
+\DoxyCodeLine{\Hypertarget{_integration_i_t_8java_source_l00221}00221\ }
+
+\end{DoxyCode}
