@@ -308,6 +308,10 @@ public class ConnectionToServer {
 		
 	}
 	
+	/** Function that Client uses to request the server the movie of the database.
+	 * @param s String
+	 * @return The movie found or null
+	 */
 	public Movie showMovieClient(String s) {
 		Client client = ClientBuilder.newClient();
         final WebTarget appTarget = client.target(SERVER_ENDPOINT);
@@ -333,6 +337,27 @@ public class ConnectionToServer {
             logger.error("Error - "+ o.getMessage());
         }
 		return null;
-		
 	}
+	
+	public void addMovieClient(Movie m) {
+		Client client = ClientBuilder.newClient();
+        final WebTarget appTarget = client.target(SERVER_ENDPOINT);
+		try {
+			Response response = appTarget.path(MOVIES_RESOURCE)
+                .request(MediaType.APPLICATION_JSON)
+                .post(Entity.entity(m, MediaType.APPLICATION_JSON)
+            );
+
+            // check if the response was ok
+            if (response.getStatusInfo().toEnum() == Status.OK) {
+                Movie userCode = response.readEntity(Movie.class);
+                logger.info("Movie registered with title:" + userCode.getTitle());
+            } else {
+                logger.error("Error posting a movie list. %s%n", response);
+            }
+        } catch (ProcessingException j) {
+            logger.error("Error posting a new movie. %s%n", j.getMessage());
+        }
+	}
+	
 }

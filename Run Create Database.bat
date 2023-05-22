@@ -1,1 +1,1 @@
-mvn datanucleus:enhance datanucleus:schema-create
+mvn datanucleus:enhance datanucleus:schema-delete datanucleus:schema-create

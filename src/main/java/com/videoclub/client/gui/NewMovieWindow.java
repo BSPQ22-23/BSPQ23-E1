@@ -29,6 +29,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.videoclub.Internationalization.InternationalizationText;
+import com.videoclub.client.ConnectionToServer;
 import com.videoclub.pojo.Movie;
 import com.videoclub.pojo.MovieGenre;
 
@@ -128,28 +129,11 @@ public class NewMovieWindow extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Client client = ClientBuilder.newClient();
-				final WebTarget appTarget = client.target(SERVER_ENDPOINT);
+				ConnectionToServer cts = new ConnectionToServer();
 				if(!title.getText().equals("") && !genre.getSelectedItem().toString().equals("") && !duration.getText().equals("") && !year.getText().equals("") && !director.getText().equals("") && !rentalPrice.getText().equals(""))
 				{
-					try {
-						Movie m = new Movie(title.getText(),(MovieGenre) genre.getSelectedItem(), Integer.parseInt(duration.getText()), Integer.parseInt(year.getText()),director.getText(), Double.parseDouble(rentalPrice.getText()));
-			            Response response = appTarget.path(MOVIES_RESOURCE)
-			                .request(MediaType.APPLICATION_JSON)
-			                .post(Entity.entity(m, MediaType.APPLICATION_JSON)
-			            );
-
-			            // check if the response was ok
-			            if (response.getStatusInfo().toEnum() == Status.OK) {
-			                // obtain the response data (contains a user with the new code)
-			                Movie userCode = response.readEntity(Movie.class);
-			                logger.info("Movie registered with title %s%n",userCode.getTitle());
-			            } else {
-			                logger.error("Error posting a movie list. %s%n", response);
-			            }
-			        } catch (ProcessingException j) {
-			            logger.error("Error posting a new movie. %s%n", j.getMessage());
-			        }
+					Movie m = new Movie(title.getText(),(MovieGenre) genre.getSelectedItem(), Integer.parseInt(duration.getText()), Integer.parseInt(year.getText()),director.getText(), Double.parseDouble(rentalPrice.getText()));
+					cts.addMovieClient(m);
 				}
 				else
 				{

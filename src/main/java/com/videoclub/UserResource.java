@@ -101,11 +101,8 @@ public class UserResource {
     		try {
     			for(Rental r: rentals)
     	    	{
-    	    		System.out.println(userToDelete.getCode()==(r.getCustomer().getCode()));
-    	    		
     	    		if(userToDelete.getCode()==(r.getCustomer().getCode()))
     	    		{
-    	    			
     	    			RentalDAO.getInstance().delete(r);
     	    		}
     	    	}

@@ -1,23 +1,20 @@
 package com.videoclub.testing;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.GenericType;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
-
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
+import org.w3c.dom.UserDataHandler;
 
+import com.videoclub.client.ConnectionToServer;
 import com.videoclub.dao.MovieDAO;
 import com.videoclub.dao.RentalDAO;
 import com.videoclub.dao.UserDAO;
@@ -30,191 +27,127 @@ import com.videoclub.pojo.typeUser;
 
 public class IntegrationIT {
 
-private static final String SERVER_ENDPOINT = "http://localhost:8080/webapi";
-private static final String USERS_RESOURCE ="users";
-private static final String RENTALS_RESOURCE ="rentals";
-private static final String MOVIES_RESOURCE ="movies";
-private int usercode =0;
+private static int usercode =0;
 private String movietitle = "test";
 private int Rentalid =0;
+private static ConnectionToServer cts = new ConnectionToServer();
 Date currentDate = new Date();
-User usertest = new User("test",PasswordEncrypt.encryptPassword("test"), "test@gmail.com", "test", "test", typeUser.CLIENT );
+static User usertest = new User("test","test", "test@gmail.com", "test", "test", typeUser.CLIENT );
+static User usertest2 = new User("test2","test2", "test2@gmail.com", "test2", "test2", typeUser.ADMIN );
 Movie movietest = new Movie("test", MovieGenre.COMEDY, 100, 2021, "test", 15);
 Rental rentaltest = new Rental(movietest, usertest,currentDate , currentDate);
 	@Test
 	public void UserListResource() {
-		List<User> users= new ArrayList<>();
-		 Client client = ClientBuilder.newClient();
-	        final WebTarget appTarget = client.target(SERVER_ENDPOINT);
-		 Response response = appTarget.path(USERS_RESOURCE)
-	                .request(MediaType.APPLICATION_JSON)
-	                .get();
-
-	            // check that the response was HTTP OK
-	            if (response.getStatusInfo().toEnum() == Status.OK)
-	            {
-	                // the response is a generic type (a List<User>)
-	                GenericType<List<User>> listType = new GenericType<List<User>>(){};
-	                 users = response.readEntity(listType);
-	            }
+		List<User> users= cts.takeUserListClient();
 	    List<User> users2 = UserDAO.getInstance().getAll();
-	    
 	    for(User u : users) {
-	    	//boolean contains = users2.contains(u);
 	    	assertEquals(users2.contains(u), true );
 	    }
-
 	}
 	
 	@Test
 	public void AddUserResource() {
-		Client client = ClientBuilder.newClient();
-        final WebTarget appTarget = client.target(SERVER_ENDPOINT);
-		User usertest = new User("test",PasswordEncrypt.encryptPassword("test"), "test@gmail.com", "test", "test", typeUser.CLIENT );
-        Response response = appTarget.path(USERS_RESOURCE)
-            .request(MediaType.APPLICATION_JSON)
-            .post(Entity.entity(usertest, MediaType.APPLICATION_JSON)
-        );
-	    List<User> users2 = UserDAO.getInstance().getAll();
+		boolean correct = cts.registerClient(usertest);
+	    List<User> users2 = cts.takeUserListClient();
 	    for (int i =0; i < users2.size(); i++) {
 	    	if(usertest.equals(users2.get(i))) {
 	    		usercode = users2.get(i).getCode();
 	    	}
 	    }
+	    assertTrue(correct);
         assertEquals(users2.contains(usertest), true);        
 	}
 	
 	
 	@Test
 	public void DeleteUserResource() {
-		
-		Client client = ClientBuilder.newClient();
-        final WebTarget appTarget = client.target(SERVER_ENDPOINT);
-		 Response response = appTarget.path(USERS_RESOURCE)
-	                .path(Integer.toString(usercode))
-	                .request()
-	                .delete();
-		 List<User> users = UserDAO.getInstance().getAll();
-		 usertest.setCode(usercode);
-		 assertFalse(users.contains(usertest));   
+		boolean v = cts.registerClient(usertest);
+		boolean correct = cts.deleteUserClient(usertest);
+		List<User> users = cts.takeUserListClient();
+		usertest.setCode(usercode);
+		assertTrue(correct);
+		assertFalse(users.contains(usertest));   
 	}
 	
-	
+	@Test
+	public void WrongDeleteUserResource() {
+		boolean v = cts.registerClient(usertest);
+		boolean correct = cts.deleteUserClient(usertest2);
+		List<User> users = cts.takeUserListClient();
+		usertest.setCode(usercode);
+		assertFalse(correct);
+		assertFalse(users.contains(usertest2));   
+	}
 	
 	@Test
 	public void MovieListResource() {
-		List<Movie> movies= new ArrayList<>();
-		 Client client = ClientBuilder.newClient();
-	        final WebTarget appTarget = client.target(SERVER_ENDPOINT);
-		 Response response = appTarget.path(MOVIES_RESOURCE)
-	                .request(MediaType.APPLICATION_JSON)
-	                .get();
-
-	            // check that the response was HTTP OK
-	            if (response.getStatusInfo().toEnum() == Status.OK)
-	            {
-	                // the response is a generic type (a List<User>)
-	                GenericType<List<Movie>> listType = new GenericType<List<Movie>>(){};
-	                 movies = response.readEntity(listType);
-	            }
+		List<Movie> movies= cts.takeMovieListClient();
 	    List<Movie> movies2 = MovieDAO.getInstance().getAll();
-	    
-	    
 	    for(Movie m : movies) {
-	    	//boolean contains = users2.contains(u);
 	    	assertEquals(movies2.contains(m), true );
 	    }
 	}
 	
 	@Test
 	public void AddMovieResource() {
-		
-		Client client = ClientBuilder.newClient();
-        final WebTarget appTarget = client.target(SERVER_ENDPOINT);
-        Response response = appTarget.path(MOVIES_RESOURCE)
-            .request(MediaType.APPLICATION_JSON)
-            .post(Entity.entity(movietest, MediaType.APPLICATION_JSON)
-        );
-        
-        Movie movieTit = response.readEntity(Movie.class);
-        //movietitle=movieTit.getTitle();
-        // check if the response was ok
-        assertEquals(response.getStatusInfo().toEnum(),Status.OK);
+		cts.addMovieClient(movietest);
+		List<Movie> movies = cts.takeMovieListClient();
+        assertEquals(movies.contains(movietest),true);
 	}
 	
 	
 	@Test
 	public void DeleteMovieResource() {
-		
-		Client client = ClientBuilder.newClient();
-        final WebTarget appTarget = client.target(SERVER_ENDPOINT);
-		 Response response = appTarget.path(MOVIES_RESOURCE)
-	                .path(movietitle)
-	                .request()
-	                .delete();
-		 
-		 assertEquals(response.getStatusInfo().toEnum(),Status.OK);
+		boolean correct = cts.deleteMovieClient(movietest);
+		List<Movie> movies= cts.takeMovieListClient();
+		assertEquals(correct, true);
+		assertEquals(movies.contains(movietest), false );
 	
 	}
 	
 	@Test
 	public void RentalListResource() {
-		
-		List<Rental> rentals= new ArrayList<>();
-		 Client client = ClientBuilder.newClient();
-	        final WebTarget appTarget = client.target(SERVER_ENDPOINT);
-		 Response response = appTarget.path(RENTALS_RESOURCE)
-	                .request(MediaType.APPLICATION_JSON)
-	                .get();
-
-	            // check that the response was HTTP OK
-	            if (response.getStatusInfo().toEnum() == Status.OK)
-	            {
-	                // the response is a generic type (a List<User>)
-	                GenericType<List<Rental>> listType = new GenericType<List<Rental>>(){};
-	                 rentals = response.readEntity(listType);
-	            }
+		List<Rental> rentals= cts.takeRentalListClient();
 	    List<Rental> rentals2 = RentalDAO.getInstance().getAll();
-	    
 	    for(Rental r : rentals2) {
-	    	//boolean contains = users2.contains(u);
 	    	assertEquals(rentals.contains(r), true );
 	    }
 	}
 	
 	@Test
-	public void AddRentalResource() {
-		
-		Client client = ClientBuilder.newClient();
-        final WebTarget appTarget = client.target(SERVER_ENDPOINT);
-        Response response = appTarget.path(USERS_RESOURCE)
-            .request(MediaType.APPLICATION_JSON)
-            .post(Entity.entity(rentaltest, MediaType.APPLICATION_JSON)
-        );
-       
-        // check if the response was ok
-        List<Rental> rentals = RentalDAO.getInstance().getAll();
-	    for (int i =0; i < rentals.size(); i++) {
-	    	if(rentaltest.equals(rentals.get(i))) {
-	    		Rentalid = rentals.get(i).getId();
-	    		rentaltest.setId(Rentalid);
-	    	}
-	    }
+	public void FailLogInFunctionTest() {
+		User u = cts.logInClient("eiekjudghv", "wsbeliufa");	
+		assertTrue(u==null);
 	}
 	
+	@Test
+	public void showMovieTest() {
+		cts.addMovieClient(movietest);
+		Movie correct = cts.showMovieClient(movietest.getTitle());
+		assertEquals(correct, movietest);
+	}
 	
 	@Test
-	public void DeleteRentalResource() {
-		
-		Client client = ClientBuilder.newClient();
-        final WebTarget appTarget = client.target(SERVER_ENDPOINT);
-		 Response response = appTarget.path(USERS_RESOURCE)
-	                .path(Integer.toString(Rentalid))
-	                .request()
-	                .delete();
-		 List<Rental> rentals = RentalDAO.getInstance().getAll();
-		 rentaltest.setId(Rentalid);
-		 assertFalse(rentals.contains(rentaltest)); 		 
+	public void wrongShowMovieTest() {
+		Movie correct = cts.showMovieClient("WrongMovie");
+		assertEquals(correct, null);
+	}
+	
+	@Test
+	public void updateMovieTest() {
+		Movie old = new Movie("ja", MovieGenre.HORROR, 6, 4, "ja", 7.9);
+		cts.addMovieClient(old);
+		Movie newi = MovieDAO.getInstance().find(old.getTitle(), Movie.ColumnsNameMovie.title);
+		newi.setDirector("u");
+		newi.setGenre(MovieGenre.FAMILY);
+		boolean correct = cts.updateMovieClient(newi);
+		assertEquals(correct, true);
+		cts.deleteMovieClient(old);
+	}
+	
+	@AfterClass
+	public static void deleteTest() {
+		cts.deleteUserClient(usertest);
 	}
 
 }

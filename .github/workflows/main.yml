@@ -28,3 +28,10 @@ jobs:
       - name: Run tests
         run: |
           tmux new-session -d -s tests "mvn --batch-mode --update-snapshots test"
+          
+      - name: Generate Doxigen documentation
+        uses: DenverCoder1/doxygen-github-pages-action@v1.3.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          config_file: Doxyfile
+          folder: docs
