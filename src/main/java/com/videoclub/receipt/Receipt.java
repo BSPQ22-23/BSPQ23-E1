@@ -98,12 +98,11 @@ public class Receipt {
 	    table.addCell(String.valueOf(r.getId()));
 	   
 	    
-	    //TODO check why GetMovie() returns null 
-	  /*  table.addCell("Movie Title");
+	    table.addCell("Movie Title");
 	    table.addCell(r.getMovie().getTitle());
 
 	    table.addCell("Movie Genre");
-	    table.addCell(r.getMovie().getGenre());
+	    table.addCell(r.getMovie().getGenre().toString());
 
 	    table.addCell("Movie Duration");
 	    table.addCell(String.valueOf(r.getMovie().getDuration()));
@@ -115,7 +114,7 @@ public class Receipt {
 	    table.addCell(r.getMovie().getDirector());
 
 	    table.addCell("Movie Rental Price");
-	    table.addCell(String.valueOf(r.getMovie().getRentalPrice()));*/
+	    table.addCell(String.valueOf(r.getMovie().getRentalPrice()));
 
 	    // Adding User details
 	    table.addCell("Customer Name");
@@ -127,16 +126,16 @@ public class Receipt {
 	    table.addCell("Customer Email");
 	    table.addCell(u.getEmail());
 
-	    //TODO chech why rental date is null
-	    /*table.addCell("Rental Date");
+	    //TODO check why rental date is null
+	    table.addCell("Rental Date");
 	    table.addCell(r.getRentalDate().toString());
 
 	    table.addCell("Return Date");
-	    table.addCell(r.getReturnDate().toString());*/
+	    table.addCell(r.getReturnDate().toString());
 
 	    doc.add(table);
 	    // Add thank you note
-	    Paragraph thanks = new Paragraph("Thank you for renting our product. We appreciate your business.");
+	    Paragraph thanks = new Paragraph("Thank you for renting our product. We hope you enjoy it!.");
 	    doc.add(thanks);
 
 	    // Generate QR Code
