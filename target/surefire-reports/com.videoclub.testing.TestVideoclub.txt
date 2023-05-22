@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.videoclub.testing.TestVideoclub
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.368 s - in com.videoclub.testing.TestVideoclub

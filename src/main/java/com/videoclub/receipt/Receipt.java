@@ -64,7 +64,7 @@ public class Receipt {
 				createDocument(u, r, doc);
 	        }
 	        
-		}else {
+		}else if(resp ==1){
 			  	Document doc = new Document();
 			  	String name="Rental_"+r.getId()+"_"+u.getName()+".pdf";
 			  	String comp="receipts/"+name;
@@ -162,9 +162,8 @@ public class Receipt {
 	
 	  public static void sendmail(String comp,String nom) throws AddressException, MessagingException {
 	 
-		String mail=""; //mail and password are empty
-		String pass="";//LA CONTRASEÑA DEL CORREO ESTÁ QUITADA PARA QUE NO SE VEA EN EL GITHUB
-		
+		String mail="videoclub.deusto@gmail.com"; //mail and password are empty
+		String pass="pvjynyuqubmmpoke";//LA CONTRASEÑA DEL CORREO ESTÁ QUITADA PARA QUE NO SE VEA EN EL GITHUB
 		
 		String mailreceiver=JOptionPane.showInputDialog(null,"Introduce your email please:");
 		

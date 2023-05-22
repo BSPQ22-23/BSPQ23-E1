@@ -166,56 +166,55 @@
 \DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00162}00162\ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00163}\mbox{\hyperlink{classcom_1_1videoclub_1_1receipt_1_1_receipt_ac9e78e3a0fa8dca2d7aa1f510d1afeb9}{00163}}\ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcom_1_1videoclub_1_1receipt_1_1_receipt_ac9e78e3a0fa8dca2d7aa1f510d1afeb9}{sendmail}}(String\ comp,String\ nom)\ \textcolor{keywordflow}{throws}\ AddressException,\ MessagingException\ \{}
 \DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00164}00164\ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00165}00165\ \ \ \ \ \ \ \ \ String\ mail=\textcolor{stringliteral}{"{}"{}};\ \textcolor{comment}{//mail\ and\ password\ are\ empty}}
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00166}00166\ \ \ \ \ \ \ \ \ String\ pass=\textcolor{stringliteral}{"{}"{}};\textcolor{comment}{//LA\ CONTRASEÑA\ DEL\ CORREO\ ESTÁ\ QUITADA\ PARA\ QUE\ NO\ SE\ VEA\ EN\ EL\ GITHUB}}
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00165}00165\ \ \ \ \ \ \ \ \ String\ mail=\textcolor{stringliteral}{"{}videoclub.deusto@gmail.com"{}};\ \textcolor{comment}{//mail\ and\ password\ are\ empty}}
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00166}00166\ \ \ \ \ \ \ \ \ String\ pass=\textcolor{stringliteral}{"{}pvjynyuqubmmpoke"{}};\textcolor{comment}{//LA\ CONTRASEÑA\ DEL\ CORREO\ ESTÁ\ QUITADA\ PARA\ QUE\ NO\ SE\ VEA\ EN\ EL\ GITHUB}}
 \DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00167}00167\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00168}00168\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00169}00169\ \ \ \ \ \ \ \ \ String\ mailreceiver=JOptionPane.showInputDialog(\textcolor{keyword}{null},\textcolor{stringliteral}{"{}Introduce\ your\ email\ please:"{}});}
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00170}00170\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00171}00171\ \ \ \ \ \ \ \ \ Properties\ p\ =\ \textcolor{keyword}{new}\ Properties();}
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ p.put(\textcolor{stringliteral}{"{}mail.smtp.host"{}},\ \textcolor{stringliteral}{"{}smtp.gmail.com"{}});}
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ p.setProperty(\textcolor{stringliteral}{"{}mail.smtp.starttls.enable"{}},\ \textcolor{stringliteral}{"{}true"{}});}
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ p.put(\textcolor{stringliteral}{"{}mail.smtp.ssl.trust"{}},\ \textcolor{stringliteral}{"{}smtp.gmail.com"{}});}
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ p.setProperty(\textcolor{stringliteral}{"{}mail.smtp.port"{}},\ \textcolor{stringliteral}{"{}587"{}});}
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ p.setProperty(\textcolor{stringliteral}{"{}mail.smtp.user"{}},\ mail);}
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ p.setProperty(\textcolor{stringliteral}{"{}mail.smtp.auth"{}},\ \textcolor{stringliteral}{"{}true"{}});}
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00180}00180\ \ \ \ \ \ \ \ \ Session\ s\ =\ Session.getDefaultInstance(p);}
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00181}00181\ \ \ \ \ \ \ \ \ BodyPart\ text\ =\ \textcolor{keyword}{new}\ MimeBodyPart();}
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ text.setText(\textcolor{stringliteral}{"{}Here´s\ your\ receipt.\ Thak\ you\ for\ your\ trust!"{}});}
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00183}00183\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00184}00184\ \ \ \ \ \ \ \ \ BodyPart\ adj\ =\ \textcolor{keyword}{new}\ MimeBodyPart();}
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ adj.setDataHandler(\textcolor{keyword}{new}\ DataHandler(\textcolor{keyword}{new}\ FileDataSource(comp)));}
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ adj.setFileName(nom);}
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00188}00188\ \ \ \ \ \ \ \ \ MimeMultipart\ m\ =\ \textcolor{keyword}{new}\ MimeMultipart();}
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ m.addBodyPart(text);}
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ m.addBodyPart(adj);}
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00191}00191\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00193}00193\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00194}00194\ \ \ \ \ \ \ \ \ MimeMessage\ message\ =\ \textcolor{keyword}{new}\ MimeMessage(s);}
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ message.setFrom(\textcolor{keyword}{new}\ InternetAddress(mail));}
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ message.addRecipient(Message.RecipientType.TO,\ \textcolor{keyword}{new}\ InternetAddress(mailreceiver));}
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ message.setSubject(\textcolor{stringliteral}{"{}Your\ Rental´s\ receipt"{}});}
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ message.setContent(m);}
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00168}00168\ \ \ \ \ \ \ \ \ String\ mailreceiver=JOptionPane.showInputDialog(\textcolor{keyword}{null},\textcolor{stringliteral}{"{}Introduce\ your\ email\ please:"{}});}
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00169}00169\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00170}00170\ \ \ \ \ \ \ \ \ Properties\ p\ =\ \textcolor{keyword}{new}\ Properties();}
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ p.put(\textcolor{stringliteral}{"{}mail.smtp.host"{}},\ \textcolor{stringliteral}{"{}smtp.gmail.com"{}});}
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ p.setProperty(\textcolor{stringliteral}{"{}mail.smtp.starttls.enable"{}},\ \textcolor{stringliteral}{"{}true"{}});}
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ p.put(\textcolor{stringliteral}{"{}mail.smtp.ssl.trust"{}},\ \textcolor{stringliteral}{"{}smtp.gmail.com"{}});}
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ p.setProperty(\textcolor{stringliteral}{"{}mail.smtp.port"{}},\ \textcolor{stringliteral}{"{}587"{}});}
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ p.setProperty(\textcolor{stringliteral}{"{}mail.smtp.user"{}},\ mail);}
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ p.setProperty(\textcolor{stringliteral}{"{}mail.smtp.auth"{}},\ \textcolor{stringliteral}{"{}true"{}});}
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00179}00179\ \ \ \ \ \ \ \ \ Session\ s\ =\ Session.getDefaultInstance(p);}
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00180}00180\ \ \ \ \ \ \ \ \ BodyPart\ text\ =\ \textcolor{keyword}{new}\ MimeBodyPart();}
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ text.setText(\textcolor{stringliteral}{"{}Here´s\ your\ receipt.\ Thak\ you\ for\ your\ trust!"{}});}
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00182}00182\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00183}00183\ \ \ \ \ \ \ \ \ BodyPart\ adj\ =\ \textcolor{keyword}{new}\ MimeBodyPart();}
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ adj.setDataHandler(\textcolor{keyword}{new}\ DataHandler(\textcolor{keyword}{new}\ FileDataSource(comp)));}
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ adj.setFileName(nom);}
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00187}00187\ \ \ \ \ \ \ \ \ MimeMultipart\ m\ =\ \textcolor{keyword}{new}\ MimeMultipart();}
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ m.addBodyPart(text);}
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ m.addBodyPart(adj);}
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00190}00190\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00192}00192\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00193}00193\ \ \ \ \ \ \ \ \ MimeMessage\ message\ =\ \textcolor{keyword}{new}\ MimeMessage(s);}
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ message.setFrom(\textcolor{keyword}{new}\ InternetAddress(mail));}
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ message.addRecipient(Message.RecipientType.TO,\ \textcolor{keyword}{new}\ InternetAddress(mailreceiver));}
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ message.setSubject(\textcolor{stringliteral}{"{}Your\ Rental´s\ receipt"{}});}
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ message.setContent(m);}
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00204}00204\ \ \ \ \ \ \ \ \ Transport\ t\ =\ s.getTransport(\textcolor{stringliteral}{"{}smtp"{}});}
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00205}00205\ \ \ \ \ \ \ \ \ t.connect(mail,\ pass);}
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00206}00206\ \ \ \ \ \ \ \ \ t.sendMessage(message,\ message.getAllRecipients());}
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00207}00207\ \ \ \ \ \ \ \ \ t.close();}
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00208}00208\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00209}00209\ \ \ \ \ \ \ \ \ JOptionPane.showMessageDialog(\textcolor{keyword}{null},\ \textcolor{stringliteral}{"{}message\ succesfully\ sent"{}},\textcolor{stringliteral}{"{}MESSAGE\ SENT"{}},JOptionPane.INFORMATION\_MESSAGE);}
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00203}00203\ \ \ \ \ \ \ \ \ Transport\ t\ =\ s.getTransport(\textcolor{stringliteral}{"{}smtp"{}});}
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00204}00204\ \ \ \ \ \ \ \ \ t.connect(mail,\ pass);}
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00205}00205\ \ \ \ \ \ \ \ \ t.sendMessage(message,\ message.getAllRecipients());}
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00206}00206\ \ \ \ \ \ \ \ \ t.close();}
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00207}00207\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00208}00208\ \ \ \ \ \ \ \ \ JOptionPane.showMessageDialog(\textcolor{keyword}{null},\ \textcolor{stringliteral}{"{}message\ succesfully\ sent"{}},\textcolor{stringliteral}{"{}MESSAGE\ SENT"{}},JOptionPane.INFORMATION\_MESSAGE);}
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00209}00209\ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00210}00210\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00211}00211\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00212}00212\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00211}00211\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00212}00212\ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00213}00213\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00214}00214\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00215}00215\ \}}
+\DoxyCodeLine{\Hypertarget{_receipt_8java_source_l00214}00214\ \}}
 
 \end{DoxyCode}
