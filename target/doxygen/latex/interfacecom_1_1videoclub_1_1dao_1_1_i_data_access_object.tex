@@ -1,0 +1,102 @@
+\hypertarget{interfacecom_1_1videoclub_1_1dao_1_1_i_data_access_object}{}\doxysection{com.\+videoclub.\+dao.\+IData\+Access\+Object\texorpdfstring{$<$}{<} Domain\+Object \texorpdfstring{$>$}{>} Interface Template Reference}
+\label{interfacecom_1_1videoclub_1_1dao_1_1_i_data_access_object}\index{com.videoclub.dao.IDataAccessObject$<$ DomainObject $>$@{com.videoclub.dao.IDataAccessObject$<$ DomainObject $>$}}
+Inheritance diagram for com.\+videoclub.\+dao.\+IData\+Access\+Object\texorpdfstring{$<$}{<} Domain\+Object \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interfacecom_1_1videoclub_1_1dao_1_1_i_data_access_object}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{interfacecom_1_1videoclub_1_1dao_1_1_i_data_access_object_a3e494bfda2a11d39abe026e95b1b11e5}{save}} (Domain\+Object object)
+\item 
+void \mbox{\hyperlink{interfacecom_1_1videoclub_1_1dao_1_1_i_data_access_object_aeb1a859130717f218fca4e48b60c9aa3}{delete}} (Domain\+Object object)
+\item 
+List$<$ Domain\+Object $>$ \mbox{\hyperlink{interfacecom_1_1videoclub_1_1dao_1_1_i_data_access_object_a2009177405bc58516c5e953bed31b6a9}{get\+All}} (Class$<$ Domain\+Object $>$ domain\+Class)
+\item 
+Domain\+Object \mbox{\hyperlink{interfacecom_1_1videoclub_1_1dao_1_1_i_data_access_object_a5352e4f8e2acfd4d8084fae80ae444e4}{find}} (String param, \mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_class_column_names}{Class\+Column\+Names}}$<$ Domain\+Object $>$ filter)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_i_data_access_object_8java_source_l00007}{7}} of file \mbox{\hyperlink{_i_data_access_object_8java_source}{IData\+Access\+Object.\+java}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{interfacecom_1_1videoclub_1_1dao_1_1_i_data_access_object_aeb1a859130717f218fca4e48b60c9aa3}\label{interfacecom_1_1videoclub_1_1dao_1_1_i_data_access_object_aeb1a859130717f218fca4e48b60c9aa3}} 
+\index{com.videoclub.dao.IDataAccessObject$<$ DomainObject $>$@{com.videoclub.dao.IDataAccessObject$<$ DomainObject $>$}!delete@{delete}}
+\index{delete@{delete}!com.videoclub.dao.IDataAccessObject$<$ DomainObject $>$@{com.videoclub.dao.IDataAccessObject$<$ DomainObject $>$}}
+\doxysubsubsection{\texorpdfstring{delete()}{delete()}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{interfacecom_1_1videoclub_1_1dao_1_1_i_data_access_object}{com.\+videoclub.\+dao.\+IData\+Access\+Object}}$<$ Domain\+Object $>$.delete (\begin{DoxyParamCaption}\item[{Domain\+Object}]{object }\end{DoxyParamCaption})}
+
+Function to delete the Data of an object in the corresponding database. This function is used in the server side. 
+\begin{DoxyParams}{Parameters}
+{\em object} & Object to be deleted. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classcom_1_1videoclub_1_1dao_1_1_data_access_object_base_a0e961288ca9acbdf714448c9d5b4a6e8}{com.\+videoclub.\+dao.\+Data\+Access\+Object\+Base$<$ Domain\+Object $>$}}.
+
+\mbox{\Hypertarget{interfacecom_1_1videoclub_1_1dao_1_1_i_data_access_object_a5352e4f8e2acfd4d8084fae80ae444e4}\label{interfacecom_1_1videoclub_1_1dao_1_1_i_data_access_object_a5352e4f8e2acfd4d8084fae80ae444e4}} 
+\index{com.videoclub.dao.IDataAccessObject$<$ DomainObject $>$@{com.videoclub.dao.IDataAccessObject$<$ DomainObject $>$}!find@{find}}
+\index{find@{find}!com.videoclub.dao.IDataAccessObject$<$ DomainObject $>$@{com.videoclub.dao.IDataAccessObject$<$ DomainObject $>$}}
+\doxysubsubsection{\texorpdfstring{find()}{find()}}
+{\footnotesize\ttfamily Domain\+Object \mbox{\hyperlink{interfacecom_1_1videoclub_1_1dao_1_1_i_data_access_object}{com.\+videoclub.\+dao.\+IData\+Access\+Object}}$<$ Domain\+Object $>$.find (\begin{DoxyParamCaption}\item[{String}]{param,  }\item[{\mbox{\hyperlink{classcom_1_1videoclub_1_1pojo_1_1_class_column_names}{Class\+Column\+Names}}$<$ Domain\+Object $>$}]{filter }\end{DoxyParamCaption})}
+
+Function to find a certain object in database taking into account the filter given as param. This function is used in the server side. 
+\begin{DoxyParams}{Parameters}
+{\em param} & String given to find the desirable object. In SQL, for example, \char`\"{}21-\/11-\/2002\char`\"{} \\
+\hline
+{\em filter} & Filter given to search the object. In SQL, for example, \char`\"{}\+DATE\char`\"{}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The object that fullfils the information provided. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classcom_1_1videoclub_1_1dao_1_1_data_access_object_base_a433dd9f7d0f90ac0204ed898df9e7417}{com.\+videoclub.\+dao.\+Data\+Access\+Object\+Base$<$ Domain\+Object $>$}}.
+
+\mbox{\Hypertarget{interfacecom_1_1videoclub_1_1dao_1_1_i_data_access_object_a2009177405bc58516c5e953bed31b6a9}\label{interfacecom_1_1videoclub_1_1dao_1_1_i_data_access_object_a2009177405bc58516c5e953bed31b6a9}} 
+\index{com.videoclub.dao.IDataAccessObject$<$ DomainObject $>$@{com.videoclub.dao.IDataAccessObject$<$ DomainObject $>$}!getAll@{getAll}}
+\index{getAll@{getAll}!com.videoclub.dao.IDataAccessObject$<$ DomainObject $>$@{com.videoclub.dao.IDataAccessObject$<$ DomainObject $>$}}
+\doxysubsubsection{\texorpdfstring{getAll()}{getAll()}}
+{\footnotesize\ttfamily List$<$ Domain\+Object $>$ \mbox{\hyperlink{interfacecom_1_1videoclub_1_1dao_1_1_i_data_access_object}{com.\+videoclub.\+dao.\+IData\+Access\+Object}}$<$ Domain\+Object $>$.get\+All (\begin{DoxyParamCaption}\item[{Class$<$ Domain\+Object $>$}]{domain\+Class }\end{DoxyParamCaption})}
+
+Function to get all the objects and data of the corresponding database. This function is used in the server side. 
+\begin{DoxyParams}{Parameters}
+{\em domain\+Class} & The database to retrieve. Matches with the names of the domain classes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list with the objects. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classcom_1_1videoclub_1_1dao_1_1_data_access_object_base_a65b4b0ea553b7598b68f4562c0fc0f4a}{com.\+videoclub.\+dao.\+Data\+Access\+Object\+Base$<$ Domain\+Object $>$}}.
+
+\mbox{\Hypertarget{interfacecom_1_1videoclub_1_1dao_1_1_i_data_access_object_a3e494bfda2a11d39abe026e95b1b11e5}\label{interfacecom_1_1videoclub_1_1dao_1_1_i_data_access_object_a3e494bfda2a11d39abe026e95b1b11e5}} 
+\index{com.videoclub.dao.IDataAccessObject$<$ DomainObject $>$@{com.videoclub.dao.IDataAccessObject$<$ DomainObject $>$}!save@{save}}
+\index{save@{save}!com.videoclub.dao.IDataAccessObject$<$ DomainObject $>$@{com.videoclub.dao.IDataAccessObject$<$ DomainObject $>$}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{interfacecom_1_1videoclub_1_1dao_1_1_i_data_access_object}{com.\+videoclub.\+dao.\+IData\+Access\+Object}}$<$ Domain\+Object $>$.save (\begin{DoxyParamCaption}\item[{Domain\+Object}]{object }\end{DoxyParamCaption})}
+
+Function to save the Data of an object in the corresponding database. This function is used in the server side. 
+\begin{DoxyParams}{Parameters}
+{\em object} & Object to be saved. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classcom_1_1videoclub_1_1dao_1_1_data_access_object_base_a5ee36de1e5da2747cbb031f3b491d3d8}{com.\+videoclub.\+dao.\+Data\+Access\+Object\+Base$<$ Domain\+Object $>$}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/videoclub/dao/\mbox{\hyperlink{_i_data_access_object_8java}{IData\+Access\+Object.\+java}}\end{DoxyCompactItemize}
